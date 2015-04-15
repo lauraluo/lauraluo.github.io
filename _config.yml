@@ -70,3 +70,4 @@ deploy:
 	type: git
 	repo: git@github.com:lauraluo/lauraluo.github.io.git
 	branch: master
+	message: "my blog update"
