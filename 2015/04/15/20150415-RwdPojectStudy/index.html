@@ -16,9 +16,11 @@
 <link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
 
 
+    <meta name="description" content="前端工程師修鍊的路上" />
 
 
-  <meta name="keywords" content="rwd,專案人生," />
+
+  <meta name="keywords" content="RWD,專案人生," />
 
 
 
@@ -29,10 +31,39 @@
 
 
 
-  <title> 20150415_RwdPojectStudy // 羅拉拉的開發日誌 </title>
+  <title> RWD響應式網頁專案開發心得(一) // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" RWD響應式網頁專案開發心得(一) // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="前言本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得, 此文章適合閱讀的對象
+
+用過Bootstrap3
+用過Less/Scss這類的樣式編譯器 
+用過 Grids System 
+擁有RWD所有所需相關知識 
+被專案逼瘋(？)的人
+" />
+<meta itemprop="image" content="images/2015-04-01_175240.jpg">
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" RWD響應式網頁專案開發心得(一) // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="前言本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得, 此文章適合閱讀的對象
+
+用過Bootstrap3
+用過Less/Scss這類的樣式編譯器 
+用過 Grids System 
+擁有RWD所有所需相關知識 
+被專案逼瘋(？)的人
+" />
+<meta property="og:url" content="http://http://lauraluo.github.io/" />
+<meta property="og:site_name" content=" RWD響應式網頁專案開發心得(一) // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta property="og:image" content="images/2015-04-01_175240.jpg" />
+
 </head>
 
 <body>
+
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
@@ -58,6 +89,14 @@
         <a href="/">
           <i class="menu-item-icon icon-home"></i> <br />
           首頁
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          分類
         </a>
       </li>
     
@@ -100,7 +139,7 @@
           
           
             
-              20150415_RwdPojectStudy
+              RWD響應式網頁專案開發心得(一)
             
           
         </h1>
@@ -111,6 +150,25 @@
           發表於 2015-04-15
         </span>
 
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/rwd/">rwd</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/rwd/實作心得/">實作心得</a>
+
+              
+              
+
+            
+          </span>
         
 
         
@@ -130,10 +188,17 @@
 
       
       
+        <div class="post-gallery">
+          
+            <a class="post-gallery-img fancybox" href="/images/2015-04-01_175240.jpg" rel="gallery_ci8jmbwtg0002hklril4phbg0">
+              <img src="/images/2015-04-01_175240.jpg" />
+            </a>
+          
+        </div>
+      
 
       
-        <h2 id="前言">前言</h2><p>本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得 </p>
-<p>以此文章適合閱讀的對象</p>
+        <h2 id="前言">前言</h2><p>本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得, 此文章適合閱讀的對象</p>
 <ul>
 <li>用過Bootstrap3</li>
 <li>用過Less/Scss這類的樣式編譯器 </li>
@@ -141,7 +206,6 @@
 <li>擁有RWD所有所需相關知識 </li>
 <li>被專案逼瘋(？)的人</li>
 </ul>
-<hr>
 <a id="more"></a> 
 <h2 id="趨勢">趨勢</h2><p>施作RWD技術前，我們作了一些現況的調查，幫助了解現在開發要面臨的環境</p>
 <h3 id="瀏覽器的市佔率">瀏覽器的市佔率</h3><p>了解瀏覽器的市佔率，可以幫助我們作技術上的選擇。特別標註IE8，是因為對前端來說，存在RWD的技術斷層，文章結尾會探討到IE8的支援度。</p>
@@ -280,15 +344,15 @@
 <h3 id="各種百分比參照對象">各種百分比參照對象</h3><ul>
 <li><strong>background-size：</strong>父層容器高寬</li>
 <li><strong>width / height：</strong>父層容器高寬</li>
-<li><p><strong>background-position：</strong>背景大小減掉父層容層後的差集</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">width</span><span class="value">:<span class="number">1000px</span>;</span></span><br><span class="line">	<span class="attribute">height</span><span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class">.item</span> &#123;</span><br><span class="line">	<span class="attribute">background</span><span class="value">:<span class="function">url</span>(w1000Xh100.jpg) no-repeat <span class="number">10%</span> <span class="number">0</span>;</span></span><br><span class="line">	<span class="attribute">background-size</span><span class="value">:<span class="number">90%</span> auto;</span></span><br><span class="line">	<span class="comment">// (1000(box) - 1000(item)) * 10% = 10 px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>padding 跟 margin:</strong>比較特別的地方是，padding-top、padding-bottom、margin-top、margin-bottom 是參考父層<strong>寬度</strong></p>
-</li>
+<li><strong>background-position：</strong>背景大小減掉父層容層後的差集</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">width</span><span class="value">:<span class="number">1000px</span>;</span></span><br><span class="line">	<span class="attribute">height</span><span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class">.item</span> &#123;</span><br><span class="line">	<span class="attribute">background</span><span class="value">:<span class="function">url</span>(w1000Xh100.jpg) no-repeat <span class="number">10%</span> <span class="number">0</span>;</span></span><br><span class="line">	<span class="attribute">background-size</span><span class="value">:<span class="number">90%</span> auto;</span></span><br><span class="line">	<span class="comment">// (1000(box) - 1000(item)) * 10% = 10 px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>padding 跟 margin:</strong>比較特別的地方是，padding-top、padding-bottom、margin-top、margin-bottom 是參考父層<strong>寬度</strong></li>
 </ul>
 <hr>
-<h2 id="A_RWD_CSS_Sprite_Button">A RWD CSS Sprite Button</h2><p>使用Backgroun-size作使用圖片卻能伸縮的Sprite Button<br>實作方法是另用Padding-Bottom是參考其父層寬度的特性 </p>
+<h3 id="A_RWD_CSS_Sprite_Button">A RWD CSS Sprite Button</h3><p>使用Backgroun-size作使用圖片卻能伸縮的Sprite Button<br>實作方法是另用Padding-Bottom是參考其父層寬度的特性 </p>
 <p><img src="/images/螢幕快照 2015-04-01 下午11.12.59.png" alt="Alt text"><br><img src="/images/螢幕快照 2015-04-01 下午11.12.42.png" alt="Alt text"></p>
 <p><a href="http://codepen.io/ce0812/details/ByvxRQ" target="_blank" rel="external">範例</a></p>
 <hr>
@@ -299,7 +363,7 @@
 </ul>
 <hr>
 <h3 id="IE8兼容">IE8兼容</h3><h4 id="HTML5+CSS3">HTML5+CSS3</h4><ul>
-<li>Modernizr：可以用來偵測各種CSS3或是HTML5功能的兼容性作為JS 或 CSS的條件參考可以使用這個，預設包含Html5Shiv的功能，所以不要一起使用。</li>
+<li>Modernizr：可以用來偵測各種CSS3或是HTML5功能的兼容性作為JS或CSS的條件參考可以使用這個，預設包含Html5Shiv的功能，所以不要一起使用。</li>
 <li>Html5shiv：一段讓 IE6 IE7 IE8 支援 HTML5 標籤的 JavaScrip</li>
 </ul>
 <h4 id="mediaQuerys">mediaQuerys</h4><p>我們使用的是Respond.js</p>
@@ -369,7 +433,7 @@ div {
 <h3 id="畫面的Debug工具">畫面的Debug工具</h3><p> Chorme的WebDeveloper最好用 = =<br> <img src="/images/螢幕快照 2015-04-01 下午11.34.35.png" alt="Alt text"></p>
 <p> 試過幾款Web工具發現在Viewport的模擬上跟真實都會有出入，而且在Windows中還可以摸擬TouchEvent跟3G環境也就沒有再找其他的</p>
 <hr>
-<h3 id="實作方向">實作方向</h3><h4 id="固定寬度">固定寬度</h4><ul>
+<h2 id="實作方向">實作方向</h2><h3 id="固定寬度">固定寬度</h3><ul>
 <li>原理：如果你有三個BreakPoint分別代表手機/平板/PC，這個作法會直接切固定的三個寬度的CSS，定位都可以用PX，然後使用JS改變Viewport</li>
 <li>難度：簡單</li>
 <li>優點：施作容易</li>
@@ -400,27 +464,25 @@ div {
 <li>員工與客戶的訓練</li>
 <li>行動裝置特有的屬性研究</li>
 </ul>
-<h1 id="工具">工具</h1><ul>
+<h2 id="工具">工具</h2><ul>
 <li><a href="http://bradfrost.github.io/this-is-responsive/patterns.html" target="_blank" rel="external">Responsive Patterns</a> : A collection of patterns and modules for responsive designs.<br>針對不同的RWD需求(Layout Nav Grids 等)提供原始碼，使用上來說更靈活。Bootstrap有時後對專案來說太龐大了。</li>
 </ul>
-<h1 id="參考">參考</h1><p><a href="http://mp.weixin.qq.com/s?__biz=MzAwODAzOTU3MQ%3D%3D&amp;mid=205291657&amp;idx=1&amp;sn=e767d9267f29281f8900638e5da87837&amp;scene=2&amp;from=timeline&amp;isappinstalled=0#rd" target="_blank" rel="external">2015年移动设备界面设计趋势</a></p>
-<p>RESPONSIVE REPORT 2014</p>
-<p><a href="http://2014.report.gridsetapp.com/" target="_blank" rel="external">http://2014.report.gridsetapp.com/</a></p>
-<p>模範市場「Facebook 台灣消費者線上行為調查」</p>
-<p><a href="http://www.slideshare.net/yuanping/facebook-36279879" target="_blank" rel="external">http://www.slideshare.net/yuanping/facebook-36279879</a></p>
-<p>设备像素比devicePixelRatio简单介绍</p>
-<p><a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio</a></p>
-<p>font</p>
-<p><a href="http://www.w3schools.com/css/css_font.asp" target="_blank" rel="external">http://www.w3schools.com/css/css_font.asp</a></p>
-<p><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/" target="_blank" rel="external">http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/</a></p>
-<p><a href="http://www.kangting.tw/2014/04/rwd.html" target="_blank" rel="external">http://www.kangting.tw/2014/04/rwd.html</a></p>
-<p><a href="http://snook.ca/archives/html_and_css/font-size-with-rem" target="_blank" rel="external">http://snook.ca/archives/html_and_css/font-size-with-rem</a></p>
-<p><a href="http://clagnut.com/blog/348/" target="_blank" rel="external">http://clagnut.com/blog/348/</a></p>
-<p>css sprites button</p>
-<p><a href="http://blog.brianjohnsondesign.com/responsive-background-image-sprites-css-tutorial/" target="_blank" rel="external">http://blog.brianjohnsondesign.com/responsive-background-image-sprites-css-tutorial/</a></p>
-<p>Media query ie8- 兼容实现总结 - 阿里妈妈MUX</p>
-<p><a href="http://mux.alimama.com/posts/686" target="_blank" rel="external">http://mux.alimama.com/posts/686</a></p>
+<h2 id="參考">參考</h2><h2 id="市場跟趨式">市場跟趨式</h2><ul>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzAwODAzOTU3MQ%3D%3D&amp;mid=205291657&amp;idx=1&amp;sn=e767d9267f29281f8900638e5da87837&amp;scene=2&amp;from=timeline&amp;isappinstalled=0#rd" target="_blank" rel="external">2015年移动设备界面设计趋势</a></li>
+<li><a href="http://2014.report.gridsetapp.com/" target="_blank" rel="external">RESPONSIVE REPORT 2014</a></li>
+<li><a href="http://www.slideshare.net/yuanping/facebook-36279879" target="_blank" rel="external">模範市場「Facebook 台灣消費者線上行為調查」</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/" target="_blank" rel="external">设备像素比devicePixelRatio简单介绍</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio</a></li>
+<li><a href="http://blog.brianjohnsondesign.com/responsive-background-image-sprites-css-tutorial/" target="_blank" rel="external">responsive background image</a></li>
+<li><a href="http://mux.alimama.com/posts/686" target="_blank" rel="external">Media query ie8- 兼容实现总结 - 阿里妈妈MUX</a></li>
+</ul>
+<h2 id="font">font</h2><ul>
+<li><a href="http://www.w3schools.com/css/css_font.asp" target="_blank" rel="external">http://www.w3schools.com/css/css_font.asp</a></li>
+<li><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/" target="_blank" rel="external">http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/</a></li>
+<li><a href="http://www.kangting.tw/2014/04/rwd.html" target="_blank" rel="external">http://www.kangting.tw/2014/04/rwd.html</a></li>
+<li><a href="http://snook.ca/archives/html_and_css/font-size-with-rem" target="_blank" rel="external">http://snook.ca/archives/html_and_css/font-size-with-rem</a></li>
+<li><a href="http://clagnut.com/blog/348/" target="_blank" rel="external">http://clagnut.com/blog/348/</a></li>
+</ul>
 
       
     </div>
@@ -429,7 +491,7 @@ div {
       
         <div class="post-tags">
           
-            <a href="/tags/rwd/"> #rwd </a>
+            <a href="/tags/RWD/"> #RWD </a>
           
             <a href="/tags/專案人生/"> #專案人生 </a>
           
@@ -489,7 +551,7 @@ div {
           <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
           <p class="site-author-name">LauraLuo</p>
         </div>
-        <p class="site-description motion-element"></p>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -499,10 +561,10 @@ div {
           </div>
 
           <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">0</span>
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分類</span>
-              
+              </a>
           </div>
 
           <div class="site-state-item site-state-tags">
@@ -531,7 +593,7 @@ div {
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#趨勢"><span class="nav-number">2.</span> <span class="nav-text">趨勢</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#瀏覽器的市佔率"><span class="nav-number">2.1.</span> <span class="nav-text">瀏覽器的市佔率</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全球_2014_sept~_feb_2015"><span class="nav-number">2.1.1.</span> <span class="nav-text">全球 2014 sept~ feb 2015</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#台灣_2014_sept~_feb_2015"><span class="nav-number">2.1.2.</span> <span class="nav-text">台灣 2014 sept~ feb 2015</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UU_100萬人次_瀏覽器"><span class="nav-number">2.1.3.</span> <span class="nav-text">UU 100萬人次 瀏覽器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UU_100萬人次_作業系統"><span class="nav-number">2.1.4.</span> <span class="nav-text">UU 100萬人次 作業系統</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2014_台灣使用PC與APP瀏覽臉書的比例很接近"><span class="nav-number">2.2.</span> <span class="nav-text">2014 台灣使用PC與APP瀏覽臉書的比例很接近</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行動裝置大螢幕的普及化"><span class="nav-number">2.3.</span> <span class="nav-text">行動裝置大螢幕的普及化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#行動裝置不等於小螢幕"><span class="nav-number">2.3.1.</span> <span class="nav-text">行動裝置不等於小螢幕</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2014_Android螢幕市佔率"><span class="nav-number">2.3.2.</span> <span class="nav-text">2014 Android螢幕市佔率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2014_IOS螢幕的市佔率"><span class="nav-number">2.3.3.</span> <span class="nav-text">2014 IOS螢幕的市佔率</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RWD_與_獨立行動版網站的探討"><span class="nav-number">3.</span> <span class="nav-text">RWD 與 獨立行動版網站的探討</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RWD"><span class="nav-number">3.1.</span> <span class="nav-text">RWD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#獨立行動版網站"><span class="nav-number">3.2.</span> <span class="nav-text">獨立行動版網站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#該如何選擇？"><span class="nav-number">3.3.</span> <span class="nav-text">該如何選擇？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#實作"><span class="nav-number">4.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewport_設定"><span class="nav-number">4.1.</span> <span class="nav-text">Viewport 設定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本設定"><span class="nav-number">4.1.1.</span> <span class="nav-text">基本設定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用JS控制Viewsport"><span class="nav-number">4.1.2.</span> <span class="nav-text">使用JS控制Viewsport</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用css來控制Viewport"><span class="nav-number">4.1.3.</span> <span class="nav-text">使用css來控制Viewport</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事項"><span class="nav-number">4.1.4.</span> <span class="nav-text">注意事項</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事項-1"><span class="nav-number">4.1.5.</span> <span class="nav-text">注意事項</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#資源"><span class="nav-number">4.1.6.</span> <span class="nav-text">資源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#單位"><span class="nav-number">4.2.</span> <span class="nav-text">單位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Font"><span class="nav-number">4.3.</span> <span class="nav-text">Font</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Font-Size的單位"><span class="nav-number">4.3.1.</span> <span class="nav-text">Font-Size的單位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RWD_EM/REM_的管理方法"><span class="nav-number">4.3.2.</span> <span class="nav-text">RWD  EM/REM 的管理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RWD_FIT_Font"><span class="nav-number">4.3.3.</span> <span class="nav-text">RWD  FIT  Font</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sticky_Footer"><span class="nav-number">4.3.4.</span> <span class="nav-text">Sticky Footer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Javascript"><span class="nav-number">4.4.</span> <span class="nav-text">Javascript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各種百分比參照對象"><span class="nav-number">4.5.</span> <span class="nav-text">各種百分比參照對象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A_RWD_CSS_Sprite_Button"><span class="nav-number">5.</span> <span class="nav-text">A RWD CSS Sprite Button</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Facebook"><span class="nav-number">5.1.</span> <span class="nav-text">Facebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE8兼容"><span class="nav-number">5.2.</span> <span class="nav-text">IE8兼容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5+CSS3"><span class="nav-number">5.2.1.</span> <span class="nav-text">HTML5+CSS3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mediaQuerys"><span class="nav-number">5.2.2.</span> <span class="nav-text">mediaQuerys</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#REM"><span class="nav-number">5.2.3.</span> <span class="nav-text">REM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Background-size"><span class="nav-number">5.2.4.</span> <span class="nav-text">Background-size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他Polyfills疑難雜証"><span class="nav-number">5.2.5.</span> <span class="nav-text">其他Polyfills疑難雜証</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug"><span class="nav-number">6.</span> <span class="nav-text">Debug</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#remote_Debug_遠端Debug模式"><span class="nav-number">6.1.</span> <span class="nav-text">remote Debug 遠端Debug模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#畫面的Debug工具"><span class="nav-number">6.2.</span> <span class="nav-text">畫面的Debug工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#實作方向"><span class="nav-number">6.3.</span> <span class="nav-text">實作方向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#固定寬度"><span class="nav-number">6.3.1.</span> <span class="nav-text">固定寬度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以百分比佈局"><span class="nav-number">6.4.</span> <span class="nav-text">以百分比佈局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多的議題"><span class="nav-number">7.</span> <span class="nav-text">更多的議題</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具"><span class="nav-number"></span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number"></span> <span class="nav-text">參考</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#趨勢"><span class="nav-number">2.</span> <span class="nav-text">趨勢</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#瀏覽器的市佔率"><span class="nav-number">2.1.</span> <span class="nav-text">瀏覽器的市佔率</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全球_2014_sept~_feb_2015"><span class="nav-number">2.1.1.</span> <span class="nav-text">全球 2014 sept~ feb 2015</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#台灣_2014_sept~_feb_2015"><span class="nav-number">2.1.2.</span> <span class="nav-text">台灣 2014 sept~ feb 2015</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UU_100萬人次_瀏覽器"><span class="nav-number">2.1.3.</span> <span class="nav-text">UU 100萬人次 瀏覽器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UU_100萬人次_作業系統"><span class="nav-number">2.1.4.</span> <span class="nav-text">UU 100萬人次 作業系統</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2014_台灣使用PC與APP瀏覽臉書的比例很接近"><span class="nav-number">2.2.</span> <span class="nav-text">2014 台灣使用PC與APP瀏覽臉書的比例很接近</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行動裝置大螢幕的普及化"><span class="nav-number">2.3.</span> <span class="nav-text">行動裝置大螢幕的普及化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#行動裝置不等於小螢幕"><span class="nav-number">2.3.1.</span> <span class="nav-text">行動裝置不等於小螢幕</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2014_Android螢幕市佔率"><span class="nav-number">2.3.2.</span> <span class="nav-text">2014 Android螢幕市佔率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2014_IOS螢幕的市佔率"><span class="nav-number">2.3.3.</span> <span class="nav-text">2014 IOS螢幕的市佔率</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RWD_與_獨立行動版網站的探討"><span class="nav-number">3.</span> <span class="nav-text">RWD 與 獨立行動版網站的探討</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RWD"><span class="nav-number">3.1.</span> <span class="nav-text">RWD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#獨立行動版網站"><span class="nav-number">3.2.</span> <span class="nav-text">獨立行動版網站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#該如何選擇？"><span class="nav-number">3.3.</span> <span class="nav-text">該如何選擇？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#實作"><span class="nav-number">4.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewport_設定"><span class="nav-number">4.1.</span> <span class="nav-text">Viewport 設定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本設定"><span class="nav-number">4.1.1.</span> <span class="nav-text">基本設定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用JS控制Viewsport"><span class="nav-number">4.1.2.</span> <span class="nav-text">使用JS控制Viewsport</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用css來控制Viewport"><span class="nav-number">4.1.3.</span> <span class="nav-text">使用css來控制Viewport</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事項"><span class="nav-number">4.1.4.</span> <span class="nav-text">注意事項</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事項-1"><span class="nav-number">4.1.5.</span> <span class="nav-text">注意事項</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#資源"><span class="nav-number">4.1.6.</span> <span class="nav-text">資源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#單位"><span class="nav-number">4.2.</span> <span class="nav-text">單位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Font"><span class="nav-number">4.3.</span> <span class="nav-text">Font</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Font-Size的單位"><span class="nav-number">4.3.1.</span> <span class="nav-text">Font-Size的單位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RWD_EM/REM_的管理方法"><span class="nav-number">4.3.2.</span> <span class="nav-text">RWD  EM/REM 的管理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RWD_FIT_Font"><span class="nav-number">4.3.3.</span> <span class="nav-text">RWD  FIT  Font</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sticky_Footer"><span class="nav-number">4.3.4.</span> <span class="nav-text">Sticky Footer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Javascript"><span class="nav-number">4.4.</span> <span class="nav-text">Javascript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各種百分比參照對象"><span class="nav-number">4.5.</span> <span class="nav-text">各種百分比參照對象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A_RWD_CSS_Sprite_Button"><span class="nav-number">4.6.</span> <span class="nav-text">A RWD CSS Sprite Button</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Facebook"><span class="nav-number">4.7.</span> <span class="nav-text">Facebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE8兼容"><span class="nav-number">4.8.</span> <span class="nav-text">IE8兼容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5+CSS3"><span class="nav-number">4.8.1.</span> <span class="nav-text">HTML5+CSS3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mediaQuerys"><span class="nav-number">4.8.2.</span> <span class="nav-text">mediaQuerys</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#REM"><span class="nav-number">4.8.3.</span> <span class="nav-text">REM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Background-size"><span class="nav-number">4.8.4.</span> <span class="nav-text">Background-size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他Polyfills疑難雜証"><span class="nav-number">4.8.5.</span> <span class="nav-text">其他Polyfills疑難雜証</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug"><span class="nav-number">5.</span> <span class="nav-text">Debug</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#remote_Debug_遠端Debug模式"><span class="nav-number">5.1.</span> <span class="nav-text">remote Debug 遠端Debug模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#畫面的Debug工具"><span class="nav-number">5.2.</span> <span class="nav-text">畫面的Debug工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#實作方向"><span class="nav-number">6.</span> <span class="nav-text">實作方向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#固定寬度"><span class="nav-number">6.1.</span> <span class="nav-text">固定寬度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以百分比佈局"><span class="nav-number">6.2.</span> <span class="nav-text">以百分比佈局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多的議題"><span class="nav-number">7.</span> <span class="nav-text">更多的議題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">8.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">9.</span> <span class="nav-text">參考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#市場跟趨式"><span class="nav-number">10.</span> <span class="nav-text">市場跟趨式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font"><span class="nav-number">11.</span> <span class="nav-text">font</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
