@@ -1,0 +1,1061 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="BEM,OOCSS,SMACSS,semantics," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> HTML語意化及前端架構 About HTML semantics and front-end architecture // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" HTML語意化及前端架構 About HTML semantics and front-end architecture // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="About HTML semantics and front-end architectureAbout HTML semantics and front-end architecture原文
+
+一篇有點歷史的文章，作者有在Twitter工作過，沒錯!馬上該想到有名的Bootstrap(不過不知道作者有沒有參與)。不算完全翻譯，這是一遍蠻深奧的文章，所以翻譯中除了原作者提供的之外，有加入我找到的相關資料以及我的看法。雖然英文不是很好，但我儘量表達到位。那我們開始吧。
+
+ 集合了一些想法、經驗、我喜歡的概念，還有最近這些年我已經在嘗試的概念，包括了HTML的語意化、元件、前端架構的設計方法，類別的命名方式、HTTP壓縮。
+
+We shall not cease from explorationAnd the end of all our exploringWill be to arrive where we startedAnd know the place for the first time.T.S. Eliot – “Little Gidding”
+我們不會停止探索而一切探索的終點將會是我們下一次探索的開始T.S. Eliot – “Little Gidding”
+" />
+<meta itemprop="image" content="/images/1024px-Lego_Color_Bricks.jpg">
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" HTML語意化及前端架構 About HTML semantics and front-end architecture // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="About HTML semantics and front-end architectureAbout HTML semantics and front-end architecture原文
+
+一篇有點歷史的文章，作者有在Twitter工作過，沒錯!馬上該想到有名的Bootstrap(不過不知道作者有沒有參與)。不算完全翻譯，這是一遍蠻深奧的文章，所以翻譯中除了原作者提供的之外，有加入我找到的相關資料以及我的看法。雖然英文不是很好，但我儘量表達到位。那我們開始吧。
+
+ 集合了一些想法、經驗、我喜歡的概念，還有最近這些年我已經在嘗試的概念，包括了HTML的語意化、元件、前端架構的設計方法，類別的命名方式、HTTP壓縮。
+
+We shall not cease from explorationAnd the end of all our exploringWill be to arrive where we startedAnd know the place for the first time.T.S. Eliot – “Little Gidding”
+我們不會停止探索而一切探索的終點將會是我們下一次探索的開始T.S. Eliot – “Little Gidding”
+" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" HTML語意化及前端架構 About HTML semantics and front-end architecture // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta property="og:image" content="/images/1024px-Lego_Color_Bricks.jpg" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首頁
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          分類
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          歸檔
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          標籤
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              HTML語意化及前端架構 About HTML semantics and front-end architecture
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2014-11-11
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/CSS/">CSS</a>
+
+              
+              
+                ， 
+              
+
+            
+              <a href="/categories/CSS/CSS架構/">CSS架構</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/11/11/About-HTML-semantics-and-front-end-architecture/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/11/11/About-HTML-semantics-and-front-end-architecture/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+        <div class="post-gallery">
+          
+            <a class="post-gallery-img fancybox" href="/images/1024px-Lego_Color_Bricks.jpg" rel="gallery_ci8ldnlsv000fzglr4s45p2lu">
+              <img src="/images/1024px-Lego_Color_Bricks.jpg" />
+            </a>
+          
+        </div>
+      
+
+      
+        <h1 id="About_HTML_semantics_and_front-end_architecture">About HTML semantics and front-end architecture</h1><p>About HTML semantics and front-end architecture<a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/" target="_blank" rel="external">原文</a></p>
+<p><img src="/images/1024px-Lego_Color_Bricks.jpg" alt=""></p>
+<p>一篇有點歷史的文章，作者有在Twitter工作過，沒錯!馬上該想到有名的<strong>Bootstrap</strong>(不過不知道作者有沒有參與)。不算完全翻譯，這是一遍蠻深奧的文章，所以翻譯中除了原作者提供的之外，有加入我找到的相關資料以及我的看法。雖然英文不是很好，但我儘量表達到位。那我們開始吧。</p>
+<hr>
+<p> 集合了一些想法、經驗、我喜歡的概念，還有最近這些年我已經在嘗試的概念，包括了HTML的語意化、元件、前端架構的設計方法，類別的命名方式、HTTP壓縮。</p>
+<blockquote>
+<p>We shall not cease from exploration<br>And the end of all our exploring<br>Will be to arrive where we started<br>And know the place for the first time.<br>T.S. Eliot – “Little Gidding”</p>
+<p>我們不會停止探索<br>而一切探索的終點<br>將會是我們下一次探索的開始<br>T.S. Eliot – “Little Gidding”</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="關於語意學">關於語意學</h2><p>語意學主要在研究信號跟符號以及他們代表什麼。在語言學中，他主要是是信號含意(包括文字、常用語、跟聲音)、或是語言的研究。語意學在前端開發這塊領域，主要關注在、HTML、 attributes跟attributes value(包括microdata)方面的語意協定。這些語意協定，主要是正式的規範。可以被用來幫助開發人員更好的去了解網站的資訊。然而即使經過形式化，元素、屬性、屬性的值等語意對開發人員來說還是會因為理解或是吸收而被調整。語意化引導我在未來去調整我們的HTML。(這就HTML設計原則。)</p>
+<hr>
+<h2 id="兩種不同的含義的HTML命名方式">兩種不同的含義的HTML命名方式</h2><h3 id="表達內容的本質">表達內容的本質</h3><ul>
+<li>h1 element,</li>
+<li>lang attribute,</li>
+<li>email value of the type attribute,</li>
+<li>Microdata</li>
+</ul>
+<p>但不是所有的語義化都是從內容衍申出來的(content-derived)</p>
+<p>類別名稱必需語意化，無論他他們被用來表達什麼都要有意義，Class的語意化可以有別於HTML Element<br>，我們可以用全局的HTML元素、或是HTML的屬性或Microdata等等，以免跟區域的網站/應用中常常使用的值混肴(例如Class的名稱)</p>
+<p><a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#classes" target="_blank" rel="external">HTML5 specification section on classes</a>寫到<strong>最佳實踐</strong>的假設中</p>
+<blockquote>
+<p>鼓勵作者：(但這篇文章的作者不支持)<br>[class的值]應該被用來描寫內容的本質，而不是內容呈現的樣子</p>
+</blockquote>
+<p>我們沒有非得這麼作的理由，事實上這反而是開發大型網站的阻礙：</p>
+<ul>
+<li>內容面的語意化已經被HTML Element或是其他屬性給滿足了</li>
+<li>Class名稱對網站的拜訪者或是機器意義很少、甚至沒有意義(除了少部份的microdata，詳情可以參考這一篇 <a href="http://cythilya.blogspot.tw/2014/02/search-and-social.html" target="_blank" rel="external">從搜尋到社群 - Semantics、Rich Snippets、Social Meta Tags</a>)</li>
+<li>Class名稱常用來當JS的hook：如果你不必用Class來表達呈現面或是行為面，你大概也不需要放Class在你的HTML</li>
+<li>Class名稱應該提供對開發人員有用的資訊：當你在閱讀一段HTML片段時，這會幫助你理解Class的特性,特別是多個前端工程師維護同一個HTML的時後</li>
+</ul>
+<p>下面是一個簡單例子：不好的範例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"news"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h2</span>&gt;</span>News<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">    [news content]</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>這個class<code>news</code>沒有告訴你任何東西(事實上他要表達的早就明顯的表達在他的內容<code>h2</code>的news)</p>
+<p>它沒有表達任何架構或是元件，而且它沒辦法用在不是<code>news</code>的內容上，<br>如果把你的class名稱與內容本質緊緊的結合在一起，已經大大的減少你的結構被擴張，或是被其他工程師引用的能力</p>
+<h3 id="從內容脫離關係(Content-independent)的類別">從內容脫離關係(Content-independent)的類別</h3><p>取而代之的在設計中從重複的結構或是功能樣板來衍申語意，大多重用性組件，擁用的Class名稱從內容脫離關係的。<br>我們不應該因為害怕圖層失去清楚而明確的角義，而不讓類別反應具體的含意，這麼作並不會讓你的內容失去語意，它只是表達了他的語意必不是由內容衍生出來的</p>
+<p>我們也不應該害怕去增加html elements，如果這能幫助我們創造更強壯(不容易被複寫或是影響)、更俱有彈性、更具有重用性的組件，這麼作不會讓你的HTML失去語意，這只是代表你使用了最低限度的元素，去裝飾你的內容</p>
+<h2 id="前端結構">前端結構</h2><p>一個 元件/樣版/物件導向結構的目標是開發一個有限數量的重用性元件來滿足特定範圍的不同內容，在重要的應用中類別的語義被實用主義所衍申，並且他們最主要的目標就是-提供有意義、有彈性、而且有重用性 的勾子(呈現或行為)給開發人員使用</p>
+<h2 id="可重用，且可組合的組件">可重用，且可組合的組件</h2><p>俱擴展性的 HTML/CSS 大體上來說，必需依賴HTML內的層級，去達到可重用組件的創造</p>
+<p>一個有彈性以及重用性的元件，即不依靠存在DOM tree的片段，也不需要特定的HTML元素。他應該能適用各種容器、以及容易提供(風格)主題，如果是必要的話，擴張額外的HTML元素(不僅是為了裝飾內容)用以打造更強壯的元件。<a href="http://www.stubbornella.org/" target="_blank" rel="external">Nicole Sulivan</a>的<a href="http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/" target="_blank" rel="external">media object</a>是個好例子.</p>
+<p>組件能更容易組合，經由避免<a href="http://www.w3.org/TR/CSS2/selector.html#type-selectors" target="_blank" rel="external">type selectors</a>，下面的例子中，<code>.btn</code>組件可以輕易的跟<code>uilist</code>組合在一起。但問題是</p>
+<ul>
+<li><code>.btn</code>(10)的選擇器層級小於<code>.uilist a</code>(11)(後者會覆寫前者的屬性)</li>
+<li>uilist 這個組件需要用 <code>a</code>作為他的child nodes</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.btn</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br><span class="line"><span class="class">.uilist</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br><span class="line"><span class="class">.uilist</span> <span class="tag">a</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"uilist"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>Home<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>About<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>Login<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">nav</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/css-specificity-10.jpg" alt="CSS Specificity"></p>
+<p>讓你能更方便將別的套件跟<code>.uiliat</code>組合的改善方法如下，使用(純)class來修飾他的子元素。</p>
+<p>這雖然減少規則的特異性(請參考 <a href="http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/" target="_blank" rel="external">註 CSS Specificity: Things You Should Know </a>以及 <a href="http://designshack.net/articles/css/what-the-heck-is-css-specificity/" target="_blank" rel="external">What the Heck Is CSS Specificity</a>), 主要的好處是，給你更多個自由將樣式結構應用在任何子節點(無論是<code>&lt;a&gt;&lt;/a&gt;</code>還是<code>&lt;button&gt;&lt;/button&gt;</code>)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class">.btn</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br><span class="line"><span class="class">.uilist</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br><span class="line"><span class="class">.uilist-item</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"uilist"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"uilist-item"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>Home<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"uilist-item"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>About<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"uilist-item"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>Login<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">nav</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="JavaScript-specific_classes">JavaScript-specific classes</h2><p>使用特定型式的javascript樣式可以用來減少風格或是結構的改變讓JS壞掉的風險，其中一個方法是為了JS使用特定的Class<code>.js-*</code>，而且不要在它上面作任何樣式定義</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/login"</span> <span class="attribute">class</span>=<span class="value">"btn btn-primary js-login"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>這方法，可以減少組件的風格或是結構改變，對JS行為的跟功能的復雜度所造成的影響。</p>
+<p>組件(Component)的維護</p>
+<p>組件經常擁有一些變異性，跟基本組件的樣貌有些微的差異，例如：不同的背景色或是不同的框線，下面有兩種模式經常用於創造這些變異性。我把他們稱作 <strong>single-class</strong> 以及 <strong>multi-class</strong> 模式.</p>
+<h3 id="The_“single-class”_pattern">The “single-class” pattern</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.btn</span>, <span class="class">.btn-primary</span> <span class="rules">&#123; <span class="comment">/* button template styles */</span> &#125;</span></span><br><span class="line"><span class="class">.btn-primary</span> <span class="rules">&#123; <span class="comment">/* styles specific to save button */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span>&gt;</span>Default<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn-primary"</span>&gt;</span>Login<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>譯者註：這個模式的好處是HTML比較乾淨，但樣式引用不易，使用SCSS的<strong>@extend</strong>產出的CSS會像上面這樣</p>
+</blockquote>
+<h3 id="The_“multi-class”_pattern">The “multi-class” pattern</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.btn</span> <span class="rules">&#123; <span class="comment">/* button template styles */</span> &#125;</span></span><br><span class="line"><span class="class">.btn-primary</span> <span class="rules">&#123; <span class="comment">/* styles specific to primary button */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span>&gt;</span>Default<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn btn-primary"</span>&gt;</span>Login<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>譯者註：這個好處是樣式方便引用，但帶來Class鎖碎且HTML肥大的壞處，另外就是你要改長像就要調整HTML</p>
+</blockquote>
+<p>如果你有使用<strong>pre-processor</strong>(SCSS、LESS 等)你可能使用SCSS的<strong>@extend</strong>方法去減少一些涉及<strong>single-class </strong>pattern的維護工作。(<a href="http://sass-lang.com/guide" target="_blank" rel="external">詳請在SCSS的Inheritance</a>)但即使我們使用了<strong>pre-processor</strong>我還是偏好使用<strong>multi-class</strong>pattern，並且在HTML去調整class</p>
+<p>我發現一個更有彈性的模式，舉個例子如果我有一個按鈕，除了基本的長相外，他需要另外<strong>5</strong>個顏色跟<strong>3</strong>個大小，使用<strong>multi-class</strong>至少需要9個Class(1+5+3)，但如果使用<strong>single-class</strong>你至少需要24個Class((5+1)*(3+1)</p>
+<p>如果確實需要的話(絕對必要的狀況下，因為通常不到必要我們不希望這麼作)，他能更容易讓組件作上下層的調整，你可想在另一個組件中，對<strong>所有的</strong><code>.btn</code>作一些小調整。(範例如下)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* "multi-class" adjustment */</span></span><br><span class="line"><span class="class">.thing</span> <span class="class">.btn</span> <span class="rules">&#123; <span class="comment">/* adjustments */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>譯者註：作者是指，多類別模式你可以經由多一個上層的選擇器來複寫<code>.thing</code>中所有的<code>.btn</code>樣式，但單類別要像下面這個例子</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* "single-class" adjustment */</span></span><br><span class="line"><span class="class">.thing</span> <span class="class">.btn</span>,</span><br><span class="line"><span class="class">.thing</span> <span class="class">.btn-primary</span>,</span><br><span class="line"><span class="class">.thing</span> <span class="class">.btn-danger</span>,</span><br><span class="line"><span class="class">.thing</span> <span class="class">.btn-etc</span> <span class="rules">&#123; <span class="comment">/* adjustments */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="有結構的類別名稱">有結構的類別名稱</h2><p>當創造組件-組件打造的<strong>樣板</strong>-有些Class被用來打造組件的邊界，一些被用來打造組件的修改器，還有一些用來連合一個DOM nodes轉化成一個更大的抽像化呈現組件。</p>
+<p>我們很難去理解 <strong>btn (component)</strong>, <strong>btn-primary (modifier)</strong>, <strong>btn-group (component)</strong>, 以及 <strong>btn-group-item (component sub-object)</strong>之間的關聯，因為它的選擇器名稱並沒有清楚的表達他的意思，而且也沒有一個一致的Pattern。</p>
+<p>我在2011年開始嚐試<a href="https://gist.github.com/1309546" target="_blank" rel="external">naming pattern</a>，去幫助我快速的在節點之間的DOM程式碼片段所呈現的關係，而不是試圖不停的切換JS、HTML、及CSS檔案，來拼湊出完整的網站架構。選擇的符號要點主要受<a href="http://bem.github.com/bem-method/html/all.en.html" target="_blank" rel="external">BEM system</a>的影響，不過我把他改編成一個更容瀏灠的格式。</p>
+<p>從我第一次寫這篇文章以來，幾個其他的團隊或是框架采用了這個方法，<br><a href="https://github.com/montagejs/montage" target="_blank" rel="external">MontageJS</a>將命名方式改編成另一個風格，但還是偏好使用<a href="https://github.com/suitcss/suit" target="_blank" rel="external">SUIT framework</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Utility */</span></span><br><span class="line"><span class="class">.u-utilityName</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* State-utility */</span></span><br><span class="line"><span class="class">.u-isStateName</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component */</span></span><br><span class="line"><span class="class">.ComponentName</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component modifier */</span></span><br><span class="line"><span class="class">.ComponentName--modifierName</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component descendant */</span></span><br><span class="line"><span class="class">.ComponentName-descendant</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component descendant modifier */</span></span><br><span class="line"><span class="class">.ComponentName-descendant--modifierName</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component state (scoped to component) */</span></span><br><span class="line"><span class="class">.ComponentName</span><span class="class">.is-stateOfComponent</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component mixin (ancestor style dependencies) */</span></span><br><span class="line"><span class="class">.with-ComponentName</span> <span class="rules">&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>這不過是一個我發現有幫助的命名方式，它可以採取任何模式，但好處在於他消除有歧意的CLASS名稱，而且僅僅依靠下畫線、連字符、以及camel case。</p>
+<blockquote>
+<p>譯者註：將下來作者都比較類性談概念性的東西邊收尾，所以我只標一些重點。</p>
+</blockquote>
+<h2 id="A_note_on_raw_file_size_and_HTTP_compression">A note on raw file size and HTTP compression</h2><p>這是一篇有探論到檔案大小最佳化的簡報<a href="http://www.slideshare.net/stubbornella/our-best-practices-are-killing-us" target="_blank" rel="external">Our Best Practices Are Killing Us by Ｎicole Suillvan</a>,像FB這麼大的公司，省下幾KB都是很驚人滴。</p>
+<p>總之就是大家怕這種命名規則檔案會很肥，作者說他有實驗 經過HTML compression 其實差不多，另外作者還提到大家要關注壓縮完的檔案大小，而不是壓縮前的。</p>
+<h2 id="我如何學會停止憂心">我如何學會停止憂心</h2><p>大意是說很多有經驗的開發人員參於過大型網站(應用)的改版，內容衍申的語意化不切實際。如果你要完成一個大型應用，你必需拋棄舊的想法，想想別的替代方案，甚至是你以前丟掉的那些方案。</p>
+<p>一旦你開始跟其他人一起迭代開發應用，你很快就會發現你的代碼還是愈來愈難維護，有些人提出他們的解法方式，這些值得你去花時間探索(以下是作者例舉了幾個方法，並付上官網連結，這篇譯文的結尾奉上，並補充其他我找到的資料)</p>
+<p>當你選擇用HTML跟CSS寫作，並試圖減少你花在CSS上的編輯時間，你必需花更多的時間在修改你HTML上的CLASS。這個成果是非常實用的，這讓開發人員無法前後端，都可以重新安排<strong>樂高積木</strong>，事實証明沒有人可以執行CSS鍊金</p>
+<h2 id="參考">參考</h2><ul>
+<li><a href="http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/" target="_blank" rel="external">CSS Specificity: Things You Should Know </a></li>
+<li><a href="http://designshack.net/articles/css/what-the-heck-is-css-specificity/" target="_blank" rel="external">What the Heck Is CSS Specificity</a></li>
+</ul>
+<h2 id="CSS的架構法方論：OOCSS/SMACSS/BEM">CSS的架構法方論：OOCSS/SMACSS/BEM</h2><h3 id="OOCSS">OOCSS</h3><ul>
+<li><a href="http://oocss.org/" target="_blank" rel="external">OOCSS官網</a> </li>
+<li><a href="https://github.com/stubbornella/oocss/wiki" target="_blank" rel="external">OOCSSGIT</a> </li>
+<li><a href="http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/" target="_blank" rel="external">OOCSS導讀</a> </li>
+</ul>
+<h3 id="SMACSS">SMACSS</h3><ul>
+<li><a href="http://smacss.com/book/" target="_blank" rel="external">SMACSS官網</a></li>
+<li><a href="http://www.smashingmagazine.com/2012/04/20/decoupling-html-from-css/" target="_blank" rel="external">SMACSS導讀</a>  </li>
+<li><a href="http://csspod.com/decoupling-html-from-css/" target="_blank" rel="external">中文導讀</a></li>
+</ul>
+<h3 id="BEM">BEM</h3><ul>
+<li><a href="http://bem.info/" target="_blank" rel="external">BEM官網</a></li>
+<li><a href="http://www.integralist.co.uk/posts/maintainable-css-with-bem/" target="_blank" rel="external">BEM導讀</a></li>
+</ul>
+<h3 id="綜合探討">綜合探討</h3><ul>
+<li><a href="http://www.slideshare.net/kurotanshi/css-oocss-smacss-bem" target="_blank" rel="external">漫談 CSS 架構方法 - 以 OOCSS, SMACSS, BEM 為例 by Kuro Hsu</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BEM/"> #BEM </a>
+          
+            <a href="/tags/OOCSS/"> #OOCSS </a>
+          
+            <a href="/tags/SMACSS/"> #SMACSS </a>
+          
+            <a href="/tags/semantics/"> #semantics </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/15/20150415-RwdPojectStudy/">RWD響應式網頁專案開發心得(一)</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/10/31/使用Skrollr-js實作視差滾動-一-入門/">使用Skrollr.js實作視差滾動-(一)入門</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分類</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#About_HTML_semantics_and_front-end_architecture"><span class="nav-number">1.</span> <span class="nav-text">About HTML semantics and front-end architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#關於語意學"><span class="nav-number">1.1.</span> <span class="nav-text">關於語意學</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兩種不同的含義的HTML命名方式"><span class="nav-number">1.2.</span> <span class="nav-text">兩種不同的含義的HTML命名方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表達內容的本質"><span class="nav-number">1.2.1.</span> <span class="nav-text">表達內容的本質</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#從內容脫離關係(Content-independent)的類別"><span class="nav-number">1.2.2.</span> <span class="nav-text">從內容脫離關係(Content-independent)的類別</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端結構"><span class="nav-number">1.3.</span> <span class="nav-text">前端結構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可重用，且可組合的組件"><span class="nav-number">1.4.</span> <span class="nav-text">可重用，且可組合的組件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-specific_classes"><span class="nav-number">1.5.</span> <span class="nav-text">JavaScript-specific classes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The_“single-class”_pattern"><span class="nav-number">1.5.1.</span> <span class="nav-text">The “single-class” pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The_“multi-class”_pattern"><span class="nav-number">1.5.2.</span> <span class="nav-text">The “multi-class” pattern</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有結構的類別名稱"><span class="nav-number">1.6.</span> <span class="nav-text">有結構的類別名稱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A_note_on_raw_file_size_and_HTTP_compression"><span class="nav-number">1.7.</span> <span class="nav-text">A note on raw file size and HTTP compression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我如何學會停止憂心"><span class="nav-number">1.8.</span> <span class="nav-text">我如何學會停止憂心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">1.9.</span> <span class="nav-text">參考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS的架構法方論：OOCSS/SMACSS/BEM"><span class="nav-number">1.10.</span> <span class="nav-text">CSS的架構法方論：OOCSS/SMACSS/BEM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OOCSS"><span class="nav-number">1.10.1.</span> <span class="nav-text">OOCSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMACSS"><span class="nav-number">1.10.2.</span> <span class="nav-text">SMACSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BEM"><span class="nav-number">1.10.3.</span> <span class="nav-text">BEM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#綜合探討"><span class="nav-number">1.10.4.</span> <span class="nav-text">綜合探討</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2014/11/11/About-HTML-semantics-and-front-end-architecture/';
+      var disqus_url = 'http://yoursite.com/2014/11/11/About-HTML-semantics-and-front-end-architecture/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>
