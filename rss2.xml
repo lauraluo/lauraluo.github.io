@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title><![CDATA[羅拉拉的開發日誌]]></title>
+    <link>http://yoursite.com/</link>
+    <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
+    <description><![CDATA[前端工程師修鍊的路上]]></description>
+    <pubDate>Fri, 17 Apr 2015 07:30:04 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[RWD響應式網頁專案開發心得(一)]]></title>
+      <link>http://yoursite.com/2015/04/15/20150415-RwdPojectStudy/</link>
+      <guid>http://yoursite.com/2015/04/15/20150415-RwdPojectStudy/</guid>
+      <pubDate>Wed, 15 Apr 2015 09:00:07 GMT</pubDate>
+      <description>
+      <![CDATA[<h2 id="前言">前言</h2><p>本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得, 此文章適合閱讀的對象</p>
+<ul>
+<li>用過Bootstrap3</li>
+<li>用過Less/Scss這類的樣式編譯器 </li>
+<li>用過 Grids System </li>
+<li>擁有RWD所有所需相關知識 </li>
+<li>被專案逼瘋(？)的人</li>
+</ul>]]>
+      
+      </description>
+      <content:encoded><![CDATA[<h2 id="前言">前言</h2><p>本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得, 此文章適合閱讀的對象</p>
+<ul>
+<li>用過Bootstrap3</li>
+<li>用過Less/Scss這類的樣式編譯器 </li>
+<li>用過 Grids System </li>
+<li>擁有RWD所有所需相關知識 </li>
+<li>被專案逼瘋(？)的人</li>
+</ul>
+<a id="more"></a> 
+<h2 id="趨勢">趨勢</h2><p>施作RWD技術前，我們作了一些現況的調查，幫助了解現在開發要面臨的環境</p>
+<h3 id="瀏覽器的市佔率">瀏覽器的市佔率</h3><p>了解瀏覽器的市佔率，可以幫助我們作技術上的選擇。特別標註IE8，是因為對前端來說，存在RWD的技術斷層，文章結尾會探討到IE8的支援度。</p>
+
+<h4 id="全球_2014_sept~_feb_2015">全球 2014 sept~ feb 2015</h4><p><img src="/images/2015-04-01_092216.png" alt="Alt text"></p>
+<h4 id="台灣_2014_sept~_feb_2015">台灣 2014 sept~ feb 2015</h4><p><img src="/images/2015-04-01_092729.png" alt="Alt text"></p>
+<h4 id="UU_100萬人次_瀏覽器">UU 100萬人次 瀏覽器</h4><p><img src="/images/2015-04-01_105304.png" alt="Alt text"></p>
+<h4 id="UU_100萬人次_作業系統">UU 100萬人次 作業系統</h4><p><img src="/images/4b3f6649-a883-4f81-b851-4a0275270cc4.png" alt="Alt text"></p>
+<h3 id="2014_台灣使用PC與APP瀏覽臉書的比例很接近">2014 台灣使用PC與APP瀏覽臉書的比例很接近</h3><p>如果你像我們一樣，經營內容型網站，或是內容擴散的Event型活動，那就要了解有很多使用者是在FB APP中點開你的連結 。(也或許是Line或其他APP)</p>
+<p><img src="/images/2015-03-31_185159.png" alt="Alt text"></p>
+<h3 id="行動裝置大螢幕的普及化">行動裝置大螢幕的普及化</h3><h4 id="行動裝置不等於小螢幕">行動裝置不等於小螢幕</h4><p>其中 <a href="https://www.udacity.com/course/cs256?_ga=1.111987012.1546922041.1425352835" target="_blank" rel="external">Mobile Website Development and Design Course</a>中Google的資深工程師有探討到幾個行動vs桌面網站的迷思：</p>
+<ul>
+<li>以產品而言，所有的功能到了手機也應當支援(打破了有些功能手機不需要的迷失)，例如EC網站，到了APP還是需要查帳單 </li>
+<li>有兩個網站，維持同步跟一致性是困難的</li>
+<li>未來已經愈來愈難區分什麼是桌面，什麼是行動網站，因為行動裝置愈來愈大解析度也愈來愈高：當我們在使用設計RWD網站時，你應該思考的是裝置的螢幕大小，而不是思考他是平板還是手機。</li>
+<li>另外關於Native APP 除了較高的成本外， 你要思考你的使用者是否會想離開他的瀏覽器或APP</li>
+</ul>
+<h4 id="2014_Android螢幕市佔率">2014 Android螢幕市佔率</h4><p><img src="/images/0.jpg" alt="Alt text"></p>
+<h4 id="2014_IOS螢幕的市佔率">2014 IOS螢幕的市佔率</h4><p><img src="/images/2.jpg" alt="Alt text"></p>
+<hr>
+<h2 id="RWD_與_獨立行動版網站的探討">RWD 與 獨立行動版網站的探討</h2><p>了解市場趨勢後，讓我們來分別探討不同的解決方案</p>
+<h3 id="RWD">RWD</h3><p>優點</p>
+<ul>
+<li>維護相對容易</li>
+<li>彈性較大，MediaQuery的劃分可以依照不同的功能或產品特性規畫</li>
+</ul>
+<p>ISSUE</p>
+<ul>
+<li>手機與桌面版網站的流程基本上需要一致；<br> 過於複雜的流程受限於這點，可能無法提供給行動裝置的使用者良好的體驗。<br> (但其實需要APP方能做到更為友善的體驗。)</li>
+<li>降低了載入的速度</li>
+<li>多餘的HTML</li>
+<li>多餘的HTTP requests</li>
+<li>多餘的圖片解析度 </li>
+<li>內外部的教育成本</li>
+</ul>
+<h3 id="獨立行動版網站">獨立行動版網站</h3><p>優點</p>
+<ul>
+<li>針對手機前端的專屬優化</li>
+<li>針對手機使用者優化體驗</li>
+</ul>
+<p>ISSUE</p>
+<ul>
+<li>SEO網址分散的問題</li>
+<li>考慮到平板與手機因裝置大小差異，要提供不同的介面，仍須使用RWD</li>
+<li>針對產品不同，需思考是否更適合開發Native App</li>
+<li>護維及一致性的成本</li>
+</ul>
+<h3 id="該如何選擇？">該如何選擇？</h3><ul>
+<li>以流程的差異性來探討<ul>
+<li>RWD： 桌面與行動版的網頁流程基本一致，只是介面跟互動上的不同</li>
+<li>獨立行動網站：桌面與行動版流程差異太大，甚至根本不同</li>
+</ul>
+</li>
+<li>以流程的複雜度而言<ul>
+<li>RWD：適合簡單的流程</li>
+<li>獨立行動網站：沒差</li>
+</ul>
+</li>
+<li>以瀏覽器的支援度探討<ul>
+<li>RWD： 依賴很多新語法，基本只支援 IE9+</li>
+<li>獨立行動網站： 若顧客真的很在意舊版(銀行業)，行動跟桌面可考慮分開作，甚至是單獨作IE8以下的網頁</li>
+</ul>
+</li>
+<li>以活動行銷方式去探討 <ul>
+<li>RWD  ：適合網路及實體都有搭配的行銷活動</li>
+<li>獨立行動網站： 極度依靠手機功能制造話題的活動，例如動態感應裝置 ETC，地理資訊，等手機獨有的功能</li>
+</ul>
+</li>
+<li>以專案總時程考量<ul>
+<li>RWD：雖然RWD的施作技術成本及教育成本較高，但這些是會累積成公司的資產，再來是RWD對後續的修改較容易。</li>
+<li>獨立行網站： 通常要投入多個的前端資源，但同時他可以作更靈活的資源調配動作(手機平版桌面甚至可以分開不同人作)。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="實作">實作</h2><p>接著探討一些我在實作中遇到的問題</p>
+<hr>
+<h3 id="Viewport_設定">Viewport 設定</h3><h4 id="基本設定">基本設定</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=device-width, initial-scale=1"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用JS控制Viewsport">使用JS控制Viewsport</h4><p>我們可能想針對不同的螢幕尺寸給予不同的viewport。下面程式碼示範，當螢幕大於640時，我們希望直接使用PC版的瀏覽器。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">var</span> meta = <span class="built_in">document</span>.createElement(<span class="string">'meta'</span>);</span><br><span class="line"><span class="keyword">var</span> w = screen.width;</span><br><span class="line">   <span class="keyword">if</span> (w &gt; <span class="number">640</span>) &#123;</span><br><span class="line">       meta.setAttribute(<span class="string">"name"</span>, <span class="string">"viewport"</span>);</span><br><span class="line">       meta.setAttribute(<span class="string">"content"</span>, <span class="string">"width=960"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> &#123;</span><br><span class="line">       meta.setAttribute(<span class="string">"name"</span>, <span class="string">"viewport"</span>);</span><br><span class="line">       meta.setAttribute(<span class="string">"content"</span>, <span class="string">"width=device-width initial-scale=1"</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].children; s[s.length - <span class="number">1</span>].parentNode.insertBefore(meta, s[s.length - <span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+<h4 id="使用css來控制Viewport">使用css來控制Viewport</h4><ul>
+<li>查詢了MDN，原來在CSS中可以定議Viewport，但支援度太低，我們這裡就不考慮，大家可以自已看下面連結</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@viewport" target="_blank" rel="external">MDN @viewport </a></li>
+</ul>
+<h4 id="注意事項">注意事項</h4><ul>
+<li><code>initial-scale</code>要下，不然在某些狀況下，手機作橫版直版的轉換時，畫面會跑掉</li>
+<li>viewport如果有修改，要另開新視窗，重新整理是沒有用滴</li>
+<li>使用JS控制Vieport，我們依然會擔心JS執行速度的問題，這種作法的穩定度可能需要花時間找到更好的方案</li>
+<li>要注意 window.innerWidth在有設定<code>device-width</code>為特定寬度或是<code>initial-scale</code>不等於一的狀態下，他不會等於screen.width(物理寬度)所以施作的時後最好搞清楚你要的東西到底是什麼。</li>
+</ul>
+<p>下面兩張圖分表展示了上段JS運作之後的狀態<br>iphone的解析度</p>
+<p><img src="/images/11092618_957963364221938_943245149_n.jpg" alt="Alt text"></p>
+<p>ipad 因為我們強制指定width=960，所以我們會看到<code>screen.width</code>取到了物理的相素大小，而<code>window.innerWidth</code>取到的是CSS/虛擬的的相素大小</p>
+<p><img src="/images/11133794_957964304221844_4305008428719112073_n.jpg" alt="Alt text"></p>
+<h3 id="mediaQuery">mediaQuery</h3><h4 id="如何決定key_breakpoints">如何決定key breakpoints</h4><p>我們可以參考最多人在使用的前端框架，bootstrap3的作法，bootstrap3將裝備定議成四種大小，斜線右邊是這個大小下，其對應到的隱含設備(寬度跟其設備沒有絕對的關係)。</p>
+<ul>
+<li>Extra small devices / Phone 480</li>
+<li>Small devices Tablets / Tablets 768</li>
+<li>Medium devices / Desktops 992</li>
+<li>Large devices /Desktops 1200</li>
+</ul>
+<p><img src="/images/2015-04-01_145703.jpg" alt="Alt text"><br><a href="[http://mediaqueri.es/](http://mediaqueri.es/">圖片來源</a>)</p>
+<p>這裡學習bootstrap3的方法示範一段使用less來操作Break points的方法</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//變數</span></span><br><span class="line"><span class="comment">// Media queries breakpoints</span></span><br><span class="line"><span class="comment">// --------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Extra small screen / phone</span></span><br><span class="line"><span class="variable">@screen-xs:</span>                  <span class="number">480px</span>;</span><br><span class="line"><span class="variable">@screen-phone:</span>               <span class="variable">@screen-xs</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Small screen / tablet</span></span><br><span class="line"><span class="variable">@screen-sm:</span>                  <span class="number">768px</span>;</span><br><span class="line"><span class="variable">@screen-tablet:</span>              <span class="variable">@screen-sm</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Medium screen / desktop</span></span><br><span class="line"><span class="variable">@screen-md:</span>                  <span class="number">992px</span>;</span><br><span class="line"><span class="variable">@screen-desktop:</span>             <span class="variable">@screen-md</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Large screen / wide desktop</span></span><br><span class="line"><span class="variable">@screen-lg:</span>                  <span class="number">1200px</span>;</span><br><span class="line"><span class="variable">@screen-lg-desktop:</span>          <span class="variable">@screen-lg</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// So media queries don't overlap when required, provide a maximum</span></span><br><span class="line"><span class="variable">@screen-xs-max:</span>              (<span class="variable">@screen-sm</span> - <span class="number">1</span>);</span><br><span class="line"><span class="variable">@screen-sm-max:</span>              (<span class="variable">@screen-md</span> - <span class="number">1</span>);</span><br><span class="line"><span class="variable">@screen-md-max:</span>              (<span class="variable">@screen-lg</span> - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">@screen-sm-min:</span>              (<span class="variable">@screen-xs</span> +<span class="number">1</span>);</span><br><span class="line"><span class="variable">@screen-md-min:</span>              (<span class="variable">@screen-sm</span> +<span class="number">1</span>);</span><br><span class="line"><span class="variable">@screen-lg-min:</span>              (<span class="variable">@screen-md</span> +<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//===============================</span></span><br><span class="line"><span class="comment">//layout的斷點，用來打造GridSystem</span></span><br><span class="line"><span class="comment">//===============================</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Extra small devices (phones, less than 768px) */</span></span><br><span class="line"><span class="comment">/* No media query since this is the default in Bootstrap */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Small devices (tablets, 768px and up) */</span></span><br><span class="line"><span class="at_rule">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen-tablet</span>) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Medium devices (desktops, 992px and up) */</span></span><br><span class="line"><span class="at_rule">@media</span> (<span class="attribute">min-width</span>:  <span class="variable">@screen-desktop</span>) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Large devices (large desktops, 1200px and up) */</span></span><br><span class="line"><span class="at_rule">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen-lg-desktop</span>) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//===============================</span></span><br><span class="line"><span class="comment">//用於較精準的定義</span></span><br><span class="line"><span class="comment">//===============================</span></span><br><span class="line"><span class="at_rule">@media</span> (<span class="attribute">max-width</span>: <span class="variable">@screen-xs</span>) &#123; ... &#125;</span><br><span class="line"><span class="at_rule">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen-sm-min</span>) and (<span class="attribute">max-width</span>:<span class="variable">@screen-sm-max</span>) &#123; ... &#125;</span><br><span class="line"><span class="at_rule">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen-md-min</span>) and (<span class="attribute">max-width</span>:<span class="variable">@screen-md-max</span>) &#123; ... &#125;</span><br><span class="line"><span class="at_rule">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen-lg-min</span>) &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="注意事項-1">注意事項</h4><ul>
+<li>IE9+ 才支援media querys (後面再探討兼容方法)</li>
+<li>如果對文字排版斷行跟標點符號節尾有所要求的專案，可以使用em來作為mediaQuery的參考<a href="http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/" target="_blank" rel="external">這篇文章</a><ul>
+<li>換算公式 100% = 1 em ~= 16px ~= 14pt</li>
+</ul>
+</li>
+</ul>
+<h4 id="資源">資源</h4><p>一些常見的Media Querys 片段，其中還有針對一些常見的設備的特徵作詳細的定義方法，有別於<code>max-width</code>利用<code>max-device-width</code>取得物理尺寸作為更精準的設備參考(但感覺還是追不上市場速度)</p>
+<ul>
+<li>Media Queries for Standard Devices<br>  <a href="https://css-tricks.com/snippets/css/media-queries-for-standard-devices/" target="_blank" rel="external">https://css-tricks.com/snippets/css/media-queries-for-standard-devices/</a></li>
+<li>Media Query Snippets<br>  <a href="http://nmsdvid.com/snippets/" target="_blank" rel="external">http://nmsdvid.com/snippets/</a></li>
+</ul>
+<hr>
+<h3 id="單位">單位</h3><p>PX、EM、%、PT 要搞清楚 <a href="http://pxtoem.com/" target="_blank" rel="external">這裡有個速查表</a><br><img src="/images/2015-04-01_172324.jpg" alt="Alt text"></p>
+<hr>
+<h3 id="Font">Font</h3><h4 id="Font-Size的單位">Font-Size的單位</h4><ul>
+<li>絕對單位 px : 容易控制內容，適合固定尺寸網站</li>
+<li>相對單位 em、rem或是百分比 : 均是以瀏覽器預設字型樣式為基準進行比例配置。<ul>
+<li>會參照使用者瀏覽器字型設定呈現</li>
+<li>rem直接參考html產生value 和em的運算相似，但em為參考其父元素獲得數值</li>
+</ul>
+</li>
+</ul>
+<h4 id="RWD_EM/REM_的管理方法">RWD  EM/REM 的管理方法</h4><p>使用rem更方便控制，不必擔心em的複合計算行為(將EM跟PX的轉換化為十進制)。<br>rem參造root或html element，因此我們將html壓縮62.5%(default 16px)&gt; 1rem = 10px ;</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">html</span> <span class="rules">&#123; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">62.5%</span></span></span>; &#125;</span> </span><br><span class="line"><span class="tag">body</span> <span class="rules">&#123; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">1.4rem</span></span></span>; &#125;</span> <span class="comment">/* =14px */</span></span><br><span class="line"><span class="tag">h1</span>   <span class="rules">&#123; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">24px</span></span></span>; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">2.4rem</span></span></span>; &#125;</span> <span class="comment">/* =24px */</span></span><br></pre></td></tr></table></figure>
+<h4 id="RWD_FIT_Font">RWD  FIT  Font</h4><p>一般來說，我們會針對不同字型調整大小，是為了舒服的閱讀文字體驗，BUT!!<br>當專案的類型圖片吃重，圖文比例有要求，這時後需要借助一下Javascript</p>
+<p><img src="/images/2015-04-01_175240.jpg" alt="Alt text"></p>
+<p>我們從設計那邊拿到的PSD大小是寬度604px的原始檔，我們可以將640px作為參考值，在不同的裝備大小下，去重新定義em的基準值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="params">($)</span> </span>&#123;</span><br><span class="line">    $.fn.rwdFitText = <span class="function"><span class="keyword">function</span> <span class="params">(opts)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// default configuration</span></span><br><span class="line">        <span class="keyword">var</span> config = $.extend(&#123;&#125;, &#123;</span><br><span class="line">            opt1: <span class="literal">null</span></span><br><span class="line">        &#125;, opts);</span><br><span class="line">        <span class="comment">// main function</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">restFontSize</span><span class="params">(e)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> rwdFont = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> ($(<span class="built_in">window</span>).width() &lt;= <span class="number">640</span> &amp;&amp; $(<span class="built_in">window</span>).width() &gt; <span class="number">320</span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> ration = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">if</span> ($(<span class="built_in">window</span>).width() &gt;= <span class="number">320</span>) &#123;</span><br><span class="line">                        ration = $(<span class="built_in">window</span>).width() / <span class="number">640</span>;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        ration = <span class="number">0.5</span>; <span class="comment">//用來控制最小縮放比率的數值</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">var</span> fontScale = (ration * <span class="number">100</span>) * <span class="number">0.625</span>;</span><br><span class="line">                    $(<span class="string">'html'</span>).css(<span class="string">'font-size'</span>, fontScale + <span class="string">"%"</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> ($(<span class="built_in">window</span>).width() &gt; <span class="number">640</span>) &#123;</span><br><span class="line">                    $(<span class="string">'html'</span>).css(<span class="string">'font-size'</span>, <span class="string">"62.5"</span> + <span class="string">"%"</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">            $(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">                rwdFont();</span><br><span class="line">            &#125;);</span><br><span class="line">            rwdFont();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// initialize every element</span></span><br><span class="line">        <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            restFontSize($(<span class="keyword">this</span>));</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// start</span></span><br><span class="line">    $(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        $(<span class="string">"html"</span>).rwdFitText();</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
+<p><a href="http://codepen.io/ce0812/details/KwbQwG" target="_blank" rel="external">範例</a></p>
+<p>搜尋<code>rwd font</code>的關鍵字，網路上可以找到不少相關的程式碼，有些細到可以定義每個DOM物件的最大值跟最小值，看得出來大家都有這些困擾。</p>
+<hr>
+<h3 id="Layout_+_Grids">Layout + Grids</h3><h4 id="容器管理">容器管理</h4><p>要施作一個RWD，需要使用容器管理的概念，我在每個區塊中，在每個區塊中放入 <code>container</code>與<code>row</code>來管理我們的佈局</p>
+<p>HTML結構<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"nav"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span>				</span><br><span class="line">			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="title">div</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">nav</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">section</span> <span class="attribute">class</span>=<span class="value">"main"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span>				</span><br><span class="line">			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"clearfix"</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="title">li</span>&gt;</span>item<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="title">li</span>&gt;</span>item<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="title">li</span>&gt;</span>item<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="title">div</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">section</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">footer</span> <span class="attribute">class</span>=<span class="value">"footer"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span>				</span><br><span class="line">			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"row"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="title">div</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">footer</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>下列程式碼除了示範如何用container來約束網站內容在不同寬度裡的SIZE，另外我還利用了SCSS的Function快速產生一套Grids System 供查詢Grid寬度使用 </p>
+<p>SCSS<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$break</span><span class="value">:<span class="number">640px</span>;</span></span><br><span class="line"><span class="variable">$grid-width</span><span class="value">:  <span class="number">7.33333333333333%</span>;</span><span class="comment">//12grid</span></span><br><span class="line"><span class="variable">$gutter-width</span><span class="value">: <span class="number">1%</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.clearfix</span>&#123;zoom<span class="value">:<span class="number">1</span>;</span>&#125;</span><br><span class="line"><span class="class">.clearfix</span><span class="pseudo">:after</span>&#123;<span class="attribute">content</span><span class="value">:<span class="string">'.'</span>;</span><span class="attribute">display</span><span class="value">:block;</span><span class="attribute">clear</span><span class="value">:both;</span><span class="attribute">visibility</span><span class="value">:hidden;</span><span class="attribute">height</span><span class="value">:<span class="number">0</span>;</span><span class="attribute">font-size</span><span class="value">:<span class="number">0</span>;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="at_rule">@function<span class="preprocessor"> grid-width</span>(<span class="variable">$n</span>) &#123;</span></span><br><span class="line">	 <span class="at_rule">@return <span class="variable">$n</span> * <span class="variable">$grid-width</span> + (<span class="variable">$n</span><span class="preprocessor"> -</span><span class="preprocessor"> 1</span>) * <span class="variable">$gutter-width</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="at_rule">@<span class="keyword">media</span><span class="preprocessor"> screen</span><span class="preprocessor"> and</span> (min-width: <span class="variable">$break</span>+<span class="number">1</span>)&#123;</span></span><br><span class="line">	<span class="class">.container</span> &#123;</span><br><span class="line">		<span class="attribute">width</span><span class="value">:<span class="number">960px</span>;</span></span><br><span class="line">		<span class="attribute">margin</span><span class="value">:<span class="number">0</span> auto;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="at_rule">@<span class="keyword">media</span><span class="preprocessor"> screen</span><span class="preprocessor"> and</span> (min-width:<span class="preprocessor"> 0</span>)<span class="preprocessor"> and</span> (max-width: <span class="variable">$break</span>)&#123;</span></span><br><span class="line">	<span class="class">.container</span> &#123;</span><br><span class="line">		<span class="attribute">width</span><span class="value">:<span class="number">100%</span>;</span></span><br><span class="line">		<span class="attribute">margin</span><span class="value">:<span class="number">0</span> auto;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//將 UL 中的所有 LI 設定為流體佈局中的三格寬</span></span><br><span class="line"></span><br><span class="line"><span class="tag">ul</span> <span class="tag">li</span>&#123;</span><br><span class="line">	<span class="attribute">width</span><span class="value">:<span class="function">grid-width</span>(<span class="number">3</span>);</span></span><br><span class="line">	<span class="attribute">float</span><span class="pseudo">:left</span>; </span><br><span class="line">	box-size<span class="value">:border;</span></span><br><span class="line">	<span class="attribute">border</span><span class="value">:<span class="number">1px</span> solid <span class="hexcolor">#000</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Sticky_Footer">Sticky Footer</h4><p>有兩個版本，各有優缺點</p>
+<ul>
+<li><a href="http://compass-style.org/reference/compass/layout/sticky_footer/" target="_blank" rel="external">http://compass-style.org/reference/compass/layout/sticky_footer/</a></li>
+<li><a href="http://www.cssstickyfooter.com/" target="_blank" rel="external">http://www.cssstickyfooter.com/</a></li>
+</ul>
+<hr>
+<h3 id="Javascript">Javascript</h3><ul>
+<li>手機沒有Scroll Event</li>
+<li>在PC上連續觸發的Event，到手機上觸發頻率都會降低</li>
+<li>FB的Javascript SDK 部份功能不支援手機 (惡夢)</li>
+<li>window.open行為不一致</li>
+<li>待補充</li>
+</ul>
+<hr>
+<h3 id="各種百分比參照對象">各種百分比參照對象</h3><ul>
+<li><strong>background-size：</strong>父層容器高寬</li>
+<li><strong>width / height：</strong>父層容器高寬</li>
+<li><strong>background-position：</strong>背景大小減掉父層容層後的差集</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">width</span><span class="value">:<span class="number">1000px</span>;</span></span><br><span class="line">	<span class="attribute">height</span><span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class">.item</span> &#123;</span><br><span class="line">	<span class="attribute">background</span><span class="value">:<span class="function">url</span>(w1000Xh100.jpg) no-repeat <span class="number">10%</span> <span class="number">0</span>;</span></span><br><span class="line">	<span class="attribute">background-size</span><span class="value">:<span class="number">90%</span> auto;</span></span><br><span class="line">	<span class="comment">// (1000(box) - 1000(item)) * 10% = 10 px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>padding 跟 margin:</strong>比較特別的地方是，padding-top、padding-bottom、margin-top、margin-bottom 是參考父層<strong>寬度</strong></li>
+</ul>
+<hr>
+<h3 id="A_RWD_CSS_Sprite_Button">A RWD CSS Sprite Button</h3><p>使用Backgroun-size作使用圖片卻能伸縮的Sprite Button<br>實作方法是另用Padding-Bottom是參考其父層寬度的特性 </p>
+<p><img src="/images/螢幕快照 2015-04-01 下午11.12.59.png" alt="Alt text"><br><img src="/images/螢幕快照 2015-04-01 下午11.12.42.png" alt="Alt text"></p>
+<p><a href="http://codepen.io/ce0812/details/ByvxRQ" target="_blank" rel="external">範例</a></p>
+<hr>
+<h3 id="Facebook">Facebook</h3><p>簡述FB會遇到的狀況，之後我們會在擬一份PC VS 手機的FB功能替代方案給大家參考</p>
+<ul>
+<li>fb.ui() 及 javascript SDK 在 IOS X Chorme 沒辦法正常運行，要依靠轉址，參數的傳遞要花工</li>
+<li>轉址時，winodow.open在一些特別的Broswer(例如line)認知不同，儘量不要使用</li>
+</ul>
+<hr>
+<h3 id="IE8兼容">IE8兼容</h3><h4 id="HTML5+CSS3">HTML5+CSS3</h4><ul>
+<li>Modernizr：可以用來偵測各種CSS3或是HTML5功能的兼容性作為JS或CSS的條件參考可以使用這個，預設包含Html5Shiv的功能，所以不要一起使用。</li>
+<li>Html5shiv：一段讓 IE6 IE7 IE8 支援 HTML5 標籤的 JavaScrip</li>
+</ul>
+<h4 id="mediaQuerys">mediaQuerys</h4><p>我們使用的是Respond.js</p>
+<p>實現原理 </p>
+<blockquote>
+<ul>
+<li>把head中所有<code>&lt;link rel=“sheetstyle” href=“xx”/&gt;</code>的css路径取出来放入数组</li>
+<li>然后遍历数组一个个发ajax请求</li>
+<li>ajax回调后仅分析response中的media query的min-width和max-width语法，分析出viewport变化区间对应相应的css块</li>
+<li>页面初始化时和window.resize时，根据当前viewport使用相应的css块。</li>
+</ul>
+</blockquote>
+<h4 id="REM">REM</h4><ul>
+<li>使用JS的解決方式 (還沒試過)<ul>
+<li><a href="https://github.com/chuckcarpenter/REM-unit-polyfill" target="_blank" rel="external">https://github.com/chuckcarpenter/REM-unit-polyfill</a></li>
+<li><a href="https://github.com/heygrady/Units" target="_blank" rel="external">https://github.com/heygrady/Units</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>用SCSS解決rem在IE8解決的方式<br>  利用mixin傳回px和rem，在現代瀏覽器會以rem覆寫px，舊瀏覽器則是採用傳統的PX，(這個方法不適用我前面討探的RWD FIT FONT)</li>
+</ul>
+<pre><code class="css">@function calculateRem($size) 
+  $remSize $size / px
+  @return $remSize * 1rem
+
+@mixin font-size($size) 
+  font-size $size
+  font-size ulateRem($size)
+
+//Usage
+div {
+  @include font-size(px)
+}
+//Output
+div {
+  font-size px //Will be overridden if browser supports rem
+  font-size rem 
+}
+</code></pre>
+<h4 id="Background-size">Background-size</h4><ul>
+<li><p><a href="https://github.com/louisremi/background-size-polyfill" target="_blank" rel="external">https://github.com/louisremi/background-size-polyfill</a><br>  作用原理為截入<code>.htc</code>檔並使用<code>-ms-behavior: url(/backgroundsize.min.htc);</code>需要使用Background-size的群組屬性裡。他會使用背景圖片將IMG強制插入你的元素裡</p>
+<ul>
+<li>使用background-size作的css sprites按鈕，無法有hover效果</li>
+<li>在css中使用的路徑需相對於html</li>
+<li>還是有bug，某些狀況下無法正常初始化</li>
+</ul>
+</li>
+</ul>
+<h4 id="其他Polyfills疑難雜証">其他Polyfills疑難雜証</h4><ul>
+<li><p>HTML5 Cross Browser Polyfills<br><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills" target="_blank" rel="external">https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills</a></p>
+</li>
+<li><p>兼容速查</p>
+<ul>
+<li>Can I Use <a href="http://caniuse.com/" target="_blank" rel="external">http://caniuse.com/</a> (點最下方的資源TAB有時後會提供兼容方案Ｓ)</li>
+<li>MDN <a href="https://developer.mozilla.org/zh-TW/" target="_blank" rel="external">https://developer.mozilla.org/zh-TW/</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Debug">Debug</h2><p>RWD的自動化測試是還要再研究，讓我們先了解一下DEBUG的方式</p>
+<h3 id="remote_Debug_遠端Debug模式">remote Debug 遠端Debug模式</h3><p>很多問題，可能要實際在手機的Broswer上才能Debug ，要注意的是IOS的Safari只能搭配OSX來Debug是個吃蘋果的好理由</p>
+<ul>
+<li>A Concise Guide to Remote Debugging on iOS, Android, and Windows Phone<br> <a href="http://developer.telerik.com/featured/a-concise-guide-to-remote-debugging-on-ios-android-and-windows-phone/" target="_blank" rel="external">http://developer.telerik.com/featured/a-concise-guide-to-remote-debugging-on-ios-android-and-windows-phone/</a></li>
+<li>windows7+ android usb driver 裝不上的處理狀況(本人試過有效)<br> <a href="http://izaka.tw/2014-10-04-207/" target="_blank" rel="external">http://izaka.tw/2014-10-04-207/</a></li>
+</ul>
+<h3 id="畫面的Debug工具">畫面的Debug工具</h3><p> Chorme的WebDeveloper最好用 = =<br> <img src="/images/螢幕快照 2015-04-01 下午11.34.35.png" alt="Alt text"></p>
+<p> 試過幾款Web工具發現在Viewport的模擬上跟真實都會有出入，而且在Windows中還可以摸擬TouchEvent跟3G環境也就沒有再找其他的</p>
+<hr>
+<h2 id="實作方向">實作方向</h2><h3 id="固定寬度">固定寬度</h3><ul>
+<li>原理：如果你有三個BreakPoint分別代表手機/平板/PC，這個作法會直接切固定的三個寬度的CSS，定位都可以用PX，然後使用JS改變Viewport</li>
+<li>難度：簡單</li>
+<li>優點：施作容易</li>
+<li>ISSUE：<ul>
+<li>較適合圖案吃重，圖文大小比例要求的專案</li>
+<li>彈性較不足</li>
+<li>BreakPoint切的不夠的狀況下，UI的元素會變的異常大OR異常小(例如一顆屏幕寬度為640的一個44PX的按鈕，在320的手機中只剩22px，以此類推)</li>
+</ul>
+</li>
+</ul>
+<h3 id="以百分比佈局">以百分比佈局</h3><ul>
+<li>原理：使用百分比，所有東西都參照螢幕寬度作相對變化</li>
+<li>難度：複雜</li>
+<li>優點：彈性較高</li>
+<li>ISSUE：<ul>
+<li>較適合內容文字比例多的專案，甚至可針對不同裝置大小設置舒適的閱讀文字</li>
+<li>施作較複雜</li>
+</ul>
+</li>
+</ul>
+<p>以上這兩種作法我們都有使用過，並沒有覺得哪個比較好，只能說看狀況</p>
+<hr>
+<h2 id="更多的議題">更多的議題</h2><p>開放討論優先順序</p>
+<ul>
+<li>測試</li>
+<li>最佳化</li>
+<li>設計出圖</li>
+<li>員工與客戶的訓練</li>
+<li>行動裝置特有的屬性研究</li>
+</ul>
+<h2 id="工具">工具</h2><ul>
+<li><a href="http://bradfrost.github.io/this-is-responsive/patterns.html" target="_blank" rel="external">Responsive Patterns</a> : A collection of patterns and modules for responsive designs.<br>針對不同的RWD需求(Layout Nav Grids 等)提供原始碼，使用上來說更靈活。Bootstrap有時後對專案來說太龐大了。</li>
+</ul>
+<h2 id="參考">參考</h2><h2 id="市場跟趨式">市場跟趨式</h2><ul>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzAwODAzOTU3MQ%3D%3D&amp;mid=205291657&amp;idx=1&amp;sn=e767d9267f29281f8900638e5da87837&amp;scene=2&amp;from=timeline&amp;isappinstalled=0#rd" target="_blank" rel="external">2015年移动设备界面设计趋势</a></li>
+<li><a href="http://2014.report.gridsetapp.com/" target="_blank" rel="external">RESPONSIVE REPORT 2014</a></li>
+<li><a href="http://www.slideshare.net/yuanping/facebook-36279879" target="_blank" rel="external">模範市場「Facebook 台灣消費者線上行為調查」</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/" target="_blank" rel="external">设备像素比devicePixelRatio简单介绍</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio</a></li>
+<li><a href="http://blog.brianjohnsondesign.com/responsive-background-image-sprites-css-tutorial/" target="_blank" rel="external">responsive background image</a></li>
+<li><a href="http://mux.alimama.com/posts/686" target="_blank" rel="external">Media query ie8- 兼容实现总结 - 阿里妈妈MUX</a></li>
+</ul>
+<h2 id="font">font</h2><ul>
+<li><a href="http://www.w3schools.com/css/css_font.asp" target="_blank" rel="external">http://www.w3schools.com/css/css_font.asp</a></li>
+<li><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/" target="_blank" rel="external">http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/</a></li>
+<li><a href="http://www.kangting.tw/2014/04/rwd.html" target="_blank" rel="external">http://www.kangting.tw/2014/04/rwd.html</a></li>
+<li><a href="http://snook.ca/archives/html_and_css/font-size-with-rem" target="_blank" rel="external">http://snook.ca/archives/html_and_css/font-size-with-rem</a></li>
+<li><a href="http://clagnut.com/blog/348/" target="_blank" rel="external">http://clagnut.com/blog/348/</a></li>
+</ul>
+]]></content:encoded>
+      <comments>http://yoursite.com/2015/04/15/20150415-RwdPojectStudy/#disqus_comments</comments>
+    </item>
+    
+    <item>
+      <title><![CDATA[HTML語意化及前端架構 About HTML semantics and front-end architecture]]></title>
+      <link>http://yoursite.com/2014/11/11/About-HTML-semantics-and-front-end-architecture/</link>
+      <guid>http://yoursite.com/2014/11/11/About-HTML-semantics-and-front-end-architecture/</guid>
+      <pubDate>Tue, 11 Nov 2014 09:04:01 GMT</pubDate>
+      <description>
+      <![CDATA[<h1 id="About_HTML_semantics_and_front-end_architecture">About HTML semantics and front-end architecture</h1><p>About HTML semantics and front-end architecture<a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/">原文</a></p>
+<p><img src="/images/1024px-Lego_Color_Bricks.jpg" alt=""></p>
+<p>一篇有點歷史的文章，作者有在Twitter工作過，沒錯!馬上該想到有名的<strong>Bootstrap</strong>(不過不知道作者有沒有參與)。不算完全翻譯，這是一遍蠻深奧的文章，所以翻譯中除了原作者提供的之外，有加入我找到的相關資料以及我的看法。雖然英文不是很好，但我儘量表達到位。那我們開始吧。</p>
+<hr>
+<p> 集合了一些想法、經驗、我喜歡的概念，還有最近這些年我已經在嘗試的概念，包括了HTML的語意化、元件、前端架構的設計方法，類別的命名方式、HTTP壓縮。</p>
+<blockquote>
+<p>We shall not cease from exploration<br>And the end of all our exploring<br>Will be to arrive where we started<br>And know the place for the first time.<br>T.S. Eliot – “Little Gidding”</p>
+<p>我們不會停止探索<br>而一切探索的終點<br>將會是我們下一次探索的開始<br>T.S. Eliot – “Little Gidding”</p>
+</blockquote>]]>
+      
+      </description>
+      <content:encoded><![CDATA[<h1 id="About_HTML_semantics_and_front-end_architecture">About HTML semantics and front-end architecture</h1><p>About HTML semantics and front-end architecture<a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/" target="_blank" rel="external">原文</a></p>
+<p><img src="/images/1024px-Lego_Color_Bricks.jpg" alt=""></p>
+<p>一篇有點歷史的文章，作者有在Twitter工作過，沒錯!馬上該想到有名的<strong>Bootstrap</strong>(不過不知道作者有沒有參與)。不算完全翻譯，這是一遍蠻深奧的文章，所以翻譯中除了原作者提供的之外，有加入我找到的相關資料以及我的看法。雖然英文不是很好，但我儘量表達到位。那我們開始吧。</p>
+<hr>
+<p> 集合了一些想法、經驗、我喜歡的概念，還有最近這些年我已經在嘗試的概念，包括了HTML的語意化、元件、前端架構的設計方法，類別的命名方式、HTTP壓縮。</p>
+<blockquote>
+<p>We shall not cease from exploration<br>And the end of all our exploring<br>Will be to arrive where we started<br>And know the place for the first time.<br>T.S. Eliot – “Little Gidding”</p>
+<p>我們不會停止探索<br>而一切探索的終點<br>將會是我們下一次探索的開始<br>T.S. Eliot – “Little Gidding”</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="關於語意學">關於語意學</h2><p>語意學主要在研究信號跟符號以及他們代表什麼。在語言學中，他主要是是信號含意(包括文字、常用語、跟聲音)、或是語言的研究。語意學在前端開發這塊領域，主要關注在、HTML、 attributes跟attributes value(包括microdata)方面的語意協定。這些語意協定，主要是正式的規範。可以被用來幫助開發人員更好的去了解網站的資訊。然而即使經過形式化，元素、屬性、屬性的值等語意對開發人員來說還是會因為理解或是吸收而被調整。語意化引導我在未來去調整我們的HTML。(這就HTML設計原則。)</p>
+<hr>
+<h2 id="兩種不同的含義的HTML命名方式">兩種不同的含義的HTML命名方式</h2><h3 id="表達內容的本質">表達內容的本質</h3><ul>
+<li>h1 element,</li>
+<li>lang attribute,</li>
+<li>email value of the type attribute,</li>
+<li>Microdata</li>
+</ul>
+<p>但不是所有的語義化都是從內容衍申出來的(content-derived)</p>
+<p>類別名稱必需語意化，無論他他們被用來表達什麼都要有意義，Class的語意化可以有別於HTML Element<br>，我們可以用全局的HTML元素、或是HTML的屬性或Microdata等等，以免跟區域的網站/應用中常常使用的值混肴(例如Class的名稱)</p>
+<p><a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#classes" target="_blank" rel="external">HTML5 specification section on classes</a>寫到<strong>最佳實踐</strong>的假設中</p>
+<blockquote>
+<p>鼓勵作者：(但這篇文章的作者不支持)<br>[class的值]應該被用來描寫內容的本質，而不是內容呈現的樣子</p>
+</blockquote>
+<p>我們沒有非得這麼作的理由，事實上這反而是開發大型網站的阻礙：</p>
+<ul>
+<li>內容面的語意化已經被HTML Element或是其他屬性給滿足了</li>
+<li>Class名稱對網站的拜訪者或是機器意義很少、甚至沒有意義(除了少部份的microdata，詳情可以參考這一篇 <a href="http://cythilya.blogspot.tw/2014/02/search-and-social.html" target="_blank" rel="external">從搜尋到社群 - Semantics、Rich Snippets、Social Meta Tags</a>)</li>
+<li>Class名稱常用來當JS的hook：如果你不必用Class來表達呈現面或是行為面，你大概也不需要放Class在你的HTML</li>
+<li>Class名稱應該提供對開發人員有用的資訊：當你在閱讀一段HTML片段時，這會幫助你理解Class的特性,特別是多個前端工程師維護同一個HTML的時後</li>
+</ul>
+<p>下面是一個簡單例子：不好的範例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"news"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h2</span>&gt;</span>News<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">    [news content]</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>這個class<code>news</code>沒有告訴你任何東西(事實上他要表達的早就明顯的表達在他的內容<code>h2</code>的news)</p>
+<p>它沒有表達任何架構或是元件，而且它沒辦法用在不是<code>news</code>的內容上，<br>如果把你的class名稱與內容本質緊緊的結合在一起，已經大大的減少你的結構被擴張，或是被其他工程師引用的能力</p>
+<h3 id="從內容脫離關係(Content-independent)的類別">從內容脫離關係(Content-independent)的類別</h3><p>取而代之的在設計中從重複的結構或是功能樣板來衍申語意，大多重用性組件，擁用的Class名稱從內容脫離關係的。<br>我們不應該因為害怕圖層失去清楚而明確的角義，而不讓類別反應具體的含意，這麼作並不會讓你的內容失去語意，它只是表達了他的語意必不是由內容衍生出來的</p>
+<p>我們也不應該害怕去增加html elements，如果這能幫助我們創造更強壯(不容易被複寫或是影響)、更俱有彈性、更具有重用性的組件，這麼作不會讓你的HTML失去語意，這只是代表你使用了最低限度的元素，去裝飾你的內容</p>
+<h2 id="前端結構">前端結構</h2><p>一個 元件/樣版/物件導向結構的目標是開發一個有限數量的重用性元件來滿足特定範圍的不同內容，在重要的應用中類別的語義被實用主義所衍申，並且他們最主要的目標就是-提供有意義、有彈性、而且有重用性 的勾子(呈現或行為)給開發人員使用</p>
+<h2 id="可重用，且可組合的組件">可重用，且可組合的組件</h2><p>俱擴展性的 HTML/CSS 大體上來說，必需依賴HTML內的層級，去達到可重用組件的創造</p>
+<p>一個有彈性以及重用性的元件，即不依靠存在DOM tree的片段，也不需要特定的HTML元素。他應該能適用各種容器、以及容易提供(風格)主題，如果是必要的話，擴張額外的HTML元素(不僅是為了裝飾內容)用以打造更強壯的元件。<a href="http://www.stubbornella.org/" target="_blank" rel="external">Nicole Sulivan</a>的<a href="http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/" target="_blank" rel="external">media object</a>是個好例子.</p>
+<p>組件能更容易組合，經由避免<a href="http://www.w3.org/TR/CSS2/selector.html#type-selectors" target="_blank" rel="external">type selectors</a>，下面的例子中，<code>.btn</code>組件可以輕易的跟<code>uilist</code>組合在一起。但問題是</p>
+<ul>
+<li><code>.btn</code>(10)的選擇器層級小於<code>.uilist a</code>(11)(後者會覆寫前者的屬性)</li>
+<li>uilist 這個組件需要用 <code>a</code>作為他的child nodes</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.btn</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br><span class="line"><span class="class">.uilist</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br><span class="line"><span class="class">.uilist</span> <span class="tag">a</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"uilist"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>Home<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>About<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>Login<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">nav</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/css-specificity-10.jpg" alt="CSS Specificity"></p>
+<p>讓你能更方便將別的套件跟<code>.uiliat</code>組合的改善方法如下，使用(純)class來修飾他的子元素。</p>
+<p>這雖然減少規則的特異性(請參考 <a href="http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/" target="_blank" rel="external">註 CSS Specificity: Things You Should Know </a>以及 <a href="http://designshack.net/articles/css/what-the-heck-is-css-specificity/" target="_blank" rel="external">What the Heck Is CSS Specificity</a>), 主要的好處是，給你更多個自由將樣式結構應用在任何子節點(無論是<code>&lt;a&gt;&lt;/a&gt;</code>還是<code>&lt;button&gt;&lt;/button&gt;</code>)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class">.btn</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br><span class="line"><span class="class">.uilist</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br><span class="line"><span class="class">.uilist-item</span> <span class="rules">&#123; <span class="comment">/* styles */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">nav</span> <span class="attribute">class</span>=<span class="value">"uilist"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"uilist-item"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>Home<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"uilist-item"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>About<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"uilist-item"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"btn"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>Login<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">nav</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="JavaScript-specific_classes">JavaScript-specific classes</h2><p>使用特定型式的javascript樣式可以用來減少風格或是結構的改變讓JS壞掉的風險，其中一個方法是為了JS使用特定的Class<code>.js-*</code>，而且不要在它上面作任何樣式定義</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/login"</span> <span class="attribute">class</span>=<span class="value">"btn btn-primary js-login"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>這方法，可以減少組件的風格或是結構改變，對JS行為的跟功能的復雜度所造成的影響。</p>
+<p>組件(Component)的維護</p>
+<p>組件經常擁有一些變異性，跟基本組件的樣貌有些微的差異，例如：不同的背景色或是不同的框線，下面有兩種模式經常用於創造這些變異性。我把他們稱作 <strong>single-class</strong> 以及 <strong>multi-class</strong> 模式.</p>
+<h3 id="The_“single-class”_pattern">The “single-class” pattern</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.btn</span>, <span class="class">.btn-primary</span> <span class="rules">&#123; <span class="comment">/* button template styles */</span> &#125;</span></span><br><span class="line"><span class="class">.btn-primary</span> <span class="rules">&#123; <span class="comment">/* styles specific to save button */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span>&gt;</span>Default<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn-primary"</span>&gt;</span>Login<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>譯者註：這個模式的好處是HTML比較乾淨，但樣式引用不易，使用SCSS的<strong>@extend</strong>產出的CSS會像上面這樣</p>
+</blockquote>
+<h3 id="The_“multi-class”_pattern">The “multi-class” pattern</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.btn</span> <span class="rules">&#123; <span class="comment">/* button template styles */</span> &#125;</span></span><br><span class="line"><span class="class">.btn-primary</span> <span class="rules">&#123; <span class="comment">/* styles specific to primary button */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn"</span>&gt;</span>Default<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"btn btn-primary"</span>&gt;</span>Login<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>譯者註：這個好處是樣式方便引用，但帶來Class鎖碎且HTML肥大的壞處，另外就是你要改長像就要調整HTML</p>
+</blockquote>
+<p>如果你有使用<strong>pre-processor</strong>(SCSS、LESS 等)你可能使用SCSS的<strong>@extend</strong>方法去減少一些涉及<strong>single-class </strong>pattern的維護工作。(<a href="http://sass-lang.com/guide" target="_blank" rel="external">詳請在SCSS的Inheritance</a>)但即使我們使用了<strong>pre-processor</strong>我還是偏好使用<strong>multi-class</strong>pattern，並且在HTML去調整class</p>
+<p>我發現一個更有彈性的模式，舉個例子如果我有一個按鈕，除了基本的長相外，他需要另外<strong>5</strong>個顏色跟<strong>3</strong>個大小，使用<strong>multi-class</strong>至少需要9個Class(1+5+3)，但如果使用<strong>single-class</strong>你至少需要24個Class((5+1)*(3+1)</p>
+<p>如果確實需要的話(絕對必要的狀況下，因為通常不到必要我們不希望這麼作)，他能更容易讓組件作上下層的調整，你可想在另一個組件中，對<strong>所有的</strong><code>.btn</code>作一些小調整。(範例如下)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* "multi-class" adjustment */</span></span><br><span class="line"><span class="class">.thing</span> <span class="class">.btn</span> <span class="rules">&#123; <span class="comment">/* adjustments */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>譯者註：作者是指，多類別模式你可以經由多一個上層的選擇器來複寫<code>.thing</code>中所有的<code>.btn</code>樣式，但單類別要像下面這個例子</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* "single-class" adjustment */</span></span><br><span class="line"><span class="class">.thing</span> <span class="class">.btn</span>,</span><br><span class="line"><span class="class">.thing</span> <span class="class">.btn-primary</span>,</span><br><span class="line"><span class="class">.thing</span> <span class="class">.btn-danger</span>,</span><br><span class="line"><span class="class">.thing</span> <span class="class">.btn-etc</span> <span class="rules">&#123; <span class="comment">/* adjustments */</span> &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="有結構的類別名稱">有結構的類別名稱</h2><p>當創造組件-組件打造的<strong>樣板</strong>-有些Class被用來打造組件的邊界，一些被用來打造組件的修改器，還有一些用來連合一個DOM nodes轉化成一個更大的抽像化呈現組件。</p>
+<p>我們很難去理解 <strong>btn (component)</strong>, <strong>btn-primary (modifier)</strong>, <strong>btn-group (component)</strong>, 以及 <strong>btn-group-item (component sub-object)</strong>之間的關聯，因為它的選擇器名稱並沒有清楚的表達他的意思，而且也沒有一個一致的Pattern。</p>
+<p>我在2011年開始嚐試<a href="https://gist.github.com/1309546" target="_blank" rel="external">naming pattern</a>，去幫助我快速的在節點之間的DOM程式碼片段所呈現的關係，而不是試圖不停的切換JS、HTML、及CSS檔案，來拼湊出完整的網站架構。選擇的符號要點主要受<a href="http://bem.github.com/bem-method/html/all.en.html" target="_blank" rel="external">BEM system</a>的影響，不過我把他改編成一個更容瀏灠的格式。</p>
+<p>從我第一次寫這篇文章以來，幾個其他的團隊或是框架采用了這個方法，<br><a href="https://github.com/montagejs/montage" target="_blank" rel="external">MontageJS</a>將命名方式改編成另一個風格，但還是偏好使用<a href="https://github.com/suitcss/suit" target="_blank" rel="external">SUIT framework</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Utility */</span></span><br><span class="line"><span class="class">.u-utilityName</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* State-utility */</span></span><br><span class="line"><span class="class">.u-isStateName</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component */</span></span><br><span class="line"><span class="class">.ComponentName</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component modifier */</span></span><br><span class="line"><span class="class">.ComponentName--modifierName</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component descendant */</span></span><br><span class="line"><span class="class">.ComponentName-descendant</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component descendant modifier */</span></span><br><span class="line"><span class="class">.ComponentName-descendant--modifierName</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component state (scoped to component) */</span></span><br><span class="line"><span class="class">.ComponentName</span><span class="class">.is-stateOfComponent</span> <span class="rules">&#123;&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* Component mixin (ancestor style dependencies) */</span></span><br><span class="line"><span class="class">.with-ComponentName</span> <span class="rules">&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>這不過是一個我發現有幫助的命名方式，它可以採取任何模式，但好處在於他消除有歧意的CLASS名稱，而且僅僅依靠下畫線、連字符、以及camel case。</p>
+<blockquote>
+<p>譯者註：將下來作者都比較類性談概念性的東西邊收尾，所以我只標一些重點。</p>
+</blockquote>
+<h2 id="A_note_on_raw_file_size_and_HTTP_compression">A note on raw file size and HTTP compression</h2><p>這是一篇有探論到檔案大小最佳化的簡報<a href="http://www.slideshare.net/stubbornella/our-best-practices-are-killing-us" target="_blank" rel="external">Our Best Practices Are Killing Us by Ｎicole Suillvan</a>,像FB這麼大的公司，省下幾KB都是很驚人滴。</p>
+<p>總之就是大家怕這種命名規則檔案會很肥，作者說他有實驗 經過HTML compression 其實差不多，另外作者還提到大家要關注壓縮完的檔案大小，而不是壓縮前的。</p>
+<h2 id="我如何學會停止憂心">我如何學會停止憂心</h2><p>大意是說很多有經驗的開發人員參於過大型網站(應用)的改版，內容衍申的語意化不切實際。如果你要完成一個大型應用，你必需拋棄舊的想法，想想別的替代方案，甚至是你以前丟掉的那些方案。</p>
+<p>一旦你開始跟其他人一起迭代開發應用，你很快就會發現你的代碼還是愈來愈難維護，有些人提出他們的解法方式，這些值得你去花時間探索(以下是作者例舉了幾個方法，並付上官網連結，這篇譯文的結尾奉上，並補充其他我找到的資料)</p>
+<p>當你選擇用HTML跟CSS寫作，並試圖減少你花在CSS上的編輯時間，你必需花更多的時間在修改你HTML上的CLASS。這個成果是非常實用的，這讓開發人員無法前後端，都可以重新安排<strong>樂高積木</strong>，事實証明沒有人可以執行CSS鍊金</p>
+<h2 id="參考">參考</h2><ul>
+<li><a href="http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/" target="_blank" rel="external">CSS Specificity: Things You Should Know </a></li>
+<li><a href="http://designshack.net/articles/css/what-the-heck-is-css-specificity/" target="_blank" rel="external">What the Heck Is CSS Specificity</a></li>
+</ul>
+<h2 id="CSS的架構法方論：OOCSS/SMACSS/BEM">CSS的架構法方論：OOCSS/SMACSS/BEM</h2><h3 id="OOCSS">OOCSS</h3><ul>
+<li><a href="http://oocss.org/" target="_blank" rel="external">OOCSS官網</a> </li>
+<li><a href="https://github.com/stubbornella/oocss/wiki" target="_blank" rel="external">OOCSSGIT</a> </li>
+<li><a href="http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/" target="_blank" rel="external">OOCSS導讀</a> </li>
+</ul>
+<h3 id="SMACSS">SMACSS</h3><ul>
+<li><a href="http://smacss.com/book/" target="_blank" rel="external">SMACSS官網</a></li>
+<li><a href="http://www.smashingmagazine.com/2012/04/20/decoupling-html-from-css/" target="_blank" rel="external">SMACSS導讀</a>  </li>
+<li><a href="http://csspod.com/decoupling-html-from-css/" target="_blank" rel="external">中文導讀</a></li>
+</ul>
+<h3 id="BEM">BEM</h3><ul>
+<li><a href="http://bem.info/" target="_blank" rel="external">BEM官網</a></li>
+<li><a href="http://www.integralist.co.uk/posts/maintainable-css-with-bem/" target="_blank" rel="external">BEM導讀</a></li>
+</ul>
+<h3 id="綜合探討">綜合探討</h3><ul>
+<li><a href="http://www.slideshare.net/kurotanshi/css-oocss-smacss-bem" target="_blank" rel="external">漫談 CSS 架構方法 - 以 OOCSS, SMACSS, BEM 為例 by Kuro Hsu</a></li>
+</ul>
+]]></content:encoded>
+      <comments>http://yoursite.com/2014/11/11/About-HTML-semantics-and-front-end-architecture/#disqus_comments</comments>
+    </item>
+    
+    <item>
+      <title><![CDATA[使用Skrollr.js實作視差滾動-(一)入門]]></title>
+      <link>http://yoursite.com/2014/10/31/%E4%BD%BF%E7%94%A8Skrollr-js%E5%AF%A6%E4%BD%9C%E8%A6%96%E5%B7%AE%E6%BB%BE%E5%8B%95-%E4%B8%80-%E5%85%A5%E9%96%80/</link>
+      <guid>http://yoursite.com/2014/10/31/%E4%BD%BF%E7%94%A8Skrollr-js%E5%AF%A6%E4%BD%9C%E8%A6%96%E5%B7%AE%E6%BB%BE%E5%8B%95-%E4%B8%80-%E5%85%A5%E9%96%80/</guid>
+      <pubDate>Fri, 31 Oct 2014 07:23:42 GMT</pubDate>
+      <description>
+      <![CDATA[<p>Parallax Scrolling又名視差滾動，在江湖上已經流傳了這麼久，雖然是老梗但用在網頁上的效果一直很不錯，作前端工程師應該總會遇過設計或是需求用閃亮期待的眼神問你作不作得到。我們會在接下來的章節中利用工具實作視差滾動的的效果。</p>
+<p>我們將假設你會以下技術,否則在接下來的介紹裡，你可能會感覺有點吃力。</p>
+<ul>
+<li>Css3：動畫實作經驗</li>
+<li>JQuery 或 Javascript</li>
+<li>SASS 或 SCSS</li>
+</ul>]]>
+      
+      </description>
+      <content:encoded><![CDATA[<p>Parallax Scrolling又名視差滾動，在江湖上已經流傳了這麼久，雖然是老梗但用在網頁上的效果一直很不錯，作前端工程師應該總會遇過設計或是需求用閃亮期待的眼神問你作不作得到。我們會在接下來的章節中利用工具實作視差滾動的的效果。</p>
+<p>我們將假設你會以下技術,否則在接下來的介紹裡，你可能會感覺有點吃力。</p>
+<ul>
+<li>Css3：動畫實作經驗</li>
+<li>JQuery 或 Javascript</li>
+<li>SASS 或 SCSS</li>
+</ul>
+<a id="more"></a>
+<p><img src="/images/scrollrdemo3.gif" alt=""></p>
+<hr>
+<h2 id="什麼是視差滾動">什麼是視差滾動</h2><p><a href="http://en.wikipedia.org/wiki/Parallax" title="Parallax" target="_blank" rel="external">Parallax</a> 視差 這個專有名詞在電腦圖學最早出現在1982年一款叫<a href="https://www.youtube.com/watch?v=39EsNumG3Fc" target="_blank" rel="external">Moon Patrol</a>的遊戲裡，簡單來說就是利用多張圖片疊加在一起，在畫面上用不一樣的速度移動：而遠的物件動的較慢，近的物件動的較快，利用這種方式來產生偽3D的錯覺效果。</p>
+<p><img src="/images/111019_0.jpg" alt=""><br><a href="http://www.mrmu.com.tw/2011/10/19/parallax-scrolling/" target="_blank" rel="external">圖片引用來源</a></p>
+<p><img src="/images/111019_1.gif" alt="Demo"><br><a href="http://www.mrmu.com.tw/2011/10/19/parallax-scrolling/" target="_blank" rel="external">圖片引用來源</a></p>
+<p>後來在WEB應用中，讓使用者使用視窗的ScrollorBar產生有趣的使用體驗，愈來愈多類似的作品在網路上出現，搭配HTML5的技術、CSS3的動畫、還有JQuery、SVG 產生各式各樣的延申變化令人眼睛為之一亮。</p>
+<hr>
+<h2 id="Skrollr-js_連結“skrollr”)">Skrollr.js <a href="https://github.com/Prinzhorn/skrollr&quot;视差滚动(Parallax Scrolling" target="_blank" rel="external">連結</a>“skrollr”)</h2><ul>
+<li>使用<strong>Html5</strong>及<strong>CSS3</strong>實作</li>
+<li><strong>純Javascript</strong> library不用依靠Jquery </li>
+<li>Skrollr被設計來支援<strong>mobile</strong>與<strong>desktop</strong></li>
+<li>最小化後只有12k</li>
+<li>提供對設計師友善API(只需要動HTML與CSS)</li>
+</ul>
+<h2 id="Skrollr的相關資源">Skrollr的相關資源</h2><p><strong>官方插件</strong></p>
+<ul>
+<li><a href="https://github.com/Prinzhorn/skrollr-menu" target="_blank" rel="external">skrollr-menu</a>：使用他可以很容易讓頁面上的導航與產生互動</li>
+<li><a href="https://github.com/Prinzhorn/skrollr-ie" target="_blank" rel="external">skrollr-ie</a>：提供IE9以下的CSS Fixes</li>
+<li><a href="https://github.com/Prinzhorn/skrollr-stylesheets" target="_blank" rel="external">skrollr-stylesheets</a>：擴充CSS語法，讓開發人員直接在CSS中對影格進行控制</li>
+</ul>
+<p><strong>第三方插件</strong></p>
+<ul>
+<li><a href="https://github.com/FezVrasta/skrollr-colors" target="_blank" rel="external">skrollr-colors</a> - 支援跨rgb、hex、hsl顏色的轉換</li>
+<li><a href="https://github.com/TrySound/skrollr-decks" target="_blank" rel="external">skrollr-decks</a> - 把你的網頁變成全螢幕的SlideShow</li>
+</ul>
+<p><strong>教程或是相關的Blog文章</strong></p>
+<p>教程或討論文章，不過我覺得中文的好像很少XD，所以我才自己想寫 <strong><a href="https://github.com/Prinzhorn/skrollr/wiki/Resources" title="點此連結" target="_blank" rel="external">點此連結</a></strong></p>
+<p><strong>使用Skrollr的作品集</strong></p>
+<p>真的蠻多的，所以開發者叫你自己去看<a href="https://github.com/Prinzhorn/skrollr/wiki/In-the-wild" title="作品集連結" target="_blank" rel="external">作品集連結</a>，但我覺得作品集品質並沒有都很穩定，看來主要還是看設計功力。</p>
+<p><strong>Skrollr的開發概念</strong></p>
+<p>開發者認為其他的框架會有以下兩項問題：</p>
+<ul>
+<li><strong>動作</strong>及<strong>物件</strong>並不在同一個地方，為了查看一段動畫的意義，你可能要滾動好幾千行的JS程式碼(聽起來很可怕)：  </li>
+<li>要學新的語言(時間有限，而你的專案很趕)</li>
+</ul>
+<p>所以Skrollr的開發者想用下面兩種方式解決這個問題：</p>
+<ul>
+<li>有動畫影格控制的概念，而且可以跟<strong>物件</strong>有關聯</li>
+<li>使用你已經知道的CSS語法</li>
+</ul>
+<p>呈上，開發者表示如果你更傾向使用JS來定義所有的動畫或有充足的學習時間，可以考慮<a href="https://github.com/janpaepke/ScrollMagic" target="_blank" rel="external">ScrollMagic</a>，他是一個使用JQuery，及<a href="https://greensock.com" target="_blank" rel="external">GSAP</a>的框架</p>
+<blockquote>
+<p>筆者補充：GSAP是一個動畫框架，比起純JQUERY他的效能更好，比起CSS3+HTML5他的兼容性又更高。缺點就是要學習(不過對Flash轉過來的人應該比較友善)，另外他不是一個完全免費的服務。</p>
+</blockquote>
+<h2 id="安裝Skrollr">安裝Skrollr</h2><p>在<code>&lt;/body&gt;</code>前放入<code>skrollr.min.js</code>，然後使用<code>skrollr.init()</code>初始化</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"skrollr.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="kotlin"></span><br><span class="line">    <span class="variable"><span class="keyword">var</span> s</span> = skrollr.init();<span class="comment">//初始化</span></span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="開始Skrollr">開始Skrollr</h2><p>使用下列語法，產出隨著SkrollBar往下拉，DIV一邊變色一邊滾動的效果[DEMO] (<a href="http://prinzhorn.github.io/skrollr/examples/docu/3.html" target="_blank" rel="external">http://prinzhorn.github.io/skrollr/examples/docu/3.html</a>)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">data-0</span>=<span class="value">"background-color:rgb(0,0,255);transform[bounce]:rotate(0deg);"</span> </span><br><span class="line">	 <span class="attribute">data-500</span>=<span class="value">"background-color:rgb(255,0,0);transform[bounce]:rotate(360deg);"</span>&gt;</span>WOOOT<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>解析這段語法函義：</p>
+<ul>
+<li><p><code>data-0</code>：Skrollr使用data來定義影格，0代表SkrollrTop的值：畫面中有兩個影格分別是<code>data-0</code>與<code>data-500</code>，而裡面的值，則分別用CSS來定義他的過渡效果</p>
+</li>
+<li><p><code>ackground-color:rgb(0,0,255)</code>：Skrollr只能使用 hsl 跟 rgba 的色彩編碼(但你可以使用插件<a href="https://github.com/FezVrasta/skrollr-colors" target="_blank" rel="external">skrollr-colors</a>)</p>
+</li>
+<li><p><code>transform[bounce]</code>：</p>
+<ul>
+<li>Skrollr的實作原理是將CSS3的transform從原本的秒數，變成SkrollTop的PX數，應此開發人員另外提供了擴充語法來支援CSS3的非線性函數</li>
+<li>Skrollr會處理CSS3的Prefix問題</li>
+</ul>
+</li>
+</ul>
+<h2 id="Skrollr提供的Keyframe用法">Skrollr提供的Keyframe用法</h2><p>Skrollr沒有針對動畫作太多擴充功能，因為他儘量依賴CSS3實作動畫，所以Skrollr的實作重點，就在於他提供的Keyframe控制工具，我健議在這裡花時間搞懂，在下一次的實作裡才會相對輕鬆。</p>
+<p>什麼是Keyfame：學Flash的就想像他是關鍵影格，想像影片的播放Bar中的秒數在視差滾動實作中，概念被轉化成了ScrollBAR及物件的offset. </p>
+<p>Skrollr提供下列兩個Keyframe用法。</p>
+<h3 id="absolute_mode_(document_mode)：將文本(document)在視窗中的位置，也就是Scroll_Top當作觸發影格的關鍵">absolute mode (document mode)：將<strong>文本(document)</strong>在視窗中的位置，也就是Scroll Top當作觸發影格的關鍵</h3><p>定義：</p>
+<h4 id="data-[offset]-[anchor]"><code>data-[offset]-[anchor]</code></h4><ul>
+<li>offset：定義偏移值，型別為整數值，可以是負值，不指定時為<code>0</code>：這裡的偏移值概念上是以文本為基準，我們可以理解為取得視窗相對於文本的偏移位置(參考下圖)，也就是Skroll top</li>
+<li>anchor：定義參考點(錨點)，有<code>Start</code>或<code>End</code>兩個參數，預設值為Start.：定義了偏移值的參考位罝是文本的開頭還是結尾</li>
+<li>這兩個參數至少要有一個</li>
+</ul>
+<p>讓我們看以下，下列分別定義了哪些關鍵影格</p>
+<ul>
+<li><p><code>data-0</code> = <code>data-start</code> = <code>data-0-start</code>:  scrolltop = 0</p>
+</li>
+<li><p><code>data-100</code> = <code>data-100-start</code>: scrolltop = 100</p>
+</li>
+<li><p><code>data--100</code> = <code>data--100-start</code>: scrolltop = -100</p>
+</li>
+<li><p><code>data-end</code> = <code>data-0-end</code>: 當文本到達結尾的時後</p>
+</li>
+<li><p><code>data-100-end</code>: 當文本到到結尾的前100px</p>
+</li>
+<li><p><code>data--100-end</code>: 當文本到到結尾後，超過100px(開發者說，不管你用不用得到XD)</p>
+</li>
+</ul>
+<p>補充說明：</p>
+<p>如果用jquery來表達的話，你可以想像當下列事件觸發的時後，代表各keyframe的CSS屬性將會作用在Dom物件上<br>(雖然Skrollr用的是純JS XD)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//data-0</span></span><br><span class="line">$(<span class="built_in">window</span>).scrollTop() = <span class="number">0</span> </span><br><span class="line"><span class="comment">//data-100</span></span><br><span class="line">$(<span class="built_in">window</span>).scrollTop() = <span class="number">100</span></span><br><span class="line"><span class="comment">//data--100</span></span><br><span class="line">$(<span class="built_in">window</span>).scrollTop() = -<span class="number">100</span></span><br><span class="line"><span class="comment">//data-100-end</span></span><br><span class="line">$(<span class="built_in">window</span>).scrollTop() = $(<span class="built_in">document</span>).outerHeight() - $(<span class="built_in">window</span>).Height() + <span class="number">100</span></span><br><span class="line"><span class="comment">//data--100-end</span></span><br><span class="line">$(<span class="built_in">window</span>).scrollTop() = $(<span class="built_in">document</span>).outerHeight() - $(<span class="built_in">window</span>).Height() - <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://prinzhorn.github.io/skrollr/examples/anchor_target.html" target="_blank" rel="external">DEMO</a></p>
+<p><img src="/images/absolute.jpg" alt=""></p>
+<h3 id="relative_mode(viewport_mode)：將Dom物件(element)在視窗中的位置，當作觸發影格的關鍵">relative mode(viewport mode)：將<strong>Dom物件(element)</strong>在視窗中的位置，當作觸發影格的關鍵</h3><h4 id="data-[offset]-(viewport-anchor)-[element-anchor]"><code>data-[offset]-(viewport-anchor)-[element-anchor]</code></h4><ul>
+<li>offset：定義偏移值，型別為整數值，可以是負值，不指定時為<code>0</code>：用來定義物件與視窗的偏移值(兩個物件的相對位置) </li>
+<li>viewport-anchor： 定義視窗的參考位置，可以是 <code>top</code>(預設值)，<code>center</code>，<code>bottom</code>，指的是視窗的上緣，下緣，以及中間</li>
+<li>element-anchor：定義物件的參考位置 可以是 <code>top</code>(預設值)，<code>center</code>，<code>bottom</code>，指的是物件的上緣，下緣，以及中間</li>
+</ul>
+<p>讓我們看以下，下列分別定義了哪些關鍵影格</p>
+<ul>
+<li><p><code>data-top</code> = <code>data-0-top</code> = <code>data-top-top</code> = <code>data-0-top-top</code>: 當視窗的上緣跟的物件上緣重疊的時後</p>
+</li>
+<li><p><code>data-100-top</code> = <code>data-100-top-top</code>: 當視窗的上緣跟物件的上緣重疊後，又超過了100px</p>
+</li>
+<li><p><code>data--100-top</code> = <code>data--100-top-top</code>: 當視窗的上緣跟物件的上緣重疊後，重疊前的100px</p>
+</li>
+<li><p><code>data-top-bottom</code>= <code>data-0-top-bottom</code>: 當視窗的上緣，跟物件的下緣重疊的時後(這時你是看不到物件的，但可以作為物件從畫面上方進場前的準備)</p>
+</li>
+<li><p><code>data-center-center</code> = <code>data-0-center-center</code>: When the element is at the center of the viewport.：當視窗的中間跟物件的中間重疊的時後(在使用者的眼前，畫面的中間)</p>
+</li>
+<li><p><code>data-bottom-center</code> = <code>data-0-bottom-center</code>: 當視窗的底部，與物件的中間重疊的時後(物件準備退場)</p>
+</li>
+</ul>
+<p>在relative模式中，可以使用<code>data-anchor-target</code>改變物件的參考對像從視窗變成另一個物件。</p>
+<p>範例: <code>&lt;divdata-anchor-target=&quot;#foo&quot;&gt;</code> </p>
+<p><a href="http://prinzhorn.github.io/skrollr/examples/anchors.html" target="_blank" rel="external">DEMO</a><br><img src="/images/relative.jpg" alt=""></p>
+<h3 id="限制及Debug">限制及Debug</h3><ul>
+<li>使用keyframe指定CSS屬性時，從同一個屬性請使用統一的單位：如果兩個keyframe間使用不同的單位，則不會作用</li>
+<li>如果使用了composed，例如：<code>margin:0 0 0 0;</code>則另一個keyframe也要使用composed否則沒有作用</li>
+<li>如果使用transforms指定多個屬性值順序也要一樣：<code>rotate(0deg) scale(1)</code> → <code>rotate(90deg) scale(2)</code></li>
+<li>色彩只能使用rgb()、rgba()、hsl()、hsla()，而且兩個keyframe只能作用同一色彩函式：rgb(255,255,255) → rgb(255,255,200)</li>
+</ul>
+<hr>
+<h2 id="skrollr-stylesheets_在CSS檔裡定義keyframe">skrollr-stylesheets 在CSS檔裡定義keyframe</h2><p>上面的例子中，我們發現keyframe散亂HTML各處，維護起來非常費時。所以接下來我們介紹在CSS檔裡維護keyframe的方式。<br>使用前面提到的官方Plugin -<a href="https://github.com/Prinzhorn/skrollr-stylesheets" target="_blank" rel="external">skrollr-stylesheets</a>：擴充CSS語法，讓開發人員直接在CSS中對影格進行控制，甚至還可以加<strong>SASS</strong>搭配使用，維護起來應該會方便很多。</p>
+<h3 id="安裝">安裝</h3><ul>
+<li>只有1kb</li>
+<li>支援IE8+</li>
+</ul>
+<p><strong>step1</strong></p>
+<p>在<code>&lt;/body&gt;</code>前加入<code>dist/skrollr.stylesheets.min.js</code>，而且要在Skroll.js之前，他的作用原理就是分析CSS快速將對應的<code>data</code>屬性塞在CSS選擇器對應的物件裡面，所以開發人員可能會擔心效能問題，但這裡先不討論。</p>
+<p><strong>step2</strong></p>
+<p>放一隻CSS，如下 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> <span class="attribute">href</span>=<span class="value">"style.css"</span> <span class="attribute">data-skrollr-stylesheet</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用">使用</h3><p><strong>HTML</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"foo"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>CSS</strong> </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#foo</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">-skrollr-animation-name</span>:<span class="value">animation1</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="at_rule">@<span class="keyword">-skrollr-keyframes</span> animation1 </span>&#123;</span><br><span class="line">    0 <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">left</span>:<span class="value"><span class="number">100%</span></span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    2000 <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">left</span>:<span class="value"><span class="number">0%</span></span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">top</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">color</span>:<span class="value"><span class="function">rgb</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">bottom</span> <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">color</span>:<span class="value"><span class="function">rgb</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>)</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>輸出結果</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"foo"</span> <span class="attribute">data-0</span>=<span class="value">"left:100%;"</span> <span class="attribute">data-2000</span>=<span class="value">"left:0%;"</span> <span class="attribute">data-top</span>=<span class="value">"color:rgb(0,0,0);"</span> <span class="attribute">data-bottom</span>=<span class="value">"color:rgb(255,0,0);"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="搭配SASS">搭配SASS</h3><p>使用SASS可以更好利用變數或是運算來控影keyframe</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$about_section_begin: 0;</span><br><span class="line">$about_section_duration: 2000;</span><br><span class="line">$about_section_end: $about_section_begin + $about_section_duration;</span><br><span class="line"></span><br><span class="line">@-skrollr-keyframes animation1 &#123;</span><br><span class="line">    #&#123;$about_section_begin&#125; &#123;</span><br><span class="line">        left:100%;</span><br><span class="line">        opacity#&#123;"[swing]"&#125;: 0.0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #&#123;$about_section_end&#125; &#123;</span><br><span class="line">        left:0%;</span><br><span class="line">        opacity: 1.0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Javascript的部份">Javascript的部份</h2><p>除了HTML及CSS，開發者也列出Skrollr提供的JS功能，有興趣的人可以去看的文件，我這裡只會列出幾個比較重要的功能。開發者標榜，如果是不懂程式語言的設計師，可以不看JS的功能。</p>
+<h2 id="初始化及參數">初始化及參數</h2><p>使用下列語法初始化，而<code>init()</code>會回傳instance，所以可以這樣寫</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> scrollObj = skrollr.init(&#123;</span><br><span class="line">  <span class="comment">//跟smoothScrolling的功能，主要都是讓scroll事件不要這麼敏感，動畫才不會看起來卡卡的。</span></span><br><span class="line">  smoothScrolling : <span class="literal">true</span>,</span><br><span class="line">  smoothScrollingDuration:<span class="number">200</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//可以定義一些常數在影格使用，Example: data-_myconst-200 and skrollr.init(&#123;constants: &#123;myconst: 300&#125;&#125;) result in data-500.</span></span><br><span class="line">  </span><br><span class="line">  constants:&#123;</span><br><span class="line">    initTop:<span class="number">100</span></span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//可以調整ScrollBar往下拉對應到keyframe的值等倍放大</span></span><br><span class="line">  scale:<span class="number">1</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//讓文本高度自動達到滿足Keyframe的條件</span></span><br><span class="line">  forceHeight:<span class="literal">true</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//針對行動裝置的功能</span></span><br><span class="line">  mobileCheck:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;&#125;,</span><br><span class="line">  mobileDeceleration:<span class="number">0.004</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//畫面一開始，元素的初始值set：物件上第一個影格的值，ease：相對畫面開始的Scrolltop值使用兩格影格作參考，reset:使用他原生的CSS值</span></span><br><span class="line">  edgeStrategy:<span class="string">'set'</span>，</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//render事件</span></span><br><span class="line">  render: <span class="function"><span class="keyword">function</span><span class="params">(data)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//Log the current scroll position.</span></span><br><span class="line">      <span class="built_in">console</span>.log(data.curTop);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>render事件可以取得一些物件的資訊</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    curTop: <span class="number">10</span>, <span class="comment">//the current scroll top offset</span></span><br><span class="line">    lastTop: <span class="number">0</span>, <span class="comment">//the top value of last time</span></span><br><span class="line">    maxTop: <span class="number">100</span>, <span class="comment">//the max value you can scroll to. curTop/maxTop will give you the current progress.</span></span><br><span class="line">    direction: <span class="string">'down'</span> <span class="comment">//either up or down</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="keyframe">keyframe</h2><p>為了接收keyframe事件，物件上必需加上<code>data-emit-events</code>屬性。</p>
+<p>HTML </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span></span><br><span class="line">    <span class="attribute">data-500</span>=<span class="value">"..."</span></span><br><span class="line">    <span class="attribute">data-top-bottom</span>=<span class="value">"..."</span></span><br><span class="line">    <span class="attribute">data-_offset-center</span>=<span class="value">"..."</span></span><br><span class="line">    <span class="attribute">data-emit-events</span></span><br><span class="line">&gt;</span></span><br><span class="line">    Some content</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>回傳值有三個：</p>
+<ul>
+<li>element 發射事件的物件</li>
+<li>name keyframe名稱</li>
+<li>direction 使用者滾動方向</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">skrollr.init(&#123;</span><br><span class="line">    keyframe: <span class="function"><span class="keyword">function</span><span class="params">(element, name, direction)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//name will be one of data500, dataTopBottom, data_offsetCenter</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="其他功能">其他功能</h2><ul>
+<li>skrollr.get() Returns the skrollr instance</li>
+</ul>
+<p>使用下列語法，在初始化Skrollr後，可取他的實例使用以下功能</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> scrollObj = skrollr.init();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>skrollObj.refresh([elements])</li>
+<li>skrollObj.getScrollTop()</li>
+<li>skrollObj.getMaxScrollTop()</li>
+<li>skrollObj.rsetScrollTop(top[, force = false])</li>
+<li>skrollObj.risMobile()</li>
+<li>skrollObj.ranimateTo(top[, options])</li>
+<li>skrollObj.rduration</li>
+<li>skrollObj.reasing</li>
+<li>skrollObj.done</li>
+<li>skrollObj.stopAnimateTo()</li>
+<li>skrollObj.isAnimatingTo()</li>
+<li>skrollObj.on(name, fn)</li>
+<li>skrollObj.off(name)</li>
+<li>skrollObj.destroy()</li>
+</ul>
+<h2 id="本篇總結">本篇總結</h2><h3 id="Skrollr的優點">Skrollr的優點</h3><ul>
+<li>入門快，不需要學新的語言</li>
+<li>檔案小 </li>
+<li>對設計師友善</li>
+<li>兼容行動裝置的瀏覽器</li>
+</ul>
+<h3 id="Skrollr的缺點">Skrollr的缺點</h3><ul>
+<li>以HTML跟CSS3為基礎，所以如果很重視IE兼容度的需求端，不適合使用</li>
+<li>keyframe沒有先後關係，物件的關系也很平，不適合作太複雜的動畫，這應該是面向設計師多過工程師的缺點：不過我自己覺得有時後視覺效果很棒的視差網站，並不需要太複雜的動畫，而是要看設計師的設計功力，就這點而言選擇這個方案也沒什麼不好。</li>
+</ul>
+<p>Skrollr基本上功能沒有很強大(跟<a href="https://greensock.com" target="_blank" rel="external">GSAP</a>比)、完全依懶CSS3、相較於華麗複雜的特效；他更適用於概念簡單的效果、面向設計多師過於工程師、支援手機(如果這讓你說服你的老闆的話XD)。</p>
+<p>以上就是Skrollr的入門教學，在下一篇中我們會開始教大家作組點實例的應用，儘請期待。<br>預告：使用Skrollr.js實作視差滾動-(二)實作基礎篇</p>
+<h2 id="參考及引用">參考及引用</h2><ul>
+<li><a href="https://github.com/Prinzhorn/skrollr" target="_blank" rel="external">skrollr</a></li>
+<li><a href="https://github.com/Prinzhorn/skrollr-stylesheets" target="_blank" rel="external">skrollr-stylesheets</a></li>
+<li><a href="http://www.mrmu.com.tw/2011/10/19/parallax-scrolling/" target="_blank" rel="external">網頁設計中的多層視差滾動效果 (Parallax scrolling)</a></li>
+<li>[<a href="http://wedesignpixel.com/best-jquery-parallax-scrolling-tutorials/](http://wedesignpixel.com/best-jquery-parallax-scrolling-tutorials/" target="_blank" rel="external">http://wedesignpixel.com/best-jquery-parallax-scrolling-tutorials/](http://wedesignpixel.com/best-jquery-parallax-scrolling-tutorials/</a></li>
+<li><a href="http://jquer.in/category/jquery-plugins-for-awesome-scrolling-and-scrollbars-on-websites/" target="_blank" rel="external">http://jquer.in/category/jquery-plugins-for-awesome-scrolling-and-scrollbars-on-websites/</a></li>
+<li><a href="http://desiznworld.com/2013/07/free-jquery-parallax-scrolling-plugins.html" target="_blank" rel="external">http://desiznworld.com/2013/07/free-jquery-parallax-scrolling-plugins.html</a></li>
+</ul>
+]]></content:encoded>
+      <comments>http://yoursite.com/2014/10/31/%E4%BD%BF%E7%94%A8Skrollr-js%E5%AF%A6%E4%BD%9C%E8%A6%96%E5%B7%AE%E6%BB%BE%E5%8B%95-%E4%B8%80-%E5%85%A5%E9%96%80/#disqus_comments</comments>
+    </item>
+    
+  </channel>
+</rss>
