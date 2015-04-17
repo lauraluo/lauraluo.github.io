@@ -3,9 +3,24 @@
 <head>
   {% include '_partials/head.swig' %}
   <title>{% block title %}{% endblock %}</title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="{% block title %}{% endblock %}">
+<meta property="og:description" content="{% if page.excerpt %}{{page.excerpt|striptags}}{%  elseif config.description %}{{config.description}}{% endif %}" />
+<meta itemprop="image" content="{% if page.photos %}{{page.photos}}{%  else  %}/images/fb_share.jpg{% endif %}">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="{% block title %}{% endblock %}" />
+<meta property="og:description" content="{% if page.excerpt %}{{page.excerpt|striptags}}{% elseif config.description %}{{config.description}}{% endif %}" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content="{% block title %}{% endblock %}">
+<meta property="og:type" content="article" />
+<meta property="og:image" content="{% if page.photos %}{{page.photos}}{%  else  %}/images/fb_share.jpg{% endif %}" />
+
 </head>
 
 <body>
+
   <div class="container one-column {% block page_class %}{% endblock %}">
     <div class="headband"></div>
 

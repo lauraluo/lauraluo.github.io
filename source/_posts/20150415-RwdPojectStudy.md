@@ -1,21 +1,26 @@
-title: "20150415_RwdPojectStudy"
+title: "RWD響應式網頁專案開發心得(一)"
 date: 2015-04-15 17:00:07
-tags:
+tags: 
+- RWD
+- 專案人生
+categories:
+- rwd
+- 實作心得
+photos:
+- images/2015-04-01_175240.jpg
+
 ---
 
 ## 前言
-
-
-本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得 
-
-以此文章適合閱讀的對象
+本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得, 此文章適合閱讀的對象
 - 用過Bootstrap3
 - 用過Less/Scss這類的樣式編譯器 
 - 用過 Grids System 
 - 擁有RWD所有所需相關知識 
 - 被專案逼瘋(？)的人
 
----
+
+<!-- more --> 
 
 ## 趨勢
 
@@ -148,7 +153,7 @@ ISSUE
 - [MDN @viewport ](https://developer.mozilla.org/en-US/docs/Web/CSS/@viewport)
 
 #### 注意事項
-- ```initial-scale```要下，不然在某些狀況下，手機作橫版直版的轉換時，畫面會跑掉
+- `initial-scale`要下，不然在某些狀況下，手機作橫版直版的轉換時，畫面會跑掉
 - viewport如果有修改，要另開新視窗，重新整理是沒有用滴
 - 使用JS控制Vieport，我們依然會擔心JS執行速度的問題，這種作法的穩定度可能需要花時間找到更好的方案
 - 要注意 window.innerWidth在有設定`device-width`為特定寬度或是`initial-scale`不等於一的狀態下，他不會等於screen.width(物理寬度)所以施作的時後最好搞清楚你要的東西到底是什麼。
@@ -327,7 +332,7 @@ rem參造root或html element，因此我們將html壓縮62.5%(default 16px)> 1re
 ```
 [範例](http://codepen.io/ce0812/details/KwbQwG)
 
-搜尋```rwd font```的關鍵字，網路上可以找到不少相關的程式碼，有些細到可以定義每個DOM物件的最大值跟最小值，看得出來大家都有這些困擾。
+搜尋`rwd font`的關鍵字，網路上可以找到不少相關的程式碼，有些細到可以定義每個DOM物件的最大值跟最小值，看得出來大家都有這些困擾。
 
 
 ---
@@ -428,13 +433,13 @@ ul li{
 -  **width / height：**父層容器高寬
 - **background-position：**背景大小減掉父層容層後的差集
 
-    ``` html
+``` html
     <div class="box">
     	<div class="item"></div>
     </div>
-    ```
+```
 
-    ``` scss
+``` scss
     .box {
     	width:1000px;
     	height:100px;
@@ -446,14 +451,14 @@ ul li{
     	// (1000(box) - 1000(item)) * 10% = 10 px
     }
     
-    ```
+```
 
 -  **padding 跟 margin:**比較特別的地方是，padding-top、padding-bottom、margin-top、margin-bottom 是參考父層**寬度**
 
 ----
 
 
-## A RWD CSS Sprite Button
+### A RWD CSS Sprite Button
 
 使用Backgroun-size作使用圖片卻能伸縮的Sprite Button
 實作方法是另用Padding-Bottom是參考其父層寬度的特性 
@@ -479,7 +484,7 @@ ul li{
 
 #### HTML5+CSS3
 
--  Modernizr：可以用來偵測各種CSS3或是HTML5功能的兼容性作為JS 或 CSS的條件參考可以使用這個，預設包含Html5Shiv的功能，所以不要一起使用。
+-  Modernizr：可以用來偵測各種CSS3或是HTML5功能的兼容性作為JS或CSS的條件參考可以使用這個，預設包含Html5Shiv的功能，所以不要一起使用。
 -  Html5shiv：一段讓 IE6 IE7 IE8 支援 HTML5 標籤的 JavaScrip
 
 #### mediaQuerys
@@ -566,9 +571,9 @@ RWD的自動化測試是還要再研究，讓我們先了解一下DEBUG的方式
 
 ---
 
-### 實作方向
+## 實作方向
 
-#### 固定寬度
+### 固定寬度
 
 - 原理：如果你有三個BreakPoint分別代表手機/平板/PC，這個作法會直接切固定的三個寬度的CSS，定位都可以用PX，然後使用JS改變Viewport
 - 難度：簡單
@@ -599,54 +604,36 @@ RWD的自動化測試是還要再研究，讓我們先了解一下DEBUG的方式
 -  測試
 -  最佳化
 -  設計出圖
-- 員工與客戶的訓練
+-  員工與客戶的訓練
 -  行動裝置特有的屬性研究
 
 
-# 工具
+## 工具
 
 - [Responsive Patterns]( http://bradfrost.github.io/this-is-responsive/patterns.html) : A collection of patterns and modules for responsive designs.
 針對不同的RWD需求(Layout Nav Grids 等)提供原始碼，使用上來說更靈活。Bootstrap有時後對專案來說太龐大了。
 
 
 
-# 參考
+## 參考
 
-[2015年移动设备界面设计趋势](http://mp.weixin.qq.com/s?__biz=MzAwODAzOTU3MQ%3D%3D&mid=205291657&idx=1&sn=e767d9267f29281f8900638e5da87837&scene=2&from=timeline&isappinstalled=0#rd)
+## 市場跟趨式
 
+- [2015年移动设备界面设计趋势](http://mp.weixin.qq.com/s?__biz=MzAwODAzOTU3MQ%3D%3D&mid=205291657&idx=1&sn=e767d9267f29281f8900638e5da87837&scene=2&from=timeline&isappinstalled=0#rd)
+- [RESPONSIVE REPORT 2014](http://2014.report.gridsetapp.com/)
+- [模範市場「Facebook 台灣消費者線上行為調查」](http://www.slideshare.net/yuanping/facebook-36279879)
+- [设备像素比devicePixelRatio简单介绍](http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/)
+- https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio
+- [responsive background image](http://blog.brianjohnsondesign.com/responsive-background-image-sprites-css-tutorial/)
+- [Media query ie8- 兼容实现总结 - 阿里妈妈MUX](http://mux.alimama.com/posts/686)
 
-RESPONSIVE REPORT 2014
+## font
 
-http://2014.report.gridsetapp.com/
-
-模範市場「Facebook 台灣消費者線上行為調查」
-
-http://www.slideshare.net/yuanping/facebook-36279879
-
-设备像素比devicePixelRatio简单介绍
-
-http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/
-
-https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio
-
-font
-
-http://www.w3schools.com/css/css_font.asp
-
-http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
-
-http://www.kangting.tw/2014/04/rwd.html
-
-http://snook.ca/archives/html_and_css/font-size-with-rem
-
-http://clagnut.com/blog/348/
+- http://www.w3schools.com/css/css_font.asp
+- http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
+- http://www.kangting.tw/2014/04/rwd.html
+- http://snook.ca/archives/html_and_css/font-size-with-rem
+- http://clagnut.com/blog/348/
 
 
-css sprites button
-
-http://blog.brianjohnsondesign.com/responsive-background-image-sprites-css-tutorial/
-
-Media query ie8- 兼容实现总结 - 阿里妈妈MUX
-
-http://mux.alimama.com/posts/686
 

@@ -1,6 +1,6 @@
 menu:
   home: /
-  #categories: /categories
+  categories: /categories
   archives: /archives
   tags: /tags
   #about: /about
@@ -9,7 +9,7 @@ menu:
 favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo,next"
+keywords: "前端工程師,WEB,開發人生,UI/UX"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.

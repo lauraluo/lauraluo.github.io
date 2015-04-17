@@ -5,7 +5,7 @@
 # Site
 title: 羅拉拉的開發日誌
 subtitle: 天天向上
-description:
+description: 前端工程師修鍊的路上
 author: LauraLuo
 language:
 timezone:
@@ -71,3 +71,6 @@ deploy:
 	repo: git@github.com:lauraluo/lauraluo.github.io.git
 	branch: master
 	message: "my blog update"
+
+# Disqus
+disqus_shortname: lauraluosblog
