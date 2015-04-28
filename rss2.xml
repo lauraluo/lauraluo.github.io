@@ -7,8 +7,27 @@
     <link>http://yoursite.com/</link>
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[前端工程師修鍊的路上]]></description>
-    <pubDate>Fri, 17 Apr 2015 07:30:04 GMT</pubDate>
+    <pubDate>Wed, 22 Apr 2015 10:51:18 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[gsap-learn]]></title>
+      <link>http://yoursite.com/2015/04/22/gsap-learn/</link>
+      <guid>http://yoursite.com/2015/04/22/gsap-learn/</guid>
+      <pubDate>Wed, 22 Apr 2015 08:10:33 GMT</pubDate>
+      <description>
+      <![CDATA[<p><a href="http://www.zhihu.com/question/24496292" target="_blank" rel="external">http://www.zhihu.com/question/24496292</a></p>
+<p>所谓tween]]>
+      </description>
+      <content:encoded><![CDATA[<p><a href="http://www.zhihu.com/question/24496292" target="_blank" rel="external">http://www.zhihu.com/question/24496292</a></p>
+<p>所谓tween动画，我接触这个名字是在flash里。基本意思就是“补间”，也就是把两个关键帧连起来。通常做法就是线性的计算中间数值（也可以是任何函数变换）。这种简单的线性插值计算可以用在任何参数上，位置，大小，方向，等等等等。FK/IK可以说都在用，仅仅是计算两帧之间的中间值而已</p>
+<p>“Tween动画”是一个比较特殊的叫法。我估计可能是受到了Flash的影响。Tween其实是In-between的简写，指的是计算机自动插值补全关键帧Keyframe之间的动画。补全的动画既可以是动态Motion也可以是变形Morph。所以Tween其实只是一个补全的过程，更加合理的称呼应该是关键帧动画。</p>
+<p>逐帧动画和关键帧动画才是相对应的两个概念。在实际制作的过程中，由于成本的原因，很少有人逐帧制作了，但也有例外，可以查一下Rotoscoping，不展开了。即使传统手绘动画制作的过程中也是“原画”和“动画”两组人马分开进行——前者相当于Keyframing，后者Tweening。</p>
+<p>Timeline 時間軸</p>
+<p>截一張falsh的圖</p>
+]]></content:encoded>
+      <comments>http://yoursite.com/2015/04/22/gsap-learn/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[RWD響應式網頁專案開發心得(一)]]></title>
@@ -685,6 +704,80 @@ div {
 </ul>
 ]]></content:encoded>
       <comments>http://yoursite.com/2014/10/31/%E4%BD%BF%E7%94%A8Skrollr-js%E5%AF%A6%E4%BD%9C%E8%A6%96%E5%B7%AE%E6%BB%BE%E5%8B%95-%E4%B8%80-%E5%85%A5%E9%96%80/#disqus_comments</comments>
+    </item>
+    
+    <item>
+      <title><![CDATA[印度日-自制咖哩跟烤餅]]></title>
+      <link>http://yoursite.com/2014/04/17/curry-day/</link>
+      <guid>http://yoursite.com/2014/04/17/curry-day/</guid>
+      <pubDate>Thu, 17 Apr 2014 09:31:56 GMT</pubDate>
+      <description>
+      <![CDATA[<p>天氣非常好，大家都知道我們家那隻非常喜歡下廚，昨天看了Gordon.Ramsays去印度學作菜的節目於是非常的想吃印度咖哩，我們家那隻馬上行動達成我的願望，為了表達感謝，我決定幫忙制作印度烤餅，原因是他全程都可以用機器，哈哈哈哈哈。</p>]]>
+      
+      </description>
+      <content:encoded><![CDATA[<p>天氣非常好，大家都知道我們家那隻非常喜歡下廚，昨天看了Gordon.Ramsays去印度學作菜的節目於是非常的想吃印度咖哩，我們家那隻馬上行動達成我的願望，為了表達感謝，我決定幫忙制作印度烤餅，原因是他全程都可以用機器，哈哈哈哈哈。</p>
+<a id="more"></a>
+<hr>
+<p><img src="/images/10511075_808841162467493_7742381788788459540_n.jpg" alt="印度日"></p>
+<h2 id="咖哩_by_煮夫LUKI">咖哩 by 煮夫LUKI</h2><p><img src="/images/10351236_808841105800832_457983806014236297_n.jpg" alt="咖哩"></p>
+<p><a href="http://lukikino.blogspot.tw/2014/07/blog-post_9483.html" target="_blank" rel="external">某人的自創咖哩食譜</a></p>
+<p>重炒料開始非常花時間，所以嚴格來說我們一整天只吃了這一頓正餐，努力的結果，使得最後享用咖哩的時後更加美味</p>
+<h3 id="主材料">主材料</h3><ul>
+<li>牛肉400g (肩胛肉、梅花有咬勁，牛肋條軟嫩濃郁，腿肉有點硬，牛腱不適合) - 切塊(4cm)</li>
+<li>馬鈴薯2顆 (約拳頭大小) - 切塊(3~5cm)</li>
+<li>紅蘿蔔2根 (約350ml飲料罐大小) - 切塊(3~4cm)</li>
+<li>洋菇1盒 - 切半</li>
+<li>毛豆或蠶豆 150g - 蠶豆要去皮</li>
+</ul>
+<h3 id="高湯材料">高湯材料</h3><ul>
+<li>瘦豬絞肉200g 梅花或肩胛牛絞肉200g</li>
+<li>番茄600g - 去皮切塊</li>
+<li>洋蔥4顆 (約拳頭大小) - 切碎</li>
+</ul>
+<h3 id="調味料">調味料</h3><ul>
+<li>已調味的咖哩醬5大匙(會鹹的那種)或咖哩粉5大匙+1大匙鹽(市售的咖哩塊不適合，因為有加麵粉會變得很黏)</li>
+<li>葡萄紅酒 100ml (增加酸味)</li>
+<li>濃縮咖啡或咖啡酒 15ml</li>
+<li>新鮮的豆蔻粉 2g (增加香氣用)</li>
+</ul>
+<hr>
+<h3 id="一、製作湯底">一、製作湯底</h3><h4 id="STEP01-焦糖化的絞肉">STEP01-焦糖化的絞肉</h4><p>熱鍋，中火，橄欖油一大匙，<br>放入豬絞肉及牛絞肉，拌炒到深咖啡色後加入少許水，<br>把鍋底精華洗起來，起鍋備用。<br><em>過程約10分鐘，如果會黏鍋底的話，可加入一小湯匙水把鍋底洗一下就比較不會黏
+</em>炒到深咖啡色是要產生梅納反應</p>
+<h4 id="STEP02-焦糖化的洋蔥">STEP02-焦糖化的洋蔥</h4><p>熱鍋，中火，橄欖油兩大匙<br>放入切碎的洋蔥，拌炒到深咖啡色後加入少許水，<br>把鍋底精華洗起來，起鍋備用。<br><em>過程約15~30分鐘，如果會黏鍋底的話，可加入一小湯匙水把鍋底洗一下就比較不會黏
+</em>炒到深咖啡色是要產生梅納反應<br>*後半段很容易烤焦，要不停的拌炒和刮鍋底，也可以把火轉小一些</p>
+<h4 id="STEP03-番茄糊">STEP03-番茄糊</h4><p>熱鍋，大火，橄欖油一大匙<br>放入已去皮的番茄丁，炒到收乾變成泥狀，<br>*剛開始可以用大火，比較乾以後轉小火</p>
+<h4 id="STEP04-熬煮湯底">STEP04-熬煮湯底</h4><p>加入1跟2跟3，加入約500ml水，轉中小火燉煮。<br>*若燉煮過程中水變少，可以再加水，保持有點湯狀才不會黏鍋烤焦。</p>
+<h4 id="STEP05-炒紅蘿蔔_(可讓紅蘿蔔的怪味較少)">STEP05-炒紅蘿蔔 (可讓紅蘿蔔的怪味較少)</h4><p>熱鍋，大火，橄欖油一大匙<br>放入切塊(約2~3cm)的紅蘿蔔，炒到表皮有些褐色，<br>加入4一起熬煮<br>*先加紅蘿蔔是因為他要煮比較久才會軟</p>
+<h4 id="STEP06-炒洋菇">STEP06-炒洋菇</h4><p>熱鍋，大火，橄欖油一大匙 (若鍋裡還有油就不需要)<br>放入切半的洋菇，炒到表皮有些褐色，<br>加入4一起熬煮</p>
+<h4 id="STEP07-炒馬鈴薯">STEP07-炒馬鈴薯</h4><p>熱鍋，大火，橄欖油一大匙(若鍋裡還有油就不需要)<br>放入切半的洋菇，炒到表皮有些褐色，<br>加入4一起熬煮</p>
+<h4 id="STEP08-炒毛豆">STEP08-炒毛豆</h4><p>熱鍋，大火，橄欖油一小匙(若鍋裡還有油就不需要)<br>放入毛豆或蠶豆，拌炒約1分鐘<br>加入4一起熬煮</p>
+<p>高湯熬煮約40分鐘，期間要保持水份足夠才不會烤焦(水淹過材料就好了，也不要過量)</p>
+<p><img src="/images/10449904_808824319135844_1017487154463179236_n.jpg" alt="高湯熬煮約40分鐘，期間要保持水份足夠才不會烤焦(水淹過材料就好了，也不要過量)"></p>
+<h3 id="二、製作咖哩">二、製作咖哩</h3><h4 id="STEP01-牛肉">STEP01-牛肉</h4><p>熱鍋，最大火，橄欖油兩大匙，油要熱到接近冒煙下牛肉，炒到表面有些焦黃，起鍋平鋪放涼</p>
+<ul>
+<li>這邊沒有要炒到全熟，大概會是7分熟左右</li>
+<li>肉放涼會讓肉汁吸回牛肉中</li>
+</ul>
+<p><img src="/images/10525875_808824329135843_3289768972205920005_n.jpg" alt="熱鍋，最大火，橄欖油兩大匙，油要熱到接近冒煙下牛肉，炒到表面有些焦黃，起鍋平鋪放涼"></p>
+<h4 id="STEP02-熬煮咖哩">STEP02-熬煮咖哩</h4><p>將咖哩放些高湯拌勻，放入高湯中<br>將紅酒放入高湯中<br>將放涼的牛肉放入高湯<br>放入烤箱用90度烤1小時或用最小火煮1小時<br><em>這時湯汁已經不多，用火直接煮底下容易黏鍋烤焦，每2分鐘要刮一下鍋底</em></p>
+<h4 id="STEP03-最終提味">STEP03-最終提味</h4><p>將熬煮好的咖哩加入咖啡酒跟新鮮豆蔻粉攪拌均勻<br>完成~</p>
+<h3 id="變化">變化</h3><p>食用的時候可以加些不一樣的調味</p>
+<ul>
+<li>鮮奶油: 變的溫潤</li>
+<li>椰奶: 南洋風味</li>
+<li>辣椒粉/印度咖哩粉: 麻辣夠勁</li>
+<li>蜂蜜: 佛蒙特咖哩!?</li>
+</ul>
+<hr>
+<h2 id="烤餅_by_羅拉拉">烤餅 by 羅拉拉</h2><p><img src="/images//10325130_808841082467501_1985813318287987586_n.jpg" alt="烤餅"><br><a href="http://phuny.pixnet.net/blog/post/17539026-%E6%B2%BE%E8%91%97%E5%92%96%E5%93%A9%E5%90%83%E6%9C%80%E5%B0%8D%E5%91%B3%E7%9A%84%E5%8D%B0%E5%BA%A6%E7%83%A4%E9%A4%85naan&quot;烤餅參考食譜&quot;" target="_blank" rel="external">烤餅參考食譜</a></p>
+<hr>
+<p><img src="/images/10524562_808824369135839_6876129544187586719_n.jpg" alt=""></p>
+<p><img src="/images/10351738_808824155802527_6967741497343765281_n.jpg" alt=""></p>
+<p><img src="/images/10451025_808824142469195_7636903556966151699_n.jpg" alt=""></p>
+<p><img src="/images/10489733_808841029134173_5242354780844332375_n.jpg" alt=""></p>
+<p>其實我自己是覺得有點失敗了，雖然因為日本的法國麵粉，整張餅還是非常好吃，但明顯的我的烤餅筋不夠，所以整張沒有澎脹起來，下次再努力。</p>
+]]></content:encoded>
+      <comments>http://yoursite.com/2014/04/17/curry-day/#disqus_comments</comments>
     </item>
     
   </channel>
