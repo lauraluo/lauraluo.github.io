@@ -7,7 +7,7 @@
 <!-- Schema.org markup for Google+ -->
 <meta itemprop="name" content="{% block title %}{% endblock %}">
 <meta property="og:description" content="{% if page.excerpt %}{{page.excerpt|striptags}}{%  elseif config.description %}{{config.description}}{% endif %}" />
-<meta itemprop="image" content="{% if page.photos %}{{page.photos}}{%  else  %}/images/fb_share.jpg{% endif %}">
+
 
 <!-- Open Graph data -->
 <meta property="og:title" content="{% block title %}{% endblock %}" />
@@ -15,7 +15,21 @@
 <meta property="og:url" content="http://http://lauraluo.github.io" />
 <meta property="og:site_name" content="{% block title %}{% endblock %}">
 <meta property="og:type" content="article" />
-<meta property="og:image" content="{% if page.photos %}{{page.photos}}{%  else  %}/images/fb_share.jpg{% endif %}" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+{% if page.photos %}
+  {% for photo in page.photos %}
+    {% if loop.first %}
+      <meta itemprop="image" content="{{photo}}"> 
+      <meta property="og:image" content="{{photo}}" />
+    {% endif %}
+  {% endfor %}
+{%  else  %}
+  <meta itemprop="image" content="/images/fb_share.jpg">
+  <meta itemprop="image" content="/images/fb_share.jpg">
+{% endif %}
+
 
 </head>
 

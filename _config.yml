@@ -74,3 +74,23 @@ deploy:
 
 # Disqus
 disqus_shortname: lauraluosblog
+
+#feed
+feed:
+  type: rss2
+  path: rss2.xml
+  limit: 20
+
+#social link
+social:
+  github: https://github.com/lauraluo
+  facebook: https://www.facebook.com/lala.luo0812
+  # twitter: https://twitter.com/your-user-name
+  # weibo: http://weibo.com/your-user-name
+  # douban: http://douban.com/people/your-user-name
+  # zhihu: http://www.zhihu.com/people/your-user-name
+#其他
+
+#ga
+google_site_verification: q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA
+google_analytics: UA-47409321-2
