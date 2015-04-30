@@ -4,6 +4,11 @@ tags:
 ---
 
 
+In order to gain support for experimental CSS properties in a particular browser, you mustinclude the 
+appropriate vendor prefix and value in your stylesheet. There are just two exceptions:
+The browser allows prefix aliases (discussed in the next section).  
+The browser follows the final W3C standard and does not require a prefix. 
+
 Limitations of CSS3 Animation
 
 - CSS3 cannot control scroll bars or “scroll” the entire body of the document
@@ -93,6 +98,23 @@ n. 语法转化规则；[数] 变换式（transform的复数）
 
 Transitions
 轉場
+
+
+There are four main CSS translation functions: 
+
+rotate
+
+- Degrees deg 360 degrees in a circle rotate(90deg)
+- Gradians grad Also known as “gons” or “grades”. 400 gradians in a circle, making for easier calculations. rotate(100grad)
+- Radians rad 2pradians in a full circle, equal to 6.2831853rad. rotate(1.57rad)
+- Turns turn A complete rotation = 1 full turn. rotate(.25turn)
+
+
+
+
+- translate
+- scale
+- skew
 
 
 
