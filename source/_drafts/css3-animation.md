@@ -45,7 +45,9 @@ tags:
 下面是常見瀏覽器，所使用的Engine，其中Gecko' V8, Webkit比較常被人們討論，而 Webkit 的市佔率最大
 
 
-- **Firefox：** [Geko](https://developer.mozilla.org/zh-CN/docs/Mozilla/Gecko) 
+- **Firefox：**  
+	- layout engine [Geko](https://developer.mozilla.org/zh-CN/docs/Mozilla/Gecko) 
+	- javascript engine OdinMonkey
 - **Chrome：** 
 	- layout engine Webkit (open source)
 	- JavaScript Google V8 (open source)
@@ -66,8 +68,8 @@ tags:
 > 補充：
 > - [Geko維基](http://zh.wikipedia.org/wiki/Gecko)
 > - [WebKit維基](http://zh.wikipedia.org/wiki/WebKit)
-> - [市面上的layout Engine 維基](http://zh.wikipedia.org/wiki/%E6%8E%92%E7%89%88%E5%BC%95%E6%93%8E)
-
+> - [layout Engine 維基](http://zh.wikipedia.org/wiki/%E6%8E%92%E7%89%88%E5%BC%95%E6%93%8E)
+> - [javascript Engine 維基 ](http://zh.wikipedia.org/wiki/JavaScript%E5%BC%95%E6%93%8E)
 # Web Animation 相關技術
 
 - HTML5
@@ -112,6 +114,14 @@ Jqeury大家都很熟悉，這裡就不用提，列舉一些我在研究動畫�
 - [官方網站](http://www.pixijs.com/)
 - WebGL的函式庫，而且會在其不支援的時後向下相容canvas
 - [Phaser](http://phaser.io/)一個非常流行的html5 GAME開發引擎，他的畫面渲染是使用Pixi.js 
+
+
+## paper.js
+
+
+- [官方網站](http://paperjs.org/about/)
+
+Paper.js is an open source vector graphics scripting framework that runs on top of the HTML5 Canvas. It offers a clean Scene Graph / Document Object Model and a lot of powerful functionality to create and work with vector graphics and bezier curves, all neatly wrapped up in a well designed, consistent and clean programming interface.
 
 # 關於Animation的基本用語
 
