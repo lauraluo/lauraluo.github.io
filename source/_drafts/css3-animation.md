@@ -45,28 +45,28 @@ tags:
 下面是常見瀏覽器，所使用的Engine，其中Gecko' V8, Webkit比較常被人們討論，而 Webkit 的市佔率最大
 
 
-- *Firefox：* [Geko](https://developer.mozilla.org/zh-CN/docs/Mozilla/Gecko) 
-- *Chrome：* 
+- **Firefox：** [Geko](https://developer.mozilla.org/zh-CN/docs/Mozilla/Gecko) 
+- **Chrome：** 
 	- layout engine Webkit (open source)
 	- JavaScript Google V8 (open source)
-- *Safari：*
+- **Safari：**
 	- layout engine Webkit
 	- closed-source JavaScript engine
 
-- *Opera*：- 
+- **Opera**：
 	- layout engine 原本是自行開發的 Presto 2013年2月13日轉採用Webkit開發的Blink
 	- Javascript engin  Carakan 
 	- 如果早期用在用CSS3的人，可能還有用過`-o-`，後來Opera換了rendering後，基本也統一成-webkit-
 
-- *IE：* 
+- **IE：** 
 	- layout engine Trident
 	- Javascript engin IE9+ Chakra 
 
 
-補充：
-[Geko維基](http://zh.wikipedia.org/wiki/Gecko)
-[WebKit維基](http://zh.wikipedia.org/wiki/WebKit)
-[市面上的排版Engine 維基](http://zh.wikipedia.org/wiki/%E6%8E%92%E7%89%88%E5%BC%95%E6%93%8E)
+> 補充：
+> - [Geko維基](http://zh.wikipedia.org/wiki/Gecko)
+> - [WebKit維基](http://zh.wikipedia.org/wiki/WebKit)
+> - [市面上的layout Engine 維基](http://zh.wikipedia.org/wiki/%E6%8E%92%E7%89%88%E5%BC%95%E6%93%8E)
 
 # Web Animation 相關技術
 
@@ -125,8 +125,7 @@ Jqeury大家都很熟悉，這裡就不用提，列舉一些我在研究動畫�
 	動畫效果在執行時的速度，使其看起來更加真實, 真實世界中，其實不存在於可以把加速度瞬間從0到100的物體
 - 時間軸 Timeline
 	大家最熟悉的時間軸介面大概就是下面這張圖，Flash的時間軸控制概念，在很多Web動畫技術都會出現，其中的元素包含定義每個影格的時間，總體播放時間，等等
-	
-	![](images/ws_timeline_popup.png)
+	![](/images/ws_timeline_popup.png)
 
 
 
