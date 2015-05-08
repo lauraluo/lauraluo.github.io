@@ -113,6 +113,18 @@ tags:
 - webGL 不是 css animation 他是讓js可以操作3d繪圖的API
 
 
+
+先看語法
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_values_syntax#syntax-single-transition-property)
+
+再看實作
+[Animate實作](https://developer.mozilla.org/zh-TW/docs/CSS_%E5%8B%95%E7%95%AB)
+[transitions實作](https://developer.mozilla.org/zh-TW/docs/CSS_%E8%BD%89%E5%A0%B4)
+
+
+以下待續
+---
+
 # CSS3 Transforms and Transitions
 
 
@@ -127,9 +139,40 @@ tags:
 
 ## Transform
 
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_values_syntax#syntax-single-transition-property
 
-### rotate：旋轉物件
+
+![images/2015-05-05_170516.jpg](images/2015-05-05_170516.jpg)
+![images/2015-05-05_170702](images/2015-05-05_170702.jpg)
+
+### Transform function
+
+所有的Transform都是經由Matrix作轉換
+
+Matrix 類別代表變形矩陣，可決定如何從一個座標空間，將各點對應到另一個空間。
+這些變形類型統稱為 「仿射變形」。 仿射變形會在變形時保留線段的筆直性，以便讓平行線保持平行。
+
+利用Matrix可以作到縮放、旋轉、平移、傾斜等效果
+
+[Matrix on Actionscript](http://help.adobe.com/zh_TW/FlashPlatform/reference/actionscript/3/flash/geom/Matrix.html)
+[Matrix Demo tool](http://www.useragentman.com/matrix/)
+[transform-function](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function)
+
+### 語法如下
+
+``` css
+transform:  matrix(a, c, b, d, tx, ty)
+```
+
+Matrix提供很高的自由度讓開發人員撰寫變型，但也提供一些常用的方法讓開發人員使用
+Transform有四個主要的功能，分別是：
+
+- 旋轉：`rotate()`
+- 縮放：`scale()`、`scaleX()`、`scaleY()`、`scaleZ()`
+- 平移：`translate3d(tx, ty, tz)`、`translateX(tx)`、`translateY(ty)`、`translateZ(tz)`
+- 傾斜：`skew(ax)`、`skew(ax, ay)`
+
+
+### rotate：旋轉
 
 #### 語法 
 
@@ -151,18 +194,15 @@ transform: rotate(0.5turn);
 - 0還是要寫單位，跟長寬不一樣 其他css常常可以省略屬性
 - 設定180度並不會翻轉 or 鏡象 要作到翻轉跟鏡象 要使用 scale 
 
+### scale：縮放，並且可達到鏡射的效果
 
+![sacle示圖](/images/2015-05-04_155344.jpg)
 
+### 
 
 
 ## Transition
 
-
-
-
-
-http://www.w3.org/TR/SVG/coords.html#TransformMatrixDefined
-
 下回待續
-## CSS3 Animate and key-frame
+## CSS3 Animate and @key-frame
 ## transition3D
