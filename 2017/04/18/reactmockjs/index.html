@@ -1,0 +1,1065 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="node,gulp,jest,browserify,eslint,react," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> 前端靜態開發環境設計 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" 前端靜態開發環境設計 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="前端開發環境設計GitHub
+目的讓前端可以在開發期間獨立後端進行組件的開發及維護，使用react、scss、jade  " />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" 前端靜態開發環境設計 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="前端開發環境設計GitHub
+目的讓前端可以在開發期間獨立後端進行組件的開發及維護，使用react、scss、jade  " />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" 前端靜態開發環境設計 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              前端靜態開發環境設計
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2017-04-18
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/node/">node</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/node/工作環境/">工作環境</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/node/工作環境/tool/">tool</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/04/18/reactmockjs/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/18/reactmockjs/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="前端開發環境設計"><a href="#前端開發環境設計" class="headerlink" title="前端開發環境設計"></a>前端開發環境設計</h1><p><a href="https://github.com/lauraluo/reactMockjs" target="_blank" rel="external">GitHub</a></p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>讓前端可以在開發期間獨立後端進行組件的開發及維護，使用react、scss、jade  </p>
+<a id="more"></a>
+<h2 id="功能簡介"><a href="#功能簡介" class="headerlink" title="功能簡介"></a>功能簡介</h2><ul>
+<li>伺服器： <a href="http://expressjs.com/zh-tw/" target="_blank" rel="external">node Express </a>  </li>
+<li>Javascript Lint： <a href="http://eslint.org/" target="_blank" rel="external">eslint</a>  </li>
+<li>Javascript Bundle：<a href="http://browserify.org/" target="_blank" rel="external">browserify</a>、<a href="https://github.com/substack/watchify" target="_blank" rel="external">watchify</a>、<a href="https://github.com/babel/babelify" target="_blank" rel="external">babelify</a>  </li>
+<li>單元測試工具： <a href="https://facebook.github.io/jest/" target="_blank" rel="external">jest</a>、<a href="https://github.com/airbnb/enzyme" target="_blank" rel="external">enzyme</a>、  </li>
+<li>ES6兼容：<a href="https://babeljs.io/" target="_blank" rel="external">babel</a> (es2015、<a href="https://babeljs.io/docs/plugins/transform-class-properties/" target="_blank" rel="external">transform-class-properties</a>)  </li>
+<li>即改即看結果：<a href="http://livereload.com/" target="_blank" rel="external">livereload</a>  </li>
+<li>組件展示：<a href="https://github.com/storybooks/react-storybook" target="_blank" rel="external">storybook</a>  </li>
+<li>前端自動化工具：<a href="http://gulpjs.com/" target="_blank" rel="external">gulp</a>  </li>
+</ul>
+<h2 id="環境準備"><a href="#環境準備" class="headerlink" title="環境準備"></a>環境準備</h2><p>安裝node v7.7.3以上  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">到 [官網](https://nodejs.org/en/)下載安裝包，並安裝</div></pre></td></tr></table></figure>
+<p>使用npm全域安裝gulp  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g gulp</div></pre></td></tr></table></figure>
+<p>使用npm全域安裝 storybook  </p>
+<pre><code>npm install -g getstorybook
+</code></pre><p>安裝react單元測試工具  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g jest-cli</div></pre></td></tr></table></figure>
+<p>安裝所有專案需要的nodel module包：請先移動到專案目錄底下，並且在終端機輸入以下指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm isntall</div></pre></td></tr></table></figure>
+<p>安裝chrome extenstion livereload外掛  </p>
+<p><img src="https://quip.com/blob/ORVAAAN6LpO/Vpbi6vt1sh40SelOXFrXJQ?a=VIBTnICsKW9ungi3TLvC3VmgkdGGrYGnyEKVQH6FfyQa" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">到chrome extension中心 ( [連結](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=zh-TW) )下載擴充</div></pre></td></tr></table></figure>
+<h3 id="測試環境是否成功安裝"><a href="#測試環境是否成功安裝" class="headerlink" title="測試環境是否成功安裝"></a>測試環境是否成功安裝</h3><p>請在終端機輸入以下命令  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp develop</div></pre></td></tr></table></figure>
+<p>如果環境正確運作的話，你可以在<a href="http://localhost:3002" target="_blank" rel="external">http://localhost:3002</a> 看到你的首頁</p>
+<h2 id="開發環境介紹"><a href="#開發環境介紹" class="headerlink" title="開發環境介紹"></a>開發環境介紹</h2><h3 id="scss"><a href="#scss" class="headerlink" title="scss"></a>scss</h3><ul>
+<li>原始檔在<code>./src/scss</code>目錄底下  </li>
+<li>編譯過的css檔案在<code>./public/css/</code>底下  </li>
+</ul>
+<h3 id="javascript-jsx"><a href="#javascript-jsx" class="headerlink" title="javascript(jsx)"></a>javascript(jsx)</h3><p>新增一個React組件：創健一個<code>DemoComponent.jsx</code>，並放置在<code>src/components/demo/</code>目錄底下  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="comment">//引用node module裡的react，並使用變數"React"代表</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DemoComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span>(props) &#123;</div><div class="line">        <span class="keyword">super</span>(props);</div><div class="line">        <span class="keyword">this</span>.state = &#123;&#125;;</div><div class="line">    &#125;</div><div class="line">    render() &#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;div&gt;</div><div class="line">                &lt;p&gt;this is demo&lt;/p&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> DemoComponent;</div></pre></td></tr></table></figure>
+<ul>
+<li>組件(component)檔名一律大寫駝峰</li>
+<li>使用es6的<a href="https://wohugb.gitbooks.io/ecmascript-6/content/docs/class.html" target="_blank" rel="external">module system</a></li>
+</ul>
+<p>引用一個React組件，並在網頁上安裝這個組件：新增一個<code>demo.jsx</code>檔，放置在<code>./src</code>目錄底下  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> DemoComponent <span class="keyword">from</span> <span class="string">'./components/demo/TestComponent'</span>;  </div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span>;  </div><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;  </div><div class="line"></div><div class="line">ReactDOM.render(  </div><div class="line">    &lt;DemoComponent/&gt;,  </div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'demo'</span>)  </div><div class="line">)</div></pre></td></tr></table></figure>
+<ul>
+<li>一個頁面通常只會有一隻初始化用的jsx檔，其他都是被引用的module。  </li>
+<li>同時它也會是javascript bundle的入口，預設都在<code>/src</code>，第一層目錄底下。  </li>
+<li>bundle工具會無視第二層目錄底下的其他js或是jsx檔。</li>
+<li>bundle完的檔案，會在<code>public/js</code>目錄底下，繼承檔名並且加上後綴：*.bundle.js</li>
+</ul>
+<blockquote>
+<p>有關於es5與es6之間，react的語法差異可以參考<a href="http://blog.techbridge.cc/2016/04/04/react-react-native-es5-es6-cheat-sheet" target="_blank" rel="external">這篇文章</a></p>
+</blockquote>
+<h3 id="使用node-express-新增一個網站頁面"><a href="#使用node-express-新增一個網站頁面" class="headerlink" title="使用node(express)新增一個網站頁面"></a>使用node(express)新增一個網站頁面</h3><p>首先，新增一個<code>index.jade</code>檔, 並放置在<code>views/demo</code>目錄底下  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//宣告layout  </div><div class="line">extends ../_layout  </div><div class="line">//在此設定必需要在，頁面載入前引用的javascript(不含共用)  </div><div class="line">block headScripts  </div><div class="line">    //script(src=&quot;js/test.bundle.js&quot;)  </div><div class="line"></div><div class="line">block styles  </div><div class="line">    //在此設定必需要在此頁引用的樣式(不含共用)  </div><div class="line">    //link(rel=&quot;stylesheet&quot;, href=&quot;/css/test.css&quot;)  </div><div class="line"></div><div class="line">block content  </div><div class="line">    h1 This is Demo  </div><div class="line">    div#demo  </div><div class="line"></div><div class="line">block scripts  </div><div class="line">    //在此設定必需要在，頁面載入後引用的javascript(不含共用)  </div><div class="line">    //script(src=&quot;js/demo.bundle.js&quot;)</div></pre></td></tr></table></figure>
+<ul>
+<li>引入的其他資源(腳本/樣式/圖檔)路徑階相對於<code>public</code>目錄底下  </li>
+<li>可以利用資料夾組織及管理你的頁面  </li>
+<li>可以在該視圖上載入所需腳本及樣式檔：  </li>
+<li><code>block headScripts</code>：必需要在頁面載入前引用的javascript(不含共用)  </li>
+<li><code>block styles</code>：必需要在此頁引用的樣式(不含共用)  </li>
+<li><code>block content</code>：jade (html)文本  </li>
+<li><code>block scripts</code>：頁面載入後(body結尾前)引用的javascript(不含共用)  </li>
+</ul>
+<p>在專案根目錄底打開<code>server.js</code>，在檔案中增加下列程式碼片段  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">app.get(<span class="string">'/demo'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;  </div><div class="line">    <span class="comment">//利用res物件指定回傳視圖的路徑(相對於專案根目錄)  </span></div><div class="line">    res.render(<span class="string">'demo/index.jade'</span>);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在沒有指定檔名的狀況，預設會讀取指定目錄底下的index.jade檔，因此我們可以省略如下：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//與上一段程式碼，會獲得一樣的結果。  </span></div><div class="line">app.get(<span class="string">'/demo'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;  </div><div class="line">    res.render(<span class="string">'demo'</span>);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>req：請求物件  </li>
+<li>res：回饋物件，可以在這裡指定回傳的視圖，以及資料  </li>
+</ul>
+<p>最後你應該能在 <a href="http://localhost:3002/demo" target="_blank" rel="external">http://localhost:3002/demo</a>  看見你的網頁  </p>
+<blockquote>
+<p>這裡在node express稱之為新增一個router，雷同於.net MVC在controller底下新增一個action</p>
+</blockquote>
+<h3 id="使用Mock-js生成隨機數據，攔載ajax"><a href="#使用Mock-js生成隨機數據，攔載ajax" class="headerlink" title="使用Mock.js生成隨機數據，攔載ajax"></a>使用Mock.js生成隨機數據，攔載ajax</h3><p>原理/思路：在開發過程中為了保持功能模組的純淨，將假資料的邏輯跟相關程式碼，集中放置在<code>McokComponent.jsx</code>，開發者可以依開發需求客制化這個組件，並且利用<a href="https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e" target="_blank" rel="external">HOC</a>的方式裝飾你的組件。</p>
+<p>再說明實例之前，讓我們先了解一些需要知道的基本知識：</p>
+<ul>
+<li>React的裝飾者模式：React Higher Order Components(hoc)參考<a href="https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e" target="_blank" rel="external">React Higher Order Components in depth</a></li>
+<li>工具Mock.js的詳細介紹：參考<a href="http://mockjs.com/" target="_blank" rel="external">官方文件</a></li>
+</ul>
+<p>使用方式如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> RootComponent <span class="keyword">from</span> <span class="string">'./components/index/RootComponent'</span>;</div><div class="line"><span class="keyword">import</span> MockProvider <span class="keyword">from</span> <span class="string">'./components/index/MockProvider'</span></div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span>;</div><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="comment">//將模組與假資料連結在一起</span></div><div class="line"><span class="keyword">var</span> Index = MockProvider(RootComponent);</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">	&lt;Index/&gt;,</div><div class="line">	<span class="built_in">document</span>.getElementById(<span class="string">'index'</span>)</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>明白使用邏輯後，讓我們看看<code>MockProvider</code>的程式碼長什麼樣子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> Mock <span class="keyword">from</span> <span class="string">'mockjs'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">AttachedToMock</span>(<span class="params">WrappedComponent, configs</span>) </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MockComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">        <span class="keyword">constructor</span>(props) &#123;</div><div class="line">            <span class="keyword">super</span>(props);</div><div class="line">            <span class="comment">//宣告假資料的長相</span></div><div class="line">            <span class="keyword">this</span>.mockTemplate = &#123;</div><div class="line">                <span class="string">'list|1-10'</span>: [</div><div class="line">                    &#123;</div><div class="line">                        <span class="string">'id|+1'</span>: <span class="number">1</span>,</div><div class="line">                        <span class="string">'email'</span>: <span class="string">'@EMAIL'</span></div><div class="line">                    &#125;</div><div class="line">                ]</div><div class="line">            &#125;;</div><div class="line">            <span class="comment">//利用mock產生初始化資料</span></div><div class="line">            <span class="keyword">this</span>.state = &#123;<span class="attr">initData</span>: Mock.mock(<span class="keyword">this</span>.mockTemplate)&#125;;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        componentWillMount = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="comment">//欄截所有對*.json發送的ajax,並回傳設計好的資料結構</span></div><div class="line">            Mock.mock(<span class="regexp">/\.json/</span>, <span class="keyword">this</span>.mockTemplate);</div><div class="line">            Mock.setup(&#123;<span class="attr">timeout</span>: <span class="string">'200-600'</span>&#125;);</div><div class="line">            </div><div class="line">        &#125;</div><div class="line"></div><div class="line">        render() &#123;</div><div class="line">            <span class="keyword">return</span> &lt;WrappedComponent  initData=&#123;this.state.initData&#125; &#123;...this.props&#125;/&gt;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return MockComponent;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default AttachedToMock;</div></pre></td></tr></table></figure>
+<ul>
+<li>正式發佈程式時，所有import <em> from  `</em>/MockProvider<code>相關的路徑，都會被替換為</code>src/components/core/ReplaceMockProvider`，以防開發者在發佈程式的過程中，不小心打包到含有假資料的程式碼。</li>
+<li>你可以在<a href="http://localhost:3002" target="_blank" rel="external">http://localhost:3002</a>,看見結果</li>
+</ul>
+<h3 id="啟用livereload功能"><a href="#啟用livereload功能" class="headerlink" title="啟用livereload功能"></a>啟用livereload功能</h3><p>要使用livereload請安裝對應的瀏覽器外掛，需手動啟用(預設狀況為不開啟)。啟用方式以Chrome為例：點擊右上方Icon，當Icon中間的圓點為實心的灰色，代表功能正常啟用。 </p>
+<p><img src="https://quip.com/blob/ORVAAAN6LpO/-KT4YPoyFBB0woOLvMusKA?a=8GJJNKVS6af7aLtaMJJ9J3EeYL2r0xZtiyUuSMVHVDAa" alt=""></p>
+<h3 id="撰寫單元測試"><a href="#撰寫單元測試" class="headerlink" title="撰寫單元測試"></a>撰寫單元測試</h3><p>在<code>src/components/demo</code>目錄底下，新增一個<code>DemoComponent.spec.jsx</code>檔案，並加入以下程式碼。  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>  </div><div class="line"><span class="keyword">import</span> &#123; expect &#125; <span class="keyword">from</span> <span class="string">'chai'</span>; <span class="comment">//引用斷言庫 </span></div><div class="line"><span class="keyword">import</span> &#123;mount, render, shallow&#125; <span class="keyword">from</span> <span class="string">'enzyme'</span>  </div><div class="line"><span class="keyword">import</span> DemoComponent <span class="keyword">from</span> <span class="string">"./DemoComponent"</span>  </div><div class="line"></div><div class="line">describe(<span class="string">'DemoComponent: '</span>, () =&gt; &#123;  </div><div class="line"></div><div class="line">    <span class="keyword">const</span> wrapper = mount(&lt;DemoComponent/&gt;);  </div><div class="line"></div><div class="line">    it(<span class="string">'應該要顯示文字，"this is demo"'</span>, () =&gt; &#123;  </div><div class="line">        expect(wrapper.text()).to.contain(<span class="string">'this is demo'</span>);  </div><div class="line">    &#125;)  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>打開終端機，進入專案目錄，輸入以下指令，運行測試結果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jest src/components/demo/DemoComponent.spec.jsx</div></pre></td></tr></table></figure></p>
+<p>測試結果如下</p>
+<p><img src="https://quip.com/blob/ORVAAAN6LpO/zNCcAzd-vbkqZBqCSbyoww?a=qj739YiKZ0CPYASHX9vRlOh2XkKagIa3TmCYUt8YAN0a" alt=""></p>
+<h2 id="運行開發環境"><a href="#運行開發環境" class="headerlink" title="運行開發環境"></a>運行開發環境</h2><h3 id="使用vscode"><a href="#使用vscode" class="headerlink" title="使用vscode"></a>使用vscode</h3><p>打開偵錯頁籤 &gt; 選擇<code>開發模式</code>  &gt; 按下綠色箭頭運行  </p>
+<p><img src="https://quip.com/blob/ORVAAAN6LpO/u0UMNPEi4xyFYp1VUHDGUA?a=GafA5Nm7WFBclBxj4w7NsJB1RHoe70pMMSGyeSpsYhAa" alt=""></p>
+<blockquote>
+<p>障礙排除：使用vscode時，有時無法正常停止運行，請參考<a href="http://stackoverflow.com/questions/28564077/grunt-task-freeing-up-the-port" target="_blank" rel="external">這篇作法</a>，移除被佔用的port</p>
+</blockquote>
+<h3 id="使用終端機指令"><a href="#使用終端機指令" class="headerlink" title="使用終端機指令"></a>使用終端機指令</h3><p>在vscode界面上按下快速鍵，<code>cmd+shift+M</code>，打開終端機輸入命令字元  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp develop</div></pre></td></tr></table></figure>
+<h2 id="發佈程式碼"><a href="#發佈程式碼" class="headerlink" title="發佈程式碼"></a>發佈程式碼</h2><p>由於本環境僅用作前端人員獨立的開發環境，發佈模式的目的在於：將javascript進行壓縮，其它與開發模式並無差異。  </p>
+<h3 id="使用vscode-1"><a href="#使用vscode-1" class="headerlink" title="使用vscode"></a>使用vscode</h3><p>打開偵錯頁籤 &gt; 選擇<code>發佈模式</code>  &gt; 按下綠色箭頭運行  </p>
+<p><img src="https://quip.com/blob/ORVAAAN6LpO/1fdcqZreNn_qfOHkW5y5jA?a=aa1fhIGZnMKIihwSnrDdNX7XB6Z5oWvdmBaZx2ia8Msa" alt=""></p>
+<h3 id="使用終端機機指令"><a href="#使用終端機機指令" class="headerlink" title="使用終端機機指令"></a>使用終端機機指令</h3><p>在vscode界面上按下快速鍵 <code>cmd+shift+M</code>，打開終端機輸入命令字元  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp deploy</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如何將程式同步到正式環境，請參考<a href="http://google.com.tw" target="_blank" rel="external">這一篇文章(待補)</a></p>
+</blockquote>
+<h2 id="運行測試任務"><a href="#運行測試任務" class="headerlink" title="運行測試任務"></a>運行測試任務</h2><p>在vscode界面上按下快速鍵 <code>cmd+shift+M</code>，打開終端機輸入命令字元  </p>
+<h3 id="批次測試"><a href="#批次測試" class="headerlink" title="批次測試"></a>批次測試</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm test</div></pre></td></tr></table></figure>
+<h3 id="指定單一測試任務"><a href="#指定單一測試任務" class="headerlink" title="指定單一測試任務"></a>指定單一測試任務</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jest path/to/my-test.jsx</div></pre></td></tr></table></figure>
+<blockquote>
+<p>關於測試的寫作技巧，請參考<a href="http://google.com.tw" target="_blank" rel="external">這一篇文章(待補)</a></p>
+</blockquote>
+<h2 id="運行Storybook-組件展示"><a href="#運行Storybook-組件展示" class="headerlink" title="運行Storybook(組件展示)"></a>運行Storybook(組件展示)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run storybook</div></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="專案結構及檔案說明"><a href="#專案結構及檔案說明" class="headerlink" title="專案結構及檔案說明"></a>專案結構及檔案說明</h3><p>請參考專案底下的<code>fileStructure.txt</code>  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">├── README.md  </div><div class="line">├── config <span class="comment">//node config  </span></div><div class="line">├── fileStructure.txt <span class="comment">//檔案結構說明  </span></div><div class="line">├── gulpfile.js  </div><div class="line">├── package.json  <span class="comment">//node專案檔</span></div><div class="line">├── public <span class="comment">//編譯完的程式碼，除了圖檔images外，開發者應該不會需要編輯</span></div><div class="line">|  ├── css   </div><div class="line">|  ├── images <span class="comment">//圖檔  </span></div><div class="line">|  └── js <span class="comment">//javascript bundle的結果，*.bundle.js</span></div><div class="line">├── server.js  <span class="comment">//node express</span></div><div class="line">├── src <span class="comment">//原始程式碼(src底下的第一層jsx為程式打包的入口)  </span></div><div class="line">|  ├── components <span class="comment">//react組件  </span></div><div class="line">|  ├── demo.jsx <span class="comment">//bundle入口  </span></div><div class="line">|  ├── index.jsx <span class="comment">//bundle入口     </span></div><div class="line">|  └── scss <span class="comment">//樣式檔目錄  </span></div><div class="line">├── stories <span class="comment">//模組展式</span></div><div class="line">├── views <span class="comment">//視圖  </span></div><div class="line">├── wdio.conf.js  </div><div class="line">└── yarn.lock</div></pre></td></tr></table></figure>
+<h3 id="專案相關網址"><a href="#專案相關網址" class="headerlink" title="專案相關網址"></a>專案相關網址</h3><ul>
+<li>開發環境  <a href="http://localhost:3002/" target="_blank" rel="external">http://localhost:3002</a>  </li>
+<li>storybook <a href="http://localhost:6006/" target="_blank" rel="external">http://localhost:6006</a>  </li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node/"> #node </a>
+          
+            <a href="/tags/gulp/"> #gulp </a>
+          
+            <a href="/tags/jest/"> #jest </a>
+          
+            <a href="/tags/browserify/"> #browserify </a>
+          
+            <a href="/tags/eslint/"> #eslint </a>
+          
+            <a href="/tags/react/"> #react </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/13/chromeExtension-30/">Chrome Extension 開發與實作 30</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前端開發環境設計"><span class="nav-number">1.</span> <span class="nav-text">前端開發環境設計</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目的"><span class="nav-number">1.1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能簡介"><span class="nav-number">1.2.</span> <span class="nav-text">功能簡介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#環境準備"><span class="nav-number">1.3.</span> <span class="nav-text">環境準備</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#測試環境是否成功安裝"><span class="nav-number">1.3.1.</span> <span class="nav-text">測試環境是否成功安裝</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#開發環境介紹"><span class="nav-number">1.4.</span> <span class="nav-text">開發環境介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scss"><span class="nav-number">1.4.1.</span> <span class="nav-text">scss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript-jsx"><span class="nav-number">1.4.2.</span> <span class="nav-text">javascript(jsx)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用node-express-新增一個網站頁面"><span class="nav-number">1.4.3.</span> <span class="nav-text">使用node(express)新增一個網站頁面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Mock-js生成隨機數據，攔載ajax"><span class="nav-number">1.4.4.</span> <span class="nav-text">使用Mock.js生成隨機數據，攔載ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#啟用livereload功能"><span class="nav-number">1.4.5.</span> <span class="nav-text">啟用livereload功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撰寫單元測試"><span class="nav-number">1.4.6.</span> <span class="nav-text">撰寫單元測試</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#運行開發環境"><span class="nav-number">1.5.</span> <span class="nav-text">運行開發環境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用vscode"><span class="nav-number">1.5.1.</span> <span class="nav-text">使用vscode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用終端機指令"><span class="nav-number">1.5.2.</span> <span class="nav-text">使用終端機指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#發佈程式碼"><span class="nav-number">1.6.</span> <span class="nav-text">發佈程式碼</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用vscode-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">使用vscode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用終端機機指令"><span class="nav-number">1.6.2.</span> <span class="nav-text">使用終端機機指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#運行測試任務"><span class="nav-number">1.7.</span> <span class="nav-text">運行測試任務</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#批次測試"><span class="nav-number">1.7.1.</span> <span class="nav-text">批次測試</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定單一測試任務"><span class="nav-number">1.7.2.</span> <span class="nav-text">指定單一測試任務</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#運行Storybook-組件展示"><span class="nav-number">1.8.</span> <span class="nav-text">運行Storybook(組件展示)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.9.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#專案結構及檔案說明"><span class="nav-number">1.9.1.</span> <span class="nav-text">專案結構及檔案說明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#專案相關網址"><span class="nav-number">1.9.2.</span> <span class="nav-text">專案相關網址</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2017/04/18/reactmockjs/';
+      var disqus_url = 'http://yoursite.com/2017/04/18/reactmockjs/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>
