@@ -1,0 +1,1071 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 03 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 03 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="官網導讀：架構總覽Architecture Overview進一步的說明什麼是Chrome Extension
+
+extension是一個HTML、CSS、JS、images，以及你extension中需要的任何東西，打包成的一個壓縮檔，事實上extension就是一個web pages app。  
+
+這個APP可以使用Broswer提供的API，諸如：Standard JavaScript APIs、XMLHttpRequest、HTML5  等，跟一般的web APP無異。  
+
+extension可以經由 content scripts 或 cross-origin XMLHttpRequests與頁面或伺服器互動。  
+
+extension也可以用JS與Chrome的功能互動，例如：bookmarks 及 tabs.  
+
+" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 03 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="官網導讀：架構總覽Architecture Overview進一步的說明什麼是Chrome Extension
+
+extension是一個HTML、CSS、JS、images，以及你extension中需要的任何東西，打包成的一個壓縮檔，事實上extension就是一個web pages app。  
+
+這個APP可以使用Broswer提供的API，諸如：Standard JavaScript APIs、XMLHttpRequest、HTML5  等，跟一般的web APP無異。  
+
+extension可以經由 content scripts 或 cross-origin XMLHttpRequests與頁面或伺服器互動。  
+
+extension也可以用JS與Chrome的功能互動，例如：bookmarks 及 tabs.  
+
+" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 03 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Home
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 03
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2016-12-17
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/17/chromeExtension-3/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/17/chromeExtension-3/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="官網導讀：架構總覽Architecture-Overview"><a href="#官網導讀：架構總覽Architecture-Overview" class="headerlink" title="官網導讀：架構總覽Architecture Overview"></a>官網導讀：架構總覽Architecture Overview</h1><p>進一步的說明什麼是Chrome Extension</p>
+<ul>
+<li><p>extension是一個HTML、CSS、JS、images，以及你extension中需要的任何東西，打包成的一個壓縮檔，事實上extension就是一個web pages app。  </p>
+</li>
+<li><p>這個APP可以使用<a href="https://developer.chrome.com/extensions/api_other" target="_blank" rel="external">Broswer提供的API</a>，諸如：Standard JavaScript APIs、XMLHttpRequest、HTML5  等，跟一般的web APP無異。  </p>
+</li>
+<li><p>extension可以經由 <a href="https://developer.chrome.com/extensions/content_scripts" target="_blank" rel="external">content scripts</a> 或 <a href="https://developer.chrome.com/extensions/xhr" target="_blank" rel="external">cross-origin XMLHttpRequests</a>與頁面或伺服器互動。  </p>
+</li>
+<li><p>extension也可以用JS與Chrome的功能互動，例如：<a href="https://developer.chrome.com/extensions/bookmarks" target="_blank" rel="external">bookmarks</a> 及 <a href="https://developer.chrome.com/extensions/tabs" target="_blank" rel="external">tabs</a>.  </p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="Extensions-的-UI元素"><a href="#Extensions-的-UI元素" class="headerlink" title="Extensions 的 UI元素"></a>Extensions 的 UI元素</h2><p><img src="https://quip.com/blob/UScAAA2xiSA/5g8b9JFZYUz6kXSvkQdTfw?a=2YoqfZWiamhM6uHUsASfV2j0fSvhb3HC24Y8wGZj4owa" alt=""> 如上圖所示，有很多的Extension(但不是全部)會實作在Chrome界面上添加UI元素，有兩個最常使用的UI元素：browser action 以及 page actons，你的extension可以擇其一。 下面是官方建議的選擇方案：  </p>
+<ul>
+<li><p>選擇 <a href="https://developer.chrome.com/extensions/browserAction" target="_blank" rel="external">browser actions</a>：當你的extension跟大部份的網址都會有所互動的時後 。  </p>
+</li>
+<li><p>選擇 <a href="https://developer.chrome.com/extensions/pageAction" target="_blank" rel="external">page actions</a> ： 當你的extension需要在特定的網域底下才需要啟動。  </p>
+</li>
+</ul>
+<blockquote>
+<p>Extenstion還有其他添加UI的方式，詳細的資訊可以參考官網的 <a href="https://developer.chrome.com/extensions/devguide" target="_blank" rel="external">Developer’s Guide</a>，我們會在後面繼續討論。</p>
+</blockquote>
+<h2 id="檔案結構"><a href="#檔案結構" class="headerlink" title="檔案結構"></a>檔案結構</h2><p>所有的extension擁有下列檔案：  </p>
+<ul>
+<li><p>一個安裝檔 ：<strong>manifest file</strong>  </p>
+</li>
+<li><p>一個或多個 HTML檔 ：除了Chrome佈景的extension。   </p>
+</li>
+<li><p>非必要：一個或多個JS檔  </p>
+</li>
+<li><p>非必要： 所有其他你需要的靜態檔案，例如 圖片檔 、.css檔   </p>
+</li>
+</ul>
+<p>所以的檔案都放置在一個目錄底下，當你經由 <a href="https://chrome.google.com/webstore/developer/dashboard" target="_blank" rel="external">Chrome Developer Dashboard</a>發佈，他會為打包成一個.crx包裝檔。關於發佈的詳情教學，我們會在後面討論。   </p>
+<h3 id="引用資源路徑："><a href="#引用資源路徑：" class="headerlink" title="引用資源路徑："></a>引用資源路徑：</h3><p>方案一 ：使用相對路徑來引用你extension裡的資源，例如下面這段HTML用來引進你extension根目錄底下的圖片  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;images/myimage.png&quot;&gt;</div></pre></td></tr></table></figure>
+<p>方案二：使用絕對路徑來引用資源(還記得上一篇debug的時後我們可以經由這個路徑直接進到popup.html嗎)  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome-extension://&lt;extensionID&gt;/&lt;pathToFile&gt;</div></pre></td></tr></table></figure>
+<p>但<code>&lt;extensionID&gt;</code>在載入不同的資料夾時是會變，想像一下你有可能在不同的電腦工作，又或者是多人協同往發extension。為了避免寫死ID，你可以使用<a href="https://developer.chrome.com/extensions/i18n#overview-predefined" target="_blank" rel="external">predefined message</a>裡提供的<code>@@extension_id</code>來動態取得 extension ID。  </p>
+<p>使用情境如下 CSS檔：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body &#123;  </div><div class="line">    background-image:url(&apos;chrome-extension://__MSG_@@extension_id__/background.png&apos;);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>當你正式方佈你的extension時(經由 <a href="https://chrome.google.com/webstore/developer/dashboard" target="_blank" rel="external">Chrome Developer Dashboard</a>發佈)，你會得到一個永久的ID，你可以考慮替換它。  </p>
+<blockquote>
+<p>這裡有一點要提醒： <code>@@extension_id</code> 只能用html中使用的 JS或CSS等外部資源中，無法直接使用在HTML裡。例如使用它在HTML中直接指定img tag的src是無效的。</p>
+</blockquote>
+<h3 id="安裝檔：manifest-json"><a href="#安裝檔：manifest-json" class="headerlink" title="安裝檔：manifest.json"></a>安裝檔：<code>manifest.json</code></h3><p>提供一切extension的資訊，提供哪些檔案，功能。下面是一個典型的安裝檔 ：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">  &quot;name&quot;: &quot;My Extension&quot;,  </div><div class="line">  &quot;version&quot;: &quot;2.1&quot;,  </div><div class="line">  &quot;description&quot;: &quot;Gets information from Google.&quot;,  </div><div class="line">  &quot;icons&quot;: &#123; &quot;128&quot;: &quot;icon_128.png&quot; &#125;,  </div><div class="line">  &quot;background&quot;: &#123;  </div><div class="line">    &quot;persistent&quot;: false,  </div><div class="line">    &quot;scripts&quot;: [&quot;bg.js&quot;]  </div><div class="line">  &#125;,  </div><div class="line">  &quot;permissions&quot;: [&quot;http://*.google.com/&quot;, &quot;https://*.google.com/&quot;],  </div><div class="line">  &quot;browser_action&quot;: &#123;  </div><div class="line">    &quot;default_title&quot;: &quot;&quot;,  </div><div class="line">    &quot;default_icon&quot;: &quot;icon_19.png&quot;,  </div><div class="line">    &quot;default_popup&quot;: &quot;popup.html&quot;  </div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>更多資完整資訊可參考<a href="https://developer.chrome.com/extensions/manifest" target="_blank" rel="external">官方文件 </a></p>
+</blockquote>
+<h2 id="extension的架構"><a href="#extension的架構" class="headerlink" title="extension的架構"></a>extension的架構</h2><ul>
+<li><p>The background page：大多extension擁有一個<code>background page</code>(一個看不見的頁面)，來處主要的邏輯。  </p>
+</li>
+<li><p>UI pages：extension也能擁有多個頁面去呈現與使用者互動的界面。  </p>
+</li>
+<li><p>如果extension需要與使用者正在瀏覽的頁面進行互，這個extension必需使用<code>content script</code>。  </p>
+</li>
+</ul>
+<h3 id="背景頁面-The-background-page"><a href="#背景頁面-The-background-page" class="headerlink" title="背景頁面 The background page"></a>背景頁面 The background page</h3><p>使用background.html來定義，可以包含JS來處理extension的行為。有兩種類型的bacnground pages：  </p>
+<ul>
+<li><p><a href="https://developer.chrome.com/extensions/background_pages" target="_blank" rel="external">persistent background pages</a>：就跟他的名字一樣，永遠是開啟的狀態。  </p>
+</li>
+<li><p><a href="https://developer.chrome.com/extensions/event_pages" target="_blank" rel="external">event pages</a>：在需要的時後才會開啟。  </p>
+</li>
+</ul>
+<p>除非你很確定background page 總是需要運行，否則官方建議你一律優先考慮event pages。我們會在後面討論細節。  </p>
+<h3 id="介面元素頁頁面-UI-pages"><a href="#介面元素頁頁面-UI-pages" class="headerlink" title="介面元素頁頁面 UI pages"></a>介面元素頁頁面 UI pages</h3><ul>
+<li><p>extension可以包含普通的html來呈現UI，例如前面提到的broswer action 借由html來實作popup。  </p>
+</li>
+<li><p><a href="https://developer.chrome.com/extensions/optionsV2" target="_blank" rel="external">options page</a>：用來讓使用者設定extension的參數(如果你允許的話)。  </p>
+</li>
+<li><p><span data-section-style="11" style="max-width:73%"><img src="https://quip.com/blob/UScAAA2xiSA/_P6g0SahvDlAWn2lM11S_A?a=vCZIAOG9WKUg6PJEWcILakr8Y7VU11k34wPYngWoRVIa" alt=""></span></p>
+</li>
+<li><p><a href="https://developer.chrome.com/extensions/override" target="_blank" rel="external">override page</a>：用來替換點chrome新開TAB時的預設頁面、或是書籤管理頁面、或瀏覽紀錄頁(三擇一)</p>
+</li>
+<li><p><span data-section-style="11" style="max-width:100%"><img src="https://quip.com/blob/UScAAA2xiSA/JxdlZBl_lgCS9yI_xJw0Mg?a=MxvUOFuwwL6e6Z0ZUQ6DBJZWpMtAKs9oPCdg8bPgD0Aa" alt=""></span></p>
+</li>
+<li>其他：你可以使用 <a href="https://developer.chrome.com/extensions/tabs#method-create" target="_blank" rel="external">tabs.create</a> 或是<code>window.open()</code>開啟你extenstion裡的任何html檔   </li>
+</ul>
+<p>在extension裡的所有的介面元素頁面可以存取彼此的DOM還有調用彼此的方法。下圖展示了一個基本架構：這個架構中popup可以直接調用background page的方法 。關於頁面間的溝通詳請，稍後我們會繼續探討。  </p>
+<h3 id="Content-scripts"><a href="#Content-scripts" class="headerlink" title="Content scripts"></a>Content scripts</h3><p>如果你需要與使用者正在載入的頁面互動，那麼你就需要使用content script。請把content script想像成是載入頁面的一部份，而不是extension的一部份。  </p>
+<p>content script 可以讀取及維護目前瀏覽頁面的細節。如下圖所示：我們可以籍由content script讀取並且更新使用者正在瀏覽頁面的DOM物件。  </p>
+<p><img src="https://quip.com/blob/UScAAA2xiSA/bJL0HoB8QvKM2qNTtr3NKQ?a=wDho7na9qljiP9HduBQG9Dawq9OgownSw80BF9a1zRsa" alt=""> content script完全切離你的extension，它負責與extension本體傳遞訊息。如下圖所示：我們可以在content script找到頁面中有RSS feed時通知extension本體，又或者反過來由extension本體請求content script改變載入頁面的外觀。<br><img src="https://quip.com/blob/UScAAA2xiSA/amyeZO-yPOdWsDQGLtyMtQ?a=Vuf3CuqYEuIQjZbc7sMq1NGZjo3DsnBSwvzUMlJHHnga" alt="">  </p>
+<blockquote>
+<p>content script的細節，請參考<a href="https://developer.chrome.com/extensions/content_scripts" target="_blank" rel="external">官方文件</a></p>
+</blockquote>
+<h2 id="Using-the-chrome-APIs"><a href="#Using-the-chrome-APIs" class="headerlink" title="Using the chrome.* APIs"></a>Using the chrome.* APIs</h2><h3 id="extension裡有兩個種類的-Browser-API"><a href="#extension裡有兩個種類的-Browser-API" class="headerlink" title="extension裡有兩個種類的 Browser API"></a>extension裡有兩個種類的 Browser API</h3><ul>
+<li><p>一種是網頁平常使用的瀏覽器API(諸如：Standard JavaScript APIs、XMLHttpRequest、HTML5  和 other emerging APIs)，  </p>
+</li>
+<li><p>另一種是，Chrome獨有的，特別提供extension來調用的API。我們稱之為： <code>chrome.* APIs</code>  </p>
+</li>
+</ul>
+<p>例如，你可以使用window.open()來開啟新的URL，但如果你要在Chrome中指定使用哪個視窗來打開也，你就需要Chrome獨有的<a href="https://developer.chrome.com/extensions/tabs#method-create" target="_blank" rel="external">tabs.create</a>方法。  </p>
+<h3 id="同步與非同步"><a href="#同步與非同步" class="headerlink" title="同步與非同步"></a>同步與非同步</h3><p><strong>大多數的chrome.* APIs都是非同步的</strong>，他不等操作結束而是立即執行，所以我們使用callback的方式來取得執行的結果。下面是一個非同步API的調用格式：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.create(object createProperties, function callback)</div></pre></td></tr></table></figure>
+<p>其他同步的<strong>chrome.* APIs</strong>，不提供callback的傳入，因為JS的執行序一定會等到處理完畢，才回傳值。下面是個同步API的調用格式：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">string chrome.runtime.getURL()//`string` 則代表了這個方法回傳值的類型。</div></pre></td></tr></table></figure>
+<blockquote>
+<p>這裡補充一個JS的非同步概念：JS是一個單執行緒的語言，每當他需要跟伺服器或是Browser的API溝通時，他會發送請求，通常這個服務在接受或是處理完畢時，會告知瀏覽器執行回調。所以說JS的非同步通常都發生在需要跟其他服務溝通的時後。(例如：AJAX、WebGL、Canvas、Video、doucment ready等)</p>
+</blockquote>
+<p>範例：callback的調用  </p>
+<p>一個錯誤的程式碼：因為chrome.tabs.query是一個非同步方法  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/THIS CODE DOESN&apos;T WORK  </div><div class="line">var tab = chrome.tabs.query(&#123;&apos;active&apos;: true&#125;); //WRONG!!!  </div><div class="line">chrome.tabs.update(tab.id, &#123;url:newUrl&#125;);  </div><div class="line">someOtherFunction();</div></pre></td></tr></table></figure>
+<p>官方文件中記載的正確使用格式 ：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.query(object queryInfo, function callback)</div></pre></td></tr></table></figure>
+<p>修正後的程式碼：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//THIS CODE WORKS  </div><div class="line">chrome.tabs.query(&#123;&apos;active&apos;: true&#125;, function(tabs) &#123;  </div><div class="line">  chrome.tabs.update(tabs[0].id, &#123;url: newUrl&#125;);  </div><div class="line">&#125;);  </div><div class="line">someOtherFunction();</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="extension裡的不同-html-頁面間的交流-：Communication-between-pages"><a href="#extension裡的不同-html-頁面間的交流-：Communication-between-pages" class="headerlink" title="extension裡的不同(html)頁面間的交流 ：Communication between pages"></a>extension裡的不同(html)頁面間的交流 ：Communication between pages</h2><p>頁面間經常需要交流，因為不同頁面間的執行發生在同一個<strong>執行緒(extension的執行序)。頁面間可以宣告方法來直接呼叫彼此的方法或操作對方的DOM物件。</strong>  </p>
+<p>如果需要取得extension的其他page，可以使用 <a href="https://developer.chrome.com/extensions/extension" target="_blank" rel="external"><code>chrome.extension</code></a>的各種方法(例如<code>getViews()</code>、<code>getBackgroundPage()</code>)。一旦這個page被參照到，你便可以使用其中的方法，也可以維護其他頁面中的DOM物件。  </p>
+<blockquote>
+<p>不確定這裡的頁面交流包不包括 背景頁面 ，還是特指前面討論到的介面元素頁頁面/ UI pages(屬於extension的視圖)，因為背景頁面其實是很特別的存在並不會被使用者看見，開發者也不會直接操作到html，後面有時間我再去証實。</p>
+</blockquote>
+<h2 id="保存數據以及無痕模式-：Saving-data-and-incognito-mode"><a href="#保存數據以及無痕模式-：Saving-data-and-incognito-mode" class="headerlink" title="保存數據以及無痕模式 ：Saving data and incognito mode"></a>保存數據以及無痕模式 ：Saving data and incognito mode</h2><p>所有的extension都可以使用<a href="https://developer.chrome.com/extensions/storage" target="_blank" rel="external">storage</a> API, 也就是 HTML5 <a href="http://dev.w3.org/html5/webstorage/" target="_blank" rel="external">web storage API</a> (就像是<code>localStorage</code>)，也可以把數據送到伺服器端去作儲存。當你要儲存任何東西，第一個要考慮到的便是無痕模式。  </p>
+<p>通常的狀況下，extension是不會在無痕模式下被啟用(要特地在擴充功能的管理介面開啟)，你要考慮到你使用者在無痕模式下，期望你的extension如何運行。  </p>
+<p>無痕模式承諾不會留下任何資料的追蹤，所以請發揮你的功德心保証你會尊守這個承諾。例如：如果你的extension會把所有的瀏覽記錄都傳送到雲端。那麼在無痕模式下你不能這麼作。  </p>
+<p>要在程式中判斷是否為無痕模式，你可以使用 <a href="https://developer.chrome.com/extensions/tabs#type-Tab" target="_blank" rel="external">tabs.Tab</a> 或是<a href="https://developer.chrome.com/extensions/windows#type-Window" target="_blank" rel="external">windows.Window</a> 物件，來檢查 <code>incognito</code> 屬性。以下是範列：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function saveTabData(tab, data) &#123;  </div><div class="line">  if (tab.incognito) &#123;  </div><div class="line">    chrome.runtime.getBackgroundPage(function(bgPage) &#123;  </div><div class="line">      bgPage[tab.url] = data;      // Persist data ONLY in memory  </div><div class="line">    &#125;);  </div><div class="line">  &#125; else &#123;  </div><div class="line">    localStorage[tab.url] = data;  // OK to store data  </div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p>官方教程：<a href="https://developer.chrome.com/extensions" target="_blank" rel="external">https://developer.chrome.com/extensions</a> </p>
+<ul>
+<li>快速連結- 入門  <a href="https://developer.chrome.com/extensions/getstarted" target="_blank" rel="external">https://developer.chrome.com/extensions/getstarted</a></li>
+<li>快速連結- 概述 <a href="https://developer.chrome.com/extensions/overview" target="_blank" rel="external">https://developer.chrome.com/extensions/overview</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/16/chromeExtension-2/">Chrome Extension 開發與實作 02</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/18/chromeExtension-4/">Chrome Extension 開發與實作 04</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#官網導讀：架構總覽Architecture-Overview"><span class="nav-number">1.</span> <span class="nav-text">官網導讀：架構總覽Architecture Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Extensions-的-UI元素"><span class="nav-number">1.1.</span> <span class="nav-text">Extensions 的 UI元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#檔案結構"><span class="nav-number">1.2.</span> <span class="nav-text">檔案結構</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用資源路徑："><span class="nav-number">1.2.1.</span> <span class="nav-text">引用資源路徑：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝檔：manifest-json"><span class="nav-number">1.2.2.</span> <span class="nav-text">安裝檔：manifest.json</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extension的架構"><span class="nav-number">1.3.</span> <span class="nav-text">extension的架構</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景頁面-The-background-page"><span class="nav-number">1.3.1.</span> <span class="nav-text">背景頁面 The background page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介面元素頁頁面-UI-pages"><span class="nav-number">1.3.2.</span> <span class="nav-text">介面元素頁頁面 UI pages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-scripts"><span class="nav-number">1.3.3.</span> <span class="nav-text">Content scripts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-the-chrome-APIs"><span class="nav-number">1.4.</span> <span class="nav-text">Using the chrome.* APIs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#extension裡有兩個種類的-Browser-API"><span class="nav-number">1.4.1.</span> <span class="nav-text">extension裡有兩個種類的 Browser API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步與非同步"><span class="nav-number">1.4.2.</span> <span class="nav-text">同步與非同步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extension裡的不同-html-頁面間的交流-：Communication-between-pages"><span class="nav-number">1.5.</span> <span class="nav-text">extension裡的不同(html)頁面間的交流 ：Communication between pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存數據以及無痕模式-：Saving-data-and-incognito-mode"><span class="nav-number">1.6.</span> <span class="nav-text">保存數據以及無痕模式 ：Saving data and incognito mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#資料來源"><span class="nav-number">1.7.</span> <span class="nav-text">資料來源</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2016/12/17/chromeExtension-3/';
+      var disqus_url = 'http://yoursite.com/2016/12/17/chromeExtension-3/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>
