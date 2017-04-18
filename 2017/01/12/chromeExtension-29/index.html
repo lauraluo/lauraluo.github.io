@@ -35,18 +35,18 @@
 
 
 
-  <title> Chrome Extension 開發與實作 30 // 羅拉拉的開發日誌 </title>
+  <title> Chrome Extension 開發與實作 29 // 羅拉拉的開發日誌 </title>
 
 <!-- Schema.org markup for Google+ -->
-<meta itemprop="name" content=" Chrome Extension 開發與實作 30 // 羅拉拉的開發日誌 ">
-<meta property="og:description" content="正式發佈擴充功能正式發佈流程" />
+<meta itemprop="name" content=" Chrome Extension 開發與實作 29 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="安全性相關的設置跨網域的數據存取XHR一般網頁的腳本都受限於Same-origin policy(相同來源政策)的規範，不能跨網域向遠端請求及接收數據(例如ajax)，但擴充功能不在此限，只要你在安裝檔裡宣告跨站權限，就能進行跨網域的處理。(但記得一定要宣告)" />
 
 
 <!-- Open Graph data -->
-<meta property="og:title" content=" Chrome Extension 開發與實作 30 // 羅拉拉的開發日誌 " />
-<meta property="og:description" content="正式發佈擴充功能正式發佈流程" />
+<meta property="og:title" content=" Chrome Extension 開發與實作 29 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="安全性相關的設置跨網域的數據存取XHR一般網頁的腳本都受限於Same-origin policy(相同來源政策)的規範，不能跨網域向遠端請求及接收數據(例如ajax)，但擴充功能不在此限，只要你在安裝檔裡宣告跨站權限，就能進行跨網域的處理。(但記得一定要宣告)" />
 <meta property="og:url" content="http://http://lauraluo.github.io" />
-<meta property="og:site_name" content=" Chrome Extension 開發與實作 30 // 羅拉拉的開發日誌 ">
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 29 // 羅拉拉的開發日誌 ">
 <meta property="og:type" content="article" />
 <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
 
@@ -135,7 +135,7 @@
           
           
             
-              Chrome Extension 開發與實作 30
+              Chrome Extension 開發與實作 29
             
           
         </h1>
@@ -143,7 +143,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          Posted on 2017-01-13
+          Posted on 2017-01-12
         </span>
 
         
@@ -171,8 +171,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/01/13/chromeExtension-30/#comments" >
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/13/chromeExtension-30/"></span>
+            <a href="/2017/01/12/chromeExtension-29/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/12/chromeExtension-29/"></span>
             </a>
           </span>
           
@@ -186,42 +186,83 @@
       
 
       
-        <h1 id="正式發佈擴充功能"><a href="#正式發佈擴充功能" class="headerlink" title="正式發佈擴充功能"></a>正式發佈擴充功能</h1><p>正式發佈流程</p>
-<a id="more"></a>
-<h2 id="一-使用Google帳號-登入Chrome-線上應用程式商店後台"><a href="#一-使用Google帳號-登入Chrome-線上應用程式商店後台" class="headerlink" title="一  使用Google帳號 登入Chrome 線上應用程式商店後台"></a>一  使用Google帳號 <a href="https://chrome.google.com/webstore/developer/dashboard" target="_blank" rel="external">登入Chrome 線上應用程式商店</a>後台</h2><p><img src="https://quip.com/blob/FXQAAAUrVsJ/_xBelV8XWaxcCRbZdzGpeA?a=UQ6jKCo8txH25CO0JWVpNNAzR61aBw93Efgi4vVzxQoa" alt=""></p>
-<h2 id="二-首先我們先進行帳號的驗証動作"><a href="#二-首先我們先進行帳號的驗証動作" class="headerlink" title="二 首先我們先進行帳號的驗証動作"></a>二 首先我們先進行帳號的驗証動作</h2><p>這裡比較奇怪的是，我必需點擊新增商品再回到首頁，或是點擊立即付款，再回到首頁才能看到我的開發帳號填寫介面，不然就像上一張圖一樣空白。  </p>
-<p><img src="https://quip.com/blob/FXQAAAUrVsJ/OgHtd_NvQJgKoYGeLXdNjA?a=jrLO92gFvfL0AK1p7HxnixQeKNhaD597ncRJrvG4acoa" alt=""></p>
-<p>這裡的資料都不是必填的，一旦填寫，就要作好心理準備這些資料會在前台出現：例如地址、email、不想的填的人可以不用填。  </p>
-<h2 id="三-接著先付款進行帳號的驗証-你也可以選擇發佈前在付款-，驗証金額是五美元。"><a href="#三-接著先付款進行帳號的驗証-你也可以選擇發佈前在付款-，驗証金額是五美元。" class="headerlink" title="三 接著先付款進行帳號的驗証(你也可以選擇發佈前在付款)，驗証金額是五美元。"></a>三 接著先付款進行帳號的驗証(你也可以選擇發佈前在付款)，驗証金額是五美元。</h2><p>這個付款是一次性的，但一個帳號上傳項目是有限的，你也可以使用你的google皮夾付款。  </p>
-<p><img src="https://quip.com/blob/FXQAAAUrVsJ/8ty_k9ggupNZks97fCkpCg?a=O2QjctFajEmVaaaexajGJdDbJ12VtBUwbBFje7lk7jwa" alt=""></p>
-<p><img src="https://quip.com/blob/FXQAAAUrVsJ/b1zc0JVx1_mXPLvWaokKpw?a=brOVbCBF63PapICbpKiVlAPAwpqpbGlWr2vTwv9rK5Aa" alt=""></p>
-<p>以上圖片來源是<a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">電子書</a>  </p>
-<h2 id="四-上傳你的擴充功能-請打包成zip檔"><a href="#四-上傳你的擴充功能-請打包成zip檔" class="headerlink" title="四 上傳你的擴充功能(請打包成zip檔)"></a>四 上傳你的擴充功能(請打包成zip檔)</h2><p><img src="https://quip.com/blob/FXQAAAUrVsJ/X0yd3yKDAwmdsNIS15wfRw?a=f6CC1oz2AjVBEnu1D8NaM48dYNHWyFHYTIatUhwtPXEa" alt=""></p>
-<p>上傳記得在擴充功能中，補齊相關的圖示，下以為例：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">    &quot;manifest_version&quot;: 2,  </div><div class="line">    &quot;name&quot;: &quot;ShowTime&quot;,  </div><div class="line">    &quot;description&quot;: &quot;Extension to show the current time and date&quot;,  </div><div class="line">    &quot;version&quot;: &quot;1.2&quot;,  </div><div class="line">    &quot;browser_action&quot;: &#123;  </div><div class="line">        &quot;default_title&quot;: &quot;ShowTime&quot;,  </div><div class="line">        &quot;default_icon&quot;: &quot;icon.png&quot;, //瀏覽器按鈕的icon  </div><div class="line">        &quot;default_popup&quot;: &quot;popup.html&quot;  </div><div class="line">    &#125;,  </div><div class="line">    &quot;icons&quot;: &#123;  </div><div class="line">        &quot;16&quot;: &quot;icon16.png&quot;, //用來作為extension頁面的favicon  </div><div class="line">        &quot;48&quot; : &quot;icon48.png&quot;, //利用來講管理者頁面  </div><div class="line">        &quot;128&quot;: &quot;icon128.png&quot; //用來在安裝期間，以及和Chrome網上應用商店使用  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上傳壓縮檔時，如果設定檔的格式有誤，或是指定的資源路徑找不到都會在這時提出錯誤警告  </p>
-<p><img src="https://quip.com/blob/FXQAAAUrVsJ/teYMrUhHVpranCq8QRhi7A?a=HqxFsar7vjZ0o6MXfL7vwsR1XGZtHefL7oPT4LZA72Ya" alt=""></p>
-<h2 id="五-上傳成功後進入擴充功能的編輯頁面"><a href="#五-上傳成功後進入擴充功能的編輯頁面" class="headerlink" title="五 上傳成功後進入擴充功能的編輯頁面"></a>五 上傳成功後進入擴充功能的編輯頁面</h2><p><img src="https://quip.com/blob/FXQAAAUrVsJ/1aY_Nc6eyJJoblu-rGTjyg?a=OfSYaAo1NRrvAwSOjC9yqy4YtckiJ5a6aC1Sa7DDXIMa" alt=""></p>
-<h2 id="六-填寫擴充功能的前台基本資料"><a href="#六-填寫擴充功能的前台基本資料" class="headerlink" title="六 填寫擴充功能的前台基本資料"></a>六 填寫擴充功能的前台基本資料</h2><p>除了說明文字之外，還需上傳一些前台展示圖片<br><img src="http://ithelp.ithome.com.tw/upload/images/20170113/20079450eLZFcbVlkg.png" alt="http://ithelp.ithome.com.tw/upload/images/20170113/20079450eLZFcbVlkg.png"></p>
-<p>可以點擊<strong>宣傳方塊預覽</strong>查看圖片展示區塊的預覽  </p>
-<p><img src="https://quip.com/blob/FXQAAAUrVsJ/KijzQV6NBQIjivzC8VCIWA?a=6XunjO7enalwHTNaFuJeIlnyGLEgLkbIDT2shW63Xm0a" alt=""></p>
-<p>你可以為你的擴充功能選擇付費或免費的資訊、發佈的地區、類型、等等相關的發佈操作，最後你可以選擇下列三種式發佈你的應用程式 </p>
-<p><img src="https://quip.com/blob/FXQAAAUrVsJ/8Azdck2p3Ji__7WxYDHJhw?a=3eDiI8PV5yuICV2R1Rh8F5lOJxmLF51qCC0Kti1LcbAa" alt=""></p>
-<p>按下發佈前，如果你還沒付款的話後台會要求你完成帳號驗証的付款動作，但在付費前你可以先預覽你的發佈結果：</p>
-<p>(注意預覽畫面的安裝按鈕是不能按的)</p>
-<p><img src="https://quip.com/blob/FXQAAAUrVsJ/_Vx-OBA_EvaimceXGo4VEg?a=cGtSTBbgqX7JHdFhmciDKAZRabaZwGLeaFM1LIFUwcMa" alt=""></p>
-<h2 id="七-發佈結果"><a href="#七-發佈結果" class="headerlink" title="七 發佈結果"></a>七 發佈結果</h2><p>由於我選擇不公開發佈我的擴充功能，所以只有下列網址才能看到我的擴充功能頁面，商店不會搜尋到：<br><a href="https://chrome.google.com/webstore/detail/%E5%BD%B1%E7%89%87%E6%88%AA%E5%9C%96%E7%AF%84%E4%BE%8B/dhaadjpgjpdbbplnfdhclnlcmpgglnbl" target="_blank" rel="external">擴充功能發佈頁連結</a>  </p>
-<p>因為官方流程的關係，很容易誤導開發人員預覽頁的網址就是發佈網址，但事實上正確的網址是回到<a href="https://chrome.google.com/webstore/developer/dashboard" target="_blank" rel="external">後台首頁</a>，在項目清單頁上點擊擴充功能的名字。  </p>
-<p><img src="https://quip.com/blob/FXQAAAUrVsJ/zWKdA4UHYmCO5QwV0vpK5w?a=7b0t4klMzDQG3G3550WVPnVZaq0APulpRNhLyKRJaCca" alt=""></p>
-<p>另外點擊右測的更多資訊，你能取得擴充功能的ID以及金鑰。  </p>
-<p><img src="https://quip.com/blob/FXQAAAUrVsJ/G5dWs6qgi2EZH5zJiEVVBg?a=3tUtzKa12jqhQ47ygQAEyiEM6L0DecPTu7rI2gDD1lga" alt=""></p>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a href="http://www.flaticon.com/authors/madebyoliver" target="_blank" rel="external">以上示例中的ICON作者</a>  </li>
-<li><a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">http://www.apress.com/us/book/9781484217740</a>  </li>
+        <h1 id="安全性相關的設置"><a href="#安全性相關的設置" class="headerlink" title="安全性相關的設置"></a>安全性相關的設置</h1><h2 id="跨網域的數據存取XHR"><a href="#跨網域的數據存取XHR" class="headerlink" title="跨網域的數據存取XHR"></a>跨網域的數據存取XHR</h2><p>一般網頁的腳本都受限於Same-origin policy(相同來源政策)的規範，不能跨網域向遠端請求及接收數據(例如ajax)，但擴充功能不在此限，只要你在安裝檔裡宣告跨站權限，就能進行跨網域的處理。(但記得一定要宣告)<br><a id="more"></a></p>
+<h3 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;我的擴充功能&quot;,</div><div class="line">  ...</div><div class="line">  &quot;permissions&quot;: [</div><div class="line">    &quot;http://www.google.com/&quot;</div><div class="line">  ],</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>網域可以使用完整的內容，也能使用<a href="https://crxdoc-zh.appspot.com/extensions/match_patterns" target="_blank" rel="external">匹配表達示</a>，例如以下的網址都是合法的：</p>
+<ul>
+<li>“<a href="http://www.google.com/" target="_blank" rel="external">http://www.google.com/</a>“</li>
+<li>“<a href="http://www.gmail.com/" target="_blank" rel="external">http://www.gmail.com/</a>“</li>
+<li>“<a href="http://*.google.com/" target="_blank" rel="external">http://*.google.com/</a>“</li>
+<li>“<a href="http:/" target="_blank" rel="external">http://</a>*/“</li>
 </ul>
-<h2 id="鐵人賽完賽感想"><a href="#鐵人賽完賽感想" class="headerlink" title="鐵人賽完賽感想"></a>鐵人賽完賽感想</h2><p>僅以此三十篇文章作為我入行三年多來的一個紀念。  </p>
-<p>三年半前我是一個從設計踏入前端領域的小菜菜，在程式的路上有許多給予我信念指導以及技術指導的前輩、同輩、後輩們。感謝你們讓我專注於解決問題，而不是工具本身，鼓勵我從根本去了解問題而不被表現所迷惑，也讓我時常發各種以為不可能的可能，突破很多本來以為的限制，有你們才有今天的我。  </p>
-<p>最後特別感謝鼓勵我參賽及給我研究方向的良師以及益友們。</p>
+<p>網址匹配表達示的格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">協議://host(主機)/path(路徑)</div></pre></td></tr></table></figure>
+<p>在使用匹配表達式指定跨網域存取的權限時，必需連同服務+主機一起指定，所以如果你的協議有兩種，就得分開宣告：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;permissions&quot;: [</div><div class="line">  &quot;http://www.google.com/&quot;,</div><div class="line">  &quot;https://www.google.com/&quot;</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>而path在這裡指定了也沒有作用，會直接被忽略</p>
+<h2 id="內容的安全策略宣告"><a href="#內容的安全策略宣告" class="headerlink" title="內容的安全策略宣告"></a>內容的安全策略宣告</h2><p>你可以在安裝檔中設定你的<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" target="_blank" rel="external">安全策略</a>，以限制文本中引用不同類型的內容時，其來源限制，以下為例：(要注意上一段xhr在講的跟遠端的數據請求，這裡指的是上下文即內容裡外部資源的安全性)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ...,</div><div class="line">  &quot;content_security_policy&quot;: &quot;[POLICY STRING GOES HERE]&quot;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只要在設定檔裡有設定 <a href="https://crxdoc-zh.appspot.com/extensions/manifestVersion" target="_blank" rel="external"><code>manifest_version</code></a>(清單文件)就會有默認的安全策略，而如果宣告為2版，則預設的安全性如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">script-src &apos;self&apos;; object-src &apos;self&apos;</div></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src" target="_blank" rel="external"><code>script-src</code></a>：腳本的安全策略。</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/object-src" target="_blank" rel="external"><code>object-src</code></a>：指定一些html嵌入的資源，其存取限制，例如<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object" target="_blank" rel="external"><code>&lt;object&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed" target="_blank" rel="external"><code>&lt;embed&gt;</code></a>, 以及 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/applet" target="_blank" rel="external"><code>&lt;applet&gt;</code></a> 元素(常用來導入flash等多媒體件)，的安全設置。</li>
+<li>以上兩個內容的值被指定為 ‘self’，代表只允許來自相同來源的內容（相同的協議，域名和端口）。</li>
+</ul>
+<blockquote>
+<p>有關安全性策略可設置的細節，這裡爬到一篇不錯的文章，提供給大家參考：<a href="https://imququ.com/post/content-security-policy-reference.html" target="_blank" rel="external">Content Security Policy 介绍</a></p>
+</blockquote>
+<p>根據上面的默認值，擴充功能的腳本會有下列限制：</p>
+<h3 id="一、使用字串執行腳本求值的相關方法全部禁用"><a href="#一、使用字串執行腳本求值的相關方法全部禁用" class="headerlink" title="一、使用字串執行腳本求值的相關方法全部禁用"></a>一、使用字串執行腳本求值的相關方法全部禁用</h3><p>以下為例。其中的new Function就是導致無法直接用cdn取用vue資源庫的原因。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">alert(eval(&quot;foo.bar.baz&quot;));</div><div class="line">window.setTimeout(&quot;alert(&apos;hi&apos;)&quot;, 10);</div><div class="line">window.setInterval(&quot;alert(&apos;hi&apos;)&quot;, 10);</div><div class="line">new Function(&quot;return foo.bar.baz&quot;);</div></pre></td></tr></table></figure>
+<p>由於上面的方法都存在跨網域腳本攻擊的風險，所以用以下方式取代：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">alert(foo &amp;&amp; foo.bar &amp;&amp; foo.bar.baz);</div><div class="line">window.setTimeout(function() &#123; alert(&apos;hi&apos;); &#125;, 10);</div><div class="line">window.setInterval(function() &#123; alert(&apos;hi&apos;); &#125;, 10);</div><div class="line">function() &#123; return foo &amp;&amp; foo.bar &amp;&amp; foo.bar.baz &#125;;</div></pre></td></tr></table></figure>
+<h3 id="二、限制了嵌入腳本"><a href="#二、限制了嵌入腳本" class="headerlink" title="二、限制了嵌入腳本"></a>二、限制了嵌入腳本</h3><p>禁用在HTML裡使用<code>&lt;script&gt;</code>這個區塊宣告，例外也不能直接在DOM物件上綁定事件：例如<code>&lt;button onclick=&quot;...&quot;&gt;</code></p>
+<h3 id="三、限制遠端內容的存取"><a href="#三、限制遠端內容的存取" class="headerlink" title="三、限制遠端內容的存取"></a>三、限制遠端內容的存取</h3><p>也就是不能使用CDN加載外部的資源庫，以下為例：</p>
+<p>錯誤示範</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;範例&lt;/title&gt;</div><div class="line">    &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;button&gt;按鈕&lt;/button&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>正確示範</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;我做的很棒的弹出内容！&lt;/title&gt;</div><div class="line">    &lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;button&gt;单击看看会发生什么！!&lt;/button&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="放寬內容的安全政策"><a href="#放寬內容的安全政策" class="headerlink" title="放寬內容的安全政策"></a>放寬內容的安全政策</h2><h3 id="一、放寬內嵌腳本"><a href="#一、放寬內嵌腳本" class="headerlink" title="一、放寬內嵌腳本"></a>一、放寬內嵌腳本</h3><ul>
+<li>Chrome 45以前，沒有任何的方法可以放寬內嵌腳本的安全政策，所以你設定什麼都沒差。</li>
+<li>Chrome 46以後，允許你使用<a href="https://www.w3.org/TR/2015/CR-CSP2-20150721/#script-src-hash-usage" target="_blank" rel="external"><strong>Hash usage for script elements</strong></a>的方法內嵌腳本。(基於 base64-encoded的)。</li>
+</ul>
+<h3 id="二、放寬遠端內容的存取"><a href="#二、放寬遠端內容的存取" class="headerlink" title="二、放寬遠端內容的存取"></a>二、放寬遠端內容的存取</h3><p>你可以使用白名單的指定，來放寬遠端內容的嵌入：</p>
+<ul>
+<li>Chrome目前只允許以下協議設定為白名單：<ul>
+<li><code>blob</code></li>
+<li><code>filesystem</code></li>
+<li><code>https：</code>必需與主機(host)一起宣告</li>
+<li><code>chrome-extension</code> <code>：</code>必需與主機(host)一起宣告</li>
+<li><code>chrome-extension-resource</code></li>
+</ul>
+</li>
+</ul>
+<p>為了開發方便，我們也允許你使用地端的位址作為白名單，例如： <code>http://127.0.0.1</code>以及<code>`http://localhost</code> `</p>
+<blockquote>
+<p>以上標示為”必需與主機(host)一起宣告”，即代表不允許https :, https：// <em>和https：//</em>.com之類的匹配表達，但允許使用類似https：//*.example.com的子域名匹配表達</p>
+</blockquote>
+<p>允許通過HTTPS加載來自example.com的腳本資源的放寬策略定義如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;content_security_policy&quot;: &quot;script-src &apos;self&apos; https://example.com; object-src &apos;self&apos;&quot;</div></pre></td></tr></table></figure>
+<p>一個常見的使用情境便是開發人員必需使用GA追蹤擴充功能成效時，必需放寬腳本內容的權限以便嵌入GA代碼，大家可以參考官方範例：<a href="https://developer.chrome.com/extensions/tut_analytics" target="_blank" rel="external">Tutorial: Google Analytics</a></p>
+<h3 id="三、放寬求值相關的方法"><a href="#三、放寬求值相關的方法" class="headerlink" title="三、放寬求值相關的方法"></a>三、放寬求值相關的方法</h3><p>禁止 eval 及類似構造，像 setTimeout(String)、setInterval(String) 以及 new Function(String) 的策略也可以通過向您的策略添加 unsafe-eval 來放鬆，以下為例：(但官方強列的希望你不要這麼作)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;content_security_policy&quot;: &quot;script-src &apos;self&apos; &apos;unsafe-eval&apos;; object-src &apos;self&apos;&quot;</div></pre></td></tr></table></figure>
+<h2 id="使用更嚴格的內容的安全政策"><a href="#使用更嚴格的內容的安全政策" class="headerlink" title="使用更嚴格的內容的安全政策"></a>使用更嚴格的內容的安全政策</h2><p>經由default_src ‘self’的宣告，可以讓內容來源的安全性更加嚴格，例如<code>[Mappy](https://developer.chrome.com/extensions/samples#mappy)這個官方範例就</code>展示了這個擴充功能只能引入來自己擴充功能文件檔裡的資源：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;content_security_policy&quot;: &quot;default-src &apos;none&apos;; style-src &apos;self&apos;; script-src &apos;self&apos;; connect-src https://maps.googleapis.com; img-src https://maps.google.com&quot;</div></pre></td></tr></table></figure>
+<h2 id="內容腳本與內容安全政策-一個例外"><a href="#內容腳本與內容安全政策-一個例外" class="headerlink" title="內容腳本與內容安全政策(一個例外)"></a>內容腳本與內容安全政策(一個例外)</h2><p>內容於本不受限於內容安全政策，主要是因為內容腳本不是html，所以他可以自由的使用eval這種建構方法，我們也可以使用內容腳本在使用者的網頁裡嵌入script區塊，以下為例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">document.write(&quot;&lt;script&gt;alert(1);&lt;/script&gt;&quot;);</div></pre></td></tr></table></figure>
+<p>無論安裝檔裡怎麼宣告內容的安全性政策，這段代碼 一執行到就會立即alert。但如果你今天插入的內嵌Script裡牽扯到了事件，狀況就會變的比較複雜，以下為例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">document.write(&quot;&lt;button id=&apos;mybutton&apos;&gt;click me&lt;/button&gt;&apos;&quot;);</div><div class="line">    var button = document.getElementById(&apos;mybutton&apos;);</div><div class="line">    button.onclick = function() &#123;</div><div class="line">      alert(1);</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<p>由於點擊事件不會馬上執行，而是等點擊事件後，才執行內容腳本的代碼，於是網頁的內容安全政策可能會禁止腳本的執行(注意，不是擴充功能的，而是使用者頁面的網站)。</p>
+<p>另一個狀況也可能導致結果不如開發者預期，以下為例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var script = document.createElement(&apos;script&apos;);</div><div class="line">    script.innerHTML = &apos;eval(&quot;alert(1);&quot;)&apos;;</div><div class="line">    document.getElementById(&apos;body&apos;).appendChild(script);</div></pre></td></tr></table></figure>
+<p>上面的例子中，eval的達行同樣會被網頁的內容安全政策阻檔而不能運行。</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/contentSecurityPolicy" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/contentSecurityPolicy</a></li>
+<li><a href="https://developer.chrome.com/extensions/contentSecurityPolicy" target="_blank" rel="external">https://developer.chrome.com/extensions/contentSecurityPolicy</a></li>
+<li><a href="https://imququ.com/post/content-security-policy-reference.html" target="_blank" rel="external">https://imququ.com/post/content-security-policy-reference.html</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/CSP/Using_Content_Security_Policy" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/Security/CSP/Using_Content_Security_Policy</a></li>
+</ul>
 
       
     </div>
@@ -243,13 +284,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/12/chromeExtension-29/">Chrome Extension 開發與實作 29</a>
+              <a href="/2017/01/11/chromeExtension-28/">Chrome Extension 開發與實作 2</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/18/chromeExtension-25/">Chrome Extension 開發與實作 25</a>
+              <a href="/2017/01/13/chromeExtension-30/">Chrome Extension 開發與實作 30</a>
             
           </div>
         </div>
@@ -365,7 +406,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正式發佈擴充功能"><span class="nav-number">1.</span> <span class="nav-text">正式發佈擴充功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-使用Google帳號-登入Chrome-線上應用程式商店後台"><span class="nav-number">1.1.</span> <span class="nav-text">一  使用Google帳號 登入Chrome 線上應用程式商店後台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-首先我們先進行帳號的驗証動作"><span class="nav-number">1.2.</span> <span class="nav-text">二 首先我們先進行帳號的驗証動作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-接著先付款進行帳號的驗証-你也可以選擇發佈前在付款-，驗証金額是五美元。"><span class="nav-number">1.3.</span> <span class="nav-text">三 接著先付款進行帳號的驗証(你也可以選擇發佈前在付款)，驗証金額是五美元。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-上傳你的擴充功能-請打包成zip檔"><span class="nav-number">1.4.</span> <span class="nav-text">四 上傳你的擴充功能(請打包成zip檔)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-上傳成功後進入擴充功能的編輯頁面"><span class="nav-number">1.5.</span> <span class="nav-text">五 上傳成功後進入擴充功能的編輯頁面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-填寫擴充功能的前台基本資料"><span class="nav-number">1.6.</span> <span class="nav-text">六 填寫擴充功能的前台基本資料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七-發佈結果"><span class="nav-number">1.7.</span> <span class="nav-text">七 發佈結果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">1.8.</span> <span class="nav-text">參考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鐵人賽完賽感想"><span class="nav-number">1.9.</span> <span class="nav-text">鐵人賽完賽感想</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安全性相關的設置"><span class="nav-number">1.</span> <span class="nav-text">安全性相關的設置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#跨網域的數據存取XHR"><span class="nav-number">1.1.</span> <span class="nav-text">跨網域的數據存取XHR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#設定檔"><span class="nav-number">1.1.1.</span> <span class="nav-text">設定檔</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#內容的安全策略宣告"><span class="nav-number">1.2.</span> <span class="nav-text">內容的安全策略宣告</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、使用字串執行腳本求值的相關方法全部禁用"><span class="nav-number">1.2.1.</span> <span class="nav-text">一、使用字串執行腳本求值的相關方法全部禁用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、限制了嵌入腳本"><span class="nav-number">1.2.2.</span> <span class="nav-text">二、限制了嵌入腳本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、限制遠端內容的存取"><span class="nav-number">1.2.3.</span> <span class="nav-text">三、限制遠端內容的存取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#放寬內容的安全政策"><span class="nav-number">1.3.</span> <span class="nav-text">放寬內容的安全政策</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、放寬內嵌腳本"><span class="nav-number">1.3.1.</span> <span class="nav-text">一、放寬內嵌腳本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、放寬遠端內容的存取"><span class="nav-number">1.3.2.</span> <span class="nav-text">二、放寬遠端內容的存取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、放寬求值相關的方法"><span class="nav-number">1.3.3.</span> <span class="nav-text">三、放寬求值相關的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用更嚴格的內容的安全政策"><span class="nav-number">1.4.</span> <span class="nav-text">使用更嚴格的內容的安全政策</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#內容腳本與內容安全政策-一個例外"><span class="nav-number">1.5.</span> <span class="nav-text">內容腳本與內容安全政策(一個例外)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">1.6.</span> <span class="nav-text">參考</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -935,8 +976,8 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'lauraluosblog';
-      var disqus_identifier = '2017/01/13/chromeExtension-30/';
-      var disqus_url = 'http://yoursite.com/2017/01/13/chromeExtension-30/';
+      var disqus_identifier = '2017/01/12/chromeExtension-29/';
+      var disqus_url = 'http://yoursite.com/2017/01/12/chromeExtension-29/';
 
       (function(){
         var dsq = document.createElement('script');
