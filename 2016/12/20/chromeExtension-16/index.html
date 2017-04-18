@@ -1,0 +1,1062 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 16 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 16 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="API簡介：擴充功能可以作到哪些一般網站作不到的事？鐵人賽來到了第十六天，開頭就來個中場休息復習一下我們前面學習的東西：  " />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 16 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="API簡介：擴充功能可以作到哪些一般網站作不到的事？鐵人賽來到了第十六天，開頭就來個中場休息復習一下我們前面學習的東西：  " />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 16 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 16
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2016-12-20
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/20/chromeExtension-16/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/20/chromeExtension-16/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="API簡介：擴充功能可以作到哪些一般網站作不到的事？"><a href="#API簡介：擴充功能可以作到哪些一般網站作不到的事？" class="headerlink" title="API簡介：擴充功能可以作到哪些一般網站作不到的事？"></a>API簡介：擴充功能可以作到哪些一般網站作不到的事？</h1><p>鐵人賽來到了第十六天，開頭就來個中場休息復習一下我們前面學習的東西：  </p>
+<a id="more"></a>
+<p>Extension的開發架構：  </p>
+<ul>
+<li><a href="http://ithelp.ithome.com.tw/articles/10186334" target="_blank" rel="external">Chrome Extension 開發與實作 03-官網導讀：架構總覽Architecture Overview</a>  </li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10186466" target="_blank" rel="external">Chrome Extension 開發與實作 04-名詞定義：架構的組成部份</a>  </li>
+</ul>
+<p>架構底下的各種腳本組件：  </p>
+<ul>
+<li><a href="http://ithelp.ithome.com.tw/articles/10186595" target="_blank" rel="external">Chrome Extension 開發與實作 05-腳本組件與擴充功能的執行階段</a>  </li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10186775" target="_blank" rel="external">Chrome Extension 開發與實作 06-事件腳本與背景頁面</a>  </li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10186935" target="_blank" rel="external">Chrome Extension 開發與實作 07-內容腳本(content script)之臉書下雪了</a>  </li>
+</ul>
+<p>各種輸入組件：  </p>
+<ul>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187070" target="_blank" rel="external">Chrome Extension 開發與實作 08-輸入組件:瀏覽器按鈕與頁面按鈕</a>  </li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187228" target="_blank" rel="external">Chrome Extension 開發與實作 09-啟用頁面按鈕</a>  </li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187354" target="_blank" rel="external">Chrome Extension 開發與實作 10-快捷鍵輸入組件 Shortcut Key or Commands</a>  </li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187476" target="_blank" rel="external">Chrome Extension 開發與實作 11-輸入組件 右鍵功能選單(chrome.contextMenus)</a>  </li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187579" target="_blank" rel="external">Chrome Extension 開發與實作 12-網址列輸入組件(chrome.omnibox)</a>  </li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187964" target="_blank" rel="external">Chrome Extension 開發與實作 15-使用Vue打造內容UI 輸入組件(Content UI)</a>  </li>
+</ul>
+<p>腳本組件的溝通  </p>
+<ul>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187744" target="_blank" rel="external">Chrome Extension 開發與實作 13-腳本組件之間訊息的傳遞(上)</a>  </li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187844" target="_blank" rel="external">Chrome Extension 開發與實作 14-腳本組件之間訊息的傳遞(下)</a>  </li>
+</ul>
+<p>下個段落將進一步展開，細看Chrome 提供的各種Javascript API幫助你更具體的了解擴充功能開發的各種可能性。  (事實上Chrome幾乎開放了大部份的瀏覽器功能給開發者)，在進入下一個段落前，先讓我們快速的瀏覽所有的API，為了方便記憶跟理解，我將API根據特性歸納了幾種類型：  </p>
+<blockquote>
+<p>官網上API照字母排列，實在不利用吸收跟學習 ，所以我自己進行了分類，幫助我理解擴充功能到底能作到哪些事情。</p>
+</blockquote>
+<h3 id="輸入組件："><a href="#輸入組件：" class="headerlink" title="輸入組件："></a>輸入組件：</h3><p>前面已經介紹完了  </p>
+<ul>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/omnibox" target="_blank" rel="external">chrome. omnibox</a> 網址列輸入組件   </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/contextMenus" target="_blank" rel="external">chrome.contextMenus</a> 右鍵功能選單輸入組件  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/commands" target="_blank" rel="external">chrome.commands</a> 快捷鍵輸入組件   </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/pageAction" target="_blank" rel="external">chrome.pageAction</a> 頁面按鈕輸入組件   </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/browserAction" target="_blank" rel="external">chrome. browserAction</a> 瀏覽器按鈕輸入組件  </li>
+</ul>
+<h3 id="開發擴充功能的輔助相關："><a href="#開發擴充功能的輔助相關：" class="headerlink" title="開發擴充功能的輔助相關："></a>開發擴充功能的輔助相關：</h3><ul>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/alarms" target="_blank" rel="external">alarms</a>：委託瀏覽器在指定的時間/或是指定周期執行程式碼。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/events" target="_blank" rel="external">events</a>：命名空間包含API分發事件使用的通用類型，以便在某些有意義的事情發生的時後通知你。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/i18n" target="_blank" rel="external">i18n</a>：讓你的擴充功能擁有多國語系支援  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/runtime" target="_blank" rel="external">runtime</a>：獲取後台網頁，返回安裝設定檔的資訊，監聽並響應擴充功能生命週期內的事件，您還可以使用該API將相對路徑的URL轉換為完全限定的URL。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/permissions" target="_blank" rel="external">permissions</a>： 使用腳本來動態要求原本要在安裝檔宣告的權限。  </li>
+<li><a href="https://developer.chrome.com/extensions/declarativeContent" target="_blank" rel="external">declarativeContent</a>： 在指定的內容裡執行特定的動作，我們在啟用頁面按鈕的時後有提到。  </li>
+<li><a href="https://developer.chrome.com/extensions/extension" target="_blank" rel="external">extension</a>：所有的擴充功能裡的腳本跟頁面可以使用這個共同的實例來進行溝通。  </li>
+</ul>
+<h3 id="瀏覽器設定相關："><a href="#瀏覽器設定相關：" class="headerlink" title="瀏覽器設定相關："></a>瀏覽器設定相關：</h3><ul>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/browsingData" target="_blank" rel="external">browsingData</a>：允許從地端中移除一些使用者的暫存資料，例如cookie、暫存、緩存、瀏覽紀錄錄等。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/contentSettings" target="_blank" rel="external">contentSettings</a>  ：   <ul>
+<li>控制網站能否使用 Cookie、JavaScript 和插件之類的特性。大體上說，內容設置允許您針對不同的站點（而不是全局地）自定義 Chrome 瀏覽器的行為。  </li>
+<li>例如：允不允許顯示圖片，允不允許設置Cookie，是否運行Javascript。是否運行插件，是否允許顯示彈出視窗，是否允許桌面通知。  </li>
+</ul>
+</li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/fontSettings" target="_blank" rel="external">fontSettings</a>  管理 瀏覽器的字體設置  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/privacy" target="_blank" rel="external">privacy</a>：控制有關影響使用者隱私權的瀏覽器設定。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/proxy" target="_blank" rel="external">proxy</a>：代理服務器設定   </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/history" target="_blank" rel="external">history</a> 使用 chrome.history API 與瀏覽器的歷史記錄交互，您可以添加、刪除、通過 URL 查詢瀏覽器的歷史記錄。如果您想要使用您自己的版本替換默認的歷史記錄頁面，請參見<a href="https://crxdoc-zh.appspot.com/extensions/override" target="_blank" rel="external">替代頁面</a>。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/bookmarks" target="_blank" rel="external">bookmarks</a> ： 操作瀏覽器書籤，你可以自定義一個書籤管理頁面，請參見<a href="https://crxdoc-zh.appspot.com/extensions/override" target="_blank" rel="external">替代頁面</a>。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/cookies" target="_blank" rel="external">cookies</a>：能查詢和修改Cookie，並在Cookie更改時接收通知。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/topSites" target="_blank" rel="external">topSites</a> 使用 chrome.topSites API 訪問“打開新的標籤頁”頁面中顯示的“常去網站”。  </li>
+<li><a href="https://developer.chrome.com/extensions/sessions" target="_blank" rel="external">sessions</a>：使用它可以查詢或是復原一個瀏覽器工作階段的頁籤或是視窗。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/downloads" target="_blank" rel="external">downloads</a> ：使用程式碼開始下載， 監視，操作搜尋。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/webRequest" target="_blank" rel="external">webRequest</a> ：網頁請求的生命周期事件。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/windows" target="_blank" rel="external">windows</a>  可以使用該模塊創建、修改和重新排列瀏覽器中的窗口。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/tabs" target="_blank" rel="external">tabs</a>  可以使用該 API 創建、修改或重新排列瀏覽器中的標籤頁。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/management" target="_blank" rel="external">management</a> ：管理已經安裝並且正在運行的擴充功能，當你想重新設計內建的”新增頁籤頁面”(同樣參考<a href="https://crxdoc-zh.appspot.com/extensions/override" target="_blank" rel="external">替代頁面</a>)中邏列的擴充功能清單時，這個API特別有用。(如下圖)  </li>
+<li><span data-section-style="11" style="max-width:100%"><img src="https://quip.com/blob/QHSAAAwyxNG/a7t53MREEtsOUHWxa9L1AQ?a=fGdRLzJZXjuXBUQ5lTNhyLPGSwl83TVGf9w7yISoB4sa" alt=""></span></li>
+<li><a href="https://developer.chrome.com/extensions/webNavigation" target="_blank" rel="external">webNavigation</a>  chrome的導航操作相關的通知。  </li>
+</ul>
+<h3 id="開發人員工具相關-："><a href="#開發人員工具相關-：" class="headerlink" title="開發人員工具相關 ："></a>開發人員工具相關 ：</h3><p>協助你為開發人員工具新增功能，例如<a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd" target="_blank" rel="external">Vue developertool</a>。<br><img src="https://lh3.googleusercontent.com/zfUws9vbcxMXz8Ad_PxLlcq8e1dodaV_rymPGJFUdvaOptRDR0lZOrH2ZiJw34qirwAR7YHF=s1280-h800-e365-rw" alt=""></p>
+<ul>
+<li><a href="https://developer.chrome.com/extensions/devtools.inspectedWindow" target="_blank" rel="external">devtools.inspectedWindow</a>：與開發工具視窗溝通，在窗口的上下文中執行程式碼，重新加載網頁或者獲取網頁中所有資源的列表。  </li>
+<li><a href="https://developer.chrome.com/extensions/devtools.network" target="_blank" rel="external">devtools.network</a>：獲得開發者工具裡有關network面板中顯示的與網絡請求相關的信息。  </li>
+<li><a href="https://developer.chrome.com/extensions/devtools.panels" target="_blank" rel="external">devtools.panels</a>：在開發人員工具內新增面板。也可以訪問其他的面板，還可以增加側邊欄。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/debugger" target="_blank" rel="external">debugger</a>：協助遠程debug相關的功能，可以查看官網的 <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/?utm_source=dcc&amp;utm_medium=redirect&amp;utm_campaign=2016q3" target="_blank" rel="external">Get Started with Remote Debugging Android Devices </a>。  </li>
+</ul>
+<h3 id="作業系統相關-："><a href="#作業系統相關-：" class="headerlink" title="作業系統相關 ："></a>作業系統相關 ：</h3><ul>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/idle" target="_blank" rel="external">idle</a>：使用 chrome.idle API 檢測計算機空閒狀態的更改。   </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/power" target="_blank" rel="external">power</a>： 使用 chrome.power API 修改系統的電源管理特性。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/system.cpu" target="_blank" rel="external">system.cpu</a> 使用 chrome.system.cpu API 查询 CPU 元数据。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/system.memory" target="_blank" rel="external">system.memory</a> 使用 chrome.system.memory API 獲取記憶體訊息。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/system.storage" target="_blank" rel="external">system.storage</a> 使用 chrome.system.storage API 查詢存儲設備信息，並在連接或移除可移動存儲設備時得到通知。 </li>
+<li><a href="https://developer.chrome.com/extensions/printerProvider" target="_blank" rel="external">printerProvider</a>： 允許擴充功能利用此API操作與列印相關的功能。   </li>
+</ul>
+<h3 id="Google帳號相關："><a href="#Google帳號相關：" class="headerlink" title="Google帳號相關："></a>Google帳號相關：</h3><ul>
+<li><p><a href="https://crxdoc-zh.appspot.com/extensions/gcm" target="_blank" rel="external">gcm</a>：利用goolge的<a href="http://developer.android.com/google/gcm/" target="_blank" rel="external">雲端訊息服務</a>(<a href="https://developer.android.com/google/gcm/" target="_blank" rel="external">Google Cloud Messaging</a>)來傳遞訊息。  </p>
+</li>
+<li><p><a href="https://crxdoc-zh.appspot.com/extensions/identity" target="_blank" rel="external">identity</a>：使用 chrome.identity API 獲取 OAuth2 訪問令牌，可以利用它來獲取一些Chrome登入的帳號資料。  </p>
+</li>
+<li><p><a href="https://crxdoc-zh.appspot.com/extensions/pushMessaging" target="_blank" rel="external">pushMessaging</a>：使用 chrome.pushMessaging 使應用或擴展程序能夠接收通過GCM發送消息。  </p>
+</li>
+<li><p><a href="https://crxdoc-zh.appspot.com/extensions/storage" target="_blank" rel="external">storage</a>：具有<a href="https://developer.mozilla.org/en/DOM/Storage#localStorage" target="_blank" rel="external">localStorage API</a> 相同的功能，另外提供了，儲存，獲取，以及追踪用戶數據的更改，以及跨機器的儲存資料同步。  </p>
+</li>
+</ul>
+<blockquote>
+<p>Google雲消息服務（GCM）是一項用於Android設備和Chrome應用的服務，可以向服務器發送和接收數據<a href="https://crxdoc-zh.appspot.com/extensions/gcm" target="_blank" rel="external">.chrome.gcm API</a>允許Chrome應用或擴展程序以Chrome中登錄用戶的身份訪問GCM服務。即使應用程序或擴展程序不在運行時該服務也能正常工作，例如即日使用沒有打開，日曆更新也可以推送至用戶。<br><a href="https://crxdoc-zh.appspot.com/extensions/cloudMessaging" target="_blank" rel="external">引用網址</a></p>
+</blockquote>
+<h3 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h3><ul>
+<li><a href="https://developer.chrome.com/extensions/desktopCapture" target="_blank" rel="external">desktopCapture</a>：提供畫面的串流，可以指定補獲的對象是：某個視窗、整個畫面、某個頁籤。  </li>
+<li><a href="https://developer.chrome.com/extensions/pageCapture" target="_blank" rel="external">pageCapture</a>：把頁面存取成MHTML檔。(封存的網頁檔，能用於電子郵件的寄送)  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/notifications" target="_blank" rel="external">notifications</a> ：通過模板創建豐富通知，並在系統托盤中向用戶顯示這些通知。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/tabCapture" target="_blank" rel="external">tabCapture</a>：提供當前操作頁面的畫面串流。  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/tts" target="_blank" rel="external">tts</a> / <a href="https://crxdoc-zh.appspot.com/extensions/ttsEngine" target="_blank" rel="external">ttsEngine</a> ：tts提供了一些合成語音朗讀相關功能，這個我沒細看貌似還能用來播放聲音。ttsEngine提供了一些相關的事件供你操作，也能讓你使用web技術對的聲音進行合成或輸出。官方有示範用此API打造一個朗讀時heightlight他讀到哪個文字的界面(可以參考官方<a href="https://www.youtube.com/watch/?v=5KL_ccQwAuo" target="_blank" rel="external">範例影片</a>))。</li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/webstore" target="_blank" rel="external">webstore</a>：在網頁內嵌安裝擴充功能的操作。  </li>
+<li><a href="https://developer.chrome.com/extensions/extensionTypes" target="_blank" rel="external">extensionTypes</a>：The <code>chrome.extensionTypes</code> API contains type declarations for Chrome extensions.(OK這個我真的看不懂，文件寫的也少的可憐，而且我也沒看到範例)  </li>
+</ul>
+<blockquote>
+<p>以上API不包括ChromeOS Only以及beta版的API, 完整的清單請參考<a href="https://developer.chrome.com/extensions/api_index" target="_blank" rel="external">官方網站</a>。</p>
+</blockquote>
+<h2 id="API的使用權限："><a href="#API的使用權限：" class="headerlink" title="API的使用權限："></a>API的使用權限：</h2><p>根據不同的API需要在安裝檔中宣告不同的權限設定：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&quot;permissions&quot; : [  </div><div class="line">    &quot;alarms&quot;, //Extensions-API permission  </div><div class="line">    &quot;tabs&quot;, //Extensions-API permission  </div><div class="line">    &quot;bookmarks&quot;, //Extensions-API permission  </div><div class="line">    &quot;http://www.blogger.com/&quot;, //XHR permission  </div><div class="line">    &quot;http://*.google.com/&quot; //XHR permission  </div><div class="line">],</div></pre></td></tr></table></figure>
+<p>官網的API文件會告訴你這個API需要的權限，以<a href="https://developer.chrome.com/extensions/alarms" target="_blank" rel="external">alarms</a>為例：  </p>
+<p><img src="https://quip.com/blob/QHSAAAwyxNG/MBvYg7bQK_AZxiwK56A2wg?a=OkaVOVHDBnhPdCFUveCOGUb1YNCoq23PRIyaI19nK88a" alt=""></p>
+<p>權限的宣告有兩種方式：  </p>
+<ul>
+<li>必要權限：在安裝檔中定義的權限。</li>
+<li>可選權限：使用API動態在腳本中宣告的權限，更多的資訊可以查看<a href="https://crxdoc-zh.appspot.com/extensions/permissions" target="_blank" rel="external">permissions</a> API。  <ul>
+<li>使用可選權限的好處之一是可以在要求權限的同時，與使用溝通要求權限的目的。  </li>
+</ul>
+</li>
+</ul>
+<p>部份權限的宣告會讓使用者看見授權畫面，細節可以查看以中文翻譯文件的<a href="https://crxdoc-zh.appspot.com/extensions/permission_warnings" target="_blank" rel="external">權限警告</a>。  </p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>我們快速的查看了所有的API，並對功能進行了歸納。歸網的結果讓我們了解了使用ChromeAPI不謹謹可以操作瀏覽器的設定，使用者的資料，Google帳號的存取，跨機器的資料同步，還可以為開發者工具新增功能，存取一些作業系統裡的操作。  </li>
+<li>因為API實在太多了，接下來的十多天也不能可一一介紹，所以我會挑一些我比較有興趣的部份為大家講解。  </li>
+<li>2017/1/1 - 有關於tts api的部份有誤解，已修正。<h2 id="花絮"><a href="#花絮" class="headerlink" title="花絮"></a>花絮</h2></li>
+</ul>
+<p>光是把每個API文件點開大致上看過也是花了不少時間，官網的文件寫的非常精簡，我感覺不到有想要讓我看懂的誠意，很多要把範例運行起來去看腳本才知道實際的意思(冏rz)，也有些根本就沒有範例(冏rz 2)，還有些範例有bug我得debug(冏rz 3)，所以如果我有理解錯誤的地方還請大家多多包涵。</p>
+<p>另外還要注意文件有新舊版本的問題，雖然我為了偷懶一開始看的是中文文件，但中文跟最新的版本文件還是有落差，所以我花了一些時間作比對，另外還有些API是ChromeOS專用的API，在這裡我直接先瀘掉。</p>
+<p>總得來說2016最後一PO，祝大家新年快樂。  </p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>待補</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/20/chromeExtension-6/">Chrome Extension 開發與實作 06</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/21/chromeExtension-7/">Chrome Extension 開發與實作 07</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#API簡介：擴充功能可以作到哪些一般網站作不到的事？"><span class="nav-number">1.</span> <span class="nav-text">API簡介：擴充功能可以作到哪些一般網站作不到的事？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#輸入組件："><span class="nav-number">1.0.1.</span> <span class="nav-text">輸入組件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#開發擴充功能的輔助相關："><span class="nav-number">1.0.2.</span> <span class="nav-text">開發擴充功能的輔助相關：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#瀏覽器設定相關："><span class="nav-number">1.0.3.</span> <span class="nav-text">瀏覽器設定相關：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#開發人員工具相關-："><span class="nav-number">1.0.4.</span> <span class="nav-text">開發人員工具相關 ：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作業系統相關-："><span class="nav-number">1.0.5.</span> <span class="nav-text">作業系統相關 ：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Google帳號相關："><span class="nav-number">1.0.6.</span> <span class="nav-text">Google帳號相關：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他："><span class="nav-number">1.0.7.</span> <span class="nav-text">其他：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API的使用權限："><span class="nav-number">1.1.</span> <span class="nav-text">API的使用權限：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小結"><span class="nav-number">1.2.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#花絮"><span class="nav-number">1.3.</span> <span class="nav-text">花絮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">1.4.</span> <span class="nav-text">參考資料</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2016/12/20/chromeExtension-16/';
+      var disqus_url = 'http://yoursite.com/2016/12/20/chromeExtension-16/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

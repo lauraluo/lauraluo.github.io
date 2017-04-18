@@ -1,0 +1,642 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="前端工程師,WEB,開發人生,UI/UX" />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title>
+  
+
+  
+    Web Animation (一) 基礎 // 羅拉拉的開發日誌
+  
+</title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="
+  
+
+  
+    Web Animation (一) 基礎 // 羅拉拉的開發日誌
+  
+">
+<meta property="og:description" content="前端工程師修鍊的路上" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content="
+  
+
+  
+    Web Animation (一) 基礎 // 羅拉拉的開發日誌
+  
+" />
+<meta property="og:description" content="前端工程師修鍊的路上" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content="
+  
+
+  
+    Web Animation (一) 基礎 // 羅拉拉的開發日誌
+  
+">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <meta itemprop="image" content="/images/fb_share.jpg">
+  <meta itemprop="image" content="/images/fb_share.jpg">
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column ">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+    
+      <p>mdn css參考手冊<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference</a></p>
+<p>In order to gain support for experimental CSS properties in a particular browser, you mustinclude the<br>appropriate vendor prefix and value in your stylesheet. There are just two exceptions:<br>The browser allows prefix aliases (discussed in the next section).<br>The browser follows the final W3C standard and does not require a prefix. </p>
+<h2 id="CSS3-作不到的事"><a href="#CSS3-作不到的事" class="headerlink" title="CSS3 作不到的事"></a>CSS3 作不到的事</h2><ul>
+<li>CSS3 cannot control scroll bars or “scroll” the entire body of the document</li>
+<li>Gradients cannot be animated (although this is possible to achieve with SVG or JavaScript).</li>
+</ul>
+<h2 id="設計原則"><a href="#設計原則" class="headerlink" title="設計原則:"></a>設計原則:</h2><ul>
+<li>Progressive Enhancement  漸近增強</li>
+<li>Graceful Degradation 優雅降級</li>
+</ul>
+<p>用於加強(enhance)網站的效果，但不絕對依靠這些新語法</p>
+<h2 id="Why-CSS3-Rather-Than-JavaScript-or-Flash"><a href="#Why-CSS3-Rather-Than-JavaScript-or-Flash" class="headerlink" title="Why CSS3 Rather Than JavaScript or Flash"></a>Why CSS3 Rather Than JavaScript or Flash</h2><p>CSS3</p>
+<p>優勢</p>
+<ul>
+<li>使用簡單</li>
+<li>效能</li>
+<li>Manipulates existing HTML content, enhancing SEO  / 操作現有的html，加強seo</li>
+</ul>
+<p>劣勢</p>
+<ul>
+<li>兼容度</li>
+<li>沒有多少GUI界面幫助你制造動畫，你一定要寫程式</li>
+</ul>
+<p>Flash</p>
+<p>優勢</p>
+<ul>
+<li>有GUI可以用</li>
+<li>程式的部份有ActionScript支援</li>
+</ul>
+<p>劣勢</p>
+<ul>
+<li>Mobile不支援手機 (most significantly Apple iPhone and iPad together with Android and Windows 8 devices)</li>
+<li>使用者要安裝程式或更新程式才能使用</li>
+<li>對seo不好</li>
+</ul>
+<p>JS</p>
+<p>Advantages</p>
+<ul>
+<li>好的支援度</li>
+<li>可以巧妙的操作html籍由dom物件操作跟css的操作，對web開發人員來說是很熟悉的東西</li>
+<li>Loops, variables, and functions make the language more powerful than CSS.</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>額外的http request 可能會降低讀取速度</li>
+<li>執行的效能可能不好</li>
+<li>js 產生的html無法被seo讀取 (這個最新消息是會變)</li>
+</ul>
+<p>Other Technologies</p>
+<p>CSS3 is not HTML5. While the two technologies tend to be spoken of in the same breath,  •<br>CSS3 is not related to HTML5. Markup is not presentation: CSS3 can be equally applied to<br>XHTML or HTML3.1. In this book, you’ll be using HTML5 as your markup, but you don’t<br>have to.</p>
+<p>WebGL is not CSS Animation. WebGL is a JavaScript 3D API that manipulates drawings in  •<br>the <canvas> element.</canvas></p>
+<ul>
+<li>css3跟html5不是同一個東西，css3跟舊的html一起一樣可以運作正常</li>
+<li>css3不是canvas,canvas是html5的新element，用來讓js畫圖</li>
+<li>css 3d transforms 是 transforms module的一部份，而不是 animation的一部份，css transforms 用來操作物件的視覺交度，但他不會動起來</li>
+<li>webGL 不是 css animation 他是讓js可以操作3d繪圖的api</li>
+</ul>
+<p>CSS3 Transforms and Transitions</p>
+<p>可以操作所有的HTML元素</p>
+<p>Transforms<br>v. [数][电] 变换；变形（transform的三单形式）<br>n. 语法转化规则；[数] 变换式（transform的复数）</p>
+<p>Transitions<br>轉場</p>
+<hr>
+<p>Transforms<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform</a></p>
+<p>transform-function<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function</a><br>事實上所有的變型都可以用<br>matrix(a, b, c, d, tx, ty)<br>matrix3d(a1, b1, c1, d1, a2, b2, c2, d2, a3, b3, c3, d3, a4, b4, c4, d4) 代表</p>
+<p>一個告訴你matrix是什麼的網站<br><a href="http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/" target="_blank" rel="external">http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/</a></p>
+<p>三角涵數<br><a href="http://www.cyut.edu.tw/~wdshiau/teach/mathmatic/ch3.pdf" target="_blank" rel="external">http://www.cyut.edu.tw/~wdshiau/teach/mathmatic/ch3.pdf</a></p>
+<p>Matrix 類別代表變形矩陣，可決定如何從一個座標空間，將各點對應到另一個空間。<br>這些變形類型統稱為 「仿射變形」。 仿射變形會在變形時保留線段的筆直性，以便讓平行線保持平行。<br><img src="images/2015-05-05_170516.jpg" alt="images/2015-05-05_170516.jpg"><br><img src="images/2015-05-05_170702.jpg" alt="images/2015-05-05_170702"><br><a href="http://help.adobe.com/zh_TW/FlashPlatform/reference/actionscript/3/flash/geom/Matrix.html" target="_blank" rel="external">http://help.adobe.com/zh_TW/FlashPlatform/reference/actionscript/3/flash/geom/Matrix.html</a></p>
+<p>欧几里得空间<br><a href="http://zh.wikipedia.org/wiki/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%A9%BA%E9%97%B4" target="_blank" rel="external">http://zh.wikipedia.org/wiki/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%A9%BA%E9%97%B4</a></p>
+<p>Combining Transformations</p>
+<p>transform:  <transform-function> [<transform-function>]* | none</transform-function></transform-function></p>
+<p>transform-origin: x-axis y-axis z-axis|initial|inherit;</p>
+<p>transform所有的值</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_values_syntax#syntax-single-transition-property" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_values_syntax#syntax-single-transition-property</a></p>
+<hr>
+<p>There are four main CSS translation functions: </p>
+<hr>
+<p>rotate</p>
+<ul>
+<li>Degrees deg 360 degrees in a circle rotate(90deg)</li>
+<li>Gradians grad Also known as “gons” or “grades”. 400 gradians in a circle, making for easier calculations. rotate(100grad)</li>
+<li>Radians rad 2pradians in a full circle, equal to 6.2831853rad. rotate(1.57rad)</li>
+<li>Turns turn A complete rotation = 1 full turn. rotate(.25turn)</li>
+</ul>
+<p>issue</p>
+<ul>
+<li>附件真正的layout不會被改變</li>
+<li>dom物件的屬性不會被影響，例如 offsetWidth</li>
+<li>css的轉換基本是在他原始的空間作相對的角度轉換</li>
+<li>如果物件轉換超出了父層的可視範圍，如父層的overflow:auto or scroll 那麼scroll bar就會出現</li>
+<li>The rotation occurs from the computed centerof the element, the transform-origin</li>
+<li>Other CSS appearance rules applied to the element, such as  •     box-shadow, are applied<br>beforethe transformation, so they will be rotated with the effect.</li>
+<li>設定180度並不會翻轉 or 鏡象 要作到翻轉跟鏡象 要使用 scale </li>
+<li>你可以ratoe任務html content, 但不推荐去旋轉文字 因為那會有閱讀障礙</li>
+<li>即史是0還是要寫單位，跟長寬不一樣 其他css常常可以省略屬性</li>
+</ul>
+<p>transform-origin 使用方式跟 background-position一樣 左右(水平) 上下(垂直) 軸心的位置相對於<br> relative to the element itself.<br> 軸心可以身外面</p>
+<p>webkit issue</p>
+<p>chrome safari up to version 5.1 以前 旋轉有剧齒</p>
+<p>There are various techniques for getting around this bug :<br>Apply a 1-pixel white border around the element.<br>Apply webkit-backface-visibility: hidden;to the element.</p>
+<h2 id="Add-another-transformation-to-the-element-such-as-webkit-transform-rotate-−10deg-translateZ-0"><a href="#Add-another-transformation-to-the-element-such-as-webkit-transform-rotate-−10deg-translateZ-0" class="headerlink" title="Add another transformation to the element, such as  -webkit-transform: rotate(−10deg) translateZ(0);."></a>Add another transformation to the element, such as  -webkit-transform: rotate(−10deg) translateZ(0);.</h2><p>scale </p>
+<ul>
+<li>scale(2) 長寬兩倍</li>
+<li>scale(.5) 4分之1</li>
+<li>scaleX()</li>
+<li>scaleY()</li>
+<li>scaleZ() ← 3d</li>
+</ul>
+<p>Flipping/mirror</p>
+<p><img src="images/2015-05-04_155344.jpg" alt=""></p>
+<ul>
+<li>translate<br>跟 scale很像，他使用相似的座標系統</li>
+</ul>
+<p>translate3d(tx, ty, tz)<br>transform:  translateX(tx)<br>transform:  translateY(ty)<br>transform:  translateZ(tz)-3d Is a <length> representing the z component of the translating vector. It can’t be a <percentage> value; in that case the property containing the transform is considered invalid. </percentage></length></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference</a></p>
+<hr>
+<ul>
+<li>skew</li>
+</ul>
+<p>skew(ax)       or<br>skew(ax, ay)</p>
+<p>shear mapping<br><a href="http://dict.youdao.com/search?q=Shear%20mapping&amp;keyfrom=chrome.extension" target="_blank" rel="external">http://dict.youdao.com/search?q=Shear%20mapping&amp;keyfrom=chrome.extension</a></p>
+<p>可以很好的用來表達物體移動的速度感</p>
+<p>設定skew的角度，是參照另一個另一個邊</p>
+<p>skewX 21 deg 指的是左邊跟右邊，會跟垂直的那條線，打開呈21度<br>見下圖<br><img src="images/2015-05-04_155344.jpg" alt=""></p>
+<p>Combining Transformations</p>
+<p>重複宣告transform並不會產生集合變形，而是下取代上</p>
+<hr>
+<p>CSS Transitions</p>
+<p>一個可視狀態，過渡到另一個</p>
+<p>基本上是點對點的模式<br>如果你有多個狀態想要過度，你要使用 css的 keyframes</p>
+<p>transition 是一个简写属性，可设置<br>transition-property,<br>transition-duration,  過渡時間 s / ms<br>transition-timing-function,<br>transition-delay。 延遲時間  s /ms</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Formal syntax: [ none | &lt;single-transition-property&gt; ] || &lt;time&gt; || &lt;timing-function&gt; || &lt;time&gt;</div></pre></td></tr></table></figure>
+<p>transition用来定义元素两种状态之间的过渡。不同状态可以用 pseudo-classes 定义，比如 :hover 、:active 或使用JavaScript设置。</p>
+<p>↑ 這裡很容易跟 transform搞混 因為 transform 跟 transform-origin是兩個屬性，而且沒有簡寫屬性</p>
+<p>Animatable properties<br><a href="http://css3.bradshawenterprises.com/transitions/" target="_blank" rel="external">http://css3.bradshawenterprises.com/transitions/</a><br><a href="http://www.w3.org/TR/css3-transitions/#properties-from-css-" target="_blank" rel="external">http://www.w3.org/TR/css3-transitions/#properties-from-css-</a></p>
+<p>如何用JS偵測 CSS3 Q過渡完成的事件<br><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_transitions" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_transitions</a></p>
+<p>transition 沒有loop loop 要用 animation</p>
+<p>transition-duration</p>
+<p>作者建議用秒數<br>因為動畫很少需要用到ms</p>
+<p>transition作用在動畫的起始狀態，讓你的動畫可以回到原本的狀態<br>甚至一半都可以被打斷回到原本的狀態</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">img.tilt &#123;</div><div class="line">width: 300px; height: 300px; float: left;</div><div class="line">-moz-transition: 2s all; -webkit-transition: 2s all;</div><div class="line">-o-transition: 2s all; transition: 2s all;</div><div class="line">&#125;</div><div class="line">img.tilt:hover &#123;</div><div class="line">-moz-transform: rotate(7.5deg); -o-transform: rotate(7.5deg);</div><div class="line">-ms-transform: rotate(7.5deg); -webkit-transform: rotate(7.5deg);</div><div class="line">transform: rotate(7.5deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Delaying and Combining Transition Effects</p>
+<p>Several CSS Properties Transitioned Simultaneosly<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">img.tilt &#123;</div><div class="line">width: 300px; height: 300px; float: left;</div><div class="line">-moz-transition: 2s;</div><div class="line">-ms-transition: 2s;</div><div class="line">-o-transition: 2s;</div><div class="line">-webkit-transition: 2s;</div><div class="line">transition: 2s;</div><div class="line">&#125;</div><div class="line">img.tilt:hover &#123;</div><div class="line">-moz-transform: rotate(15deg);</div><div class="line">-o-transform: rotate(15deg); -ms-transform: rotate(15deg);</div><div class="line">-webkit-transform: rotate(15deg); transform: rotate(15deg);</div><div class="line">opacity: .3;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
+<p>A CSS3 Transition of Multiple Properties with Different Timings for Each</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;style&gt;</div><div class="line">img.tilt &#123;</div><div class="line">width: 300px; height: 300px; float: left; position: relative;</div><div class="line">-moz-transition-property: opacity, left;</div><div class="line">-o-transition-property: opacity, left;</div><div class="line">-webkit-transition-property: opacity, left;</div><div class="line">transition-property: opacity, left;</div><div class="line">-moz-transition-duration: 2s, 4s;</div><div class="line">-o-transition-duration: 2s, 4s;</div><div class="line">-webkit-transition-duration: 2s, 4s;</div><div class="line">transition-duration: 2s, 4s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">img.tilt:hover &#123;</div><div class="line">opacity: .2; left: 60px;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<p>貝茲曲線DEMO<br><a href="https://www.jasondavies.com/animated-bezier/" target="_blank" rel="external">https://www.jasondavies.com/animated-bezier/</a></p>
+<p>貝茲曲線的公式<br><a href="http://devres.zoomquiet.io/data/20110728232822/index.html" target="_blank" rel="external">http://devres.zoomquiet.io/data/20110728232822/index.html</a></p>
+<p>貝茲曲線在程式語言中<br><a href="http://www.zhangxinxu.com/wordpress/2013/08/%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF-cubic-bezier-css3%E5%8A%A8%E7%94%BB-svg-canvas/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2013/08/%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF-cubic-bezier-css3%E5%8A%A8%E7%94%BB-svg-canvas/</a></p>
+<p>TOOLS<br><a href="http://matthewlein.com/ceaser/" target="_blank" rel="external">http://matthewlein.com/ceaser/</a><br><a href="http://cssglue.com/cubic" target="_blank" rel="external">http://cssglue.com/cubic</a><br><a href="http://peter.sh/experiments/css3-transition-timing-functions/" target="_blank" rel="external">http://peter.sh/experiments/css3-transition-timing-functions/</a></p>
+<p>Animating in Steps</p>
+<p>你可以使用STEP讓你的東西移動的感覺像時鐘一樣</p>
+<style>
+h1 {
+font-family: Futura; "Arial Black", Arial, sans-serif;
+text-align: center;
+}
+h1:hover {
+-moz-transition: 4s all steps(3, end);
+-webkit-transition: 4s all steps(3, end);
+transition: 4s all steps(3, end);
+-moz-transform: translateX(400px);
+-webkit-transform: translateX(400px);
+transform: translateX(400px);
+}
+</style>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

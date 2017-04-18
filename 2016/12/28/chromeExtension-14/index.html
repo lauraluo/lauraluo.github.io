@@ -1,0 +1,1021 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 14 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 14 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="腳本組件之間訊息的傳遞(下)請與上一篇一起服用。要真的弄懂擴充功能的事件系統，請先對擴充功能的組成有清楚的概念。如果你覺得自己在理解上有困難，是時後回到前面複習一下：Chrome Extension 開發與實作 04-名詞定義：架構的組成部份" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 14 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="腳本組件之間訊息的傳遞(下)請與上一篇一起服用。要真的弄懂擴充功能的事件系統，請先對擴充功能的組成有清楚的概念。如果你覺得自己在理解上有困難，是時後回到前面複習一下：Chrome Extension 開發與實作 04-名詞定義：架構的組成部份" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 14 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 14
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2016-12-28
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/28/chromeExtension-14/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/28/chromeExtension-14/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="腳本組件之間訊息的傳遞-下"><a href="#腳本組件之間訊息的傳遞-下" class="headerlink" title="腳本組件之間訊息的傳遞(下)"></a>腳本組件之間訊息的傳遞(下)</h1><p>請與<a href="http://ithelp.ithome.com.tw/articles/10187744" target="_blank" rel="external">上一篇</a>一起服用。要真的弄懂擴充功能的事件系統，請先對擴充功能的組成有清楚的概念。如果你覺得自己在理解上有困難，是時後回到前面複習一下：<a href="http://ithelp.ithome.com.tw/articles/10186466" target="_blank" rel="external">Chrome Extension 開發與實作 04-名詞定義：架構的組成部份</a></p>
+<a id="more"></a>
+<h2 id="跨擴充功能之間的溝通"><a href="#跨擴充功能之間的溝通" class="headerlink" title="跨擴充功能之間的溝通"></a>跨擴充功能之間的溝通</h2><p>Chrome允許擴充功能接受其他擴充功能傳送的訊息，你可以提供一個公用的API，讓其他擴充功能使用。  </p>
+<h3 id="外部訊息的發送："><a href="#外部訊息的發送：" class="headerlink" title="外部訊息的發送："></a>外部訊息的發送：</h3><p>相關API： <a href="https://crxdoc-zh.appspot.com/extensions/runtime#method-sendMessage" target="_blank" rel="external">runtime.sendMessage</a> 以及 <a href="https://crxdoc-zh.appspot.com/extensions/runtime#method-connect" target="_blank" rel="external">runtime.connect</a>   </p>
+<p>與擴充功能的其他部份並無差別(請參考<a href="http://ithelp.ithome.com.tw/articles/10187744" target="_blank" rel="external">上一篇</a>)，記得使用擴充功能的ID作為傳入<code>extensionId</code>參數，以指定發送對象。  </p>
+<p>一次性請求  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.runtime.sendMessage(string extensionId, any message, object options, function responseCallback)</div></pre></td></tr></table></figure>
+<p>長時間連接  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.runtime.connect(string extensionId, object connectInfo)</div></pre></td></tr></table></figure>
+<h3 id="外部訊息請求的接受："><a href="#外部訊息請求的接受：" class="headerlink" title="外部訊息請求的接受："></a>外部訊息請求的接受：</h3><p>相關API：<a href="https://crxdoc-zh.appspot.com/extensions/runtime#event-onMessageExternal" target="_blank" rel="external">runtime.onMessageExternal</a> 以及 <a href="https://crxdoc-zh.appspot.com/extensions/runtime#event-onConnectExternal" target="_blank" rel="external">runtime.onConnectExternal</a>   </p>
+<p>一次性接收  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.runtime.onMessageExternal.addListener(function callback)</div></pre></td></tr></table></figure>
+<p>長時間連接的接受：同樣的回調中會提供<a href="https://crxdoc-zh.appspot.com/extensions/runtime#type-Port" target="_blank" rel="external">runtime.port</a>物件供你發送及接收訊息  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.runtime.onConnectExternal.addListener(function callback)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>內容腳本不能存取外部訊息，如果有此需求需經由內部的事件腳本將訊息傳遞給內部的內容腳本。</p>
+</blockquote>
+<h2 id="動手作看看-1-跨擴充功能之間的溝通"><a href="#動手作看看-1-跨擴充功能之間的溝通" class="headerlink" title="動手作看看(1):跨擴充功能之間的溝通"></a>動手作看看(1):跨擴充功能之間的溝通</h2><h3 id="實作功能說明："><a href="#實作功能說明：" class="headerlink" title="實作功能說明："></a>實作功能說明：</h3><ul>
+<li><p>載入擴充功能A，實作頁面按鈕，並且一開始不啟用此按鈕。  </p>
+</li>
+<li><p>載入擴充功能B，此功能實作瀏覽器按鈕，按下按鈕打開彈出視窗，視窗中有一顆按鈕。  </p>
+<ul>
+<li>按下擴充功能B的彈出視窗上的按鈕，啟用擴充功能A的頁面按鈕，再按一次關閉擴充功能A的頁面按鈕。  </li>
+</ul>
+</li>
+</ul>
+<h3 id="擴充功能A的事件腳本："><a href="#擴充功能A的事件腳本：" class="headerlink" title="擴充功能A的事件腳本："></a>擴充功能A的事件腳本：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">var toggle = false;  </div><div class="line">//可以列出禁止防問的黑名單ID  </div><div class="line">var blockList = [];  </div><div class="line"></div><div class="line">chrome.runtime.onMessageExternal.addListener(function(message, sender, sendResponse) &#123;  </div><div class="line">    console.log(sender);  </div><div class="line"></div><div class="line">    //如果訪問在黑名單，就不作任何動作  </div><div class="line">    if (blockList.indexOf(sender.id) != -1) &#123;  </div><div class="line">        return;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    if (message.name != &quot;切換頁面按鈕&quot;) &#123;  </div><div class="line">        return;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    //如果按鈕是啟用的狀態則開，否則關  </div><div class="line">    if (!toggle) &#123;  </div><div class="line">        chrome.tabs.query(&#123; active: true, currentWindow: true &#125;, function(tabs) &#123;  </div><div class="line">            chrome.pageAction.show(tabs[0].id);  </div><div class="line">            toggle = !toggle;  </div><div class="line">        &#125;);  </div><div class="line">    &#125; else &#123;  </div><div class="line">        chrome.tabs.query(&#123; active: true, currentWindow: true &#125;, function(tabs) &#123;  </div><div class="line">            chrome.pageAction.hide(tabs[0].id);  </div><div class="line">            toggle = !toggle;  </div><div class="line"></div><div class="line">        &#125;);  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    sendResponse(&quot;來自擴充功能A的訊息：操作完成&quot;);  </div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="擴充功能B的彈出視窗腳本"><a href="#擴充功能B的彈出視窗腳本" class="headerlink" title="擴充功能B的彈出視窗腳本"></a>擴充功能B的彈出視窗腳本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">document.addEventListener(&apos;DOMContentLoaded&apos;, function(dcle) &#123;  </div><div class="line">    var dButton = document.getElementById(&quot;button&quot;);  </div><div class="line">    //注意擴充功能A的ID在開始狀態是會變的，如果你要在你的地端跑這個範例  </div><div class="line">    //請自行在擴充功能管理頁面查看ID  </div><div class="line">    //一旦正式發佈你的擴充功能，你可以得到一組固定ID  </div><div class="line">    var extensionID = &quot;fhggngpimllbngfbjdbiplgmhdppiiop&quot;;  </div><div class="line"></div><div class="line">    //點擊按鈕，向擴充功能A發動訊息  </div><div class="line">    dButton.addEventListener(&apos;click&apos;, function(e) &#123;  </div><div class="line"></div><div class="line">        console.log(&quot;click&quot;);  </div><div class="line"></div><div class="line">        chrome.runtime.sendMessage(  </div><div class="line">            extensionID,   </div><div class="line">            &#123; name: &quot;切換頁面按鈕&quot; &#125;,  </div><div class="line">            function(response) &#123;  </div><div class="line">                console.log(response);  </div><div class="line">            &#125;);  </div><div class="line"></div><div class="line">    &#125;);  </div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：擴充功能A的ID在是會變的，如果你要在你的地端跑這個範例，請自行在擴充功能管理頁面查看ID， 一旦正式發佈你的擴充功能，你可以得到一組固定ID</p>
+</blockquote>
+<h3 id="結果展示："><a href="#結果展示：" class="headerlink" title="結果展示："></a>結果展示：</h3><p>右下擴充功能A的事件頁面，右上擴充功能B的彈出視窗腳本  </p>
+<p><img src="http://i.imgur.com/nat1o59.gif" alt=""></p>
+<blockquote>
+<p>完整範例在：<a href="https://github.com/lauraluo/ExtensionSample/tree/master/MessageAPI/exp_3" target="_blank" rel="external">Github</a></p>
+</blockquote>
+<h2 id="續跨擴充功能之間的溝通-來自網頁的外部訊息"><a href="#續跨擴充功能之間的溝通-來自網頁的外部訊息" class="headerlink" title="續跨擴充功能之間的溝通-來自網頁的外部訊息"></a>續跨擴充功能之間的溝通-來自網頁的外部訊息</h2><p>就像上面跨擴充功能溝通的例子雷同，事實上擴充功能也能接收並且響應來自普通網頁的訊息，要能讓網站可以用使用Chrome的訊息API，首先你得在設定檔中列出允許傳遞訊息的網域。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;externally_connectable&quot;: &#123;  </div><div class="line">  &quot;matches&quot;: [&quot;*://*.example.com/*&quot;]  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>網址的匹配表執式必需至少包含一個<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E7%BA%A7%E5%9F%9F" target="_blank" rel="external">二級域名</a>，也就是禁止使用“<em>”、“</em>.com”、“<em>.co.uk”以及“</em>.appspot.com”之類的主機名作為匹配表達式。  </p>
+<h2 id="動手作看看-2-接收來自網站腳本的訊息"><a href="#動手作看看-2-接收來自網站腳本的訊息" class="headerlink" title="動手作看看(2): 接收來自網站腳本的訊息"></a>動手作看看(2): 接收來自網站腳本的訊息</h2><h3 id="實作功能說明：-1"><a href="#實作功能說明：-1" class="headerlink" title="實作功能說明："></a>實作功能說明：</h3><ul>
+<li>實作一個網站，網頁上有一個按鈕。  </li>
+<li>實作一個擴充功能，擁有頁面按鈕，非啟用的狀態。  </li>
+<li>按一下網頁上的按鈕，擴充功能的頁面按鈕即啟用，再按一下關閉。  </li>
+</ul>
+<h3 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">    &quot;manifest_version&quot;: 2,  </div><div class="line">    &quot;name&quot;: &quot;訊息範例-頁面腳本向事件腳本發送訊息&quot;,  </div><div class="line">    &quot;description&quot;: &quot;頁面腳本向事件腳本發送訊息&quot;,  </div><div class="line">    &quot;version&quot;: &quot;2.0&quot;,  </div><div class="line">    &quot;page_action&quot;: &#123;  </div><div class="line">        &quot;default_title&quot;: &quot;頁面腳本向事件腳本發送訊息&quot;,  </div><div class="line">        &quot;default_icon&quot;: &quot;icon.png&quot;,  </div><div class="line">        &quot;default_popup&quot;: &quot;popup.html&quot;  </div><div class="line">    &#125;,  </div><div class="line">    &quot;background&quot;: &#123;  </div><div class="line">        &quot;scripts&quot;: [&quot;event.js&quot;],  </div><div class="line">        &quot;persistent&quot;: false  </div><div class="line">    &#125;,  </div><div class="line">    &quot;externally_connectable&quot;: &#123;  </div><div class="line">        &quot;matches&quot;: [&quot;*://localhost/*&quot;]  </div><div class="line">    &#125;,  </div><div class="line">    &quot;permissions&quot;: [&quot;tabs&quot;]  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="事件腳本"><a href="#事件腳本" class="headerlink" title="事件腳本"></a>事件腳本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">var toggle = false;  </div><div class="line">//可以列出禁止防問的黑名單網址  </div><div class="line">var blockList = [];  </div><div class="line"></div><div class="line">chrome.runtime.onMessageExternal.addListener(function(message, sender, sendResponse) &#123;  </div><div class="line">    console.log(sender);  </div><div class="line"></div><div class="line">    //如果訪問在黑名單，就不作任何動作  </div><div class="line">    if (blockList.indexOf(sender.url) != -1) &#123;  </div><div class="line">        return;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    if (message.name != &quot;切換頁面按鈕&quot;) &#123;  </div><div class="line">        return;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    //如果按鈕是啟用的狀態則開，否則關  </div><div class="line">    if (!toggle) &#123;  </div><div class="line">        chrome.tabs.query(&#123; active: true, currentWindow: true &#125;, function(tabs) &#123;  </div><div class="line">            chrome.pageAction.show(tabs[0].id);  </div><div class="line">            toggle = !toggle;  </div><div class="line">        &#125;);  </div><div class="line">    &#125; else &#123;  </div><div class="line">        chrome.tabs.query(&#123; active: true, currentWindow: true &#125;, function(tabs) &#123;  </div><div class="line">            chrome.pageAction.hide(tabs[0].id);  </div><div class="line">            toggle = !toggle;  </div><div class="line"></div><div class="line">        &#125;);  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    sendResponse(&quot;來自擴充功能的訊息：操作完成&quot;);  </div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="網頁HTML"><a href="#網頁HTML" class="headerlink" title="網頁HTML"></a>網頁HTML</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;  </div><div class="line">&lt;html itemscope itemtype=&quot;http://schema.org/Article&quot; ng-app=&quot;markup&quot; debug=&quot;false&quot;&gt;  </div><div class="line">  &lt;!--page default Information--&gt;  </div><div class="line">  &lt;!--html head--&gt;  </div><div class="line">  &lt;head&gt;  </div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;  </div><div class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;edge,chrome=1&quot;&gt;  </div><div class="line">    &lt;title&gt;首頁&lt;/title&gt;  </div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.css&quot;&gt;  </div><div class="line">  &lt;/head&gt;  </div><div class="line">  &lt;!--html body--&gt;  </div><div class="line">  &lt;body class=&quot;l-index&quot;&gt;  </div><div class="line">    &lt;section class=&quot;index&quot;&gt;  </div><div class="line">      &lt;p style=&quot;padding:100px;&quot;&gt;&lt;a id=&quot;button&quot; href=&quot;#&quot; class=&quot;btn btn-primary btn-large btn-block&quot;&gt;切換擴充功能的頁面按鈕&lt;/a&gt;&lt;/p&gt;  </div><div class="line">    &lt;/section&gt;  </div><div class="line">  &lt;/body&gt;  </div><div class="line">  &lt;script src=&quot;../js/page.js&quot;&gt;&lt;/script&gt;  </div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="網頁腳本"><a href="#網頁腳本" class="headerlink" title="網頁腳本"></a>網頁腳本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var dButton = document.getElementById(&quot;button&quot;);  </div><div class="line">var extensionID = &quot;ampdcffgccbnfionpljcpncpcjfbhbag&quot;;  </div><div class="line"></div><div class="line">//點擊按鈕，向擴充功能A發動訊息  </div><div class="line">dButton.addEventListener(&apos;click&apos;, function(e) &#123;  </div><div class="line"></div><div class="line">    console.log(&quot;click&quot;);  </div><div class="line"></div><div class="line">    chrome.runtime.sendMessage(  </div><div class="line">        extensionID,   </div><div class="line">        &#123; name: &quot;切換頁面按鈕&quot; &#125;,  </div><div class="line">        function(response) &#123;  </div><div class="line">            console.log(response);  </div><div class="line">        &#125;);  </div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="結果展示"><a href="#結果展示" class="headerlink" title="結果展示"></a>結果展示</h3><p><img src="https://quip.com/blob/DWdAAATWVtD/IABEy4FDD6wqpJCBwfiFUg?a=wL1hWasXAGL8y2qUJozif0Ph153GiPklAWH2ACLSNDAa" alt=""></p>
+<blockquote>
+<p>完整範例：<a href="http://i.imgur.com/gtR4oBl.gif" target="_blank" rel="external">Github</a></p>
+</blockquote>
+<h2 id="內容腳本以及頁面腳本的溝通"><a href="#內容腳本以及頁面腳本的溝通" class="headerlink" title="內容腳本以及頁面腳本的溝通"></a>內容腳本以及頁面腳本的溝通</h2><p>前面已經提過，內容腳本沒辦法存取runtime.onMessageExternal 以及 runtime.onConnectExternal API，因此內容腳本當然沒辦法像上面的案例一樣使用這個途勁與網頁的腳本溝通。  </p>
+<p>作為替代方案，內容腳本可以使用標準的網頁Javascript API。(注意：非chrome *API)  </p>
+<h3 id="訊息的發起："><a href="#訊息的發起：" class="headerlink" title="訊息的發起："></a>訊息的發起：</h3><p>相關API：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage" target="_blank" rel="external">Window.postMessage</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.postMessage(message, targetOrigin, [transfer]);</div></pre></td></tr></table></figure>
+<p>下面示範內容腳本在頁面插入一個按鈕，當使用者按下按鈕時，對頁面腳本發送訊息  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//region &#123;variables and functions&#125;  </div><div class="line">var consoleGreeting = &quot;Hello World!&quot;;  </div><div class="line">var targetOrigin = window.location.origin;  </div><div class="line">var message = &quot;Test message X&quot;;  </div><div class="line">function createButton() &#123;  </div><div class="line">    var button = document.createElement(&quot;button&quot;);  </div><div class="line">    button.style.width = &quot;70px&quot;;  </div><div class="line">    button.style.height = &quot;40px&quot;;  </div><div class="line">    button.style.position = &quot;fixed&quot;;  </div><div class="line">    button.style.top = &quot;10px&quot;;  </div><div class="line">    button.style.right = &quot;10px&quot;;  </div><div class="line">    button.innerText = &quot;Send Message&quot;;  </div><div class="line">    document.body.appendChild(button);  </div><div class="line">    return button;  </div><div class="line">&#125;  </div><div class="line">//end-region  </div><div class="line"></div><div class="line">//region &#123;calls&#125;  </div><div class="line">console.log(consoleGreeting);  </div><div class="line">var button = createButton();  </div><div class="line">button.addEventListener(&quot;click&quot;,function() &#123;  </div><div class="line">    console.log(&quot;Button clicked!&quot;);  </div><div class="line">    window.postMessage(message,targetOrigin);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>訊息的接收：  </p>
+<p>相關API：<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="external">Window.addEventListener</a></p>
+<pre><code>window.addEventListener(&quot;message&quot;, listener[, options]);
+</code></pre><p>下面示範一個網頁腳本接收來自頁面腳本的訊息  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//region &#123;variables and functions&#125;  </div><div class="line">var sendMessageButtonID = &quot;send_message&quot;;  </div><div class="line">var greeting = &quot;Hello World!&quot;;  </div><div class="line">//var targetOrigin = window.location.origin;  </div><div class="line">//var message = &quot;Test message Y&quot;;  </div><div class="line">//end-region  </div><div class="line"></div><div class="line">//region &#123;calls&#125;  </div><div class="line">console.log(greeting);  </div><div class="line">document.addEventListener(&quot;DOMContentLoaded&quot;,function(dcle) &#123;  </div><div class="line">    var buttonID = document.getElementById(sendMessageButtonID);  </div><div class="line">    buttonID.addEventListener(&quot;click&quot;,function(ce) &#123;  </div><div class="line">        //window.postMessage(message,targetOrigin);  </div><div class="line">    &#125;);  </div><div class="line">&#125;);  </div><div class="line">window.addEventListener(&quot;message&quot;,function(me) &#123;  </div><div class="line">    console.log(&quot;message: &quot; + me.data);  </div><div class="line">&#125;);  </div><div class="line">//end-region</div></pre></td></tr></table></figure>
+<blockquote>
+<p>本來想作範例，但我想了一下覺得這種使用情景實在不多，這裡就不示範了。<br>如果大家對這個段落的範例有興趣，這裡使用的是<a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">電子書</a>中的範例，完整的範例參考第三章節的<a href="https://github.com/Apress/creating-google-chrome-extensions/tree/master/9781484217740" target="_blank" rel="external">CSandWS</a>範例</p>
+</blockquote>
+<h2 id="補充-1-：腳本訊息傳遞的安全性"><a href="#補充-1-：腳本訊息傳遞的安全性" class="headerlink" title="補充(1)：腳本訊息傳遞的安全性"></a>補充(1)：腳本訊息傳遞的安全性</h2><p>要小心<a href="http://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="external">跨站腳本攻擊</a>，避免使用以下API：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.sendMessage(tab.id, &#123;greeting: &quot;hello&quot;&#125;, function(response) &#123;  </div><div class="line">  // 警告：可能會執行惡意腳本  </div><div class="line">  var resp = eval(&quot;(&quot; + response.farewell + &quot;)&quot;);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.sendMessage(tab.id, &#123;greeting: &quot;hello&quot;&#125;, function(response) &#123;  </div><div class="line">  // 警告：可能會插入惡意腳本  </div><div class="line">  document.getElementById(&quot;resp&quot;).innerHTML = response.farewell;  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>首選以下API：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.sendMessage(tab.id, &#123;greeting: &quot;hello&quot;&#125;, function(response) &#123;  </div><div class="line">  // JSON.parse 不會攻擊者的執行腳本。  </div><div class="line">  var resp = JSON.parse(response.farewell);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.sendMessage(tab.id, &#123;greeting: &quot;hello&quot;&#125;, function(response) &#123;  </div><div class="line">  // innerText 不會插入攻擊者的html (因為可能會包含惡章腳本)。  </div><div class="line">  document.getElementById(&quot;resp&quot;).innerText = response.farewell;  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="補充-2-：釐清標準JS-API-與-Chrome-JS-API的事件系統"><a href="#補充-2-：釐清標準JS-API-與-Chrome-JS-API的事件系統" class="headerlink" title="補充(2)：釐清標準JS API 與 Chrome JS API的事件系統"></a>補充(2)：釐清標準JS API 與 Chrome JS API的事件系統</h2><p>不要混肴chrome extension API提供的事件監聽系統，跟JS的DOM事件監聽系統。 寫法不同，用法不同：  </p>
+<p>Chrome Etension 的 事件監聽API：(chrome.* API)  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">chrome.commands.onCommand.addListener(function(command) &#123;  </div><div class="line">    chrome.browserAction.setIcon(  </div><div class="line">        details,  </div><div class="line">        function() &#123;/**/&#125;  </div><div class="line">    );  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab) &#123;  </div><div class="line">    console.log(tabId);  </div><div class="line">    chrome.pageAction.show(tabId);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>JS的DOM物件事件監聽API： (Javascript API)  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">el.addEventListener(&quot;click&quot;, modifyText, false);</div></pre></td></tr></table></figure>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>事件腳本及彈出視窗腳本，可以使用<a href="https://crxdoc-zh.appspot.com/extensions/runtime#event-onMessageExternal" target="_blank" rel="external">runtime.onMessageExternal</a> 以及 <a href="https://crxdoc-zh.appspot.com/extensions/runtime#event-onConnectExternal" target="_blank" rel="external">runtime.onConnectExternal</a> 接收來自擴充功能外部的訊息，至於訊息的發起請參考上一個章節。  </li>
+<li>對其他擴充功能發起訊息，要提供擴充功能的ID，這個ID可以在擴充功能管理界面找到(請參考03- <a href="http://ithelp.ithome.com.tw/articles/10186334" target="_blank" rel="external">官網導讀：架構總覽Architecture Overview</a> )。要注意ID在換檔案路徑之後是會變的，如果你正式發佈你的擴充功能，你可以得到一個固定的ID。  </li>
+<li><code>網頁腳本</code>也能使用Chrome.runtime API 對擴充功能發起訊息，你必需在安裝檔設定網域。  </li>
+<li>內容腳本<code>不能使用</code><a href="https://crxdoc-zh.appspot.com/extensions/runtime#event-onMessageExternal" target="_blank" rel="external">runtime.onMessageExternal</a> 以及 <a href="https://crxdoc-zh.appspot.com/extensions/runtime#event-onConnectExternal" target="_blank" rel="external">runtime.onConnectExternal</a> API，作為替代方案，你可以使用標準的網頁訊息API與載入頁面的腳本溝通。  </li>
+<li>事實上作業系統的應用程式也可以跟擴充功能交換訊息，但我覺得有點複雜，而且脫離了前端領域，所以這裡就不介紹了。  </li>
+<li>下一個章節我們將嚐試使用訊息機制打造一個內容UI輸入組件。  </li>
+</ul>
+<h2 id="花絮"><a href="#花絮" class="headerlink" title="花絮"></a>花絮</h2><p>訊息系統真的是繞的我蠻暈的，每次寫訊息相關的系統都覺得自己人格分裂的應該不只我一人。</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">http://www.apress.com/us/book/9781484217740</a>  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/messaging" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/messaging</a>  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/runtimme" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/runtimme</a>  </li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/27/chromeExtension-13/">Chrome Extension 開發與實作 13</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/29/chromeExtension-15/">Chrome Extension 開發與實作 15</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#腳本組件之間訊息的傳遞-下"><span class="nav-number">1.</span> <span class="nav-text">腳本組件之間訊息的傳遞(下)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#跨擴充功能之間的溝通"><span class="nav-number">1.1.</span> <span class="nav-text">跨擴充功能之間的溝通</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部訊息的發送："><span class="nav-number">1.1.1.</span> <span class="nav-text">外部訊息的發送：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部訊息請求的接受："><span class="nav-number">1.1.2.</span> <span class="nav-text">外部訊息請求的接受：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動手作看看-1-跨擴充功能之間的溝通"><span class="nav-number">1.2.</span> <span class="nav-text">動手作看看(1):跨擴充功能之間的溝通</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#實作功能說明："><span class="nav-number">1.2.1.</span> <span class="nav-text">實作功能說明：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#擴充功能A的事件腳本："><span class="nav-number">1.2.2.</span> <span class="nav-text">擴充功能A的事件腳本：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#擴充功能B的彈出視窗腳本"><span class="nav-number">1.2.3.</span> <span class="nav-text">擴充功能B的彈出視窗腳本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#結果展示："><span class="nav-number">1.2.4.</span> <span class="nav-text">結果展示：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#續跨擴充功能之間的溝通-來自網頁的外部訊息"><span class="nav-number">1.3.</span> <span class="nav-text">續跨擴充功能之間的溝通-來自網頁的外部訊息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動手作看看-2-接收來自網站腳本的訊息"><span class="nav-number">1.4.</span> <span class="nav-text">動手作看看(2): 接收來自網站腳本的訊息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#實作功能說明：-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">實作功能說明：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#設定檔"><span class="nav-number">1.4.2.</span> <span class="nav-text">設定檔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件腳本"><span class="nav-number">1.4.3.</span> <span class="nav-text">事件腳本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#網頁HTML"><span class="nav-number">1.4.4.</span> <span class="nav-text">網頁HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#網頁腳本"><span class="nav-number">1.4.5.</span> <span class="nav-text">網頁腳本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#結果展示"><span class="nav-number">1.4.6.</span> <span class="nav-text">結果展示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#內容腳本以及頁面腳本的溝通"><span class="nav-number">1.5.</span> <span class="nav-text">內容腳本以及頁面腳本的溝通</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#訊息的發起："><span class="nav-number">1.5.1.</span> <span class="nav-text">訊息的發起：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#補充-1-：腳本訊息傳遞的安全性"><span class="nav-number">1.6.</span> <span class="nav-text">補充(1)：腳本訊息傳遞的安全性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#補充-2-：釐清標準JS-API-與-Chrome-JS-API的事件系統"><span class="nav-number">1.7.</span> <span class="nav-text">補充(2)：釐清標準JS API 與 Chrome JS API的事件系統</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小結"><span class="nav-number">1.8.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#花絮"><span class="nav-number">1.9.</span> <span class="nav-text">花絮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">1.10.</span> <span class="nav-text">參考</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2016/12/28/chromeExtension-14/';
+      var disqus_url = 'http://yoursite.com/2016/12/28/chromeExtension-14/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

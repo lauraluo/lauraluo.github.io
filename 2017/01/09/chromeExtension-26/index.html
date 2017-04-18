@@ -1,0 +1,961 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 26 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 26 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="擴充功能的設置畫面 Options Pages擴充功能的開發者，能籍由提供選項頁面，幫助客制化擴充功能的行為。使用者能在擴充我能管理清單(chrome://extensions)看到[ 開發者為使用者提供的自定義介面，如下圖(點擊選項即跳出設定頁面)：" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 26 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="擴充功能的設置畫面 Options Pages擴充功能的開發者，能籍由提供選項頁面，幫助客制化擴充功能的行為。使用者能在擴充我能管理清單(chrome://extensions)看到[ 開發者為使用者提供的自定義介面，如下圖(點擊選項即跳出設定頁面)：" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 26 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 26
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2017-01-09
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/01/09/chromeExtension-26/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/09/chromeExtension-26/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="擴充功能的設置畫面-Options-Pages"><a href="#擴充功能的設置畫面-Options-Pages" class="headerlink" title="擴充功能的設置畫面 Options Pages"></a>擴充功能的設置畫面 Options Pages</h1><p>擴充功能的開發者，能籍由提供選項頁面，幫助客制化擴充功能的行為。使用者能在擴充我能管理清單(chrome://extensions)看到[ 開發者為使用者提供的自定義介面，如下圖(點擊<em><strong>選項</strong></em>即跳出設定頁面)：</p>
+<a id="more"></a>
+<p><img src="http://ithelp.ithome.com.tw/upload/images/20170109/20079450K1a4OTiDX8.png" alt="http://ithelp.ithome.com.tw/upload/images/20170109/20079450K1a4OTiDX8.png"><br>點擊選項後，使用者可以看見開發者打定義的設置頁：<br><img src="http://ithelp.ithome.com.tw/upload/images/20170109/20079450lTgMPFsWlx.png" alt="http://ithelp.ithome.com.tw/upload/images/20170109/20079450lTgMPFsWlx.png"></p>
+<p>設定頁面的制作，在Chrome40之後及之前存在版本差異，我們今天介紹的會是新版的作法：</p>
+<ul>
+<li><a href="https://developer.chrome.com/extensions/options" target="_blank" rel="external">舊版官網教學</a></li>
+<li><a href="https://developer.chrome.com/extensions/optionsV2" target="_blank" rel="external">新版官網教學</a></li>
+</ul>
+<p>關於設置的資料儲存，我們將使用到前面有提到的<a href="http://ithelp.ithome.com.tw/articles/10188481" target="_blank" rel="external">chrome.storage API</a>將設置的結果儲存在地端，官方建議我們應該總是用<a href="https://developer.chrome.com/extensions/storage#property-sync" target="_blank" rel="external">storage.sync</a> API來同步所有使用者登入的Chrome中的擴充功能設置。</p>
+<h2 id="第一步：設定檔的設置"><a href="#第一步：設定檔的設置" class="headerlink" title="第一步：設定檔的設置"></a>第一步：設定檔的設置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;My extension&quot;,</div><div class="line">  ...</div><div class="line">  &quot;options_ui&quot;: &#123;</div><div class="line">    // 必要欄位</div><div class="line">    &quot;page&quot;: &quot;options.html&quot;,</div><div class="line">    // 是否使用Chrome提供的樣式，官方建議設定為true, 即使用官方提供的樣式</div><div class="line">    &quot;chrome_style&quot;: true,</div><div class="line">    // 不建議設制以下屬性：是否用新頁籤的方式打開設置頁，此功能只是為了與舊版兼容，將來會棄用</div><div class="line">    //&quot;open_in_tab&quot;: true</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="第二步：制作你的設置頁面"><a href="#第二步：制作你的設置頁面" class="headerlink" title="第二步：制作你的設置頁面"></a>第二步：制作你的設置頁面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line"></div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;My Test Extension Options&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">    body: &#123;</div><div class="line">        padding: 10px;</div><div class="line">    &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line">    Favorite color:</div><div class="line">    &lt;select id=&quot;color&quot;&gt;</div><div class="line">        &lt;option value=&quot;red&quot;&gt;red&lt;/option&gt;</div><div class="line">        &lt;option value=&quot;green&quot;&gt;green&lt;/option&gt;</div><div class="line">        &lt;option value=&quot;blue&quot;&gt;blue&lt;/option&gt;</div><div class="line">        &lt;option value=&quot;yellow&quot;&gt;yellow&lt;/option&gt;</div><div class="line">    &lt;/select&gt;</div><div class="line">    &lt;label&gt;</div><div class="line">        &lt;input type=&quot;checkbox&quot; id=&quot;like&quot;&gt; I like colors.</div><div class="line">    &lt;/label&gt;</div><div class="line">    &lt;div id=&quot;status&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;button id=&quot;save&quot;&gt;Save&lt;/button&gt;</div><div class="line">    &lt;script src=&quot;options.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>腳本：options.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">//將設置用chrome.storage.sync儲存</div><div class="line">function save_options() &#123;</div><div class="line">    var color = document.getElementById(&apos;color&apos;).value;</div><div class="line">    var likesColor = document.getElementById(&apos;like&apos;).checked;</div><div class="line">    chrome.storage.sync.set(&#123;</div><div class="line">        favoriteColor: color,</div><div class="line">        likesColor: likesColor</div><div class="line">    &#125;, function() &#123;</div><div class="line">        //提供儲存成功的提示</div><div class="line">        var status = document.getElementById(&apos;status&apos;);</div><div class="line">        status.textContent = &apos;Options saved.&apos;;</div><div class="line">        setTimeout(function() &#123;</div><div class="line">            status.textContent = &apos;&apos;;</div><div class="line">        &#125;, 750);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 將設定調整為預設值的功能</div><div class="line">function restore_options() &#123;</div><div class="line">    //利用get設定預設值並，無值即取得預設置，有值則使用之前儲存的值</div><div class="line">    chrome.storage.sync.get(&#123;</div><div class="line">        favoriteColor: &apos;red&apos;,</div><div class="line">        likesColor: true</div><div class="line">    &#125;, function(items) &#123;</div><div class="line">        document.getElementById(&apos;color&apos;).value = items.favoriteColor;</div><div class="line">        document.getElementById(&apos;like&apos;).checked = items.likesColor;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">document.addEventListener(&apos;DOMContentLoaded&apos;, restore_options);</div><div class="line">document.getElementById(&apos;save&apos;).addEventListener(&apos;click&apos;, save_options);</div></pre></td></tr></table></figure>
+<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><p>選項頁被嵌入在擴充功能的管理界面裡，它不是一個獨立的頁籤，所在在使用上，跟前面介紹的有關擴充功能的視圖，在行為上有微妙的差別。</p>
+<h3 id="連結到選項頁面"><a href="#連結到選項頁面" class="headerlink" title="連結到選項頁面"></a>連結到選項頁面</h3><ul>
+<li>建議的作法：Chrome42後提供 <a href="https://developer.chrome.com/extensions/runtime#method-openOptionsPage" target="_blank" rel="external">chrome.runtime.openOptionsPage( )</a>讓你可以直接使用腳本打開頁面。</li>
+<li>不建議的作法之一：使用連結 chrome-extension://yourextensionid/youroptionspage.html直接打開設置頁面。</li>
+<li>不建議的作法之二：使用 chrome://extensions?options=yourextensionid打開設置頁，因為這個路徑可能會因為版本而變動。</li>
+</ul>
+<p>使用腳本打開設置畫面的範例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button id=&quot;go-to-options&quot;&gt;Go to options&lt;/button&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">document.querySelector(&apos;#go-to-options&apos;).addEventListener(function() &#123;</div><div class="line">    if (chrome.runtime.openOptionsPage) &#123; // New way to open options pages, if supported (Chrome 42+).</div><div class="line">        chrome.runtime.openOptionsPage();</div><div class="line">    &#125; else &#123; // Reasonable fallback.</div><div class="line">        window.open(chrome.runtime.getURL(&apos;options.html&apos;));</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="關於Tabs-API"><a href="#關於Tabs-API" class="headerlink" title="關於Tabs API"></a>關於Tabs API</h3><p>由於設置頁面並不是一個獨立的視窗/頁籤，所以他可能會造成以下影響：</p>
+<ul>
+<li><a href="https://developer.chrome.com/extensions/tabs#method-query" target="_blank" rel="external">tabs.query</a> 找不到這個設置頁面</li>
+<li><a href="https://developer.chrome.com/extensions/tabs#event-onCreated" target="_blank" rel="external">tabs.onCreated</a> 在設置頁面打開的時後並不會觸發</li>
+<li><a href="https://developer.chrome.com/extensions/tabs#event-onUpdated" target="_blank" rel="external">tabs.onUpdated</a> 在設置頁面的loaded狀態改變時並不會觸發</li>
+<li>你不能使用 <a href="https://developer.chrome.com/extensions/tabs#method-connect" target="_blank" rel="external">tabs.connect</a> 或 <a href="https://developer.chrome.com/extensions/tabs#method-sendMessage" target="_blank" rel="external">tabs.sendMessage</a> 跟選項頁面頁的腳本溝通</li>
+</ul>
+<p>一般來說你也不太需要在選項頁面使用這些功能。</p>
+<h3 id="關於Messaging-APIs"><a href="#關於Messaging-APIs" class="headerlink" title="關於Messaging APIs"></a>關於Messaging APIs</h3><p>如果非得跟選項頁溝通的話，你能使用<a href="https://developer.chrome.com/extensions/runtime#method-connect" target="_blank" rel="external">runtime.connect</a>以及 <a href="https://developer.chrome.com/extensions/runtime#method-sendMessage" target="_blank" rel="external">runtime.sendMessage</a> 來替代他，因為選項頁面也在擴充功能的執行階段底下。當你跟選項頁腳本溝通時 <a href="https://developer.chrome.com/extensions/runtime#property-MessageSender-url" target="_blank" rel="external">Sender’s URL</a>會是選項頁的page URL。</p>
+<h3 id="選項的視窗大小"><a href="#選項的視窗大小" class="headerlink" title="選項的視窗大小"></a>選項的視窗大小</h3><p>選頁的視窗大小會自動根據選項頁的(html)內容寬度自己決定。當你發現畫面嚴重跑版時，可能是因為你將寬度的布局基於了視窗大小，解決方法是為你的寬度加上最小值。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/07/chromeExtension-24/">Chrome Extension 開發與實作 24</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/10/chromeExtension-27/">Chrome Extension 開發與實作 27</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#擴充功能的設置畫面-Options-Pages"><span class="nav-number">1.</span> <span class="nav-text">擴充功能的設置畫面 Options Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：設定檔的設置"><span class="nav-number">1.1.</span> <span class="nav-text">第一步：設定檔的設置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：制作你的設置頁面"><span class="nav-number">1.2.</span> <span class="nav-text">第二步：制作你的設置頁面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事項"><span class="nav-number">1.3.</span> <span class="nav-text">注意事項</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#連結到選項頁面"><span class="nav-number">1.3.1.</span> <span class="nav-text">連結到選項頁面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#關於Tabs-API"><span class="nav-number">1.3.2.</span> <span class="nav-text">關於Tabs API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#關於Messaging-APIs"><span class="nav-number">1.3.3.</span> <span class="nav-text">關於Messaging APIs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#選項的視窗大小"><span class="nav-number">1.3.4.</span> <span class="nav-text">選項的視窗大小</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2017/01/09/chromeExtension-26/';
+      var disqus_url = 'http://yoursite.com/2017/01/09/chromeExtension-26/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

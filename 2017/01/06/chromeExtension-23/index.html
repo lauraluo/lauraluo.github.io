@@ -1,0 +1,1102 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 23 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 23 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="Storage API 優化過的地端儲存API使用 chrome.tabs API 與瀏覽器頁籤交互。您可以使用該 API 創建、修改或重新排列瀏覽器中的頁籤。" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 23 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="Storage API 優化過的地端儲存API使用 chrome.tabs API 與瀏覽器頁籤交互。您可以使用該 API 創建、修改或重新排列瀏覽器中的頁籤。" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 23 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 23
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2017-01-06
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/01/06/chromeExtension-23/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/06/chromeExtension-23/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="Storage-API-優化過的地端儲存API"><a href="#Storage-API-優化過的地端儲存API" class="headerlink" title="Storage API 優化過的地端儲存API"></a>Storage API 優化過的地端儲存API</h1><p>使用 chrome.tabs API 與瀏覽器頁籤交互。您可以使用該 API 創建、修改或重新排列瀏覽器中的頁籤。</p>
+<a id="more"></a>
+<h2 id="設定檔權限設定"><a href="#設定檔權限設定" class="headerlink" title="設定檔權限設定"></a>設定檔權限設定</h2><p>您不需要在擴展程序的清單文件中聲明任何權限就能使用 chrome.tabs 的大多數方法和事件。然而，如果您需要訪問 <code>tabs.Tab</code> 的 url、title 或 favIconUrl 屬性，您必須在清單文件中聲明<code>&quot;tabs&quot;</code>權限，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">      &quot;name&quot;: &quot;My extension&quot;,</div><div class="line">      ...</div><div class="line">      &quot;permissions&quot;: [</div><div class="line">        &quot;tabs&quot;</div><div class="line">      ],</div><div class="line">      ...</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>在前面的章節中，我們已使用過 tab的query,connect, sendMessage, executeScript, 以及 insertCSS 方法。可以參考：</p>
+<ul>
+<li>query, executeScript, insertCSS: <ul>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187354" target="_blank" rel="external">Chrome Extension 開發與實作 10-快捷鍵輸入組件 Shortcut Key or Commands</a></li>
+</ul>
+</li>
+<li>connect, sendMessag:<ul>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187744" target="_blank" rel="external">Chrome Extension 開發與實作 13-腳本組件之間訊息的傳遞(上)</a></li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187844" target="_blank" rel="external">Chrome Extension 開發與實作 14-腳本組件之間訊息的傳遞(下)</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="頁籤型別-Tab-Type"><a href="#頁籤型別-Tab-Type" class="headerlink" title="頁籤型別 Tab Type"></a>頁籤型別 Tab Type</h2><p>此型別表達一個頁籤的實例，在許多相關方法中的回調有提供，例如create、query等：</p>
+<ul>
+<li>nteger id：頁籤的標識符。(某些狀況可能會沒有id)</li>
+<li>integer index：頁籤在所在窗口中的索引，從 0 開始。</li>
+<li>integer windowId：頁籤所在窗口的標識符。</li>
+<li>integer （可選）openerTabId：使用哪個已存在的頁籤打開指定的網址。</li>
+<li>boolean highlighted：頁籤是否為高亮狀態。</li>
+<li>boolean active：頁籤是否是窗口中的活動頁籤。 （因為視窗不一定是focus的狀態。）</li>
+<li>boolean pinned：頁籤是否固定。(指定為tue的頁籤，不能移動，也沒有關閉鈕)</li>
+<li>string （可選）url：頁籤中顯示的 URL。<code>需要 &quot;tabs&quot; 權限</code></li>
+<li>string （可選）title：頁籤的標題，如果頁籤正在加載它也可能是空字符串。<code>需要 &quot;tabs&quot; 權限</code></li>
+<li>string （可選）favIconUrl：頁籤的收藏夾圖標 URL，如果頁籤正在加載它也可能是空字符串。<code>需要 &quot;tabs&quot; 權限</code></li>
+<li>string （可選）status：”loading”（正在加載）或 “complete”（完成）。</li>
+<li>boolean incognito：頁籤是否在隱身窗口中。</li>
+<li>integer （可選）width：頁籤寬度，以像素為單位。</li>
+<li>integer （可選）height：頁籤高度，以像素為單位。</li>
+<li>string （可選）sessionId：session標識符。(如果使用session匯入tab可能導致沒有tab的id而只有session的id)</li>
+</ul>
+<p>補充一點：要注意<code>highlighted</code>與<code>active</code>是不一樣的狀態，下面附上圖例幫助大家了解<br>highlighted並且active<br><img src="http://ithelp.ithome.com.tw/upload/images/20170106/200794509GEptIsQD5.png" alt="http://ithelp.ithome.com.tw/upload/images/20170106/200794509GEptIsQD5.png"></p>
+<p>highlighted但並沒有active(因為整個視窗並沒有focus)<br><img src="http://ithelp.ithome.com.tw/upload/images/20170106/2007945009gebx2qgO.png" alt="http://ithelp.ithome.com.tw/upload/images/20170106/2007945009gebx2qgO.png"></p>
+<h2 id="創造及刪除頁籤"><a href="#創造及刪除頁籤" class="headerlink" title="創造及刪除頁籤"></a>創造及刪除頁籤</h2><h3 id="創造一個新的頁籤"><a href="#創造一個新的頁籤" class="headerlink" title="創造一個新的頁籤"></a>創造一個新的頁籤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.create(object createProperties, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li><p>指定一個書籤應包含以下資訊：</p>
+<ul>
+<li>integer （可選）windowId：創建新頁籤的窗口，默認為當前窗口。</li>
+<li>integer （可選）index：頁籤在窗口中的位置，無論傳入數值多少，都會自動把數值鎖定在0~目前頁籤數之間。</li>
+<li>string （可選）url：頁籤中一開始打開的 URL。完整的 URL 必須包括協議（即 “<a href="http://www.google.com/" target="_blank" rel="external">http://www.google.com”，而不能是</a> “<a href="http://www.google.com/" target="_blank" rel="external">www.google.com”）</a>，也可以是相對URL( 相對於擴展程序中的當前頁面)。默認為“打開新的頁籤”。</li>
+<li>boolean （可選）active：頁籤是否應該成為窗口中的focus的頁籤，默認為 true(如果本來就是focus的頁籤則無差)。</li>
+<li><del>boolean （可選）selected：請使用 active。頁籤是否為窗口中的選定頁籤，默認為 true。</del>(從 Chrome 33 開始棄用，所有跟selected有關的功能，都取得成與highigted有關的方法跟屬性)</li>
+<li>boolean （可選）pinned：頁籤是否應該固定，默認為 false。(指定為tue的頁籤，不能移動，也沒有關閉鈕)</li>
+<li>integer （可選）openerTabId：用某個頁籤的id來指定新創頁籤的開啟位置(即不開啟新視窗，直接取代舊的)。</li>
+</ul>
+</li>
+<li>回調中傳入一個tab型別的物件(function(<a href="https://crxdoc-zh.appspot.com/extensions/tabs#type-Tab" target="_blank" rel="external"><strong>Tab</strong></a> tab) {…})</li>
+</ul>
+<h3 id="關閉一個或多個頁籤"><a href="#關閉一個或多個頁籤" class="headerlink" title="關閉一個或多個頁籤"></a>關閉一個或多個頁籤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.remove(integer or array of integer tabIds, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>傳入的可以是一個整數型別的頁籤ID或是由多個頁籤ID組成的陣列。</li>
+<li>回調中沒有傳入任何參數</li>
+</ul>
+<h2 id="維護已有頁籤"><a href="#維護已有頁籤" class="headerlink" title="維護已有頁籤"></a>維護已有頁籤</h2><h3 id="更新書籤"><a href="#更新書籤" class="headerlink" title="更新書籤"></a>更新書籤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.update(integer tabId, object updateProperties, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>tabId：指定頁籤識別符</li>
+<li>updateProperties：請參考新增頁籤</li>
+<li>回調中傳入一個tab型別的物件(function( <a href="https://crxdoc-zh.appspot.com/extensions/tabs#type-Tab" target="_blank" rel="external"><strong>Tab</strong></a> tab) {…})</li>
+</ul>
+<h3 id="移動書籤"><a href="#移動書籤" class="headerlink" title="移動書籤"></a>移動書籤</h3><p>將一個或多個頁籤移動至所在窗口中的新位置，或者移動到新窗口中。注意，頁籤只能在普通窗口（window.type === “normal”）間移動。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.move(integer or array of integer tabIds, object moveProperties, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>tabId：指定頁籤識別符</li>
+<li>moveProperties：<ul>
+<li>int windowId：移動的目標窗口</li>
+<li>int index：新位置的order，傳入-1將把頁籤排到目標窗口的最後。</li>
+</ul>
+</li>
+<li>回調型式：function( <a href="https://crxdoc-zh.appspot.com/extensions/tabs#type-Tab" target="_blank" rel="external"><strong>Tab</strong></a> or array of <a href="https://crxdoc-zh.appspot.com/extensions/tabs#type-Tab" target="_blank" rel="external"><strong>Tab</strong></a> tabs) {…};</li>
+</ul>
+<h3 id="高亮突出指定書籤-選擇書籤"><a href="#高亮突出指定書籤-選擇書籤" class="headerlink" title="高亮突出指定書籤/選擇書籤"></a>高亮突出指定書籤/選擇書籤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.highlight(object highlightInfo, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>tabId：指定頁籤識別符</li>
+<li>回調型式：function( <strong>windows**</strong>.<strong>**Window</strong> window) {…}。回傳物件包含一些有用的視窗資訊。例如：窗口與螢幕的位置關係、窗口的類型、窗口是否置頂等。(詳見 <a href="https://crxdoc-zh.appspot.com/extensions/windows#type-Window" target="_blank" rel="external">chrome.windows API</a>)</li>
+</ul>
+<h3 id="重新載入書籤"><a href="#重新載入書籤" class="headerlink" title="重新載入書籤"></a>重新載入書籤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.reload(integer tabId, object reloadProperties, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>tabId：指定頁籤識別符，默認為當前窗口。</li>
+<li>reloadProperties：{bypassCache:false } 是否跳過本地緩存， 默認為false，即默認為使用本地緩存。</li>
+<li>回調中沒有傳入任何參數。</li>
+</ul>
+<h2 id="取得及查詢頁籤"><a href="#取得及查詢頁籤" class="headerlink" title="取得及查詢頁籤"></a>取得及查詢頁籤</h2><h3 id="取得頁籤"><a href="#取得頁籤" class="headerlink" title="取得頁籤"></a>取得頁籤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.get(integer tabId, function callback)</div></pre></td></tr></table></figure>
+<p><code>function( [**Tab**](https://crxdoc-zh.appspot.com/extensions/tabs#type-Tab) tab) {...};</code></p>
+<h3 id="獲得腳本所在的頁籤"><a href="#獲得腳本所在的頁籤" class="headerlink" title="獲得腳本所在的頁籤"></a>獲得腳本所在的頁籤</h3><p>獲得當前調用腳本所在的頁籤，如果在非頁籤環境下調用則可能返回 undefined（例如，後台頁面或彈出視圖）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getCurrent − chrome.tabs.getCurrent(function callback)</div></pre></td></tr></table></figure>
+<p>回調格式function( <a href="https://crxdoc-zh.appspot.com/extensions/tabs#type-Tab" target="_blank" rel="external"><strong>Tab</strong></a> tab) {…};</p>
+<h3 id="使用條件查詢頁"><a href="#使用條件查詢頁" class="headerlink" title="使用條件查詢頁"></a>使用條件查詢頁</h3><p>獲取具有指定屬性的所有頁籤，如果沒有指定任何屬性的話則獲取所有籤。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.query(object queryInfo, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>查詢的相關設置：<ul>
+<li>boolean （可選）active： 頁籤在窗口中是否為活動頁籤</li>
+<li>boolean （可選：</li>
+<li>pinned頁籤是否固定。</li>
+<li>boolean （可選）highlighted：頁籤是否高亮突出。</li>
+<li>boolean （可選）currentWindow：頁籤是否在當前窗口中。</li>
+<li>boolean （可選）lastFocusedWindow：頁籤是否在前一個具有焦點的窗口中。</li>
+<li>enum of “loading”, or “complete” （可選）status：頁籤是否已經加載完成。</li>
+<li>string （可選）title：匹配頁面標題的表達式。</li>
+<li>string （可選）url：匹配頁籤的 URL 表達式。(注意：片段標識符不會匹配，就是不可以用<code>*://www.google.*</code>，但可以用<code>*//www.google.com/*</code>)</li>
+<li>integer （可選）windowId：父窗口標識符，或者為 windows.WINDOW_ID_CURRENT，表示當前窗口。</li>
+<li>enum of “normal”, “popup”, “panel”, or “app” （可選）windowType：頁籤所在窗口的類型。</li>
+<li>integer （可選）index：頁籤在窗口中的位置。</li>
+</ul>
+</li>
+<li>回調格式function(array of <a href="https://crxdoc-zh.appspot.com/extensions/tabs#type-Tab" target="_blank" rel="external"><strong>Tab</strong></a> result) {…};</li>
+</ul>
+<h3 id="複制頁籤"><a href="#複制頁籤" class="headerlink" title="複制頁籤"></a>複制頁籤</h3><p>取得指定頁籤的相關設定，並在回調中操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.duplicate(integer tabId, function callback)</div></pre></td></tr></table></figure>
+<p>回調格式如下：要注意此方法是異步的，所以不會直接回傳值，而是在回調裡進行操作，算是query的簡便用法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function( Tab tab) &#123;...&#125;;</div></pre></td></tr></table></figure>
+<h2 id="放大縮小頁籤"><a href="#放大縮小頁籤" class="headerlink" title="放大縮小頁籤"></a>放大縮小頁籤</h2><h3 id="設定縮放"><a href="#設定縮放" class="headerlink" title="設定縮放"></a>設定縮放</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.setZoom(integer tabId, double zoomFactor, function callback)</div></pre></td></tr></table></figure>
+<h3 id="取得縮放值"><a href="#取得縮放值" class="headerlink" title="取得縮放值"></a>取得縮放值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.getZoom(integer tabId, function callback)</div></pre></td></tr></table></figure>
+<h3 id="修改預設縮放設置"><a href="#修改預設縮放設置" class="headerlink" title="修改預設縮放設置"></a>修改預設縮放設置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.setZoomSettings(integer tabId, ZoomSettings zoomSettings, function callback)</div></pre></td></tr></table></figure>
+<h3 id="取得預設的縮放設置"><a href="#取得預設的縮放設置" class="headerlink" title="取得預設的縮放設置"></a>取得預設的縮放設置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.getZoomSettings(integer tabId, function callback)</div></pre></td></tr></table></figure>
+<p>回調型式：function( <a href="https://crxdoc-zh.appspot.com/extensions/tabs#type-ZoomSettings" target="_blank" rel="external"><strong>ZoomSettings</strong></a> zoomSettings) {…};</p>
+<p>設置及取得物件時，會得到ZoomSettings型別的物件實例，代表縮放設置，詳情參考<a href="https://crxdoc-zh.appspot.com/extensions/tabs#type-ZoomSettings" target="_blank" rel="external">文件說明</a>。</p>
+<h2 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h2><h3 id="注入腳本"><a href="#注入腳本" class="headerlink" title="注入腳本"></a>注入腳本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.executeScript(integer tabId, InjectDetails details, function callback)</div></pre></td></tr></table></figure>
+<h3 id="注入樣式"><a href="#注入樣式" class="headerlink" title="注入樣式"></a>注入樣式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.insertCSS(integer tabId, InjectDetails details, function callback)query</div></pre></td></tr></table></figure>
+<p>無論是樣式還是腳本，關於插入的來源，使用InjectDetails型別代表，詳請參考官網文件：基本上除了直接導入代碼外，也能用路徑的方式指定要插入的檔案來源。還能指定是否連頁籤的iframe也要注入。</p>
+<blockquote>
+<p>警告：使用 代碼注入時要特別小心，不恰當的使用可能會使您的擴展程序遭到跨站腳本攻擊。</p>
+</blockquote>
+<h3 id="偵測語言"><a href="#偵測語言" class="headerlink" title="偵測語言"></a>偵測語言</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.detectLanguage(integer tabId, function callback)</div></pre></td></tr></table></figure>
+<p>回調中提供ISO語言代碼：例如<code>en</code>或<code>fr</code>。完整例表<a href="https://src.chromium.org/viewvc/chrome/trunk/src/third_party/cld/languages/internal/languages.cc" target="_blank" rel="external">在這</a></p>
+<h3 id="補捉當前頁籤可見區域"><a href="#補捉當前頁籤可見區域" class="headerlink" title="補捉當前頁籤可見區域"></a>補捉當前頁籤可見區域</h3><p>此方法必需擁有 <code>&quot;&lt;all_urls&gt;&quot;</code>或 <code>&quot;activeTab</code>“權限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.captureVisibleTab(integer windowId, object options, function callback)</div></pre></td></tr></table></figure>
+<p>設定檔範例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;permissions&quot; : [</div><div class="line">    &quot;tabs&quot;,</div><div class="line">    &quot;&lt;all_urls&gt;&quot;</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>視窗的id</li>
+<li>options：傳入物件包含以下屬性<ul>
+<li>format：jpeg 或png，預設jpeg</li>
+<li>quality：當指定的格式是jpeg時，可以控制圖片的儲存品質，但png會無視這個設定。</li>
+</ul>
+</li>
+<li>回調中傳入base64圖片字串：function(string dataUrl) {…};</li>
+</ul>
+<h2 id="與訊息有關"><a href="#與訊息有關" class="headerlink" title="與訊息有關"></a>與訊息有關</h2><p>長時間溝通</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">runtime.Port chrome.tabs.connect(integer tabId, object connectInfo)</div></pre></td></tr></table></figure>
+<p>傳送訊息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.sendMessage(integer tabId, any message, function responseCallback)</div></pre></td></tr></table></figure>
+<p>接收訊息的方法都在<code>chrome``.runtime</code>底下，例如：chrome.runtime.onConnect，詳情參考前面的章節：</p>
+<ul>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187744" target="_blank" rel="external">Chrome Extension 開發與實作 13-腳本組件之間訊息的傳遞(上)</a></li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10187844" target="_blank" rel="external">Chrome Extension 開發與實作 14-腳本組件之間訊息的傳遞(下)</a></li>
+</ul>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><ul>
+<li>onCreated：新增頁籤時產生。</li>
+<li>onUpdated：頁籤更新時產生。</li>
+<li>onMoved：頁籤移動時產生。當使用者手動移動頁籤，只會引發一次移動事件，其他因此調換順序的頁籤不會引發此事件。頁籤如果移動到另一個視窗，也不會引發此事件。</li>
+<li>onActivated：切換頁籤時觸發。該事件發生時，因為網頁還沒載入完成有可能取不到url，請設置onUpdated事件取得url，如果你需要的話。</li>
+<li>onHighlighted：高亮窗口時觸發(注意onHighlighted不一定代表onActivated)。</li>
+<li>onDetached：當一個頁籤脫離窗口時發生，例如：移動頁籤中。</li>
+<li>onAttached：當一個頁籤附加到窗口時發生。</li>
+<li>onRemoved：當頁籤關閉時發生。</li>
+<li>onReplaced：當頁籤內容被取代時發生。</li>
+<li>onZoomChange：頁籤縮放時發生。</li>
+</ul>
+<h2 id="資料"><a href="#資料" class="headerlink" title="資料"></a>資料</h2><ul>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/tabs#method-detectLanguage" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/tabs#method-detectLanguage</a></li>
+<li><a href="https://developer.chrome.com/extensions/tabs#method-captureVisibleTab" target="_blank" rel="external">https://developer.chrome.com/extensions/tabs#method-captureVisibleTab</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/05/chromeExtension-22/">Chrome Extension 開發與實作 22</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/07/chromeExtension-24/">Chrome Extension 開發與實作 24</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Storage-API-優化過的地端儲存API"><span class="nav-number">1.</span> <span class="nav-text">Storage API 優化過的地端儲存API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#設定檔權限設定"><span class="nav-number">1.1.</span> <span class="nav-text">設定檔權限設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#頁籤型別-Tab-Type"><span class="nav-number">1.2.</span> <span class="nav-text">頁籤型別 Tab Type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#創造及刪除頁籤"><span class="nav-number">1.3.</span> <span class="nav-text">創造及刪除頁籤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#創造一個新的頁籤"><span class="nav-number">1.3.1.</span> <span class="nav-text">創造一個新的頁籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#關閉一個或多個頁籤"><span class="nav-number">1.3.2.</span> <span class="nav-text">關閉一個或多個頁籤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#維護已有頁籤"><span class="nav-number">1.4.</span> <span class="nav-text">維護已有頁籤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更新書籤"><span class="nav-number">1.4.1.</span> <span class="nav-text">更新書籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移動書籤"><span class="nav-number">1.4.2.</span> <span class="nav-text">移動書籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高亮突出指定書籤-選擇書籤"><span class="nav-number">1.4.3.</span> <span class="nav-text">高亮突出指定書籤/選擇書籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新載入書籤"><span class="nav-number">1.4.4.</span> <span class="nav-text">重新載入書籤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取得及查詢頁籤"><span class="nav-number">1.5.</span> <span class="nav-text">取得及查詢頁籤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取得頁籤"><span class="nav-number">1.5.1.</span> <span class="nav-text">取得頁籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#獲得腳本所在的頁籤"><span class="nav-number">1.5.2.</span> <span class="nav-text">獲得腳本所在的頁籤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用條件查詢頁"><span class="nav-number">1.5.3.</span> <span class="nav-text">使用條件查詢頁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#複制頁籤"><span class="nav-number">1.5.4.</span> <span class="nav-text">複制頁籤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#放大縮小頁籤"><span class="nav-number">1.6.</span> <span class="nav-text">放大縮小頁籤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#設定縮放"><span class="nav-number">1.6.1.</span> <span class="nav-text">設定縮放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取得縮放值"><span class="nav-number">1.6.2.</span> <span class="nav-text">取得縮放值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改預設縮放設置"><span class="nav-number">1.6.3.</span> <span class="nav-text">修改預設縮放設置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取得預設的縮放設置"><span class="nav-number">1.6.4.</span> <span class="nav-text">取得預設的縮放設置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方法"><span class="nav-number">1.7.</span> <span class="nav-text">其他方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注入腳本"><span class="nav-number">1.7.1.</span> <span class="nav-text">注入腳本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注入樣式"><span class="nav-number">1.7.2.</span> <span class="nav-text">注入樣式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偵測語言"><span class="nav-number">1.7.3.</span> <span class="nav-text">偵測語言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#補捉當前頁籤可見區域"><span class="nav-number">1.7.4.</span> <span class="nav-text">補捉當前頁籤可見區域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#與訊息有關"><span class="nav-number">1.8.</span> <span class="nav-text">與訊息有關</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">1.9.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#資料"><span class="nav-number">1.10.</span> <span class="nav-text">資料</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2017/01/06/chromeExtension-23/';
+      var disqus_url = 'http://yoursite.com/2017/01/06/chromeExtension-23/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

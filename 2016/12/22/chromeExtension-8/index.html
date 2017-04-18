@@ -1,0 +1,1012 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 08 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 08 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="輸入組件:瀏覽器按鈕與頁面按鈕什麼是按鈕ActionChrome允許你設定一個icon在網址列的右側，當使用者點擊icon時，會展開一個由開發者自訂內容的彈出介面，來與使用者互動。而根據使用時機的不同，有兩個類似的輸入組件分別是瀏覽器按鈕(Browser Acction) 與 頁面按鈕(Page Action)。  
+
+在眾多輸入組件中，是最直觀的UI元素，也是許多開發者的第一選擇，接下來比較看看兩者的差別，幫助你挑選適合的方案。  " />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 08 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="輸入組件:瀏覽器按鈕與頁面按鈕什麼是按鈕ActionChrome允許你設定一個icon在網址列的右側，當使用者點擊icon時，會展開一個由開發者自訂內容的彈出介面，來與使用者互動。而根據使用時機的不同，有兩個類似的輸入組件分別是瀏覽器按鈕(Browser Acction) 與 頁面按鈕(Page Action)。  
+
+在眾多輸入組件中，是最直觀的UI元素，也是許多開發者的第一選擇，接下來比較看看兩者的差別，幫助你挑選適合的方案。  " />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 08 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 08
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2016-12-22
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/22/chromeExtension-8/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/22/chromeExtension-8/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="輸入組件-瀏覽器按鈕與頁面按鈕"><a href="#輸入組件-瀏覽器按鈕與頁面按鈕" class="headerlink" title="輸入組件:瀏覽器按鈕與頁面按鈕"></a>輸入組件:瀏覽器按鈕與頁面按鈕</h1><h3 id="什麼是按鈕Action"><a href="#什麼是按鈕Action" class="headerlink" title="什麼是按鈕Action"></a>什麼是按鈕Action</h3><p>Chrome允許你設定一個icon在網址列的右側，當使用者點擊icon時，會展開一個由開發者自訂內容的彈出介面，來與使用者互動。而根據使用時機的不同，有兩個類似的輸入組件分別是瀏覽器按鈕(Browser Acction) 與 頁面按鈕(Page Action)。  </p>
+<p><img src="https://quip.com/blob/TPLAAAdxn1T/LnotS2qYdC1BId_Ci6r1rw?a=iPhLt7ITv0aODM5RNjj43K2C1WApHrgm3XPwcta5aska" alt=""></p>
+<p>在眾多輸入組件中，是最直觀的UI元素，也是許多開發者的第一選擇，接下來比較看看兩者的差別，幫助你挑選適合的方案。  </p>
+<a id="more"></a>
+<h2 id="按鈕-Action-能作到什麼事情"><a href="#按鈕-Action-能作到什麼事情" class="headerlink" title="按鈕(Action)能作到什麼事情"></a>按鈕(Action)能作到什麼事情</h2><ul>
+<li>作為一個最容易跟使用者接觸的互動元素，是許多擴充功能開發者者的第一選擇。  </li>
+<li>提供預設的彈出視窗，讓開發者可以快速的打造功能UI。  </li>
+<li>彈出視窗不一定是必需的，也有些擴充功能選擇與內容腳本結合，在網頁中插入自己打造的UI元素，這時的按鈕僅僅只是作為一個觸發器而存在。  </li>
+</ul>
+<h2 id="Browser-Action-and-Page-Action-的共同點"><a href="#Browser-Action-and-Page-Action-的共同點" class="headerlink" title="Browser-Action and Page-Action 的共同點"></a>Browser-Action and Page-Action 的共同點</h2><ul>
+<li>都可以設定彈跳視窗(非必要)，</li>
+<li>彈出視窗腳本可以籍由彈出視窗引入，並且使用一些Chrome的API  </li>
+<li>使用點擊右上角的圖示與之互動  <ul>
+<li>chrome. browserAction.onClicked  </li>
+<li>chrome.pageAction.onClicked  </li>
+</ul>
+</li>
+</ul>
+<h2 id="Browser-Action-and-Page-Action-的差異點"><a href="#Browser-Action-and-Page-Action-的差異點" class="headerlink" title="Browser-Action and Page-Action 的差異點"></a>Browser-Action and Page-Action 的差異點</h2><ul>
+<li>Browser-Action在瀏覽器開敵時便是啟用狀態  </li>
+<li>Page-Action 必需在指定的條件符合的狀況才會啟用  </li>
+<li>你需要自已撰寫過瀘條件。  <ul>
+<li>啟動頁面按鈕的方法  <ul>
+<li>使用<code>chrome.declarativeContent</code> API來指定啟動pageAction的匹配條件  </li>
+<li>使用<code>chrome.pageAction.show(tabId)</code>來啟用pageAction的icon  </li>
+<li>與之對應的<code>chrome.pageAction.hide(integer tabId)</code>則用來關閉按鈕  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>在chrome裡每個tab都有獨特的ID, 跟tab有關的資訊，可以用chrome.tabs相關的功能作存取，更多細節請參考：<a href="https://developer.chrome.com/extensions/tabs#type" target="_blank" rel="external">https://developer.chrome.com/extensions/tabs#type</a></p>
+<p>從啟用的時機上來看，Browser-Action跟Page-Action基本是互斥的，開發者只需擇其一。</p>
+</blockquote>
+<h2 id="安裝檔的宣告方式"><a href="#安裝檔的宣告方式" class="headerlink" title="安裝檔的宣告方式"></a>安裝檔的宣告方式</h2><p>要注意在宣告上，Chrome是分為兩個不同的物件。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot;browser_action&quot; : &#123;  </div><div class="line">    &quot;default_title&quot; : &quot;HelloBrowserAction&quot;,  </div><div class="line">    &quot;default_icon&quot; : &quot;icon.png&quot;,  </div><div class="line">    &quot;default_popup&quot; : &quot;popup.html&quot;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot;page_action&quot; : &#123;  </div><div class="line">    &quot;default_title&quot; : &quot;HelloPageAction&quot;,  </div><div class="line">    &quot;default_icon&quot; : &quot;icon.png&quot;,  </div><div class="line">    &quot;default_popup&quot; : &quot;popup.html&quot;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="有哪些方法可以用"><a href="#有哪些方法可以用" class="headerlink" title="有哪些方法可以用"></a>有哪些方法可以用</h2><ul>
+<li>chrome.pageAction.setTitle( details)  </li>
+<li>chrome.pageAction.setIcon(details,funccallback)  </li>
+<li>chrome.pageAction.setPopup(details)  </li>
+<li>其他參見  <a href="https://crxdoc-zh.appspot.com/extensions/browserAction" target="_blank" rel="external">broswerAction</a>  </li>
+</ul>
+<ul>
+<li>hrome.browserAction.setTitle(details)  </li>
+<li>chrome.browserAction.setIcon(details,funccallback)  </li>
+<li>chrome.browserAction.setPopup( details)  </li>
+<li>其他參見   <a href="https://crxdoc-zh.appspot.com/extensions/pageAction" target="_blank" rel="external"> pageAction</a>  </li>
+</ul>
+<blockquote>
+<p>補充：browserAction中當你指定的tab關閉時，利用腳本改掉的設定會換回預設值。</p>
+</blockquote>
+<h2 id="動手作看看"><a href="#動手作看看" class="headerlink" title="動手作看看"></a>動手作看看</h2><p>在這裡我們先展示一段<strong>瀏覽器按鈕</strong>，<strong>頁面按鈕</strong>在下一個章節中再進行討論。我們將設定一個瀏覽器按鈕，使用者點擊後會看見一個彈出視窗。點擊視窗的按鈕，將用指定網址開啟一個新的Chrome視窗。  </p>
+<h2 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">    &quot;manifest_version&quot;: 2,  </div><div class="line">    &quot;name&quot;: &quot;鐵人賽-Browser-Action&quot;,  </div><div class="line">    &quot;description&quot;: &quot;就來作作第一個Browser-Action&quot;,  </div><div class="line">    &quot;version&quot;: &quot;1.2&quot;,  </div><div class="line">    &quot;browser_action&quot;: &#123;  </div><div class="line">        &quot;default_title&quot;: &quot;羅拉拉的第一個擴充套件&quot;,  </div><div class="line">        &quot;default_icon&quot;: &#123; // optional  </div><div class="line">            &quot;16&quot;: &quot;icon.png&quot;, // optional  </div><div class="line">            &quot;24&quot;: &quot;icon24.png&quot;, // optional  </div><div class="line">            &quot;32&quot;: &quot;icon32.png&quot; // optional  </div><div class="line">        &#125;,  </div><div class="line">        &quot;default_popup&quot;: &quot;popup.html&quot;// optional  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="HTML：個人喜好-，在樣式上引入了CSS-Framework-FlatUI"><a href="#HTML：個人喜好-，在樣式上引入了CSS-Framework-FlatUI" class="headerlink" title="HTML：個人喜好 ，在樣式上引入了CSS Framework FlatUI"></a>HTML：個人喜好 ，在樣式上引入了CSS Framework <a href="http://designmodo.github.io/Flat-UI/" target="_blank" rel="external">FlatUI</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">//popup.html  </div><div class="line">&lt;!DOCTYPE html&gt;  </div><div class="line">&lt;html&gt;  </div><div class="line"></div><div class="line">&lt;head&gt;  </div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;  </div><div class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;  </div><div class="line">    &lt;title&gt;&lt;/title&gt;  </div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.css&quot;&gt;  </div><div class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;extension.css&quot;&gt;  </div><div class="line">&lt;/head&gt;  </div><div class="line"></div><div class="line">&lt;body&gt;  </div><div class="line">    &lt;div class=&quot;row demo-tiles&quot;&gt;  </div><div class="line">        &lt;div class=&quot;col-xs-3&quot;&gt;  </div><div class="line">            &lt;div class=&quot;tile&quot;&gt;  </div><div class="line">                &lt;img src=&quot;https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/562816_461226470562299_1003308049_n.jpg?oh=036b256fa260df0b165672bc2dd0e7ff&amp;oe=58EC4C54&quot; alt=&quot;Compas&quot; class=&quot;tile-image big-illustration&quot;&gt;  </div><div class="line">                &lt;h3 class=&quot;tile-title&quot;&gt;羅拉拉的Extension&lt;/h3&gt;  </div><div class="line">                &lt;p&gt;我是前端我驕傲&lt;/p&gt;  </div><div class="line">                &lt;a class=&quot;btn btn-primary btn-large btn-block&quot; href=&quot;https://github.com/lauraluo&quot;&gt;&lt;span class=&quot;fui-home&quot;&gt;&lt;/span&gt;羅拉拉的GitHub&lt;/a&gt;  </div><div class="line">              </div><div class="line">          </div><div class="line">      </div><div class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;popup.js&quot;&gt;&lt;/script&gt;  </div><div class="line">&lt;/body&gt;  </div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>彈出視窗腳本  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//popup.js  </div><div class="line">document.addEventListener(&apos;DOMContentLoaded&apos;, function(dcle) &#123;  </div><div class="line">    var dButton = document.getElementById(&quot;button&quot;);  </div><div class="line"></div><div class="line">    dButton.addEventListener(&apos;click&apos;, function(ce) &#123;  </div><div class="line">        //使用Chrome API開啟視窗  </div><div class="line">        chrome.windows.create(&#123; &quot;url&quot;: &quot;https://github.com/lauraluo&quot; &#125;);  </div><div class="line">    &#125;);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="CSS：設定了視窗寬度"><a href="#CSS：設定了視窗寬度" class="headerlink" title="CSS：設定了視窗寬度"></a>CSS：設定了視窗寬度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">   body &#123;  </div><div class="line">      width: 500px;//可定義視窗寬度  </div><div class="line">  &#125;  </div><div class="line"></div><div class="line">  .demo-tiles &#123;  </div><div class="line">      margin: 20px;  </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="運行結果"><a href="#運行結果" class="headerlink" title="運行結果"></a>運行結果</h3><p><img src="https://quip.com/blob/TPLAAAdxn1T/7mRB2qheZYOG0Zgw8EqDMw?a=m53zaiyBoDH13qNDTaakOqz9B91RnLuv1SpVyN91VDga" alt=""></p>
+<blockquote>
+<p>程式碼範例: <a href="https://github.com/lauraluo/ExtensionSample/tree/master/BroswerAction" target="_blank" rel="external">Github</a>  </p>
+</blockquote>
+<h2 id="補充：介面顯示的版本問題"><a href="#補充：介面顯示的版本問題" class="headerlink" title="補充：介面顯示的版本問題"></a>補充：介面顯示的版本問題</h2><p>無論是電子書或是官網中提到的範例，都顯示chrome會將 Page-Action的icon放置在網址列裡面並靠齊右邊。<br>書中的圖例<br><img src="https://quip.com/blob/TPLAAAdxn1T/77cUOrQe1FaKI51v5bGjbA?a=exDdlc5aQAUoE1uNa111Nsu6l7gv8dyrzPNUgELhQ8sa" alt=""><br>新版本狀況會發現兩個按鈕被統一了：請注意右上角的頁面按鈕，在一開始載入並沒有馬上啟用 (灰色)，而是在我進入新的網站時才啟動按鈕(彩色)，這就是新版的PageAction。<br><img src="https://quip.com/blob/TPLAAAdxn1T/resPTG83j-K8LC6f_LdBCQ?a=ybKKvrgTtLdXxc5r2NjsaB8FwdQJmYqIQyhqkKPsMYMa" alt=""></p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>頁面按鈕以及瀏覽器按鈕，是許多開發者的優先選擇。  </li>
+<li>如果你的擴充功能每一頁都必需載入，請你選擇瀏覽器按鈕。  </li>
+<li>如果你的擴充功能，在特定的條件才需載入，請你選擇頁面按鈕。  </li>
+<li>在舊版本中，這兩個按鈕的長相有所分別，但在新版本的Chrome外觀已經統一。  </li>
+<li>彈出視窗組件不是必需的，你可以選擇頁面/瀏覽器作為你的擴充功能入口，再利用內容腳本打造自已的UI(evernote就這麼作)。  </li>
+<li>如果你設定了彈出視窗組件，事件腳本將接收不了按鈕的點擊事件。  </li>
+<li>我們的範例，簡單的示範一個瀏覽器按鈕如何實作，展示了彈出視窗腳本可以直接使用一些Chrome提供的API。  </li>
+<li>對工程師來說，頁面按鈕跟瀏覽器按鈕最大的不同之處，除了安裝檔中使用的關鍵字不一樣之外，還有一點最重要的，開發者需要實作啟動頁面按鈕的邏輯，我們將在下一個段落討論。  </li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li>完整的 pageAction 中文文件： <a href="https://crxdoc-zh.appspot.com/extensions/pageAction" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/pageAction</a>  </li>
+<li>完整的 BrowserAction 中文文件：  <a href="https://crxdoc-zh.appspot.com/extensions/browserAction" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/browserAction</a>  </li>
+<li>電子書：<a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">http://www.apress.com/us/book/9781484217740</a>  </li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/21/chromeExtension-7/">Chrome Extension 開發與實作 07</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/23/chromeExtension-9/">Chrome Extension 開發與實作 09</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#輸入組件-瀏覽器按鈕與頁面按鈕"><span class="nav-number">1.</span> <span class="nav-text">輸入組件:瀏覽器按鈕與頁面按鈕</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什麼是按鈕Action"><span class="nav-number">1.0.1.</span> <span class="nav-text">什麼是按鈕Action</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按鈕-Action-能作到什麼事情"><span class="nav-number">1.1.</span> <span class="nav-text">按鈕(Action)能作到什麼事情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Browser-Action-and-Page-Action-的共同點"><span class="nav-number">1.2.</span> <span class="nav-text">Browser-Action and Page-Action 的共同點</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Browser-Action-and-Page-Action-的差異點"><span class="nav-number">1.3.</span> <span class="nav-text">Browser-Action and Page-Action 的差異點</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝檔的宣告方式"><span class="nav-number">1.4.</span> <span class="nav-text">安裝檔的宣告方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有哪些方法可以用"><span class="nav-number">1.5.</span> <span class="nav-text">有哪些方法可以用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動手作看看"><span class="nav-number">1.6.</span> <span class="nav-text">動手作看看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設定檔"><span class="nav-number">1.7.</span> <span class="nav-text">設定檔</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML：個人喜好-，在樣式上引入了CSS-Framework-FlatUI"><span class="nav-number">1.7.1.</span> <span class="nav-text">HTML：個人喜好 ，在樣式上引入了CSS Framework FlatUI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS：設定了視窗寬度"><span class="nav-number">1.7.2.</span> <span class="nav-text">CSS：設定了視窗寬度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#運行結果"><span class="nav-number">1.7.3.</span> <span class="nav-text">運行結果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#補充：介面顯示的版本問題"><span class="nav-number">1.8.</span> <span class="nav-text">補充：介面顯示的版本問題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小結"><span class="nav-number">1.9.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">1.10.</span> <span class="nav-text">參考資料</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2016/12/22/chromeExtension-8/';
+      var disqus_url = 'http://yoursite.com/2016/12/22/chromeExtension-8/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

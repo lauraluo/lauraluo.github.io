@@ -1,0 +1,1016 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 11 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 11 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="輸入組件 右鍵功能選單(chrome.contextMenus)什麼是右鍵功能選單輸入組件Chrome提供開發者可以跟使用者正在關注的上下文進行互動(圖片，連結，選取文字)，而使用者可以在按下滑鼠右鍵時，看見擴充功能項目。  
+" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 11 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="輸入組件 右鍵功能選單(chrome.contextMenus)什麼是右鍵功能選單輸入組件Chrome提供開發者可以跟使用者正在關注的上下文進行互動(圖片，連結，選取文字)，而使用者可以在按下滑鼠右鍵時，看見擴充功能項目。  
+" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 11 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 11
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2016-12-25
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/25/chromeExtension-11/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/25/chromeExtension-11/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="輸入組件-右鍵功能選單-chrome-contextMenus"><a href="#輸入組件-右鍵功能選單-chrome-contextMenus" class="headerlink" title="輸入組件 右鍵功能選單(chrome.contextMenus)"></a>輸入組件 右鍵功能選單(chrome.contextMenus)</h1><h2 id="什麼是右鍵功能選單輸入組件"><a href="#什麼是右鍵功能選單輸入組件" class="headerlink" title="什麼是右鍵功能選單輸入組件"></a>什麼是右鍵功能選單輸入組件</h2><p>Chrome提供開發者可以跟使用者正在關注的上下文進行互動(圖片，連結，選取文字)，而使用者可以在按下滑鼠右鍵時，看見擴充功能項目。  </p>
+<p><img src="https://quip.com/blob/FUGAAASxqG3/d9sLx4sA1MpG6afCKz350A?a=1nOTU5cZBwzPafx155MLUxqOA6dKcSz9sejeXclYllUa" alt=""></p>
+<a id="more"></a>
+<h2 id="可以作到什麼事情"><a href="#可以作到什麼事情" class="headerlink" title="可以作到什麼事情"></a>可以作到什麼事情</h2><ul>
+<li>可取到使用者正在瀏覽以及他所關注的元素資訊，例如：圖片的網址、連結的網址、頁面的網址，選取的文字，frame的網址等資訊。  </li>
+<li>選單可以是巢狀的  </li>
+<li>可以使用分割線，去群組你的項目(如下圖)  </li>
+<li>可以以各別指定在哪些媒體元素上，點擊右鍵才啟用你的選單項目(例如：圖片、影片)  </li>
+</ul>
+<p><img src="https://quip.com/blob/FUGAAASxqG3/bgWDMPCes4_CgSEUYZWoHw?a=p3ybealrp70CYnPeqMncuekofMaIkhZ1LsxYVTLBIkEa" alt=""></p>
+<p>這樣的模式可以應用在以下功能：  </p>
+<ul>
+<li>字典：將使用選取的文字進行中英查詢  </li>
+<li>圖片的收集：將使用者focus的圖片網址，收集到收集冊  </li>
+<li>筆記的收集：將使用者選段的文字片段，收枈到線上筆記本  </li>
+<li>連結的分析：按下右鍵分析使用者focus的連結是否為惡意網址。  </li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="定義你的右鍵選單"><a href="#定義你的右鍵選單" class="headerlink" title="定義你的右鍵選單"></a>定義你的右鍵選單</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">    &quot;manifest_version&quot;: 2,  </div><div class="line">    &quot;name&quot;: &quot;HelloContextMenuItem&quot;,  </div><div class="line">    &quot;description&quot;: &quot;Extension to demonstrate a Context-Menu-Item&quot;,  </div><div class="line">    &quot;version&quot;: &quot;2.0&quot;,  </div><div class="line">    //取得contextMenus權限  </div><div class="line">    &quot;permissions&quot;: [&quot;contextMenus&quot;],  </div><div class="line">    //指定功能選單項目的icon 16X16，注意不要跟broswer與page action的宣告方式搞混  </div><div class="line">    &quot;icons&quot;: &#123; &quot;16&quot;: &quot;icon.png&quot; &#125;,  </div><div class="line">    &quot;background&quot;: &#123;  </div><div class="line">        &quot;scripts&quot;: [&quot;event.js&quot;],  </div><div class="line">        //將persistent設定為true  </div><div class="line">        &quot;persistent&quot;: false  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>需設定contextMenus的權限  </li>
+<li>注意設定icon的方式不要跟頁面按鈕或瀏覽器按鈕搞錯。  </li>
+<li>如果不把persistent設定為true：他會要求你自己使用字串指定項目的id，而且不可以重複，另外點擊事件的綁定也會變的相對複雜，在這裡為了讓大家把重點聚焦，我們先不理會前面說的效能問題。  </li>
+</ul>
+<blockquote>
+<p>補充：前面有說過事件腳本會在需要時載入，閒置時御載，所以如果不把persistent設定成true，工程師要注意因為腳本的重複載入，導致選單元素重複生成的問題。</p>
+</blockquote>
+<h3 id="創造選單元素"><a href="#創造選單元素" class="headerlink" title="創造選單元素"></a>創造選單元素</h3><p>使用以下方法創造元素，一次只能創建一個項目，提供創建完成的回調。  </p>
+<pre><code>chrome.contextMenus.create(createProperties, callback) 
+</code></pre><p>以下程式碼示範創建一個基本項目：變數<code>normal</code> 將接收項目的ID必儲存。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var normal = chrome.contextMenus.create(&#123;  </div><div class="line">    &quot;title&quot;: &quot;通常項目&quot;,  </div><div class="line">    &quot;type&quot;: &quot;normal&quot;,  </div><div class="line">    &quot;contexts&quot;: [&apos;all&apos;],  </div><div class="line">    &quot;parentId&quot;: parent,  </div><div class="line">    &quot;onclick&quot;: genericOnClick  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>創建項目必需是特定的物件格式，我們來看完整的物件設定資訊：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">    &quot;type&quot; : &quot;normal&quot;,  </div><div class="line">    &quot;id&quot; : &quot;item1-1&quot;,  </div><div class="line">    &quot;title&quot; : &quot;使用者選擇了&apos;%s&apos;&quot;,  </div><div class="line">    &quot;contexts&quot; : [&quot;all&quot;, &quot;page&quot;, &quot;frame&quot;, &quot;selection&quot;, &quot;link&quot;, &quot;editable&quot;, &quot;image&quot;, &quot;video&quot;, &quot;audio&quot;, &quot;launcher&quot;, &quot;browser_action&quot;,&quot;page_action&quot;],  </div><div class="line">    &quot;documentUrlPatterns&quot; : [&quot;https://*.google.com/foo*bar&quot;],  </div><div class="line">    &quot;targetUrlPatterns&quot; : [],  </div><div class="line">    &quot;enabled&quot;: true,  </div><div class="line">    &quot;onclick&quot;: function(info,tab)&#123;&#125;,  </div><div class="line">    &quot;parentId&quot;: &quot;item1&quot;,  </div><div class="line">    &quot;checked&quot; : false  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>type</code> 選單的格式 有以下類型可以選擇  <ul>
+<li>“normal”  </li>
+<li>“checkbox”  </li>
+<li>“radio”  </li>
+<li>“separator”(分割線)  </li>
+</ul>
+</li>
+<li><code>id</code> 識別字串，在同一個extension中必需是唯一值，對於事件腳本是必要的存在。  </li>
+<li><code>title</code> 項目顯式的文字，使用字符變數<code>%S</code>將取得使用者在右鍵狀態中選擇的文字  </li>
+<li><code>content</code> 在哪些特定的內容上啟用項目  </li>
+<li><code>documentUrlPatterns</code> 指定在哪些特定的網域會啟用這個項目, 使用<a href="https://crxdoc-zh.appspot.com/extensions/match_patterns" target="_blank" rel="external">匹配表達式</a>  </li>
+<li><code>targetUrlPatterns</code> 跟上面類型，但允許使用相對路徑”/”  </li>
+<li><code>enabled</code> 該項目是否啟用，可以覆蓋掉上想所有相關的設定  </li>
+<li><code>onClick</code>項目被點擊時的回調方法  </li>
+<li><code>parentId</code> 指定巢狀項目的父層項目  </li>
+<li><code>checked</code> 如果type為radio或checkbox，可指定他的預設狀態是否勾選(預設值為false)。  </li>
+</ul>
+<blockquote>
+<p>我試著翻閱有沒有一次插入多個項目的方法，但文件中<code>createProperties</code>不允許以陣列的方式傳入，所以如果你需要打造多個項目，除了用each 或是 for 用迴圈的方式進行，應該沒有別的方法。</p>
+<p>除了創建項目外，chrome也提供項目刪修等操作，完整的方法可參考 <a href="https://developer.chrome.com/extensions/contextMenus#summary" target="_blank" rel="external">這裡</a></p>
+</blockquote>
+<h3 id="監聽點擊事件"><a href="#監聽點擊事件" class="headerlink" title="監聽點擊事件"></a>監聽點擊事件</h3><p>方法一：針別每個項目，在創建時綁定事件。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function genericOnClick(info, tab) &#123;  </div><div class="line">    //根據你點選右鍵的狀況不同，可以得到一些跟內容有關的資訊  </div><div class="line">    //例如 頁面網址，選取的文字，圖片來源，連結的位址  </div><div class="line">    console.log(  </div><div class="line">        &quot;ID是：&quot; + info.menuItemId + &quot;\n&quot; +  </div><div class="line">        &quot;現在的網址是：&quot; + info.pageUrl + &quot;\n&quot; +  </div><div class="line">        &quot;選取的文字是：&quot; + (info.selectionText ? info.selectionText : &quot;&quot;) + &quot;\n&quot; +  </div><div class="line">        &quot;現在hover元素的圖片來源：&quot; + (info.srcUrl ? info.srcUrl : &quot;&quot;) + &quot;\n&quot; +  </div><div class="line">        &quot;現在hover的連結：&quot; + (info.linkUrl ? info.linkUrl : &quot;&quot;) + &quot;\n&quot; +  </div><div class="line">        &quot;現在hover的frame是：&quot; + (info.frameUrl ? info.frameUrl : &quot;&quot;) + &quot;\n&quot;  </div><div class="line">    );  </div><div class="line">&#125;  </div><div class="line">var item = chrome.contextMenus.create(&#123;  </div><div class="line">    &quot;title&quot;: &quot;你選擇了%s&quot;,  </div><div class="line">    &quot;contexts&quot;: [&apos;all&apos;],  </div><div class="line">    &quot;onclick&quot;: genericOnClick  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>方法二：另外綁定，這個作法會監聽所有項目，開發者要自己從回傳的資訊(也許是id)去判斷要處理的操作邏輯。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chrome.contextMenus.onClicked.addListener(function(info,tab) &#123;  </div><div class="line">    console.log(&quot;id: %s, selection: %s, url: %s&quot;,info.menuItemId,info.selectionText,tab.url);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>請視狀況選擇適合你自己的方案。  </p>
+<h2 id="可選項目的補充"><a href="#可選項目的補充" class="headerlink" title="可選項目的補充"></a>可選項目的補充</h2><p>前面有說到創建項目時可指定元素的類型，其中的checkbox以及radio可以供使用者進行勾選及取消勾選。(如下圖)勾選項目與其他項目的差別在於以下：  </p>
+<ul>
+<li>可以在創建時使用checked指定預設定  </li>
+<li>當可選項目被點擊的時後，事件回調的回傳資訊包含了以下資訊供開發者操作：  <ul>
+<li>checked: 目前狀態  </li>
+<li>wasChecked：之前的狀態  </li>
+</ul>
+</li>
+<li>另外還有比較特別的一點是，當Radio的選項元素使用分割線項目元素(separator)分開時，會形成一個只能單選的群組，如下圖：注意被分割線隔開的兩個群組形成了單選的狀態。  </li>
+</ul>
+<p><img src="https://quip.com/blob/FUGAAASxqG3/DQeikDMS-rCvkKUX5mx7dA?a=sus74Ojtm0ciFRPs4wBaRO1Fatiqol5RuuSC0oeATToa" alt=""></p>
+<h2 id="動手作看看"><a href="#動手作看看" class="headerlink" title="動手作看看"></a>動手作看看</h2><p>這次的範例目的是為了幫助大家完整的了解右鍵功能選單輸入組件，所以我會實作以下功能：  </p>
+<ul>
+<li>創建所有類型的選單項目。  </li>
+<li>將所有的項目收納在一個根項目裡，以達成巢狀收納。  </li>
+<li>在發生點擊時，將一些有用的資訊顯示在背景頁面的console裡。  </li>
+</ul>
+<p>設定檔：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">    &quot;manifest_version&quot;: 2,  </div><div class="line">    &quot;name&quot;: &quot;HelloContextMenuItem&quot;,  </div><div class="line">    &quot;description&quot;: &quot;Extension to demonstrate a Context-Menu-Item&quot;,  </div><div class="line">    &quot;version&quot;: &quot;2.0&quot;,  </div><div class="line">    //取得contextMenus權限  </div><div class="line">    &quot;permissions&quot;: [&quot;contextMenus&quot;],  </div><div class="line">    //指定功能選單項目的icon 16X16，注意不要跟broswer與page action的宣告方式搞混  </div><div class="line">    &quot;icons&quot;: &#123; &quot;16&quot;: &quot;icon.png&quot; &#125;,  </div><div class="line">    &quot;background&quot;: &#123;  </div><div class="line">        &quot;scripts&quot;: [&quot;event.js&quot;],  </div><div class="line">        //如果不把persistent設定為true：他會要求你自己使用字串指定項目的id，而且不可以重複，另外點擊事件的綁定也會變的相對複雜，為了讓大家把重點聚焦，所以才這麼作。  </div><div class="line">        &quot;persistent&quot;: true  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>事件腳本   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line">function genericOnClick(info, tab) &#123;  </div><div class="line">    //根據你點選右鍵的狀況不同，可以得到一些跟內容有關的資訊  </div><div class="line">    //例如 頁面網址，選取的文字，圖片來源，連結的位址  </div><div class="line">    console.log(  </div><div class="line">        &quot;ID是：&quot; + info.menuItemId + &quot;\n&quot; +  </div><div class="line">        &quot;現在的網址是：&quot; + info.pageUrl + &quot;\n&quot; +  </div><div class="line">        &quot;選取的文字是：&quot; + (info.selectionText ? info.selectionText : &quot;&quot;) + &quot;\n&quot; +  </div><div class="line">        &quot;現在hover元素的圖片來源：&quot; + (info.srcUrl ? info.srcUrl : &quot;&quot;) + &quot;\n&quot; +  </div><div class="line">        &quot;現在hover的連結：&quot; + (info.linkUrl ? info.linkUrl : &quot;&quot;) + &quot;\n&quot; +  </div><div class="line">        &quot;現在hover的frame是：&quot; + (info.frameUrl ? info.frameUrl : &quot;&quot;) + &quot;\n&quot;  </div><div class="line">    );  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">function checkableClick(info, tab) &#123;  </div><div class="line">    //checkbox 以及 radio 這兩種類型的項目，除了上面的程式碼提到的資訊外，還會用布林值來告訴你使用者點選前，及點選後的狀態。  </div><div class="line">    console.log(  </div><div class="line">        &quot;ID是：&quot; + info.menuItemId + &quot;\n&quot; +  </div><div class="line">        &quot;現在的網址是：&quot; + info.pageUrl + &quot;\n&quot; +  </div><div class="line">        &quot;選取的文字是：&quot; + (info.selectionText ? info.selectionText : &quot;&quot;) + &quot;\n&quot; +  </div><div class="line">        &quot;現在hover元素的圖片來源：&quot; + (info.srcUrl ? info.srcUrl : &quot;&quot;) + &quot;\n&quot; +  </div><div class="line">        &quot;現在hover的連結：&quot; + (info.linkUrl ? info.linkUrl : &quot;&quot;) + &quot;\n&quot; +  </div><div class="line">        &quot;現在hover的frame是：&quot; + (info.frameUrl ? info.frameUrl : &quot;&quot;) + &quot;\n&quot; +  </div><div class="line">        &quot;現在的狀態是：&quot; + info.checked + &quot;\n&quot; +  </div><div class="line">        &quot;之前的狀態是：&quot; + info.wasChecked  </div><div class="line">    );  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">function createMenus() &#123;  </div><div class="line">    var parent = chrome.contextMenus.create(&#123;  </div><div class="line">        &quot;title&quot;: &quot;你選擇了%s&quot;,  </div><div class="line">        &quot;contexts&quot;: [&apos;all&apos;],      </div><div class="line">        &quot;onclick&quot;: genericOnClick  </div><div class="line">    &#125;);  </div><div class="line"></div><div class="line">    var normal = chrome.contextMenus.create(&#123;  </div><div class="line">        &quot;title&quot;: &quot;通常項目&quot;,  </div><div class="line">        &quot;type&quot;: &quot;normal&quot;,  </div><div class="line">        &quot;contexts&quot;: [&apos;all&apos;],  </div><div class="line">        &quot;parentId&quot;: parent,  </div><div class="line">        &quot;onclick&quot;: genericOnClick  </div><div class="line">    &#125;);  </div><div class="line"></div><div class="line">    var checkbox = chrome.contextMenus.create(&#123;  </div><div class="line">        &quot;title&quot;: &quot;checkbox&quot;,  </div><div class="line">        &quot;type&quot;: &quot;checkbox&quot;,  </div><div class="line">        &quot;contexts&quot;: [&apos;all&apos;],  </div><div class="line">        &quot;parentId&quot;: parent,  </div><div class="line">        &quot;onclick&quot;: checkableClick  </div><div class="line">    &#125;);  </div><div class="line"></div><div class="line">    //被separator分隔的radio項目會自動形成一個只能單選的group  </div><div class="line">    var line1 = chrome.contextMenus.create(&#123;  </div><div class="line">        &quot;title&quot;: &quot;Child 2&quot;,  </div><div class="line">        &quot;type&quot;: &quot;separator&quot;,  </div><div class="line">        &quot;contexts&quot;: [&apos;all&apos;],  </div><div class="line">        &quot;parentId&quot;: parent  </div><div class="line">    &#125;);  </div><div class="line"></div><div class="line">    var radio1A = chrome.contextMenus.create(&#123;  </div><div class="line">        &quot;title&quot;: &quot;group-1 的A選項(單選)&quot;,  </div><div class="line">        &quot;type&quot;: &quot;radio&quot;,  </div><div class="line">        &quot;contexts&quot;: [&apos;all&apos;],  </div><div class="line">        &quot;parentId&quot;: parent,  </div><div class="line">        &quot;onclick&quot;: checkableClick  </div><div class="line">    &#125;);  </div><div class="line">    var radio1B = chrome.contextMenus.create(&#123;  </div><div class="line">        &quot;title&quot;: &quot;group-1 的B選項(單選)&quot;,  </div><div class="line">        &quot;type&quot;: &quot;radio&quot;,  </div><div class="line">        &quot;contexts&quot;: [&apos;all&apos;],  </div><div class="line">        &quot;parentId&quot;: parent,  </div><div class="line">        &quot;onclick&quot;: checkableClick  </div><div class="line">    &#125;);  </div><div class="line">    //被separator分隔的radio項目會自動形成一個只能單選的group  </div><div class="line">    var line2 = chrome.contextMenus.create(&#123;  </div><div class="line">        &quot;title&quot;: &quot;Child 2&quot;,  </div><div class="line">        &quot;type&quot;: &quot;separator&quot;,  </div><div class="line">        &quot;contexts&quot;: [&apos;all&apos;],  </div><div class="line">        &quot;parentId&quot;: parent  </div><div class="line">    &#125;);  </div><div class="line"></div><div class="line">    var radio2A = chrome.contextMenus.create(&#123;  </div><div class="line">        &quot;title&quot;: &quot;group-2 的A選項(單選)&quot;,  </div><div class="line">        &quot;type&quot;: &quot;radio&quot;,  </div><div class="line">        &quot;contexts&quot;: [&apos;all&apos;],  </div><div class="line">        &quot;parentId&quot;: parent,  </div><div class="line">        &quot;onclick&quot;: checkableClick  </div><div class="line">    &#125;);  </div><div class="line">    var radio2B = chrome.contextMenus.create(&#123;  </div><div class="line">        &quot;title&quot;: &quot;group-2 的B選項(單選)&quot;,  </div><div class="line">        &quot;type&quot;: &quot;radio&quot;,  </div><div class="line">        &quot;contexts&quot;: [&apos;all&apos;],  </div><div class="line">        &quot;parentId&quot;: parent,  </div><div class="line">        &quot;onclick&quot;: checkableClick  </div><div class="line">    &#125;);  </div><div class="line"></div><div class="line">    // 使用chrome.contextMenus.create的方法回傳值是項目的id  </div><div class="line">    console.log(parent);  </div><div class="line">    console.log(normal);  </div><div class="line">    console.log(checkbox);  </div><div class="line">    console.log(line1);  </div><div class="line">    console.log(line2);  </div><div class="line">    console.log(radio1A);  </div><div class="line">    console.log(radio1B);  </div><div class="line">    console.log(radio2A);  </div><div class="line">    console.log(radio2B);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">createMenus();</div></pre></td></tr></table></figure>
+<p>運行結果：<br><img src="http://i.imgur.com/vSYIDA5.gif" alt="http://i.imgur.com/vSYIDA5.gif"></p>
+<blockquote>
+<p>完整範例在<a href="https://github.com/lauraluo/ExtensionSample/tree/master/ContextMenus" target="_blank" rel="external">Github</a></p>
+</blockquote>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://crxdoc-zh.appspot.com/extensions/contextMenus" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/contextMenus</a><br><a href="http://stackoverflow.com/questions/38190701/why-does-chrome-contextmenus-create-multiple-entries" target="_blank" rel="external">http://stackoverflow.com/questions/38190701/why-does-chrome-contextmenus-create-multiple-entries</a></p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/24/chromeExtension-10/">Chrome Extension 開發與實作 10</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/26/chromeExtension-12/">Chrome Extension 開發與實作 12</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#輸入組件-右鍵功能選單-chrome-contextMenus"><span class="nav-number">1.</span> <span class="nav-text">輸入組件 右鍵功能選單(chrome.contextMenus)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什麼是右鍵功能選單輸入組件"><span class="nav-number">1.1.</span> <span class="nav-text">什麼是右鍵功能選單輸入組件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可以作到什麼事情"><span class="nav-number">1.2.</span> <span class="nav-text">可以作到什麼事情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">1.3.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定義你的右鍵選單"><span class="nav-number">1.3.1.</span> <span class="nav-text">定義你的右鍵選單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#創造選單元素"><span class="nav-number">1.3.2.</span> <span class="nav-text">創造選單元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#監聽點擊事件"><span class="nav-number">1.3.3.</span> <span class="nav-text">監聽點擊事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可選項目的補充"><span class="nav-number">1.4.</span> <span class="nav-text">可選項目的補充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動手作看看"><span class="nav-number">1.5.</span> <span class="nav-text">動手作看看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">1.6.</span> <span class="nav-text">參考資料</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2016/12/25/chromeExtension-11/';
+      var disqus_url = 'http://yoursite.com/2016/12/25/chromeExtension-11/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

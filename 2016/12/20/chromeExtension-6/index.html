@@ -1,0 +1,1021 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 06 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 06 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="事件腳本與背景頁面什麼是事件腳本Extension的功能實作由於腳本之間無法直接進行溝通，所以非常依靠事件趨動來傳送訊息，處理操作邏輯，事件腳本可以被視為是Extension的Controller，所有的事件最後都會回到事件腳本身上集中處理。  " />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 06 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="事件腳本與背景頁面什麼是事件腳本Extension的功能實作由於腳本之間無法直接進行溝通，所以非常依靠事件趨動來傳送訊息，處理操作邏輯，事件腳本可以被視為是Extension的Controller，所有的事件最後都會回到事件腳本身上集中處理。  " />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 06 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 06
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2016-12-20
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/20/chromeExtension-6/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/20/chromeExtension-6/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="事件腳本與背景頁面"><a href="#事件腳本與背景頁面" class="headerlink" title="事件腳本與背景頁面"></a>事件腳本與背景頁面</h1><h2 id="什麼是事件腳本"><a href="#什麼是事件腳本" class="headerlink" title="什麼是事件腳本"></a>什麼是事件腳本</h2><p>Extension的功能實作由於腳本之間無法直接進行溝通，所以非常依靠事件趨動來傳送訊息，處理操作邏輯，事件腳本可以被視為是Extension的Controller，所有的事件最後都會回到事件腳本身上集中處理。  </p>
+<a id="more"></a>
+<h2 id="事件腳本可以作到什麼事情"><a href="#事件腳本可以作到什麼事情" class="headerlink" title="事件腳本可以作到什麼事情"></a>事件腳本可以作到什麼事情</h2><ul>
+<li><p>監聽來自輸入組件的事件，例如：點擊瀏覽器按鈕或是頁面按鈕、快捷鍵的輸入、網址列的輸入事件、等等，幾乎與所有的輸入組件交手。  </p>
+</li>
+<li><p>監聽來自extension自身的事件，包含了：onMessage, onConnect, onInstalled, onUpdateAvailable等…。他們都經由chrome.runtime物件存取。(訊息的發生，通訊的連結，擴充功能的安裝結束，或更新)  </p>
+</li>
+<li><p>經由Chrome Extension 的messageAPI，間接跟內容腳本溝通，以便控制網頁內容。  </p>
+</li>
+<li><p>能監聽來自瀏覽器的事件：  </p>
+<ul>
+<li><p>頁籤新增，移除，更新。 chrome.tabs—onCreated, onUpdated, onRemoved等…  </p>
+</li>
+<li><p>瀏覽器的通知 chrome.alarms—onAlarm  </p>
+</li>
+<li><p>瀏覽器的localStorage變更 chrome.storage—onChanged  </p>
+</li>
+<li><p>書籤的創造，移除…等。chrome.bookmarks—onCreated, onRemoved, onChanged, onImportBegan, onImportEnded等…  </p>
+</li>
+<li><p>紀錄的新增及移除 chrome.history—onVisited, onVisitRemoved  </p>
+</li>
+</ul>
+</li>
+</ul>
+<p>在實作應用上，幾乎所有的Eextension實作都會需要用到事件腳本，大部份的邏輯也在事件腳本中進行實作。  </p>
+<h2 id="事件腳本與背景頁面-1"><a href="#事件腳本與背景頁面-1" class="headerlink" title="事件腳本與背景頁面"></a>事件腳本與背景頁面</h2><p>當你在設定檔中宣告事件腳本，Chrome其實會自動幫你產生一個背景頁面，一個看不見的頁面來載入事件腳本。如果想查看(由其是debug)事件腳本，你可以從擴充工具管理頁面來展開他的debug界面，如下圖：  </p>
+<p>開啟擴充功能管理頁面，點擊套件清單中的，背景頁面字樣。  </p>
+<p><img src="https://quip.com/blob/STWAAAUvuiE/MKTfM2_VDHwqSQtUddkh3g?a=Bpe9tr5QfM9aDjMA7eAiMSMCgiH1kjaGd81MQvFZyOAa" alt=""></p>
+<p>便會打開Developer Tool，在這裡可以對事件腳本進行調適的動作。  </p>
+<p><img src="https://quip.com/blob/STWAAAUvuiE/e3utv80RkyJ0_H8du9ZPLA?a=QRQJ6SrwPGKaC1vKQ6kSo7gJazkpFVe1qNtGAt9a94Ia" alt=""></p>
+<h2 id="背景頁面-Background-Page-的狀態"><a href="#背景頁面-Background-Page-的狀態" class="headerlink" title="背景頁面(Background Page)的狀態"></a>背景頁面(Background Page)的狀態</h2><p>事件腳本只會在需要的時後保持運行，當閒置時，Chrome會暫停他(要注意這不是立刻發生)。下面以page action為例，當目前瀏覽的頁面非指定的網址，你可以看見他的背景頁面狀態顯示無法使用(要注意得等上一陣子)：  </p>
+<p><img src="https://quip.com/blob/STWAAAUvuiE/sYZEw--kXE6V1ffKSFEDtA?a=6z7a7OVTh47fJ21DLIbTZIbuhNPyw8kIWd87oZ7tvTga" alt=""></p>
+<h2 id="事件腳本的生命周期"><a href="#事件腳本的生命周期" class="headerlink" title="事件腳本的生命周期"></a>事件腳本的生命周期</h2><p>下面是一些可能觸發<strong>背景頁面加載</strong>的例子：  </p>
+<ul>
+<li><p>應用或擴展程序第一次安裝或更新到新版本。( onInstalled, onUpdateAvailable)  </p>
+</li>
+<li><p>事件頁面監聽的某個事件觸發。(onMessage, onConnect)  </p>
+</li>
+<li><p>內容腳本或其他擴展程序發送消息。(onMessageExternal )  </p>
+</li>
+<li><p>擴展程序中的其他視圖調用了runtime.getBackgroundPage。  </p>
+</li>
+</ul>
+<p>背景頁面在加載後，直到所有的視圖(view)及發送訊息的端口(script or extension)關閉，才會卸載背景頁面。而新的視圖的加入並不會造成背景頁面的重載，只是讓他保持運行的狀態。  </p>
+<p>一旦背景頁面保持一段時間（幾秒鐘）的空閒狀態，將觸發runtime.onSuspend事件。背景頁面在強制卸載之前，還有幾秒鐘的時間來處理該事件。如果在這段時間內產生了通常 會話事件頁面載入的事件，卸載操作將取消，並產生runtime.onSuspendCanceled事件。  </p>
+<h2 id="安裝中的定義"><a href="#安裝中的定義" class="headerlink" title="安裝中的定義"></a>安裝中的定義</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;background&quot; : &#123;  </div><div class="line">    &quot;scripts&quot; : [&quot;event_script.js&quot;,&quot;another_event_script.js&quot;],  </div><div class="line">    &quot;persistent&quot; : false  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>事件腳本可以拆分成多個JS檔，幫助你將邏輯模組化  </li>
+</ul>
+<h2 id="維持事件腳本的運行"><a href="#維持事件腳本的運行" class="headerlink" title="維持事件腳本的運行"></a>維持事件腳本的運行</h2><p>在某些特定的狀況，你可能希望無論腳本閒置與否，事件腳本都維持運行，這可以經由把<code>persistent&quot;</code>設定成true，來作到。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;background&quot; : &#123;  </div><div class="line">    &quot;scripts&quot; : [&quot;event_script.js&quot;,&quot;another_event_script.js&quot;],  </div><div class="line">    &quot;persistent&quot; : true  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但這樣容易造成效能問題，所以官方並不建議我們這麼作。  </p>
+<h2 id="動手作看看：事件註冊"><a href="#動手作看看：事件註冊" class="headerlink" title="動手作看看：事件註冊"></a>動手作看看：事件註冊</h2><p>下面的程式碼展示了，當使用者點擊瀏覽器按鈕時，事件腳本會接收到通知，並且執行Alert，Alert內容會包含該頁的標題(title)。  </p>
+<p>設定檔：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">    &quot;manifest_version&quot;: 2,  </div><div class="line">    &quot;name&quot;: &quot;鐵人賽-事件腳本範例&quot;,  </div><div class="line">    &quot;description&quot;: &quot;羅拉拉的事件腳本範例&quot;,  </div><div class="line">    &quot;version&quot;: &quot;2.0&quot;,  </div><div class="line">    &quot;browser_action&quot;: &#123;  </div><div class="line">        &quot;default_title&quot;: &quot;羅拉拉的事件腳本範例&quot;,  </div><div class="line">        &quot;default_icon&quot;: &#123;   </div><div class="line">            &quot;16&quot;: &quot;icon.png&quot;,   </div><div class="line">            &quot;24&quot;: &quot;icon24.png&quot;,   </div><div class="line">            &quot;32&quot;: &quot;icon32.png&quot;   </div><div class="line">        &#125;  </div><div class="line">        // &quot;default_popup&quot;: &quot;popup.html&quot;  </div><div class="line">        // 如果彈出視窗有設定的話，會檔掉瀏覽器的點擊事件(chrome.browserAction.onClicked)，故這次的範例中我們不使用彈出視窗  </div><div class="line">    &#125;,  </div><div class="line">    &quot;background&quot; : &#123;  </div><div class="line">        &quot;scripts&quot; : [&quot;event.js&quot;],  </div><div class="line">        &quot;persistent&quot; : false  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>事件腳本：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">console.log(&quot;background page ready&quot;);  </div><div class="line"></div><div class="line">chrome.browserAction.onClicked.addListener(function(tab) &#123;  </div><div class="line">    // console.log(tab);  </div><div class="line">    alert(&quot;使用者在&quot;+tab.title+ &quot;中點擊了瀏覽器按鈕&quot;);  </div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>結果展示：<br><img src="http://i.imgur.com/na0VJ1J.gif" alt="http://i.imgur.com/na0VJ1J.gif"></p>
+<blockquote>
+<p>完整範例在：<a href="https://github.com/lauraluo/ExtensionSample/tree/master/EventScript" target="_blank" rel="external">Github</a></p>
+</blockquote>
+<h2 id="補充-用詞上的差別"><a href="#補充-用詞上的差別" class="headerlink" title="補充:用詞上的差別"></a>補充:用詞上的差別</h2><p>官方教學卻將事件腳本的加載頁面分為兩類  </p>
+<ul>
+<li><p><a href="https://developer.chrome.com/extensions/background_pages" target="_blank" rel="external">persistent background pages</a> /永久背景頁面：就跟他的名字一樣，永遠是開啟的狀態。  </p>
+</li>
+<li><p><a href="https://developer.chrome.com/extensions/event_pages" target="_blank" rel="external">event pages</a> /事件頁面：在需要的時後才會開啟。  </p>
+</li>
+</ul>
+<p>但這兩個頁面事實在Chrome的擴充功能管理頁面上，字面的顯示都是背景頁面( background page)。  </p>
+<p>大概是因為這樣很令人混肴，所以<strong>Creating  Google Chrome Extensions</strong>一書中，作者故意避開了這個名稱，認為只是事件腳本(event script)上的不同設定。而無論腳本的設定如何，加載他的頁面都稱之為背景頁面(background page)。  </p>
+<p>因為我也覺得容易誤會，所以我會採用書中的說法，在這裡列出來是幫助大家查看官方文件。  </p>
+<blockquote>
+<p>你可以這樣記憶它，根據<code>persistent</code>的設定不同，我是一律以事件腳本稱呼，而官方則以載入腳本的頁面為主體分為<a href="https://developer.chrome.com/extensions/background_pages" target="_blank" rel="external">persistent background pages</a>與<a href="https://developer.chrome.com/extensions/event_pages" target="_blank" rel="external">event pages</a>。</p>
+</blockquote>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li><p>事件腳本可以被視為是Extension的Controller。  </p>
+</li>
+<li><p>事件腳本是經由自動生成的背景頁頁載入，並且使用者看不見這個頁面。  </p>
+</li>
+<li><p>想要調適(debug)背景頁面，可以籍由擴充功能選單來打開他。  </p>
+</li>
+<li><p>事件在需要的時後加載，在閒置的時後被移除，並且在擴充功能頁面會顯示其狀態，這個狀況是有延遲性的。  </p>
+</li>
+<li><p>想要讓事件腳本閒置時也保持運行，就要使用<code>&quot;persistent&quot;</code>屬性。（但官方不健議）  </p>
+</li>
+</ul>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><ul>
+<li><p><a href="https://crxdoc-zh.appspot.com/extensions/event_pages" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/event_pages</a>  </p>
+</li>
+<li><p><a href="https://developer.chrome.com/extensions/event_pages" target="_blank" rel="external">https://developer.chrome.com/extensions/event_pages</a>  </p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/19/chromeExtension-5/">Chrome Extension 開發與實作 05</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/20/chromeExtension-16/">Chrome Extension 開發與實作 16</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件腳本與背景頁面"><span class="nav-number">1.</span> <span class="nav-text">事件腳本與背景頁面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什麼是事件腳本"><span class="nav-number">1.1.</span> <span class="nav-text">什麼是事件腳本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件腳本可以作到什麼事情"><span class="nav-number">1.2.</span> <span class="nav-text">事件腳本可以作到什麼事情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件腳本與背景頁面-1"><span class="nav-number">1.3.</span> <span class="nav-text">事件腳本與背景頁面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景頁面-Background-Page-的狀態"><span class="nav-number">1.4.</span> <span class="nav-text">背景頁面(Background Page)的狀態</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件腳本的生命周期"><span class="nav-number">1.5.</span> <span class="nav-text">事件腳本的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝中的定義"><span class="nav-number">1.6.</span> <span class="nav-text">安裝中的定義</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#維持事件腳本的運行"><span class="nav-number">1.7.</span> <span class="nav-text">維持事件腳本的運行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動手作看看：事件註冊"><span class="nav-number">1.8.</span> <span class="nav-text">動手作看看：事件註冊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#補充-用詞上的差別"><span class="nav-number">1.9.</span> <span class="nav-text">補充:用詞上的差別</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小結"><span class="nav-number">1.10.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#資料來源"><span class="nav-number">1.11.</span> <span class="nav-text">資料來源</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2016/12/20/chromeExtension-6/';
+      var disqus_url = 'http://yoursite.com/2016/12/20/chromeExtension-6/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

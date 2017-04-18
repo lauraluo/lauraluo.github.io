@@ -1,0 +1,977 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 27 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 27 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="替代頁面 Override Pages替代頁面是一種使用來自您的擴展程序的 HTML 文件替換 Google Chrome 預定提供頁面的方式。除了 HTML，替代頁面通常還包含 CSS 和 JavaScript 程式碼。(基本上就是完整的網頁，能使用chrome提供的API)" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 27 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="替代頁面 Override Pages替代頁面是一種使用來自您的擴展程序的 HTML 文件替換 Google Chrome 預定提供頁面的方式。除了 HTML，替代頁面通常還包含 CSS 和 JavaScript 程式碼。(基本上就是完整的網頁，能使用chrome提供的API)" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 27 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 27
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2017-01-10
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/01/10/chromeExtension-27/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/10/chromeExtension-27/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="替代頁面-Override-Pages"><a href="#替代頁面-Override-Pages" class="headerlink" title="替代頁面 Override Pages"></a>替代頁面 Override Pages</h1><p>替代頁面是一種使用來自您的擴展程序的 HTML 文件替換 Google Chrome 預定提供頁面的方式。除了 HTML，替代頁面通常還包含 CSS 和 JavaScript 程式碼。(基本上就是完整的網頁，能使用chrome提供的API)</p>
+<a id="more"></a>
+<p>擴充功能可以替換以下任一頁面：</p>
+<ul>
+<li><p>書籤管理器：當用戶選擇 Chrome 菜單中（或 Mac 系統上的書籤菜單中）的書籤管理器菜單項時出現的頁面。您也可以輸入 URL <code>chrome://bookmarks</code>進入該頁面。</p>
+</li>
+<li><p>歷史記錄：當用戶選擇 Chrome 菜單中的歷史記錄（或者 Mac 系統上歷史記錄菜單中的顯示所有歷史記錄）時出現的頁面。您也可以輸入 URL <code>chrome://history</code>進入該頁面。</p>
+</li>
+<li><p>“打開新頁籤”頁面：當用戶創建新標籤頁或新窗口時出現的頁面。您也可以輸入 URL<code>chrome://newtab</code>進入該頁面。</p>
+</li>
+</ul>
+<blockquote>
+<p>一個擴充功能能替換一個頁面。例如，一個擴充功能不能既替換書籤管理頁面，又替換歷史記錄頁面。</p>
+</blockquote>
+<h2 id="隱身模式"><a href="#隱身模式" class="headerlink" title="隱身模式"></a>隱身模式</h2><p>“打開新頁籤”頁無無法在隱身模式 的窗口替換。其他兩個頁面如果需要替摸，則需在設定檔裡將<a href="https://crxdoc-zh.appspot.com/extensions/manifest/incognito" target="_blank" rel="external">incognito</a>屬性設定為 “spanning”(預設值)。</p>
+<h2 id="設定檔的權限設定"><a href="#設定檔的權限設定" class="headerlink" title="設定檔的權限設定"></a>設定檔的權限設定</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;我的擴充功能&quot;,</div><div class="line">  ...</div><div class="line"></div><div class="line">  &quot;chrome_url_overrides&quot; : &#123;</div><div class="line">    &quot;bookmarks&quot;: &quot;myPage.html&quot;</div><div class="line">    // &quot;newtab&quot;: &quot;myPage.html&quot;</div><div class="line">    // &quot;history&quot;: &quot;myPage.html&quot;</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> <code>pageToOverride</code>可替換成以下值 ：</p>
+<ul>
+<li><code>bookmarks</code></li>
+<li><code>history</code></li>
+<li><code>newtab</code></li>
+</ul>
+<h2 id="注章事項"><a href="#注章事項" class="headerlink" title="注章事項"></a>注章事項</h2><ul>
+<li>你的替代頁面應該小而快：使用者期望內置的頁面，能夠立即打開，請不要進行任何花費過長時間的操作：例如不要同步獲取網路數據：</li>
+<li>你的替代頁面應該包含標題：避免使用者困惑</li>
+<li>不要假定網頁是focus的狀態：因為打開新頁面時，最先獲得焦點的是網址列</li>
+<li>不要試圖模仿默認的“打開新頁籤”頁面：因為能打造預定頁面功能的API不存在。</li>
+</ul>
+<h2 id="書中範例"><a href="#書中範例" class="headerlink" title="書中範例"></a>書中範例</h2><h3 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h3><p>這裡實作的是替代“打開新頁籤”頁面，並且使用上一個段落提到的選項頁為擴充功能提供設置。當使用者打開新頁籤時，會看見他的書籤清單。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;name&quot; : &quot;My New-Tab&quot;,</div><div class="line">    &quot;version&quot; : &quot;1.2&quot;,</div><div class="line">    &quot;manifest_version&quot; : 2,</div><div class="line">    &quot;chrome_url_overrides&quot; : &#123;</div><div class="line">        /*newtab,history,bookmarks*/</div><div class="line">        &quot;newtab&quot; : &quot;myNewTab.html&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;permissions&quot; : [&quot;bookmarks&quot;,&quot;storage&quot;],</div><div class="line">    /*Using an options page*/</div><div class="line">    &quot;options_ui&quot; : &#123;</div><div class="line">        &quot;page&quot; : &quot;myOptionsPage.html&quot;,</div><div class="line">        /*Use Chrome stylesheet*/</div><div class="line">        &quot;chrome_style&quot; : true</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="替代頁面"><a href="#替代頁面" class="headerlink" title="替代頁面"></a>替代頁面</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line"></div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;My New-Tab&lt;/title&gt;</div><div class="line">    &lt;script src=&quot;myNewTab_1.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">    body &#123;</div><div class="line">        background-color: #eee;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    h2 &#123;</div><div class="line">        width: 50%;</div><div class="line">        margin: auto auto;</div><div class="line">        text-align: center;</div><div class="line">        color: #555;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    ul &#123;</div><div class="line">        padding: 0px;</div><div class="line">        width: 60%;</div><div class="line">        margin-left: auto;</div><div class="line">        margin-right: auto;</div><div class="line">        margin-top: 100px;</div><div class="line">        text-align: center;</div><div class="line">        border: 2px dashed #555;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    li &#123;</div><div class="line">        overflow: hidden;</div><div class="line">        list-style-type: none;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    a &#123;</div><div class="line">        text-decoration: none;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    a:hover &#123;</div><div class="line">        text-decoration: underline;</div><div class="line">    &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line">    &lt;h2&gt;My New-Tab: Chrome Developer Bookmarks&lt;/h2&gt;</div><div class="line">    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;</div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="替代頁面腳本"><a href="#替代頁面腳本" class="headerlink" title="替代頁面腳本"></a>替代頁面腳本</h3><p>腳本實作功能為：</p>
+<ul>
+<li>取得書籤樹</li>
+<li>取得完後，到storage裡去查詢，使用者有沒有設置只顯示匹配的網頁，如果有的話，將在新開啟頁面只展示匹配的網址清單</li>
+<li>如果沒有設置，就列出所有的清單。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">//region &#123;variables and functions&#125;</div><div class="line">var folders = [];</div><div class="line">var listName = &quot;list&quot;;</div><div class="line">var host = &quot;developer.chrome.com&quot;;</div><div class="line">var itemBorderRightStyle = &quot;5px solid #666&quot;;</div><div class="line">var itemBoxShadowStyle = &quot;0px 0px 2px #333&quot;;</div><div class="line">var itemBackgroundColor = &quot;#ccc&quot;;</div><div class="line">var storageKey = &quot;APPEND_MATCHING_ONLY&quot;;</div><div class="line"></div><div class="line">function appendItem(listElement, nodeURL, nodeParentTitle) &#123;</div><div class="line">    var li = document.createElement(&quot;li&quot;);</div><div class="line">    var a = document.createElement(&quot;a&quot;);</div><div class="line">    a.href = nodeURL;</div><div class="line">    a.innerText = nodeURL + &quot; (&quot; + nodeParentTitle + &quot;)&quot;;</div><div class="line">    li.appendChild(a);</div><div class="line">    if (nodeURL.indexOf(host) != -1) &#123;</div><div class="line">        li.style.borderRight = itemBorderRightStyle;</div><div class="line">        li.style.boxShadow = itemBoxShadowStyle;</div><div class="line">        li.style.backgroundColor = itemBackgroundColor;</div><div class="line">    &#125;</div><div class="line">    listElement.appendChild(li);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function appendMatchingItem(listElement, nodeURL, nodeParentTitle) &#123;</div><div class="line">    if (nodeURL.indexOf(host) != -1) appendItem(listElement, nodeURL, nodeParentTitle);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">function populateListV2(listElement) &#123;</div><div class="line">    chrome.storage.sync.get(storageKey, function(items) &#123;</div><div class="line">        if (!chrome.runtime.lastError &amp;&amp; items[storageKey]) &#123;</div><div class="line">            folders.forEach(function(folder) &#123;</div><div class="line">                folder.children.forEach(function(bookmarkTreeNode) &#123;</div><div class="line">                    if (bookmarkTreeNode.url)</div><div class="line">                        appendMatchingItem(listElement, bookmarkTreeNode.url, folder.title);</div><div class="line">                &#125;);</div><div class="line">            &#125;);</div><div class="line">        &#125; else &#123;</div><div class="line">            folders.forEach(function(folder) &#123;</div><div class="line">                folder.children.forEach(function(bookmarkTreeNode) &#123;</div><div class="line">                    if (bookmarkTreeNode.url)</div><div class="line">                        appendItem(listElement, bookmarkTreeNode.url, folder.title);</div><div class="line">                &#125;);</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">//end-region</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//region &#123;calls&#125;</div><div class="line">document.addEventListener(&quot;DOMContentLoaded&quot;, function(dcle) &#123;</div><div class="line">    var listElement = document.getElementById(listName);</div><div class="line">    chrome.bookmarks.getTree(function(bookmarkTreeAsArray) &#123;</div><div class="line">        var bookmarkTree = bookmarkTreeAsArray[0];</div><div class="line">        if (bookmarkTree.children) &#123;</div><div class="line">            bookmarkTree.children.forEach(function(node) &#123;</div><div class="line">                if (node.children.length &gt; 0) folders.push(node);</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">        populateListV2(listElement);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line">//end-region</div></pre></td></tr></table></figure>
+<h3 id="選項頁"><a href="#選項頁" class="headerlink" title="選項頁"></a>選項頁</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line"></div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;My Options-Page&lt;/title&gt;</div><div class="line">    &lt;script src=&quot;myOptionsPage_1.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">    div.left &#123;</div><div class="line">        float: left;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    div.right &#123;</div><div class="line">        float: right;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    p.clear &#123;</div><div class="line">        clear: both;</div><div class="line">    &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line">    &lt;p&gt;</div><div class="line">        &lt;div class=&quot;left&quot;&gt;</div><div class="line">            Only display matching bookmarks?</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;div class=&quot;right&quot;&gt;</div><div class="line">            &lt;form&gt;</div><div class="line">                &lt;input type=&quot;radio&quot; name=&quot;highlight&quot; value=&quot;1&quot;&gt; Yes</div><div class="line">                &lt;input type=&quot;radio&quot; name=&quot;highlight&quot; value=&quot;0&quot; checked=&quot;checked&quot;&gt; No</div><div class="line">            &lt;/form&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/p&gt;</div><div class="line">    &lt;br&gt;</div><div class="line">    &lt;p class=&quot;clear&quot;&gt;</div><div class="line">        &lt;input type=&quot;button&quot; id=&quot;save&quot; value=&quot;Save&quot;&gt;</div><div class="line">    &lt;/p&gt;</div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">//region &#123;variables and functions&#125;</div><div class="line">var storageKey = &quot;APPEND_MATCHING_ONLY&quot;;</div><div class="line">var items = &#123;&#125;;</div><div class="line">var saveButtonID = &quot;save&quot;;</div><div class="line">function logSuccess(task) &#123;</div><div class="line">    console.log(&quot;%s Successful!&quot;,task);</div><div class="line">&#125;</div><div class="line">//end-region</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//region &#123;calls&#125;</div><div class="line">document.addEventListener(&quot;DOMContentLoaded&quot;,function(dcle) &#123;</div><div class="line">    var saveButton = document.getElementById(saveButtonID);</div><div class="line">    saveButton.addEventListener(&quot;click&quot;,function(ce) &#123;</div><div class="line">        if(document.forms[0].highlight.value == &quot;1&quot;) &#123;</div><div class="line">            items[storageKey] = true;</div><div class="line">            chrome.storage.sync.set(</div><div class="line">                items,</div><div class="line">                function()&#123;if(!chrome.runtime.lastError)logSuccess(&quot;Set-Storage&quot;);&#125;</div><div class="line">            );</div><div class="line">        &#125; else &#123;</div><div class="line">            items[storageKey] = false;</div><div class="line">            chrome.storage.sync.set(</div><div class="line">                items,</div><div class="line">                function()&#123;if(!chrome.runtime.lastError)logSuccess(&quot;Set-Storage&quot;);&#125;</div><div class="line">            );</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line">//end-region</div></pre></td></tr></table></figure>
+<blockquote>
+<p>這裡使用的是<a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">電子書</a>中的範例，完整的範例參考第四章節的<a href="https://github.com/Apress/creating-google-chrome-extensions/tree/master/9781484217740" target="_blank" rel="external">OverridePages</a></p>
+</blockquote>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://developer.chrome.com/extensions/override" target="_blank" rel="external">https://developer.chrome.com/extensions/override</a></li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/override" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/override</a></li>
+<li><a href="https://github.com/apress/creating-google-chrome-extensions" target="_blank" rel="external">https://github.com/apress/creating-google-chrome-extensions</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/09/chromeExtension-26/">Chrome Extension 開發與實作 26</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/11/chromeExtension-28/">Chrome Extension 開發與實作 2</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#替代頁面-Override-Pages"><span class="nav-number">1.</span> <span class="nav-text">替代頁面 Override Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#隱身模式"><span class="nav-number">1.1.</span> <span class="nav-text">隱身模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設定檔的權限設定"><span class="nav-number">1.2.</span> <span class="nav-text">設定檔的權限設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注章事項"><span class="nav-number">1.3.</span> <span class="nav-text">注章事項</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#書中範例"><span class="nav-number">1.4.</span> <span class="nav-text">書中範例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#設定檔"><span class="nav-number">1.4.1.</span> <span class="nav-text">設定檔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替代頁面"><span class="nav-number">1.4.2.</span> <span class="nav-text">替代頁面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替代頁面腳本"><span class="nav-number">1.4.3.</span> <span class="nav-text">替代頁面腳本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#選項頁"><span class="nav-number">1.4.4.</span> <span class="nav-text">選項頁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">1.5.</span> <span class="nav-text">參考</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2017/01/10/chromeExtension-27/';
+      var disqus_url = 'http://yoursite.com/2017/01/10/chromeExtension-27/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

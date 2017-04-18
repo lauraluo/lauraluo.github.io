@@ -1,0 +1,990 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 12 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 12 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="網址列輸入組件(chrome.omnibox)什麼是網址列輸入組件
+omnibox輸入組件，主要是允許使用者在網址列，輸入特定的關鍵字(並按下tab)，來啟動你的Extension，接著你能籍由監聽使用者的輸入行為來實作操作邏輯。  " />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 12 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="網址列輸入組件(chrome.omnibox)什麼是網址列輸入組件
+omnibox輸入組件，主要是允許使用者在網址列，輸入特定的關鍵字(並按下tab)，來啟動你的Extension，接著你能籍由監聽使用者的輸入行為來實作操作邏輯。  " />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 12 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 12
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2016-12-26
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/26/chromeExtension-12/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/26/chromeExtension-12/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="網址列輸入組件-chrome-omnibox"><a href="#網址列輸入組件-chrome-omnibox" class="headerlink" title="網址列輸入組件(chrome.omnibox)"></a>網址列輸入組件(chrome.omnibox)</h1><h2 id="什麼是網址列輸入組件"><a href="#什麼是網址列輸入組件" class="headerlink" title="什麼是網址列輸入組件"></a>什麼是網址列輸入組件</h2><p><img src="https://quip.com/blob/MbAAAAo03Q4/dRu1N2RTihqiOTpmHUKuvg?a=raaSd5W6OWEWFaiBvtV4QXyBkr5h0asAy0w9NtdAqwMa" alt=""></p>
+<p>omnibox輸入組件，主要是允許使用者在網址列，輸入特定的關鍵字(並按下tab)，來啟動你的Extension，接著你能籍由監聽使用者的輸入行為來實作操作邏輯。  </p>
+<a id="more"></a>
+<h2 id="能作到什麼事情"><a href="#能作到什麼事情" class="headerlink" title="能作到什麼事情"></a>能作到什麼事情</h2><ul>
+<li>優化搜尋體驗，例如：一個Vue的API查詢擴充，當使用者啟動輸入組件時，推荐出跟字母相關的API名稱(並且自動完成)然後開啟Vue文件中相關的說明頁面。  </li>
+<li>允許開發者提供建議輸入的清單並且自動完成。  </li>
+<li>其實除了搜尋也可以綁定其他操作邏輯(例如：FB發文，Trello新增卡片)，但比較少人會這麼作，我推論是因為不夠直覺。  </li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="安裝檔的設定"><a href="#安裝檔的設定" class="headerlink" title="安裝檔的設定"></a>安裝檔的設定</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">    &quot;name&quot;: &quot;Aaron&apos;s omnibox extension&quot;,  </div><div class="line">    &quot;version&quot;: &quot;1.0&quot;,  </div><div class="line">    //必需指定一個啟用你擴充功能的關鍵字  </div><div class="line">    &quot;omnibox&quot;: &#123; &quot;keyword&quot; : &quot;OI&quot; &#125;,  </div><div class="line"></div><div class="line">    &quot;icons&quot;: &#123;  </div><div class="line">      &quot;16&quot;: &quot;16-full-color.png&quot;  </div><div class="line">    &#125;,  </div><div class="line">    &quot;background&quot;: &#123;  </div><div class="line">      &quot;persistent&quot;: false,  </div><div class="line">      &quot;scripts&quot;: [&quot;background.js&quot;]  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>Chrome允許你設定個關鍵字(case-insensitive 大小寫沒差)  </p>
+</li>
+<li><p>使用者在輸入關鍵字後, 按下<code>tab</code>鍵，網址列便會顯示安裝檔中址定的icon與你的app名稱，以提示使用者進入Extension的輸入模式。(如下圖)  </p>
+</li>
+</ul>
+<p><img src="https://quip.com/blob/MbAAAAo03Q4/KoWQSTN9BdN5TgDLR5lYoQ?a=1ccxy2r5Un3pXdJ3BahiugWbJ4B0n1cWSVeYFiKadn8a" alt=""></p>
+<h3 id="利用事件腳本處理使用者的輸入"><a href="#利用事件腳本處理使用者的輸入" class="headerlink" title="利用事件腳本處理使用者的輸入"></a>利用事件腳本處理使用者的輸入</h3><p>Chrome提供以下事件供我們使用：  </p>
+<ul>
+<li>chrome.omnibox.onInputStarted  使用者進入輸入介面，發生在 onInputChanged事件前。  </li>
+<li>chrome.omnibox.onInputChanged 使用者更改了輸入框的內容  </li>
+<li>chrome.omnibox.onInputEntered 按下enter，送出輸入框的內容  </li>
+<li>chrome.onibox.onInputCancelled 按下esc，退出輸入框  </li>
+</ul>
+<blockquote>
+<p>關於事件的完整操作，可以查看<a href="https://crxdoc-zh.appspot.com/extensions/omnibox#event" target="_blank" rel="external">中文文件</a></p>
+</blockquote>
+<h3 id="提供建議輸入的清單"><a href="#提供建議輸入的清單" class="headerlink" title="提供建議輸入的清單"></a>提供建議輸入的清單</h3><p>為了增加使用者的互動經驗，Chrome允許我們在使用者開始輸入內容的時後，提供健議的輸入清單，如下圖  </p>
+<p><img src="https://quip.com/blob/MbAAAAo03Q4/BTXlOW9AtA4ReIXDKsv8Vg?a=2f1lDf7S4GcF10uBXhZxxVAMY7Pawjks4noLkSnvRhEa" alt=""></p>
+<p>程式的實作邏輯上，便是利用<code>onInputChanged</code>裡的回調方法，回調方法中將提供使用者目前的輸入結果，以及最重要的<code>suggestion()</code>方法，供你回傳建議的輸入清單。我們來看看以下事件角本的程式碼片段：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chrome.omnibox.onInputChanged.addListener(function(text,suggest) &#123;  </div><div class="line">    suggest(suggestResults);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>要特別注意的事，<code>suggestion()</code>的輸入參數是一個陣列，而這個陣列中的所有子元素，是擁有content以及description屬性的物件，就像這樣：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var suggestResultOne = &#123;  </div><div class="line">    &quot;content&quot; : &quot;Some content&quot;,  </div><div class="line">    &quot;description&quot; : &quot;Description&quot;  </div><div class="line">&#125;;  </div><div class="line"></div><div class="line">var suggestResults = [suggestResultOne];</div></pre></td></tr></table></figure>
+<p>但僅僅是這樣還不夠，我們希望上上面的示圖以樣，能針對使用者的輸入，去推荐不同的輸入清單，那要怎麼實作能？讓我們看一下完整的範例。  </p>
+<h3 id="實作自動完成的建議輸入"><a href="#實作自動完成的建議輸入" class="headerlink" title="實作自動完成的建議輸入"></a>實作自動完成的建議輸入</h3><p>事件腳本的程式碼片段：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">//預設值  </div><div class="line">var suggestResultOne = &#123;  </div><div class="line">    &quot;content&quot; : &quot;Some content&quot;,  </div><div class="line">    &quot;description&quot; : &quot;Description&quot;  </div><div class="line">&#125;;  </div><div class="line">var suggestResults = [suggestResultOne];  </div><div class="line"></div><div class="line">//先列出使用者可能會輸入的字母  </div><div class="line">var descriptions = &#123;  </div><div class="line">    &quot;a&quot; : [&quot;actions&quot;,&quot;alarms&quot;,&quot;apps&quot;,],  </div><div class="line">    &quot;b&quot; : [&quot;background-page&quot;,&quot;bookmarks&quot;,&quot;browser-action&quot;],  </div><div class="line">    &quot;c&quot; : [&quot;commands&quot;,&quot;content-script&quot;,&quot;context-menu&quot;],  </div><div class="line">    &quot;d&quot; : [&quot;dashboard&quot;,&quot;declarativeContent&quot;],  </div><div class="line">    &quot;e&quot; : [&quot;event-script&quot;,&quot;examples&quot;],  </div><div class="line">    &quot;h&quot; : [&quot;history&quot;],  </div><div class="line">    &quot;i&quot; : [&quot;incognito&quot;,&quot;inject&quot;],  </div><div class="line">    &quot;m&quot; : [&quot;management page&quot;,&quot;manifest&quot;,&quot;match pattern&quot;,&quot;messaging&quot;],  </div><div class="line">    &quot;o&quot; : [&quot;omnibox&quot;],  </div><div class="line">    &quot;p&quot; : [&quot;page-action&quot;,&quot;permissions&quot;,&quot;plugins&quot;,&quot;popup&quot;],  </div><div class="line">    &quot;r&quot; : [&quot;resources panel&quot;,&quot;runtime&quot;],  </div><div class="line">    &quot;s&quot; : [&quot;sources panel&quot;,&quot;store&quot;,&quot;storage&quot;],  </div><div class="line">    &quot;t&quot; : [&quot;tabs&quot;,&quot;themes&quot;]  </div><div class="line">&#125;;  </div><div class="line"></div><div class="line">//當使用者輸入的字符合上列時，將所有的建議清單裝成一個陣列回傳  </div><div class="line">//如果沒有符合就回傳預設值  </div><div class="line">function getSuggestResults(key) &#123;  </div><div class="line">    var results = [];  </div><div class="line">    if(!descriptions[key] || !key) return suggestResults;  </div><div class="line">    for(var i=0;i&lt;descriptions[key].length;i++) &#123;  </div><div class="line">        var suggestResult = &#123;&#125;;  </div><div class="line">        suggestResult[&quot;content&quot;] = descriptions[key][i];  </div><div class="line">        suggestResult[&quot;description&quot;] = &quot;Search &apos;&quot; + descriptions[key][i] + &quot;&apos; on developer.chrome.com&quot;;  </div><div class="line">        results[i] = suggestResult;  </div><div class="line">    &#125;  </div><div class="line">    return results;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//監聽事件，處理建議清單  </div><div class="line">chrome.omnibox.onInputChanged.addListener(function(text,suggest) &#123;  </div><div class="line">    suggest(getSuggestResults(text));  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>這樣以來當使用輸入a 時，我們在介面上顯示可搜尋以a為首的相關字串，並協助使用者自動完成輸入。  </p>
+<p><img src="https://quip.com/blob/MbAAAAo03Q4/FOvyOZsl3nIgTHmR_HWSrw?a=DlJDC7iNXsRVE4gBhzCVG9avDA0hvqF339tHlrbPyxIa" alt=""></p>
+<p>接著我們來實作當使用者完成輸入並按下enter的操作邏輯，請看以下事件腳本的程式碼片段：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var searchService = &quot;https://www.google.com/search?q=chrome+extensions+developers+&quot;;  </div><div class="line">//方法：用指定網址打開新視窗  </div><div class="line">function CreateWindow(url) &#123;  </div><div class="line">    var windowCreateData = &#123;&quot;url&quot; : &quot;&quot;&#125;;  </div><div class="line">    windowCreateData.url = url;  </div><div class="line">    chrome.windows.create(windowCreateData);  </div><div class="line">&#125;  </div><div class="line">//當使用者按下Enter，將使用者的輸入給果組合成google搜尋的網址(作為網址參數)，並用新視窗打開  </div><div class="line">chrome.omnibox.onInputEntered.addListener(function(text,disposition) &#123;  </div><div class="line">    console.log(&quot;&lt;InputEntered&gt; Text: &quot; + text);  </div><div class="line">    CreateWindow(searchService + text);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>注意到上面的程式碼中使用了<code>chrome.windows.create</code>，開啟一個新的視窗，並將新視窗的網址，指定成想要搜尋的關鍵字作用網址參數的方式給google查詢。  </p>
+<p>結果展示：  </p>
+<p><img src="https://quip.com/blob/MbAAAAo03Q4/AgOTBso8XHRBb-QJgc1o6A?a=W9cs8Kq8jASEXcdaShP6AwcOOc4azwCmQCQLcvaYHf0a" alt=""></p>
+<blockquote>
+<p>這裡使用的是<a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">電子書</a>中的範例，完整的範例參考第三章節的<a href="https://github.com/Apress/creating-google-chrome-extensions/tree/master/9781484217740" target="_blank" rel="external">HelloOmniboxInput</a></p>
+</blockquote>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>網址列輸入組件允許使用者輸入一個指定關鍵字，並按下tab啟動擴充功能的輸入模式。  </li>
+<li>籍由這個輸入模式，開發者可以監聽使用者的輸入，來實作各種操作邏輯。  </li>
+<li>開發者可以提供建議輸入的清單，協助使用者完成操作。  </li>
+<li><p>主觀來說，我覺得他的應用範圍不廣，除了搜尋功能的優化外，以字典查詢為例：已經有更好用的右鍵功能選單，而作為一個功能的觸發，也比不上快捷鍵輸入組件來來的快速或是比彈出視窗顯示操作UI來的直覺。  </p>
+</li>
+<li><p>就像在<a href="http://ithelp.ithome.com.tw/articles/10186466" target="_blank" rel="external">組成部份</a>中我們提到的，還有一個內容UI的輸入組件還沒介紹到，但因為內容UI組件的實作，牽扯到了腳本之間的溝通，所以在介紹最後一個輸入組件之前，下一個段落我們將先探討腳本之間的訊息溝通方式。  </p>
+</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">http://www.apress.com/us/book/9781484217740</a>  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/commands" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/commands</a>  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/omnibox" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/omnibox</a>  </li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/25/chromeExtension-11/">Chrome Extension 開發與實作 11</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/27/chromeExtension-13/">Chrome Extension 開發與實作 13</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#網址列輸入組件-chrome-omnibox"><span class="nav-number">1.</span> <span class="nav-text">網址列輸入組件(chrome.omnibox)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什麼是網址列輸入組件"><span class="nav-number">1.1.</span> <span class="nav-text">什麼是網址列輸入組件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#能作到什麼事情"><span class="nav-number">1.2.</span> <span class="nav-text">能作到什麼事情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">1.3.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝檔的設定"><span class="nav-number">1.3.1.</span> <span class="nav-text">安裝檔的設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用事件腳本處理使用者的輸入"><span class="nav-number">1.3.2.</span> <span class="nav-text">利用事件腳本處理使用者的輸入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提供建議輸入的清單"><span class="nav-number">1.3.3.</span> <span class="nav-text">提供建議輸入的清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#實作自動完成的建議輸入"><span class="nav-number">1.3.4.</span> <span class="nav-text">實作自動完成的建議輸入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小結"><span class="nav-number">1.4.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">1.5.</span> <span class="nav-text">參考資料</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2016/12/26/chromeExtension-12/';
+      var disqus_url = 'http://yoursite.com/2016/12/26/chromeExtension-12/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

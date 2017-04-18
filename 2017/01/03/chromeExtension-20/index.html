@@ -1,0 +1,1026 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 20 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 20 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="操作瀏覽器歷史紀錄 chrome.history使用chrome.history API和瀏覽器的歷史記錄交互，您可以添加，刪除，通過URL查詢瀏覽器的歷史記錄。如果您想要使用您自己的版本替換默認的歷史記錄頁面，請參見替代頁面。" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 20 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="操作瀏覽器歷史紀錄 chrome.history使用chrome.history API和瀏覽器的歷史記錄交互，您可以添加，刪除，通過URL查詢瀏覽器的歷史記錄。如果您想要使用您自己的版本替換默認的歷史記錄頁面，請參見替代頁面。" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 20 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 20
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2017-01-03
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/01/03/chromeExtension-20/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/03/chromeExtension-20/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="操作瀏覽器歷史紀錄-chrome-history"><a href="#操作瀏覽器歷史紀錄-chrome-history" class="headerlink" title="操作瀏覽器歷史紀錄 chrome.history"></a>操作瀏覽器歷史紀錄 chrome.history</h1><p>使用<code>chrome.history API</code>和瀏覽器的歷史記錄交互，您可以添加，刪除，通過URL查詢瀏覽器的歷史記錄。如果您想要使用您自己的版本替換默認的歷史記錄頁面，請參見<a href="https://crxdoc-zh.appspot.com/extensions/override" target="_blank" rel="external">替代頁面</a>。</p>
+<a id="more"></a>
+<h2 id="設定檔權限設置"><a href="#設定檔權限設置" class="headerlink" title="設定檔權限設置"></a>設定檔權限設置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;name&quot;: &quot;My extenstion&quot;,</div><div class="line">    ...</div><div class="line">    &quot;permissions&quot;: [</div><div class="line">        &quot;history&quot;</div><div class="line">    ],</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="紀錄項目-HistoryItem"><a href="#紀錄項目-HistoryItem" class="headerlink" title="紀錄項目 HistoryItem"></a>紀錄項目 HistoryItem</h2><p>歷史紀錄的查詢(query)結果對象</p>
+<ul>
+<li>string id 該項目的唯一標識符。</li>
+<li>string （可選）url 用戶訪問的 URL。</li>
+<li>string （可選）title 上一次加載時該頁面的標題。</li>
+<li>double （可選）lastVisitTime 頁面最後一次訪問的時間，表示為從 1970 年 1 月 1 日午夜開始所經過的毫秒數。</li>
+<li>integer （可選）visitCount 用戶訪問此頁面的次數。</li>
+<li>integer （可選）typedCount 用戶通過在地址來中輸入 URL 的方式訪問此頁面的次數。</li>
+</ul>
+<h2 id="訪問項目-VisitItem"><a href="#訪問項目-VisitItem" class="headerlink" title="訪問項目 VisitItem"></a>訪問項目 VisitItem</h2><p>某個URL，某一次訪問的對象</p>
+<ul>
+<li>tring id  這次訪問所屬紀錄的ID(這裡要搞清楚的是，多個訪問項目如果網址相同，會有共同的ID)。</li>
+<li>string visitId  這次訪問的識別符。</li>
+<li>double （可選）visitTime 訪問時間，表示為從 1970 年 1 月 1 日午夜開始所經過的毫秒數。</li>
+<li>string referringVisitId 引用者的訪問所對應的標識符(看字面上的意思應該是指，他是從哪次”訪問”點進這個頁面來，不過官網的資料很少，並沒說明如果上次訪問不是從頁面來會是什麼結果)。</li>
+<li>enum of “link”, “typed”, “auto_bookmark”, “auto_subframe”, “manual_subframe”, “generated”, “auto_toplevel”, “form_submit”, “reload”, “keyword”, or “keyword_generated” transition 這一次訪問相對引用者的過渡型別(<a href="https://developer.chrome.com/extensions/history#type-TransitionType" target="_blank" rel="external">TransitionType</a>)。</li>
+</ul>
+<blockquote>
+<p>過度型別用來描述一個URL是從何途徑被訪問：例如：link(點擊頁面上的連結)、typeed(從網址列輸入)、form_submit(表單提交後轉頁) 等，完整列表請查看<a href="https://developer.chrome.com/extensions/history#type-TransitionType" target="_blank" rel="external">TransitionType</a>。</p>
+<p>HistoryItem 跟 VisitItem的非常像，差別在於如果方法使用query的手段取得某HistoryItem物件(紀錄項目)，其物件包含了最後一次訪問的資訊以及一些統計結果。而VisitItem謹謹只代表某次特定的訪問，在抽象的關系上多個VisitItem物件可被歸屬於同一筆紀錄項目底下。</p>
+</blockquote>
+<h2 id="查詢"><a href="#查詢" class="headerlink" title="查詢"></a>查詢</h2><h3 id="查詢訪問紀錄-取得所有訪問紀錄"><a href="#查詢訪問紀錄-取得所有訪問紀錄" class="headerlink" title="查詢訪問紀錄/取得所有訪問紀錄"></a>查詢訪問紀錄/取得所有訪問紀錄</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.history.search(object query, function C)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<p>一個查詢參數(query)包含以下資訊：</p>
+<ul>
+<li>string text 向歷史記錄服務發出的查詢文字，如果為空則獲取所有紀錄。</li>
+<li>double （可選）startTime 將結果限制為此日期之後的訪問，表示為從 1970 年 1 月 1 日午夜開始所經過的毫秒數。</li>
+<li>double （可選）endTime 將結果限制為此日期之前的訪問，表示為從 1970 年 1 月 1 日午夜開始所經過的毫秒數。</li>
+<li>integer （可選）maxResults 要獲得的最大結果數目，默認為 100。</li>
+</ul>
+<p>回調方法：回傳一個陣列，裝載著<code>HistoryItem</code>的實列</p>
+<p>使用範例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var query = &#123;</div><div class="line">    &quot;text&quot; : &quot;example&quot;,</div><div class="line">    &quot;startTime&quot; :  new Date().getTime() - 6 *  new Date().getTime(),</div><div class="line">    &quot;endTime&quot; :  new Date().getTime(),</div><div class="line">    &quot;maxResults&quot; : 10</div><div class="line">&#125;;</div><div class="line">chrome.history.search(query,function(results) &#123;</div><div class="line">    results.forEach(function(result) &#123;</div><div class="line">        //result is of type HistoryItem</div><div class="line">        console.log(result);</div><div class="line">    &#125;); </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意查詢的text傳入空值可取得所有的紀錄</p>
+</blockquote>
+<h2 id="取得指定網址的訪問"><a href="#取得指定網址的訪問" class="headerlink" title="取得指定網址的訪問"></a>取得指定網址的訪問</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.history.getVisits(object details, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>object details第一個參數傳入物件，物件中需包含<code>&quot;url&quot;</code> 屬性</li>
+<li>回調中傳入裝載著<code>VisitItem</code>實例物件的陣列</li>
+</ul>
+<p>使用範例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">chrome.history.getVisits(&#123;&quot;url&quot; : &quot;http://www.example.org&quot;&#125;,function(results) &#123;</div><div class="line">    results.forEach(function(result) &#123;</div><div class="line">        //result is of type VisitItem</div><div class="line">        console.log(result);</div><div class="line">    &#125;); </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>比較一下使用history.search以及history.getVisits回傳物件的不同，幫助大家釐清一下<code>HistoryItem</code>以及<code>VisitItem</code>之間的關係：</p>
+<p>程式碼：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var query = &#123;</div><div class="line">    &quot;text&quot;: &quot;example&quot;,</div><div class="line">    &quot;startTime&quot; :  new Date().getTime() - 6 *  new Date().getTime(),</div><div class="line">    &quot;endTime&quot; :  new Date().getTime(),</div><div class="line">    &quot;maxResults&quot;: 10</div><div class="line">&#125;;</div><div class="line"></div><div class="line">chrome.history.search(query, function(results) &#123;</div><div class="line">    console.log(&quot;search&quot;);</div><div class="line">    console.log(results);</div><div class="line">    if (results.length &gt; 0) &#123;</div><div class="line">        chrome.history.getVisits(&#123; &quot;url&quot;: results[0].url &#125;, function(result) &#123;</div><div class="line">            console.log(&quot;getVisits&quot;);</div><div class="line"></div><div class="line">            console.log(result);</div><div class="line"></div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><img src="http://ithelp.ithome.com.tw/upload/images/20170103/20079450F8Xql7wdiq.png" alt="http://ithelp.ithome.com.tw/upload/images/20170103/20079450F8Xql7wdiq.png"></p>
+<ul>
+<li>綠框：注意比對會發現使用history.search取得的<code>HistoryItem物件</code>其<code>leastVisitTime</code>正代表最後一次訪問的時間</li>
+<li>紅框：要注意getVisits取得的<code>VisitItem物件</code>id是會重覆的，表示這多個訪問屬於同一比紀錄。</li>
+</ul>
+<h2 id="新增及移除URLS"><a href="#新增及移除URLS" class="headerlink" title="新增及移除URLS"></a>新增及移除URLS</h2><h3 id="新增URL"><a href="#新增URL" class="headerlink" title="新增URL"></a>新增URL</h3><p>向歷史紀錄後以當前時間新增一比URL，過度型別將被設定為<code>link</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.history.addUrl(object details, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>object details第一個參數傳入物件，物件中需包含<code>&quot;url&quot;</code> 屬性</li>
+<li>回調中無傳入任何參數</li>
+</ul>
+<p>示範：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chrome.history.addUrl(&#123; &quot;url&quot;: &quot;http://www.example.org&quot; &#125;, function() &#123;</div><div class="line">    console.log(&quot;addUrl&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="移除指定的紀錄"><a href="#移除指定的紀錄" class="headerlink" title="移除指定的紀錄"></a>移除指定的紀錄</h3><p>根據網址刪除某比紀錄</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.history.deleteUrl(object details, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>object details第一個參數傳入物件，物件中需包含<code>&quot;url&quot;</code> 屬性</li>
+<li>回調中無傳入任何參數</li>
+</ul>
+<p>示範：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chrome.history.deleteUrl(&#123;&quot;url&quot; : &quot;http://www.example.org&quot;&#125;,function() &#123;</div><div class="line">    console.log(&quot;deleteUrl&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="批次刪除指定時間區間的紀錄"><a href="#批次刪除指定時間區間的紀錄" class="headerlink" title="批次刪除指定時間區間的紀錄"></a>批次刪除指定時間區間的紀錄</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.history.deleteRange(object range, function callback)</div></pre></td></tr></table></figure>
+<p>參數說明：</p>
+<ul>
+<li>range： 傳入物件可設定時間區間的開始(double startTime)及結束(double endTime)，以豪秒的方式傳入從紀元到指定的時間。</li>
+<li>回調中無任何傳入參數</li>
+</ul>
+<h3 id="刪除全部的紀錄"><a href="#刪除全部的紀錄" class="headerlink" title="刪除全部的紀錄"></a>刪除全部的紀錄</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.history.deleteAll(function callback)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>官網有提供所有ＡＰＩ的測試範例，<a href="https://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/extensions/api_test/history/" target="_blank" rel="external">https://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/extensions/api_test/history/</a></p>
+</blockquote>
+<h2 id="相關事件"><a href="#相關事件" class="headerlink" title="相關事件"></a>相關事件</h2><ul>
+<li>onVisited：當一個網址訪問產生，回調中會傳入HistoryItem物件</li>
+<li>onVisitRemoved ：當一個或多個URL訪問紀錄從紀錄清單中刪除時產生，當該網址紀錄底下的所有訪問都被刪除，則該比紀錄將從歷史紀錄清單中清除。回調中提供一個Object此Object包含兩個屬性<ul>
+<li>boolean allHistor：此事件是來自刪除所有歷史紀錄的動作。是的話為true</li>
+<li>array of string urls: 代表刪除事件觸發刪除的網址，如果allHistor是true則url為空。</li>
+</ul>
+</li>
+</ul>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>來想想經由這個API能作到什麼事情：<br>＊你可以開發擴充功能，為特定的綱域設定自動刪除紀錄的功能。<br>＊取代原本的歷史紀錄頁面，詳情參考<a href="https://crxdoc-zh.appspot.com/extensions/override" target="_blank" rel="external">替代頁面</a>。除了改善界面外，也能在歷史清單紀錄上提供額外的資訊，例如網頁的瀏覽時間。<br>＊提供細節的刪除紀錄區間的功能，例如可以設定開始及結束的時間等複雜資訊的刪除。</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/history" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/history</a></li>
+<li><a href="https://developer.chrome.com/extensions/history" target="_blank" rel="external">https://developer.chrome.com/extensions/history</a></li>
+<li><a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">http://www.apress.com/us/book/9781484217740</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/02/chromeExtension-19/">Chrome Extension 開發與實作 19</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/04/chromeExtension-21/">Chrome Extension 開發與實作 21</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#操作瀏覽器歷史紀錄-chrome-history"><span class="nav-number">1.</span> <span class="nav-text">操作瀏覽器歷史紀錄 chrome.history</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#設定檔權限設置"><span class="nav-number">1.1.</span> <span class="nav-text">設定檔權限設置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#紀錄項目-HistoryItem"><span class="nav-number">1.2.</span> <span class="nav-text">紀錄項目 HistoryItem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#訪問項目-VisitItem"><span class="nav-number">1.3.</span> <span class="nav-text">訪問項目 VisitItem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查詢"><span class="nav-number">1.4.</span> <span class="nav-text">查詢</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查詢訪問紀錄-取得所有訪問紀錄"><span class="nav-number">1.4.1.</span> <span class="nav-text">查詢訪問紀錄/取得所有訪問紀錄</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取得指定網址的訪問"><span class="nav-number">1.5.</span> <span class="nav-text">取得指定網址的訪問</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新增及移除URLS"><span class="nav-number">1.6.</span> <span class="nav-text">新增及移除URLS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新增URL"><span class="nav-number">1.6.1.</span> <span class="nav-text">新增URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移除指定的紀錄"><span class="nav-number">1.6.2.</span> <span class="nav-text">移除指定的紀錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批次刪除指定時間區間的紀錄"><span class="nav-number">1.6.3.</span> <span class="nav-text">批次刪除指定時間區間的紀錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刪除全部的紀錄"><span class="nav-number">1.6.4.</span> <span class="nav-text">刪除全部的紀錄</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相關事件"><span class="nav-number">1.7.</span> <span class="nav-text">相關事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小結"><span class="nav-number">1.8.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">1.9.</span> <span class="nav-text">參考</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2017/01/03/chromeExtension-20/';
+      var disqus_url = 'http://yoursite.com/2017/01/03/chromeExtension-20/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

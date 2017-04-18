@@ -1,0 +1,994 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 15 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 15 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="使用Vue打造內容UI 輸入組件(Content UI)什麼是內容UI內容UI在Creating  Google Chrome Extensions一書中，被作者列為開發功能的輸入組件之一，但事實上他不是屬於任何一個Chrome * API，只是一個利用內容腳本在畫面中插入HTML元素，並且使用Javascript撰寫操作邏輯的一種手段。  " />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 15 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="使用Vue打造內容UI 輸入組件(Content UI)什麼是內容UI內容UI在Creating  Google Chrome Extensions一書中，被作者列為開發功能的輸入組件之一，但事實上他不是屬於任何一個Chrome * API，只是一個利用內容腳本在畫面中插入HTML元素，並且使用Javascript撰寫操作邏輯的一種手段。  " />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 15 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 15
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2016-12-29
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/29/chromeExtension-15/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/29/chromeExtension-15/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="使用Vue打造內容UI-輸入組件-Content-UI"><a href="#使用Vue打造內容UI-輸入組件-Content-UI" class="headerlink" title="使用Vue打造內容UI 輸入組件(Content UI)"></a>使用Vue打造內容UI 輸入組件(Content UI)</h1><h2 id="什麼是內容UI"><a href="#什麼是內容UI" class="headerlink" title="什麼是內容UI"></a>什麼是內容UI</h2><p>內容UI在<strong>Creating  Google Chrome Extensions</strong>一書中，被作者列為開發功能的輸入組件之一，但事實上他不是屬於任何一個Chrome * API，只是一個利用內容腳本在畫面中插入HTML元素，並且使用Javascript撰寫操作邏輯的一種手段。  </p>
+<a id="more"></a>
+<p>以evernote的擴充功能為例(如下圖)  </p>
+<p><img src="https://quip.com/blob/ccaAAA3TaO5/KeeS1RoQtddG4FbBihGVnA?a=a6mXYut4yGLgrl8aTJ0VCBg6tq65aSSu6vdu8QZqoZ4a" alt=""></p>
+<h2 id="為什麼要使用內容UI輸入組件"><a href="#為什麼要使用內容UI輸入組件" class="headerlink" title="為什麼要使用內容UI輸入組件"></a>為什麼要使用內容UI輸入組件</h2><p>當你擴充功能相依網站的內容比較多，需要頻繁的對載入頁面進行操作，這時選擇把擴充功能的邏輯核心挪到內容腳本上是是一個很明智的選擇。不僅擁有操作網站內容的強大自由度，並且保留了利用Chrome的訊息API間接使用Chrome核心功能的操作權力。  </p>
+<h2 id="在討論內容UI之前"><a href="#在討論內容UI之前" class="headerlink" title="在討論內容UI之前"></a>在討論內容UI之前</h2><p>使用內容腳本插入一顆按鈕並不困難，但如果你想打造的是像evernote(如上圖)這樣的互動界面，單純靠原生的javascript應該會是一場惡夢。所以在實作上，我們必需依懶框架協助開發。  </p>
+<p>前端領域目前在探討資料與界面還有行為綁定的框架(MVVM、MVC)很多這裡我就不再贅述，剛好前陣子在玩Vue，所以就利用Vue來實作內容UI輸入組件，並且把上一篇討論的訊息傳遞融入到這個範例來，看看會長什麼樣子。  </p>
+<h2 id="Vue的簡介"><a href="#Vue的簡介" class="headerlink" title="Vue的簡介"></a>Vue的簡介</h2><blockquote>
+<p>引用自官網：Vue.js（讀音/vjuː/，類似於view）是一套構建用戶界面的漸進式框架。與其他重量級框架不同的是，Vue採用自底向上增量開發的設計.Vue的核心庫只關注 視圖層，並且非常容易學習，非常容易與其庫或已有項目整合。另一方面，Vue完全有能力驅動採用單文件組件和Vue生態系統支持的庫開發的複雜單頁應用。  </p>
+<p>Vue.js的目標是通過盡可能簡單的API實現響應的數據綁定和組合的視圖組件。</p>
+</blockquote>
+<h3 id="使用Vue開發界面的好處：-主觀意見"><a href="#使用Vue開發界面的好處：-主觀意見" class="headerlink" title="使用Vue開發界面的好處：(主觀意見)"></a>使用Vue開發界面的好處：(主觀意見)</h3><ul>
+<li>不用進行煩人的DOM物件操作  </li>
+<li>容易開發及維護  </li>
+<li>100%的Javascript解決方案(還記得嗎，今天討論的是利用內容腳本打造界面)。  </li>
+<li>CSS可以宣告Scope，讓樣式不要影響到載入頁面。  </li>
+<li>嚴謹的資料流，在開發時可以考慮把ChromeAPI的邏輯獨立出來，使內容腳本的邏輯可以在地端進行開發，不用使用擴充功能載入的方式。(可以把從擴充功能來的訊息當作使用AJAX跟伺服器取資料的概念去處理)。  </li>
+</ul>
+<h3 id="Vue的基本操作："><a href="#Vue的基本操作：" class="headerlink" title="Vue的基本操作："></a>Vue的基本操作：</h3><p>官網寫的也很好，鐵人賽也很多人在討論，這裡就不再贅述。個人感觀上View的部份寫起來像Angular1,Model的部份寫起來像React。</p>
+<h3 id="使用的環境及資料夾說明："><a href="#使用的環境及資料夾說明：" class="headerlink" title="使用的環境及資料夾說明："></a>使用的環境及資料夾說明：</h3><p>Vue官網提供的<a href="https://github.com/vuejs-templates/browserify-simple" target="_blank" rel="external">browserify-simple</a>，內容腳本的撰寫方式會使用官網提到的<a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="external">單文件組件</a>，主要操作邏輯會寫在<code>src/App.vue。</code>，最後會產出內容腳本content.js檔，並且存放在<code>dist</code>資料夾。</p>
+<p>除了內容腳本(content.js)之外，<code>dist</code>裡還有擴充功能需要的其他檔案，請參考下圖。<code>dist</code>目錄是最後會作為擴充功能，載入到Chrome的管理介面。</p>
+<p><img src="https://quip.com/blob/ccaAAA3TaO5/cN5Lkt7-pMlslnERY0seAg?a=wAxt9xvsxa0eorrk4TIpr0NNtdgAIq2UCa02ZoPUj1ga" alt=""></p>
+<h2 id="開始實作"><a href="#開始實作" class="headerlink" title="開始實作"></a>開始實作</h2><h3 id="實作功能概述："><a href="#實作功能概述：" class="headerlink" title="實作功能概述："></a>實作功能概述：</h3><ul>
+<li>利用Vue向指定網域載入一個界面，在這個界面上擁有兩組按鈕：<ul>
+<li>第一組按鈕可以利由Chrome的訊息API，向事件腳本發送請求，以便啟用及關閉頁面按鈕。  </li>
+<li>第二組按鈕，點擊後可以切換內容UI的長相。  </li>
+</ul>
+</li>
+<li>實作頁面按鈕，一開始是未啟用的狀態，頁面按鈕的彈出視窗實作一個按鈕：  <ul>
+<li>點擊按鈕，彈出視窗腳本會發送訊息給內容腳本請求切換內容UI的長相。  </li>
+</ul>
+</li>
+</ul>
+<p>這個實作的目的是練習：事件腳本/ 彈出事件腳本/內容腳本 之間的溝通，而內容腳本的主要邏輯會使用Vue實作。  </p>
+<h3 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">    &quot;manifest_version&quot; : 2,  </div><div class="line">    &quot;name&quot; : &quot;鐵人賽-使用vue打造ContentUI&quot;,  </div><div class="line">    &quot;description&quot; : &quot;&quot;,  </div><div class="line">    &quot;version&quot; : &quot;2.0&quot;,  </div><div class="line">    &quot;page_action&quot;: &#123;  </div><div class="line">        &quot;default_title&quot;: &quot;&quot;,  </div><div class="line">        &quot;default_icon&quot;: &quot;icon.png&quot;,  </div><div class="line">        &quot;default_popup&quot;: &quot;popup.html&quot;  </div><div class="line">    &#125;,       </div><div class="line">    &quot;content_scripts&quot; : [  </div><div class="line">        &#123;  </div><div class="line">            &quot;matches&quot; : [&quot;*://www.google.com.tw/*&quot;],  </div><div class="line">            &quot;js&quot; : [&quot;jquery-3.1.1.min.js&quot;,&quot;content.js&quot;],  </div><div class="line">            &quot;css&quot; : [&quot;animate.css&quot;]  </div><div class="line">        &#125;  </div><div class="line">    ],  </div><div class="line">    &quot;background&quot; : &#123;  </div><div class="line">        &quot;scripts&quot; : [&quot;event.js&quot;],  </div><div class="line">        &quot;persistent&quot; : false  </div><div class="line">    &#125;,  </div><div class="line">    &quot;permissions&quot; : [&quot;tabs&quot;]  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>範例實作在google頁面注入內容腳本  </li>
+<li>為開發方便，在內容腳本裡會使用到<a href="https://daneden.github.io/animate.css/" target="_blank" rel="external">animate.css</a>及jquery等資源庫  </li>
+</ul>
+<h3 id="內容腳本的初始化"><a href="#內容腳本的初始化" class="headerlink" title="內容腳本的初始化"></a>內容腳本的初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import Vue from &apos;vue&apos;  </div><div class="line">import App from &apos;./App.vue&apos;  </div><div class="line"></div><div class="line">Vue.config.silent = true;  </div><div class="line"></div><div class="line">var initDom = document.createElement(&quot;div&quot;);  </div><div class="line">initDom.id = &quot;extensionUIwrap&quot;;  </div><div class="line"></div><div class="line">document.getElementsByTagName(&quot;body&quot;)[0].appendChild(initDom);  </div><div class="line"></div><div class="line">new Vue(&#123;  </div><div class="line">  el: &apos;#extensionUIwrap&apos;,  </div><div class="line">  render: h =&gt; h(App)  </div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="內容腳本的界面宣告："><a href="#內容腳本的界面宣告：" class="headerlink" title="內容腳本的界面宣告："></a>內容腳本的界面宣告：</h3><p>App.vue</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;  </div><div class="line">    &lt;div class=&quot;contentUI&quot; ref=&quot;contentUI&quot;&gt;  </div><div class="line">        &lt;!-- 展開時的畫面 --&gt;  </div><div class="line"></div><div class="line">        &lt;!-- vue的動畫組件宣告方式，會跟v-if連動 --&gt;  </div><div class="line">        &lt;transition name=&quot;custom-classes-transition&quot; enter-active-class=&quot;animated fadeInRight&quot; leave-active-class=&quot;animated fadeOutRight&quot;&gt;  </div><div class="line">            &lt;!-- v-if 設定區塊顯示的邏輯是根據  data.toggle 這裡的內容會在切換的是後出現或消失 --&gt;  </div><div class="line">            &lt;div class=&quot;contentUI__open-content&quot; v-if=&quot;toggle&quot;&gt;  </div><div class="line">                &lt;h1&gt;擴充功能範例&lt;/h1&gt;  </div><div class="line">                &lt;h2&gt;使用vue打造內容UI，並且與擴充功能溝通&lt;/h2&gt;  </div><div class="line">                &lt;p&gt;按下按鈕向事件腳本發送訊息&lt;/p&gt;  </div><div class="line">                &lt;div&gt;  </div><div class="line">                    &lt;!-- v-on:click 綁定點擊事件會執行 開啟 及 關閉 頁面按鈕 方法 --&gt;  </div><div class="line">                    &lt;a class=&quot;contentUI__button&quot; href=&quot;#&quot; v-on:click=&quot;turnOnThePageAction&quot;&gt;開啟頁面按鈕&lt;/a&gt;  </div><div class="line">                    &lt;a class=&quot;contentUI__button&quot; href=&quot;#&quot; v-on:click=&quot;turnOffThePageAction&quot;&gt;關閉頁面按鈕&lt;/a&gt;  </div><div class="line">                &lt;/div&gt;  </div><div class="line">                &lt;h2&gt;切換內容UI的長相&lt;/h2&gt;  </div><div class="line">                &lt;p&gt;啟用頁面按鈕後，按下彈出視窗的按鈕也能切換長相&lt;/p&gt;  </div><div class="line">                &lt;!-- v-on:click  綁定點擊事件會執行長相的切換 --&gt;  </div><div class="line">                &lt;a class=&quot;contentUI__button&quot; href=&quot;#&quot; v-on:click=&quot;switchView&quot;&gt;切換長相&lt;/a&gt;  </div><div class="line">            &lt;/div&gt;  </div><div class="line">        &lt;/transition&gt;  </div><div class="line"></div><div class="line">       &lt;!-- 關閉時的畫面 --&gt;  </div><div class="line"></div><div class="line">       &lt;!-- vue的動畫組件宣告方式，會跟v-if連動 --&gt;  </div><div class="line">        &lt;transition name=&quot;custom-classes-transition&quot; enter-active-class=&quot;animated fadeInRight&quot; leave-active-class=&quot;animated fadeOutRight&quot;&gt;  </div><div class="line">          &lt;!-- v-if 設定區塊顯示的邏輯是根據  data.toggle 這裡的內容會在切換的是後出現或消失 --&gt;  </div><div class="line">          &lt;div class=&quot;contentUI__close-content&quot; v-if=&quot;!toggle&quot;&gt;  </div><div class="line">            &lt;!-- v-on:click  綁定點擊事件會執行長相的切換 --&gt;  </div><div class="line">            &lt;a class=&quot;contentUI__button&quot; href=&quot;#&quot; v-on:click=&quot;switchView&quot;&gt;切換長相&lt;/a&gt;             </div><div class="line">          &lt;/div&gt;  </div><div class="line">        &lt;transition&gt;          </div><div class="line">    &lt;/div&gt;  </div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure>
+<h3 id="內容腳本的操作邏輯宣告："><a href="#內容腳本的操作邏輯宣告：" class="headerlink" title="內容腳本的操作邏輯宣告："></a>內容腳本的操作邏輯宣告：</h3><p>App.vue<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">&lt;script&gt;  </div><div class="line">export default &#123;  </div><div class="line">  name: &apos;contentUI&apos;,  </div><div class="line">  data () &#123;  </div><div class="line">    return &#123;  </div><div class="line">      //作為畫面切換的開關  </div><div class="line">      toggle: &apos;false&apos;  </div><div class="line">    &#125;  </div><div class="line">  &#125;,  </div><div class="line">  watch: &#123;  </div><div class="line">    toggle: function(val)&#123;  </div><div class="line">      console.log(&apos;toggleSwitch&apos;);    </div><div class="line">    &#125;    </div><div class="line">  &#125;,  </div><div class="line">  methods: &#123;  </div><div class="line">    switchView: function(callback)&#123;  </div><div class="line">    //切換參數，執行回調  </div><div class="line">      this.toggle = !this.toggle;  </div><div class="line"></div><div class="line">      if(callback &amp;&amp; typeof callback == &apos;function&apos;)&#123;  </div><div class="line">        callback();  </div><div class="line">      &#125;  </div><div class="line">    &#125;,  </div><div class="line">    turnOnThePageAction: function()&#123;  </div><div class="line">    //向擴充功能(事件腳本)發出請求  </div><div class="line">      chrome.runtime.sendMessage(&#123; name: &quot;開啟頁面按鈕&quot; &#125;,function(response) &#123;  </div><div class="line">        console.log(response);  </div><div class="line">      &#125;);  </div><div class="line">    &#125;,  </div><div class="line">    turnOffThePageAction: function()&#123;  </div><div class="line">       //向擴充功能(事件腳本)發出請求  </div><div class="line">      chrome.runtime.sendMessage(&#123; name: &quot;關閉頁面按鈕&quot; &#125;,function(response) &#123;  </div><div class="line">        console.log(response);  </div><div class="line">      &#125;);  </div><div class="line">    &#125;  </div><div class="line">  &#125;,  </div><div class="line">  mounted: function()&#123;  </div><div class="line">    var _this = this;  </div><div class="line">    //在組件實例安裝完成後，開始監聽來自擴充功能的事件  </div><div class="line">    chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) &#123;  </div><div class="line">      //注意如果有callback要使用call的方式呼叫方法  </div><div class="line">      _this.switchView.call(_this, function()&#123;  </div><div class="line">        sendResponse(&quot;操作完成&quot;)  </div><div class="line">      &#125;);  </div><div class="line">    &#125;);  </div><div class="line"></div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="內容腳本的松式宣告："><a href="#內容腳本的松式宣告：" class="headerlink" title="內容腳本的松式宣告："></a>內容腳本的松式宣告：</h3><p>App.vue<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">&lt;style scoped&gt;  </div><div class="line">.contentUI__open-content &#123;  </div><div class="line">  font-family: &apos;Avenir&apos;, Helvetica, Arial, sans-serif;  </div><div class="line">  text-align: center;  </div><div class="line">  color: #2c3e50;  </div><div class="line">  position: fixed;  </div><div class="line">  padding: 40px;  </div><div class="line">  right: 0;  </div><div class="line">  top:0;  </div><div class="line">  width: 250px;  </div><div class="line">  z-index: 9999;  </div><div class="line">  background: #fff;  </div><div class="line">  height: 100vw;  </div><div class="line">  min-height: 800px;  </div><div class="line">  box-shadow: 0 0 30px 5px rgba(0,0,0,0.3);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">.contentUI__close-content &#123;  </div><div class="line">  position: fixed;  </div><div class="line">  right: 10px;  </div><div class="line">  top:100px;  </div><div class="line">  z-index: 9999;   </div><div class="line"></div><div class="line">&#125;  </div><div class="line"></div><div class="line">.contentUI  h1, .contentUI  h2 &#123;  </div><div class="line">  font-weight: normal;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">.contentUI__button &#123;  </div><div class="line">  display: inline-block;  </div><div class="line">  box-sizing: border-box;  </div><div class="line">  background-color: #4fc08d;  </div><div class="line">  border: 1px solid #4fc08d;  </div><div class="line">  margin: 15px 20px;  </div><div class="line">  padding: 15px 20px;s  </div><div class="line">  font-size: 16px;  </div><div class="line">  color: #fff;  </div><div class="line">  width: 150px;  </div><div class="line">  text-align: center;  </div><div class="line">  vertical-align: middle;  </div><div class="line">  color: #fff;  </div><div class="line">  border-radius: 6px;  </div><div class="line">  text-decoration: none;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">.contentUI__button:hover &#123;  </div><div class="line">  text-decoration: none;  </div><div class="line">  background: #00bd68;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">.contentUI__button:active,.contentUI__button:visited &#123;  </div><div class="line">  color: #fff;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
+<p>在<code>style tag</code>上將<code>scoped</code>設定開啟，則產生的樣式檔如下：這麼以來便能避免樣式檔不小心影響到載入頁面。</p>
+<p><img src="https://quip.com/blob/ccaAAA3TaO5/pQmw9xXaVdgVZ-8nDhnPAQ?a=631kVfoaLPrg9WphFSrKKB29pPz6ZpiefimYHGTaWhka" alt=""></p>
+<h3 id="事件腳本"><a href="#事件腳本" class="headerlink" title="事件腳本"></a>事件腳本</h3><p>要注意內容腳本是無法存取tabs相關的API， 所以這裡只能依靠訊息的傳遞來實作此功能。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) &#123;  </div><div class="line">    console.log(message.name);  </div><div class="line"></div><div class="line">    switch (message.name) &#123;  </div><div class="line">        case &quot;開啟頁面按鈕&quot;:  </div><div class="line">            chrome.tabs.query(&#123; active: true, currentWindow: true &#125;, function(tabs) &#123;  </div><div class="line">                console.log(tabs);  </div><div class="line">                chrome.pageAction.show(tabs[0].id);  </div><div class="line">            &#125;);  </div><div class="line">            break;  </div><div class="line">        case &quot;關閉頁面按鈕&quot;:  </div><div class="line">            chrome.tabs.query(&#123; active: true, currentWindow: true &#125;, function(tabs) &#123;  </div><div class="line">                console.log(tabs);  </div><div class="line">                chrome.pageAction.hide(tabs[0].id);  </div><div class="line">            &#125;);  </div><div class="line">            break;  </div><div class="line">        default:  </div><div class="line">            break;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    sendResponse(&quot;來自事件腳本的回覆：處理已送出&quot;);  </div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="功能展示-一-：使用內容ui切換頁面按鈕-注意右上角頁面按鈕icon的啟用及關閉狀態"><a href="#功能展示-一-：使用內容ui切換頁面按鈕-注意右上角頁面按鈕icon的啟用及關閉狀態" class="headerlink" title="功能展示(一)：使用內容ui切換頁面按鈕(注意右上角頁面按鈕icon的啟用及關閉狀態)"></a>功能展示(一)：使用內容ui切換頁面按鈕(注意右上角頁面按鈕icon的啟用及關閉狀態)</h3><p><img src="http://i.imgur.com/2jkZCmp.gif" alt=""></p>
+<h3 id="彈出視窗的腳本"><a href="#彈出視窗的腳本" class="headerlink" title="彈出視窗的腳本"></a>彈出視窗的腳本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">document.addEventListener(&apos;DOMContentLoaded&apos;, function(dcle) &#123;  </div><div class="line">    var dButtonContent = document.getElementById(&quot;button&quot;);  </div><div class="line"></div><div class="line">    //點擊按鈕，向內容腳本發送訊息  </div><div class="line">    dButtonContent.addEventListener(&apos;click&apos;, function(e) &#123;  </div><div class="line">        console.log(&apos;click&apos;);  </div><div class="line">        chrome.tabs.query(&#123; active: true, currentWindow: true &#125;, function(tabs) &#123;  </div><div class="line">            chrome.tabs.sendMessage(tabs[0].id, &#123; content: &quot;你好，此訊息來自彈出視窗腳本&quot; &#125;, function(response) &#123;  </div><div class="line">               console.log(response);  </div><div class="line">            &#125;);  </div><div class="line">        &#125;);  </div><div class="line">    &#125;);  </div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="功能展示-二-：內容ui切換長相"><a href="#功能展示-二-：內容ui切換長相" class="headerlink" title="功能展示(二)：內容ui切換長相"></a>功能展示(二)：內容ui切換長相</h3><p><img src="http://i.imgur.com/8sDJCgD.gif" alt=""></p>
+<blockquote>
+<p>完整範例在<a href="https://github.com/lauraluo/ExtensionSample/tree/master/vueWithContentUI/my-extension" target="_blank" rel="external">github</a></p>
+</blockquote>
+<h3 id="本篇沒有小結只有花絮"><a href="#本篇沒有小結只有花絮" class="headerlink" title="本篇沒有小結只有花絮"></a>本篇沒有小結只有花絮</h3><p>鐵人賽到一半了，為了增加自己的歸納能力才開啟了這個挑戰，過程中真的學到很多。</p>
+<p>寫這個範例真是寫的累死我了，畢竟沒有Livereload可以看，每次產生程式碼就得重新載入擴充功能，所以找時間要把開發環境準備好。</p>
+<p>比較好的方式應該是把內容腳本的操作邏輯與跟擴充功能溝通的部份隔離開來，把訊息相關的操作，當作像是用Ajax去取資料的方式去對待，將這類操作集中寫在一個地方，也可以寫個配適器去輔佐，這樣才能脫離Chrome擴充功能的環境開發，也比較利於測試。(可以考慮搭配vuex或是redux)</p>
+<p>話說回來我真的好喜歡Vue寫起來的感覺，真希望工作能用vue寫(摀臉)。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://vuejs.org/" target="_blank" rel="external">https://vuejs.org/</a>  </li>
+<li><a href="http://www.zoucz.com/blog/2016/08/31/vue-chrome-extensions/" target="_blank" rel="external">http://www.zoucz.com/blog/2016/08/31/vue-chrome-extensions/</a>  </li>
+<li><a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">http://www.apress.com/us/book/9781484217740</a>  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/messaging" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/messaging</a>  </li>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/runtimme" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/runtimme</a>  </li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/28/chromeExtension-14/">Chrome Extension 開發與實作 14</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/31/chromeExtension-17/">Chrome Extension 開發與實作 17</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Vue打造內容UI-輸入組件-Content-UI"><span class="nav-number">1.</span> <span class="nav-text">使用Vue打造內容UI 輸入組件(Content UI)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什麼是內容UI"><span class="nav-number">1.1.</span> <span class="nav-text">什麼是內容UI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#為什麼要使用內容UI輸入組件"><span class="nav-number">1.2.</span> <span class="nav-text">為什麼要使用內容UI輸入組件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在討論內容UI之前"><span class="nav-number">1.3.</span> <span class="nav-text">在討論內容UI之前</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue的簡介"><span class="nav-number">1.4.</span> <span class="nav-text">Vue的簡介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Vue開發界面的好處：-主觀意見"><span class="nav-number">1.4.1.</span> <span class="nav-text">使用Vue開發界面的好處：(主觀意見)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue的基本操作："><span class="nav-number">1.4.2.</span> <span class="nav-text">Vue的基本操作：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用的環境及資料夾說明："><span class="nav-number">1.4.3.</span> <span class="nav-text">使用的環境及資料夾說明：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#開始實作"><span class="nav-number">1.5.</span> <span class="nav-text">開始實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#實作功能概述："><span class="nav-number">1.5.1.</span> <span class="nav-text">實作功能概述：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#設定檔"><span class="nav-number">1.5.2.</span> <span class="nav-text">設定檔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#內容腳本的初始化"><span class="nav-number">1.5.3.</span> <span class="nav-text">內容腳本的初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#內容腳本的界面宣告："><span class="nav-number">1.5.4.</span> <span class="nav-text">內容腳本的界面宣告：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#內容腳本的操作邏輯宣告："><span class="nav-number">1.5.5.</span> <span class="nav-text">內容腳本的操作邏輯宣告：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#內容腳本的松式宣告："><span class="nav-number">1.5.6.</span> <span class="nav-text">內容腳本的松式宣告：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件腳本"><span class="nav-number">1.5.7.</span> <span class="nav-text">事件腳本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能展示-一-：使用內容ui切換頁面按鈕-注意右上角頁面按鈕icon的啟用及關閉狀態"><span class="nav-number">1.5.8.</span> <span class="nav-text">功能展示(一)：使用內容ui切換頁面按鈕(注意右上角頁面按鈕icon的啟用及關閉狀態)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#彈出視窗的腳本"><span class="nav-number">1.5.9.</span> <span class="nav-text">彈出視窗的腳本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能展示-二-：內容ui切換長相"><span class="nav-number">1.5.10.</span> <span class="nav-text">功能展示(二)：內容ui切換長相</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本篇沒有小結只有花絮"><span class="nav-number">1.5.11.</span> <span class="nav-text">本篇沒有小結只有花絮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">1.6.</span> <span class="nav-text">參考資料</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2016/12/29/chromeExtension-15/';
+      var disqus_url = 'http://yoursite.com/2016/12/29/chromeExtension-15/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

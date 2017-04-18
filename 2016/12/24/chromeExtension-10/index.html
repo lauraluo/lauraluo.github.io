@@ -1,0 +1,1000 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 10 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 10 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="快捷鍵輸入組件 Shortcut Key or Commands快捷鍵輸入組件的簡介Chrome允許Extension設定多組快捷鍵，當這個快捷鍵被觸發時，可以處理對應的操作。快捷鍵設定使用Command API。" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 10 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="快捷鍵輸入組件 Shortcut Key or Commands快捷鍵輸入組件的簡介Chrome允許Extension設定多組快捷鍵，當這個快捷鍵被觸發時，可以處理對應的操作。快捷鍵設定使用Command API。" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 10 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 10
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2016-12-24
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/24/chromeExtension-10/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/24/chromeExtension-10/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="快捷鍵輸入組件-Shortcut-Key-or-Commands"><a href="#快捷鍵輸入組件-Shortcut-Key-or-Commands" class="headerlink" title="快捷鍵輸入組件 Shortcut Key or Commands"></a>快捷鍵輸入組件 Shortcut Key or Commands</h1><h2 id="快捷鍵輸入組件的簡介"><a href="#快捷鍵輸入組件的簡介" class="headerlink" title="快捷鍵輸入組件的簡介"></a>快捷鍵輸入組件的簡介</h2><p>Chrome允許Extension設定多組快捷鍵，當這個快捷鍵被觸發時，可以處理對應的操作。快捷鍵設定使用Command API。</p>
+<a id="more"></a>  
+<p>下圖展示了，當我按下一組快速鍵時，右上角瀏覽器按鈕的ICON，進行了切換。  </p>
+<p><img src="https://quip.com/blob/ACYAAA5TWjU/oblUYXAB7EADCB2PPBrIgg?a=tm66UYJmFDCuH92gGPkbXQrfOKp2OZa6aPGKTfEVAvwa" alt=""></p>
+<h2 id="快捷鍵輸入組件能作到什麼事"><a href="#快捷鍵輸入組件能作到什麼事" class="headerlink" title="快捷鍵輸入組件能作到什麼事"></a>快捷鍵輸入組件能作到什麼事</h2><ul>
+<li>讓User更方便的使用你Extension中的功能，提升使用經驗。  </li>
+<li>除了自定義的操作邏輯外，還允許綁定Chrome提供的預設操作，例如：快速啟動瀏覽器按鈕，快速啟動頁面按鈕。  </li>
+<li>快捷鍵的定義是允許使用者重新客制化的。(會蓋掉設定檔的定義)使用者可以在 chrome://extensions/configureCommands 對話框中手動添加更多的快捷鍵。  </li>
+</ul>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><h3 id="按鍵設定"><a href="#按鍵設定" class="headerlink" title="按鍵設定"></a>按鍵設定</h3><ul>
+<li>一個擴充工具可以擁有多組快速鍵的設定  </li>
+<li>但一個快速鍵的設定，最多只能有四個按鍵組成  </li>
+<li><p>支持的按鍵包括：  </p>
+<ul>
+<li>A～Z、0～9、  </li>
+<li>逗號、句號、  </li>
+<li>Home、End、PageUp、PageDown、Insert、Delete、方向鍵（上、下、左、右）  </li>
+<li>和多媒體鍵（上一曲（MediaPrevTrack） 、下一曲（MediaNextTrack）、播放/暫停（MediaPlayPause）、停止（MediaStop））。  </li>
+<li>所有組合鍵必須包含 Ctrl 或 Alt 中的一個。  </li>
+</ul>
+</li>
+<li><p>不允許使用涉及到 Ctrl+Alt 的組合鍵，以免與 AltGr 鍵衝突。除了 Alt 或 Ctrl 外還可以使用 Shift 鍵，但不是必須使用。組合鍵（例如 Ctrl）不能與多媒體按鍵一起使用。  </p>
+</li>
+<li>出於輔助功能的原因，從 Chrome 33 開始不支持 Tab 鍵。  </li>
+<li>Mac的Ctrl會自動轉換成Command，如果要正確的指定Ctrl請使用MacCtrl  </li>
+<li>快捷鍵是有優先等級的，例如視窗管理的快捷鍵優先等級高尋擴充功能的快捷鍵指令，無法被覆蓋。  </li>
+</ul>
+<h3 id="安裝檔設定"><a href="#安裝檔設定" class="headerlink" title="安裝檔設定"></a>安裝檔設定</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">      &#123;  </div><div class="line">        &quot;name&quot;: &quot;我的擴充功能&quot;,  </div><div class="line">        ...  </div><div class="line">        &quot;commands&quot;: &#123;  </div><div class="line">          &quot;switch-icon&quot;: &#123;  </div><div class="line">            &quot;suggested_key&quot;: &#123;  </div><div class="line">              &quot;default&quot;: &quot;Ctrl+Shift+Y&quot;,  </div><div class="line">              &quot;mac&quot;: &quot;MacCtrl+Shift+Y&quot;  </div><div class="line">            &#125;,  </div><div class="line">            &quot;description&quot;: &quot;切換Action的Icon&quot;  </div><div class="line">          &#125;,  </div><div class="line">          &quot;_execute_browser_action&quot;: &#123;  </div><div class="line">            &quot;suggested_key&quot;: &#123;  </div><div class="line">              &quot;windows&quot;: &quot;Ctrl+Shift+Y&quot;,  </div><div class="line">              &quot;mac&quot;: &quot;Command+Shift+Y&quot;,  </div><div class="line">              &quot;chromeos&quot;: &quot;Ctrl+Shift+U&quot;,  </div><div class="line">              &quot;linux&quot;: &quot;Ctrl+Shift+J&quot;  </div><div class="line">            &#125;  </div><div class="line">          &#125;,  </div><div class="line">          &quot;_execute_page_action&quot;: &#123;  </div><div class="line">            &quot;suggested_key&quot;: &#123;  </div><div class="line">              &quot;default&quot;: &quot;Ctrl+Shift+E&quot;,  </div><div class="line">              &quot;windows&quot;: &quot;Alt+Shift+P&quot;,  </div><div class="line">              &quot;mac&quot;: &quot;Alt+Shift+P&quot;  </div><div class="line">            &#125;  </div><div class="line">          &#125;  </div><div class="line">        &#125;,  </div><div class="line">        ...  </div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>快捷鍵允許是用key/value的 方式成對宣告。  </li>
+<li>屬性<code>global</code>可設定你的快捷觸發，是所有視窗(true)，或是目前使用者fcous的視窗(false)，但除了Chrome OS除外，目前還不允許全局設定。  </li>
+<li>使用suggested_key除了定義快捷鍵，還能指定作業系統。  </li>
+</ul>
+<h3 id="監聽命令的觸發"><a href="#監聽命令的觸發" class="headerlink" title="監聽命令的觸發"></a>監聽命令的觸發</h3><p>運用onCommand (<code>chrome.commands.onCommand</code>)監聽事件，callback將會接受快捷鍵的名稱作為回傳值，接著你就可以用回傳值判斷相應的動作：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chrome.commands.onCommand.addListener(function(command) &#123;  </div><div class="line">    console.log(&apos;Command:&apos;, command);  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>除了監聽快捷鍵的觸發，你還可以使用<code>chrome.commands.getAll(function callback)</code><br>取得你擴充功能的快捷設定，如果你需要的話。  </p>
+<h2 id="內建操作"><a href="#內建操作" class="headerlink" title="內建操作"></a>內建操作</h2><p><strong>要特別特別注意的一點是： <code>_</code>  </strong>作為一個保留前綴，保留給Extension一些內建操作，而開發者定義的快速鍵名稱如果使用<strong><code>_</code></strong>當前綴的話會導致錯誤。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&quot;_execute_browser_action&quot;: &#123;  </div><div class="line">    &quot;suggested_key&quot;: &#123;  </div><div class="line">        &quot;windows&quot;: &quot;Ctrl+Shift+Y&quot;,  </div><div class="line">        &quot;mac&quot;: &quot;Command+Shift+Y&quot;,  </div><div class="line">        &quot;chromeos&quot;: &quot;Ctrl+Shift+U&quot;,  </div><div class="line">        &quot;linux&quot;: &quot;Ctrl+Shift+J&quot;  </div><div class="line">    &#125;  </div><div class="line">&#125;,  </div><div class="line">&quot;_execute_page_action&quot;: &#123;  </div><div class="line">    &quot;suggested_key&quot;: &#123;  </div><div class="line">          &quot;default&quot;: &quot;Ctrl+Shift+E&quot;,  </div><div class="line">          &quot;windows&quot;: &quot;Alt+Shift+P&quot;,  </div><div class="line">          &quot;mac&quot;: &quot;Alt+Shift+P&quot;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="如果你有設定彈出視窗-："><a href="#如果你有設定彈出視窗-：" class="headerlink" title="如果你有設定彈出視窗 ："></a>如果你有設定彈出視窗 ：</h3><p><code>_execute_browser_action</code>(執行瀏覽器按鈕) 以及 <code>_execute_page_action</code>(執行頁面按鈕)，只會觸發預定的彈出視窗角本，不會產生其他可處理的事件(例如onClicked)，所以如果你有些邏輯必需與彈出視窗一起載入，可考慮在彈出視窗腳本裡，使用 <code>onDomReady</code>事件來處理。  </p>
+<h3 id="如果你沒有設定彈出視窗"><a href="#如果你沒有設定彈出視窗" class="headerlink" title="如果你沒有設定彈出視窗"></a>如果你沒有設定彈出視窗</h3><p><code>_execute_browser_action</code>(執行瀏覽器按鈕) 以及 <code>_execute_page_action</code>(執行頁面按鈕)，會自動同步觸發你的<code>browserAction.onClicked</code>以及<code>browserAction.onClicked</code>事件。  </p>
+<blockquote>
+<p>要注意內容腳本無法直接使用Command的API，但利用Chrome的訊息API，可以讓事件腳本接受到快捷鍵觸發事件時，再把消息傳遞給內容腳本</p>
+<p>只要有指定彈出視窗，<code>browserAction.onClicked</code>以及<code>browserAction.onClicked</code>事件都會被它檔住，所以這裡無法觸法事件跟快捷鍵的設定沒有關係，我覺得官網只是想跟你陳述一個狀況。但說法容易讓人誤會快捷鍵不會觸發點擊事件。所以在這裡分成兩個狀況討論有助大家理解。</p>
+</blockquote>
+<h2 id="使用者的快捷鍵管理介面"><a href="#使用者的快捷鍵管理介面" class="headerlink" title="使用者的快捷鍵管理介面"></a>使用者的快捷鍵管理介面</h2><p>輸入chrome://extensions/ configureCommands，便可呼叫出設定快捷鍵的界面(如下圖)。使用者可以隨他的喜好覆蓋掉安裝檔中的設定。一組快捷鍵只能設定一次，重覆宣告同一組快捷鍵，會直接將前一個設定清空。(所以我推理如果兩個擴充功能打架，後者會覆蓋前者)  </p>
+<p><img src="https://quip.com/blob/ACYAAA5TWjU/xw_Ju6u2GbJFQgUBRkpykA?a=aKVHT0ClEx8fZ2VYh9xUcAPlC3GO9m9PtjyoUiNLMXYa" alt=""></p>
+<h2 id="動手作看看"><a href="#動手作看看" class="headerlink" title="動手作看看"></a>動手作看看</h2><p>功能描述：利用快捷鍵改變載入網頁的背景顏色  </p>
+<h3 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">    &quot;manifest_version&quot;: 2,  </div><div class="line">    &quot;name&quot;: &quot;鐵人賽-Commands範例&quot;,  </div><div class="line">    &quot;description&quot;: &quot;切換臉書背景顏色&quot;,  </div><div class="line">    &quot;version&quot;: &quot;2.0&quot;,  </div><div class="line">    &quot;page_action&quot;: &#123;  </div><div class="line">        &quot;default_title&quot;: &quot;切換臉書背景顏色&quot;,  </div><div class="line">        &quot;default_icon&quot;: &quot;icon.png&quot;  </div><div class="line">    &#125;,  </div><div class="line">    &quot;permissions&quot;: [&quot;tabs&quot;,&quot;activeTab&quot;, &quot;declarativeContent&quot;],  </div><div class="line">    &quot;commands&quot;: &#123;  </div><div class="line">        &quot;switch-fb-bg&quot;: &#123;  </div><div class="line">            &quot;suggested_key&quot;: &#123;  </div><div class="line">                &quot;default&quot;: &quot;Ctrl+Shift+Y&quot;,  </div><div class="line">                &quot;mac&quot;: &quot;MacCtrl+Shift+Y&quot;  </div><div class="line">            &#125;,  </div><div class="line">            &quot;description&quot;: &quot;切換FB的背景顏色&quot;  </div><div class="line">        &#125;  </div><div class="line">    &#125;,  </div><div class="line">    &quot;background&quot; : &#123;  </div><div class="line">        &quot;scripts&quot; : [&quot;event.js&quot;],  </div><div class="line">        &quot;persistent&quot; : false  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="事件腳本"><a href="#事件腳本" class="headerlink" title="事件腳本"></a>事件腳本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var toggleBg = false;  </div><div class="line"></div><div class="line">chrome.commands.onCommand.addListener(function(command) &#123;  </div><div class="line">    console.log(&apos;Command:&apos;, command);  </div><div class="line">    if(command == &quot;switch-fb-bg&quot; &amp;&amp; toggleBg)&#123;  </div><div class="line">        chrome.tabs.executeScript(&#123;  </div><div class="line">            code: &apos;document.body.style.backgroundColor=&quot;red&quot;&apos;  </div><div class="line">        &#125;);   </div><div class="line"></div><div class="line">        toggleBg = !toggleBg;      </div><div class="line">    &#125;  </div><div class="line">    else if (command == &quot;switch-fb-bg&quot; &amp;&amp; !toggleBg) &#123;  </div><div class="line">        chrome.tabs.executeScript(&#123;  </div><div class="line">            code: &apos;document.body.style.backgroundColor=&quot;black&quot;&apos;  </div><div class="line">        &#125;);   </div><div class="line">        toggleBg = !toggleBg;      </div><div class="line">    &#125;  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="結果展示"><a href="#結果展示" class="headerlink" title="結果展示"></a>結果展示</h3><p><img src="https://quip.com/blob/ACYAAA5TWjU/RztzxIckeiow-Yh9Zbwwrg?a=1c1tvjS9bPi02HIJAbgwIUshViiMewgiGXUadtJ5Kkga" alt=""></p>
+<blockquote>
+<p>完整程式碼在<a href="https://github.com/lauraluo/ExtensionSample/tree/master/ShortcoutKey" target="_blank" rel="external">Github</a></p>
+</blockquote>
+<h2 id="補充：兩個擴充功能如果宣告同樣的快捷鍵會如何？"><a href="#補充：兩個擴充功能如果宣告同樣的快捷鍵會如何？" class="headerlink" title="補充：兩個擴充功能如果宣告同樣的快捷鍵會如何？"></a>補充：兩個擴充功能如果宣告同樣的快捷鍵會如何？</h2><p>如果兩個擴充功能，擁有一樣的快捷鍵設定會如何？我試著去作了實驗，原本以為後載入的會蓋掉前者，但事實上我們可以看到以下圖為例，Commands範例A比Commands範例B還早載入到擴充功能力，但同樣的快捷鍵設定A被保留了，B被清掉成空白。  </p>
+<p><img src="https://quip.com/blob/ACYAAA5TWjU/BCpF9JZ3nhzbmIn68Ul9KQ?a=DTQOcaX7BS3frPu3akwa7Dxldhqa729YTtn4LZ00Py0a" alt=""></p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>快捷鍵的按鍵組合是有一些條件限制的。  </li>
+<li>快捷鍵可自行定義操作行為，Chrome也提供一些內建行為供開發者設定。  </li>
+<li><code>chrome.commands.onCommand</code>可監聽快捷鍵的觸發，並以回傳的名稱判斷操作行為。  </li>
+<li>當開發者沒有指定彈出視窗時，快捷鍵設定<code>_execute_browser_action</code>(執行瀏覽器按鈕) 以及 <code>_execute_page_action</code>(執行頁面按鈕)會觸發對應的onClick事件。  </li>
+<li>在網址列輸入chrome://extensions/ configureCommands，可以開啟快捷鍵的自定義介面。  </li>
+<li>如果有同樣的兩個擴充套件宣告同一組快速鍵，Crhome會保留舊的，而新的那個設定，將會是空白的。</li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><p><a href="https://developer.chrome.com/extensions/commands" target="_blank" rel="external">https://developer.chrome.com/extensions/commands</a>  </p>
+</li>
+<li><p><a href="https://crxdoc-zh.appspot.com/extensions/commands" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/commands</a>  </p>
+</li>
+<li><p><a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">http://www.apress.com/us/book/9781484217740</a>  </p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/23/chromeExtension-9/">Chrome Extension 開發與實作 09</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/25/chromeExtension-11/">Chrome Extension 開發與實作 11</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快捷鍵輸入組件-Shortcut-Key-or-Commands"><span class="nav-number">1.</span> <span class="nav-text">快捷鍵輸入組件 Shortcut Key or Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷鍵輸入組件的簡介"><span class="nav-number">1.1.</span> <span class="nav-text">快捷鍵輸入組件的簡介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷鍵輸入組件能作到什麼事"><span class="nav-number">1.2.</span> <span class="nav-text">快捷鍵輸入組件能作到什麼事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用法"><span class="nav-number">1.3.</span> <span class="nav-text">用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按鍵設定"><span class="nav-number">1.3.1.</span> <span class="nav-text">按鍵設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝檔設定"><span class="nav-number">1.3.2.</span> <span class="nav-text">安裝檔設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#監聽命令的觸發"><span class="nav-number">1.3.3.</span> <span class="nav-text">監聽命令的觸發</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#內建操作"><span class="nav-number">1.4.</span> <span class="nav-text">內建操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如果你有設定彈出視窗-："><span class="nav-number">1.4.1.</span> <span class="nav-text">如果你有設定彈出視窗 ：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果你沒有設定彈出視窗"><span class="nav-number">1.4.2.</span> <span class="nav-text">如果你沒有設定彈出視窗</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用者的快捷鍵管理介面"><span class="nav-number">1.5.</span> <span class="nav-text">使用者的快捷鍵管理介面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#動手作看看"><span class="nav-number">1.6.</span> <span class="nav-text">動手作看看</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#設定檔"><span class="nav-number">1.6.1.</span> <span class="nav-text">設定檔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件腳本"><span class="nav-number">1.6.2.</span> <span class="nav-text">事件腳本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#結果展示"><span class="nav-number">1.6.3.</span> <span class="nav-text">結果展示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#補充：兩個擴充功能如果宣告同樣的快捷鍵會如何？"><span class="nav-number">1.7.</span> <span class="nav-text">補充：兩個擴充功能如果宣告同樣的快捷鍵會如何？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小結"><span class="nav-number">1.8.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">1.9.</span> <span class="nav-text">參考</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2016/12/24/chromeExtension-10/';
+      var disqus_url = 'http://yoursite.com/2016/12/24/chromeExtension-10/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

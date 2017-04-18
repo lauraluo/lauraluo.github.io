@@ -1,0 +1,1013 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 02 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 02 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="官網導讀：快速打造一個chrome extension快速的建立我們第一個 Chrome extension，這裡我們將了解一個extension最基本構成及其操作。
+簡單的定義什麼是 Chrome extensionChrome extension，允許工程師使用前端領域裡早已熟悉的javascript + css + html 三大元素，來操作Chrome的核心功能。" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 02 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="官網導讀：快速打造一個chrome extension快速的建立我們第一個 Chrome extension，這裡我們將了解一個extension最基本構成及其操作。
+簡單的定義什麼是 Chrome extensionChrome extension，允許工程師使用前端領域裡早已熟悉的javascript + css + html 三大元素，來操作Chrome的核心功能。" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 02 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 02
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2016-12-16
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2016/12/16/chromeExtension-2/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/16/chromeExtension-2/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="官網導讀：快速打造一個chrome-extension"><a href="#官網導讀：快速打造一個chrome-extension" class="headerlink" title="官網導讀：快速打造一個chrome extension"></a>官網導讀：快速打造一個chrome extension</h1><p>快速的建立我們第一個 <code>Chrome extension</code>，這裡我們將了解一個<code>extension</code>最基本構成及其操作。</p>
+<h2 id="簡單的定義什麼是-Chrome-extension"><a href="#簡單的定義什麼是-Chrome-extension" class="headerlink" title="簡單的定義什麼是 Chrome extension"></a>簡單的定義什麼是 Chrome extension</h2><p>Chrome extension，允許工程師使用前端領域裡早已熟悉的javascript + css + html 三大元素，來操作Chrome的核心功能。</p>
+<a id="more"></a>
+<h2 id="任務-Feature"><a href="#任務-Feature" class="headerlink" title="任務/Feature"></a>任務/Feature</h2><ul>
+<li>放置一個可點擊icon在網址列的右邊</li>
+<li>點擊後會展開一個POP視窗</li>
+<li>裡面包含目前瀏覽網站的網址及網站的圖片(任選一張)。</li>
+</ul>
+<blockquote>
+<p>這樣的一個放置在網址列右邊的UI元素，我們稱之為<a href="https://developer.chrome.com/extensions/browserAction" target="_blank" rel="external">browser action</a>。</p>
+</blockquote>
+<p><img src="https://quip.com/blob/SOQAAAWsZ6a/_SpR6z5_oKOkgpuYGNyakA?a=cQKpYAYsqIGIbpU6gFaft7bwa5JuUwKiAyX65HUyaHoa" alt=""></p>
+<h2 id="第一步：制作擴充功能的安裝檔-manifest-json"><a href="#第一步：制作擴充功能的安裝檔-manifest-json" class="headerlink" title="第一步：制作擴充功能的安裝檔( manifest.json )"></a>第一步：制作擴充功能的安裝檔( manifest.json )</h2><p>每個外掛都擁有一個 JSON格式的安裝檔，檔名是manifest，副檔名(.json)，他提供了很多重要的資訊，例如extension的名字，版本。更進階的實作中，我們會用他來定義extension的行為，還有需要什麼權限。</p>
+<p>安裝檔中的，幾個要點：</p>
+<ul>
+<li>我們定義了行為是<a href="https://developer.chrome.com/extensions/browserAction" target="_blank" rel="external">browser action</a></li>
+<li>為了權取使用者目前瀏覽網頁的URL，我們需要 <a href="https://developer.chrome.com/extensions/activeTab" target="_blank" rel="external">activeTab 權限</a></li>
+<li>為了使用外部的Google Image search API.我們需要設定主機<a href="https://developer.chrome.com/extensions/declare_permissions" target="_blank" rel="external">權限</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;manifest_version&quot;: 2,</div><div class="line"></div><div class="line">  &quot;name&quot;: &quot;Getting started example&quot;,</div><div class="line">  &quot;description&quot;: &quot;This extension shows a Google Image search result for the current page&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0&quot;,</div><div class="line"></div><div class="line">  &quot;browser_action&quot;: &#123;</div><div class="line">    &quot;default_icon&quot;: &quot;icon.png&quot;,</div><div class="line">    &quot;default_popup&quot;: &quot;popup.html&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;permissions&quot;: [</div><div class="line">    &quot;activeTab&quot;,</div><div class="line">    &quot;https://ajax.googleapis.com/&quot;</div><div class="line">  ]</div><div class="line">&#125;J</div></pre></td></tr></table></figure>
+<p><a href="https://developer.chrome.com/extensions/examples/tutorials/getstarted/manifest.json" target="_blank" rel="external">下載完整的安裝檔</a>，並將之存在一個first_extension目錄底下。</p>
+<blockquote>
+<p>關於權限所有細節設定，我們可以查看<a href="https://developer.chrome.com/extensions/declare_permissions" target="_blank" rel="external">官方權限列表</a>。</p>
+<p>在設定JSON檔的時後，務必使用正確的Json 格式，我們可以使用免費的線上工具<a href="http://jsonlint.com/" target="_blank" rel="external">JSONLint</a>來驗証我們的安裝檔的格式是否正確。</p>
+</blockquote>
+<h2 id="第二步：制作界面，載入相關資源"><a href="#第二步：制作界面，載入相關資源" class="headerlink" title="第二步：制作界面，載入相關資源"></a>第二步：制作界面，載入相關資源</h2><p>我們注意到上面的安裝檔中，有一個用來模述browser_action相關資源的區塊(icon.png及popup.html)，但這僅僅只是設定，讓我們開始制作它們。</p>
+<ul>
+<li>icon.png<ul>
+<li>呈現在網址列右邊的icon</li>
+<li>在<a href="https://developer.chrome.com/extensions/examples/tutorials/getstarted/icon.png" target="_blank" rel="external">這裡下載</a>範例中icon.png檔，並將之存放在first_extension目錄底下 </li>
+<li>你也可以自己客制化，圖片檔式是一個 19px X 19 px 的正方形 PNG 檔。</li>
+</ul>
+</li>
+<li>popup.html<ul>
+<li>使用者點擊網址列旁的icon後，出現的POP視窗</li>
+<li>一個標準且完整的HTML檔(包含doctype、head、body)，並且你也可以使用CSS去客制化他的長相。</li>
+<li>在<a href="https://developer.chrome.com/extensions/examples/tutorials/getstarted/popup.html" target="_blank" rel="external">這裡下載</a>範列中的html檔，並將之存放在first_extension目錄底下 。</li>
+</ul>
+</li>
+<li><p>popup.js</p>
+<ul>
+<li>目前實作功能的主要的操作邏輯</li>
+<li>這一隻JS檔沒有記載在安裝檔裡，而是在popup.html裡載入</li>
+<li><p><img src="https://quip.com/blob/SOQAAAWsZ6a/CsyfYsNkhTZnoAjuPVzaug?a=bxpLhVFO9GWlzC7pIT4KG67Pu95Y4HWMW2YXElHTf5Ea" alt=""></p>
+</li>
+<li><p>關於操作邏輯的實作的細節我們留到後面再探討</p>
+</li>
+<li>在<a href="https://developer.chrome.com/extensions/examples/tutorials/getstarted/popup.js" target="_blank" rel="external">這裡下載</a>範列中的js檔，並將之存放在first_extension目錄底下 。</li>
+</ul>
+</li>
+</ul>
+<p>教程到目前為止，你應該擁有的檔案及結構<br><img src="https://quip.com/blob/SOQAAAWsZ6a/ffhj5mUVSKq4iDTPEWGg8w?a=m8pJCqMHqQzXOatsQfJt1EkEanb4lNaY2UXdN8GAkFYa" alt=""></p>
+<h2 id="第三步：載入擴充功能"><a href="#第三步：載入擴充功能" class="headerlink" title="第三步：載入擴充功能"></a>第三步：載入擴充功能</h2><p>如果我們經過Chrome Web Store來安裝擴充工具，下載的會是一個副檔名為<code>.crx</code>的打包檔，但這樣對開發人員一點也不有善，不利於開發與測試。所以接下來我們使用Chrome提供的快捷方法載入位於地端的套件檔。</p>
+<ul>
+<li>打開你的擴充工具管理介面：</li>
+<li>在網址列輸入 <code>chrome://extensions</code></li>
+<li><p>或是使用界面進入管理介面：點擊右上角界面 &gt; 更多工具 &gt; 擴充功能<br><img src="https://quip.com/blob/SOQAAAWsZ6a/M3izZiIo3Gty42RP5WJ3vQ?a=Rh3saRf7DIiZjDUSzbPKy3fGzGf5sw1YsxvmXaYhO6Ia" alt=""></p>
+</li>
+<li><p>確定套件管理界面中的開發者模式已勾選<br><img src="https://quip.com/blob/SOQAAAWsZ6a/aUp-wYmiGxC2LwNIM_bqoQ?a=CokqoHVSzWffYWm5cQutaz0sSWqhL4Xf5AkaALZpHrwa" alt=""></p>
+</li>
+<li><p>點擊載入未封裝擴充功能，選擇你的first_extension所在位置<br><img src="https://quip.com/blob/SOQAAAWsZ6a/j1GAa2eEplWcsA8LMmPvdg?a=aQ1JZgUIY4sk5a4Crm1TBVY1oeRXLheBdHya6a60bJoa" alt=""></p>
+</li>
+</ul>
+<p>完成後，你就可以成功的在右上角看到你的第一個擴充工具<br><img src="https://quip.com/blob/SOQAAAWsZ6a/YmamZV0b6J2x00NjRahfUg?a=L25CeaeN3UeKlNYSoX1N3aNPrSV6DhXRDtX0SUFmlBka" alt=""></p>
+<h2 id="更新我們的擴充工具"><a href="#更新我們的擴充工具" class="headerlink" title="更新我們的擴充工具"></a>更新我們的擴充工具</h2><p>我們決定加上一個 UI上的小改善 ，使用內建的default_title屬性，讓我們的使用者hover到套件的icon時，可以經由tooltip大至了解他的互動方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  &quot;browser_action&quot;: &#123;</div><div class="line">    &quot;default_icon&quot;: &quot;icon.png&quot;,</div><div class="line">    &quot;default_popup&quot;: &quot;popup.html&quot;,</div><div class="line">    &quot;default_title&quot;: &quot;Click here!&quot;</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>更新了我們的安裝檔，你還需要重新載入它。進到擴充工具管理界面，按下command + R 或是點擊 擴充套件上的重新載入，讓新的設定檔發揮作用。<br><img src="https://quip.com/blob/SOQAAAWsZ6a/tN2BIV1yrn6KfJ31zLIFnQ?a=nDAtRN15I8n7tP3Zk6emDnPOV0oN4bMzcJl6a9M6cGAa" alt=""></p>
+<p><img src="https://quip.com/blob/SOQAAAWsZ6a/-wwSGjwLRKPZID5k7tcu3g?a=5qk4m32ILcaL32JDUAPYngYAQ2yNrqTuBtFmjqbWajwa" alt=""></p>
+<h2 id="Debug-我們的擴充工具"><a href="#Debug-我們的擴充工具" class="headerlink" title="Debug 我們的擴充工具"></a>Debug 我們的擴充工具</h2><h3 id="檢查我們的popup內容："><a href="#檢查我們的popup內容：" class="headerlink" title="檢查我們的popup內容："></a>檢查我們的popup內容：</h3><p>方法一：在icon上點選右鍵，選擇檢查彈出式視窗<br><img src="http://ithelp.ithome.com.tw/upload/images/20161216/20079450uqv06ap7oz.png" alt="http://ithelp.ithome.com.tw/upload/images/20161216/20079450uqv06ap7oz.png"></p>
+<p>此時將會跳出Chrome的Developer Tool，那麼你就可以像平常的網頁去Debug。<br><img src="https://quip.com/blob/SOQAAAWsZ6a/I6DdLyf4ILiWfnayPylUcg?a=9fFCGJT1GlSg5q9udYaS5Qk1UtcFb1zcBiVEQzioW8oa" alt=""></p>
+<p>因為developer tool的畫面只能在彈出視窗運行期間開啟，此時js已載入完畢，但我們可以在console下輸入location.reload(true)來重新載入畫面。這樣以來便能在彈出視窗開啟的狀態下，重新載入JS(方便下中斷點)。</p>
+<p>方法二：在擴充工具的管理界面上可查詢到extension的ID(如下圖一)<br><img src="https://quip.com/blob/SOQAAAWsZ6a/b2x5A0qhdKoYdGWQAceDXA?a=FypRmf8kryJJU0RPRI92FuIycN32jA9qBSneHILgzkMa" alt=""></p>
+<p>然後在網址列輸入<strong>chrome-extension://extensionId/filename</strong>(如下圖二)，你可以訪問extension裡的所有靜態檔案。同樣可以呼叫developer tools 進行DEBUG作業。<br><img src="https://quip.com/blob/SOQAAAWsZ6a/QkZo5_lFPE2I0_8l14qJIQ?a=F0IRadJZGakG7HN6JVXBTzDaSQ3YXnx97bUrG8H9dK8a" alt=""></p>
+<p>但此模式下，無法模擬需要取得使用者當下瀏覽的畫面的資訊，所以請視情況選擇你的debug方案。</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li>我們學到了一個extension的基本組成元素，在一下個段落中，我們將進一步展開完整的結構。</li>
+<li>我們學會了不經由Chrome Web Store的正式發佈，很速的在地端進行開發及debug。</li>
+</ul>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><ul>
+<li>雖然官方的教程如此，但google search image API 已經棄用，所以大家意會就好，也許後面我們可以討論替代方案。</li>
+</ul>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><p><a href="https://crxdoc-zh.appspot.com/extensions/getstarted" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/getstarted</a><br><a href="https://developer.chrome.com/extensions/getstarted" target="_blank" rel="external">https://developer.chrome.com/extensions/getstarted</a></p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/15/chromeExtension-1/">Chrome Extension 開發與實作 01</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/18/chromeExtension-4/">Chrome Extension 開發與實作 04</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#官網導讀：快速打造一個chrome-extension"><span class="nav-number">1.</span> <span class="nav-text">官網導讀：快速打造一個chrome extension</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#簡單的定義什麼是-Chrome-extension"><span class="nav-number">1.1.</span> <span class="nav-text">簡單的定義什麼是 Chrome extension</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任務-Feature"><span class="nav-number">1.2.</span> <span class="nav-text">任務/Feature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：制作擴充功能的安裝檔-manifest-json"><span class="nav-number">1.3.</span> <span class="nav-text">第一步：制作擴充功能的安裝檔( manifest.json )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：制作界面，載入相關資源"><span class="nav-number">1.4.</span> <span class="nav-text">第二步：制作界面，載入相關資源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步：載入擴充功能"><span class="nav-number">1.5.</span> <span class="nav-text">第三步：載入擴充功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新我們的擴充工具"><span class="nav-number">1.6.</span> <span class="nav-text">更新我們的擴充工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug-我們的擴充工具"><span class="nav-number">1.7.</span> <span class="nav-text">Debug 我們的擴充工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#檢查我們的popup內容："><span class="nav-number">1.7.1.</span> <span class="nav-text">檢查我們的popup內容：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小結"><span class="nav-number">1.8.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#補充"><span class="nav-number">1.9.</span> <span class="nav-text">補充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#資料來源"><span class="nav-number">1.10.</span> <span class="nav-text">資料來源</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2016/12/16/chromeExtension-2/';
+      var disqus_url = 'http://yoursite.com/2016/12/16/chromeExtension-2/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

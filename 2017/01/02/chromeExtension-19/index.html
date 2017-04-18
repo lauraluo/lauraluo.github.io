@@ -1,0 +1,1029 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="IT邦幫忙鐵人賽,chorme extension,2017," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> Chrome Extension 開發與實作 19 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" Chrome Extension 開發與實作 19 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="chrome.downloads API 使用腳本管理下載使用chrome.downloads API以編程方式開始下載，監視，操縱，搜索下載的文件。" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" Chrome Extension 開發與實作 19 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="chrome.downloads API 使用腳本管理下載使用chrome.downloads API以編程方式開始下載，監視，操縱，搜索下載的文件。" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" Chrome Extension 開發與實作 19 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Chrome Extension 開發與實作 19
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2017-01-02
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/chrome-extension/">chrome extension</a>
+
+              
+              
+                , 
+              
+
+            
+              <a href="/categories/chrome-extension/2017-IT邦幫忙鐵人賽/">2017 IT邦幫忙鐵人賽</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/01/02/chromeExtension-19/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/02/chromeExtension-19/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="chrome-downloads-API-使用腳本管理下載"><a href="#chrome-downloads-API-使用腳本管理下載" class="headerlink" title="chrome.downloads API 使用腳本管理下載"></a>chrome.downloads API 使用腳本管理下載</h1><p>使用chrome.downloads API以編程方式開始下載，監視，操縱，搜索下載的文件。</p>
+<a id="more"></a>
+<h2 id="權限設定"><a href="#權限設定" class="headerlink" title="權限設定"></a>權限設定</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;name&quot;: &quot;My extension&quot;,</div><div class="line">    ...</div><div class="line">    &quot;permissions&quot;: [</div><div class="line">      &quot;downloads&quot;</div><div class="line">    ],</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="下載項目型別"><a href="#下載項目型別" class="headerlink" title="下載項目型別"></a>下載項目型別</h2><p>DownloadItem，代表下載項目任務的一個型別，此物件實例中包含非常多的屬性，以下只羅列其中一部份，幫助大家了解這個物件大概會有什麼資訊：</p>
+<ul>
+<li>integer id： 在<strong>不同瀏覽器工作階段</strong>中，統一的檔案識別符。</li>
+<li>string url/string referrer/string filename：絕對URL/相對URL/地端路徑的絕對位置。</li>
+<li>boolean incognito：如果該下載存在歷史下載記錄中為false，沒有則為true。</li>
+<li><a href="https://developer.chrome.com/extensions/downloads#type-DangerType" target="_blank" rel="external">DangerType </a>danger：是否為危險下載</li>
+<li>string startTime：下載開始時間</li>
+<li>string endTime：下載結束時間</li>
+<li>string  estimatedEndTime：下找完成的估計時間</li>
+<li>State state：下載狀態(進行中/已中斷/已完成)</li>
+<li>boolean canResume：下載是否可以回復，如果可以則為true</li>
+<li>double bytesReceived：目前下載的位元數。(不考慮壓縮)</li>
+<li>double totalBytes：整個下載的位元數，如果未知則為-1(不考慮壓縮)</li>
+<li>double fileSize：解壓縮的文件位元數</li>
+<li>string byExtensionId：如果由擴充功能發起下載，則顯示擴充功能的ID</li>
+<li>string byExtensionName：發起下載的擴充功能名稱</li>
+<li>boolean exists：下載檔案是否還存在，需要自行調用search()方法查詢檔案狀態，如果檔案已被刪除會觸發onChanged事件。</li>
+<li>其他屬性見官網完整列表<a href="https://developer.chrome.com/extensions/downloads#type-DownloadItem" target="_blank" rel="external">DownloadItem</a></li>
+</ul>
+<h2 id="下載檔案"><a href="#下載檔案" class="headerlink" title="下載檔案"></a>下載檔案</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.download(object options, function callback)</div></pre></td></tr></table></figure>
+<p>object options 參數設定下載檔案的相關資訊，包含以下資訊：</p>
+<ul>
+<li>url (string)：下載網址</li>
+<li>filename (string)：檔案名稱</li>
+<li>saveAs (Boolean)：是否顯示另存對話框</li>
+<li>method (“GET”  或 “POST” 字串 )：指定的HTTP協定的資訊</li>
+<li>headers (array)：指定的HTTP協定的資訊</li>
+<li>body (string)：指定的HTTP協定的資訊 </li>
+</ul>
+<p>使用說明</p>
+<ul>
+<li>指定下載某個URL，如果該URL使用HTTP [S]協議，請求會包含當前為主機名設置的所有Cookie。</li>
+<li>如果同時指定了文件名與saveAs屬性，則會顯示另存為對話框，並且初始文件名為指定稱。</li>
+<li><code>如果下載成功開始，將調用回調</code>，並傳遞新的DownloadItem的downloadId。(注意不是直接回傳下載項目)</li>
+<li><code>如果開始下載時發生了錯誤，將調用回調</code>，並傳遞downloadId：undefined，並且runtime.lastError包含描述性文字 。</li>
+<li>錯誤字串並不保証在不同版本中兼容，請不用使用他來作為程式碼的判斷。</li>
+</ul>
+<p>範例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var downloadOptions = &#123;</div><div class="line">    &quot;url&quot; : &quot;http://www.apress.com/downloadable/download/sample/sample_id/1456/&quot;,</div><div class="line">    &quot;saveAs&quot; : true</div><div class="line">&#125;;</div><div class="line"></div><div class="line">chrome.downloads.download(downloadOptions,function(downloadId) &#123;</div><div class="line">    console.log(downloadId);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>這裡使用的是<a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">電子書</a>中的範例，完整的範例參考第三章節<a href="https://github.com/Apress/creating-google-chrome-extensions/tree/master/9781484217740" target="_blank" rel="external">DownloadsAPI</a></p>
+</blockquote>
+<h2 id="取消-復原-暫停下載"><a href="#取消-復原-暫停下載" class="headerlink" title="取消/復原/暫停下載"></a>取消/復原/暫停下載</h2><p>一旦你取得下載項目的ID，你可以經由ID作以下操作：</p>
+<h3 id="取消下載"><a href="#取消下載" class="headerlink" title="取消下載"></a>取消下載</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.cancel(integer downloadId, function callback)</div></pre></td></tr></table></figure>
+<h3 id="復原下載"><a href="#復原下載" class="headerlink" title="復原下載"></a>復原下載</h3><p>如果復原失敗則<a href="https://crxdoc-zh.appspot.com/extensions/runtime#property-lastError" target="_blank" rel="external">runtime.lastError</a>將包含錯誤訊息，如果下載項目不處於有用狀態，則下載會失敗。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.resume(integer downloadId, function callback)</div></pre></td></tr></table></figure>
+<h3 id="暫停下載"><a href="#暫停下載" class="headerlink" title="暫停下載"></a>暫停下載</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.pause(integer downloadId, function callback)</div></pre></td></tr></table></figure>
+<h2 id="打開下載檔案"><a href="#打開下載檔案" class="headerlink" title="打開下載檔案"></a>打開下載檔案</h2><p>一旦檔案下載完成，你就能使用下載項目的ID來打開檔案，如果下載還沒完成，經 <a href="https://crxdoc-zh.appspot.com/extensions/runtime#property-lastError" target="_blank" rel="external">runtime.lastError</a>在回調中通知錯誤。</p>
+<p>注意該方法在安裝檔中需要額外設定<code>downloads.open</code>權限，項目第一次打開時會觸發onChanged事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.open(integer downloadId)</div></pre></td></tr></table></figure>
+<p>如果你想打開的是下載檔案的目錄，則提供以下兩個操作：</p>
+<h3 id="打開檔案所在目錄"><a href="#打開檔案所在目錄" class="headerlink" title="打開檔案所在目錄"></a>打開檔案所在目錄</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.show(integer downloadId)</div></pre></td></tr></table></figure>
+<h3 id="打開的是檔案管理系統中的默認下載目錄"><a href="#打開的是檔案管理系統中的默認下載目錄" class="headerlink" title="打開的是檔案管理系統中的默認下載目錄"></a>打開的是檔案管理系統中的默認下載目錄</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`crome.downloads.showDefaultFolder()`</div></pre></td></tr></table></figure>
+<h2 id="刪除下載"><a href="#刪除下載" class="headerlink" title="刪除下載"></a>刪除下載</h2><h3 id="刪除已下載完成的檔案"><a href="#刪除已下載完成的檔案" class="headerlink" title="刪除已下載完成的檔案"></a>刪除已下載完成的檔案</h3><p>如果指定的下載項目還未完成，經 <a href="https://crxdoc-zh.appspot.com/extensions/runtime#property-lastError" target="_blank" rel="external">runtime.lastError</a>在回調中通知錯誤。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.removeFile(integer downloadId, function callback)</div></pre></td></tr></table></figure>
+<h3 id="刪除下載中的紀錄"><a href="#刪除下載中的紀錄" class="headerlink" title="刪除下載中的紀錄"></a>刪除下載中的紀錄</h3><p>只刪除紀錄，而不刪除檔案。每刪除一個檔案，獨立觸發一次 <a href="https://crxdoc-zh.appspot.com/extensions/downloads#event-onErased" target="_blank" rel="external">onErased</a>事件，才執行callback。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.erase(object query, function callback)</div></pre></td></tr></table></figure>
+<p>可以使用參數query來設定要刪除檔案的條件，符合調件的紀錄會進行批次刪除。例如，可以設定 紀錄的下載時間，有些查詢的屬性非常有用：例如：startedBefore、startedAfter(開始的時間區間)、 endedBefore、 endedAfter(結束的時間區間)、filenameRegex(檔案名稱的正規表達式)、and urlRegex(下載網址的正規表達式)，完整的query設定可以參考<a href="https://crxdoc-zh.appspot.com/extensions/downloads#method-erase" target="_blank" rel="external">官網文件</a>。</p>
+<h2 id="在各種操作回調中判斷-runtime-lastError的方式"><a href="#在各種操作回調中判斷-runtime-lastError的方式" class="headerlink" title="在各種操作回調中判斷 runtime.lastError的方式"></a>在各種操作回調中判斷 <a href="https://crxdoc-zh.appspot.com/extensions/runtime#property-lastError" target="_blank" rel="external">runtime.lastError</a>的方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.resume(downloadId,function() &#123;</div><div class="line">    if(!chrome.runtime.lastError) console.log(&quot;pause&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="修改建議的下載檔名及預設的儲存動作"><a href="#修改建議的下載檔名及預設的儲存動作" class="headerlink" title="修改建議的下載檔名及預設的儲存動作"></a>修改建議的下載檔名及預設的儲存動作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.onDeterminingFilename.addListener(function callback)</div></pre></td></tr></table></figure>
+<p>在確定檔案文件的過程中，擴充功能有機會修改目標的文件名稱。每一個擴充功能只能設定一個此監聽器。</p>
+<p>事件觸發的回調中，必需提供一個 <code>suggest()</code>方法，開發人員需用此方法設置建議的<strong>檔名</strong>及<strong>預設的儲存動作</strong>(覆蓋舊文件/系統自動命名/提示選擇對話框)。</p>
+<p>預設的儲存動作的列舉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;uniquify&quot;, &quot;overwrite&quot;, or &quot;prompt&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>suggest()</code>方法如果要異步調用，則需在事件的回調中回傳true，否則監聽器會自動調用<code>suggest()</code>方法。</li>
+<li>在所有的監聽器調用<code>suggest()</code>前，下載事件不會完成。</li>
+<li>如果沒有傳遞任何參數給<code>suggest()</code>則使用下載時設定的<code>downloadItem.filename</code>作為文件名。</li>
+<li>如果有多個擴充功能都使用該事件試圖修改檔名，則以最後安裝並向<code>suggest()</code>傳遞設置的擴充功能優先，為避免混肴，使用者不該同時安裝多個有服務的擴充功能。</li>
+</ul>
+<p>示範：在所有檔案下載完成後，使用腳本覆蓋預設檔名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">chrome.downloads.onDeterminingFilename.addListener(function(item, suggest) &#123;</div><div class="line">    suggest(&#123;</div><div class="line">        filename: item.filename + &quot;羅拉拉的下載&quot;,</div><div class="line">        conflictAction: &apos;overwrite&apos;,</div><div class="line">        conflict_action: &apos;overwrite&apos;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><code>注意：</code>實測時發現conflictAction的設定在我的電腦沒有效果，每次都會詢問我是否覆蓋文件，初步猜想可能跟 設定&gt;進階設定&gt;的「下載每個檔案前先詢問儲存位置」設定有關，但即使我把勾勾取消，他還是不停的跳出儲存位置的詢問，今天時間不太夠，我後面有時間會去查証。</p>
+<p><img src="http://ithelp.ithome.com.tw/upload/images/20170102/20079450z3AxpNIOYC.png" alt="http://ithelp.ithome.com.tw/upload/images/20170102/20079450z3AxpNIOYC.png"></p>
+<h2 id="其他相關事件"><a href="#其他相關事件" class="headerlink" title="其他相關事件"></a>其他相關事件</h2><ul>
+<li>onCreated—下載項目開始下載後觸發。</li>
+<li>onErased—刪除紀錄完成後觸發。</li>
+<li>onChanged—當下載項目的屬性改變時觸發(bytesReceived estimatedEndTime 這兩個屬性除外。)</li>
+</ul>
+<blockquote>
+<p>還有一些其他操作，例如：搜尋下載、取得檔案的ICON、提示用戶這是有風險的下載、將已下載的檔案拖動到另一個應用程序中、啟用或禁用位顧瀏覽器下源的灰色下載框等，完整的清單請參考<a href="https://crxdoc-zh.appspot.com/extensions/downloads" target="_blank" rel="external">官網文件</a>。</p>
+</blockquote>
+<h2 id="小結："><a href="#小結：" class="headerlink" title="小結："></a>小結：</h2><p>試用下載API我們能實作以下功能：</p>
+<ul>
+<li>批次下載網頁中的圖片並提供下載進度查詢。</li>
+<li>針對特定的規則命名文件，並且下載到指定資料夾。</li>
+<li>自己開發下載的<a href="https://crxdoc-zh.appspot.com/extensions/override" target="_blank" rel="external">替代頁面</a>，取代原本的下載管理界面。</li>
+<li>提似使用者已下載過重複來源的檔案。</li>
+<li>有一點可能要找時間証實，在事件onDeterminingFilenames中，使用<code>suggest()</code>方法即使設定了儲存動作，在我的電腦也沒有作用，我查詢了官網的範例以及開發人員的討論串，目前還沒找到解法。而電子書的作者是直接略過了這個API沒說。</li>
+<li>對實作有興趣的朋友可以參考對岸的前端開發者邹成卓寫的<a href="https://github.com/zouchengzhuo/BigImageFetcher" target="_blank" rel="external">批次抓取圖片工具</a></li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://crxdoc-zh.appspot.com/extensions/downloads" target="_blank" rel="external">https://crxdoc-zh.appspot.com/extensions/downloads</a></li>
+<li><a href="https://developer.chrome.com/extensions/downloads" target="_blank" rel="external">https://developer.chrome.com/extensions/downloads</a></li>
+<li><a href="https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/docs/examples/api/downloads/" target="_blank" rel="external">https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/docs/examples/api/downloads/</a></li>
+<li><a href="http://www.apress.com/us/book/9781484217740" target="_blank" rel="external">http://www.apress.com/us/book/9781484217740</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT邦幫忙鐵人賽/"> #IT邦幫忙鐵人賽 </a>
+          
+            <a href="/tags/chorme-extension/"> #chorme extension </a>
+          
+            <a href="/tags/2017/"> #2017 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/01/chromeExtension-18/">Chrome Extension 開發與實作 18</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/03/chromeExtension-20/">Chrome Extension 開發與實作 20</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chrome-downloads-API-使用腳本管理下載"><span class="nav-number">1.</span> <span class="nav-text">chrome.downloads API 使用腳本管理下載</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#權限設定"><span class="nav-number">1.1.</span> <span class="nav-text">權限設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下載項目型別"><span class="nav-number">1.2.</span> <span class="nav-text">下載項目型別</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下載檔案"><span class="nav-number">1.3.</span> <span class="nav-text">下載檔案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取消-復原-暫停下載"><span class="nav-number">1.4.</span> <span class="nav-text">取消/復原/暫停下載</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取消下載"><span class="nav-number">1.4.1.</span> <span class="nav-text">取消下載</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#復原下載"><span class="nav-number">1.4.2.</span> <span class="nav-text">復原下載</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暫停下載"><span class="nav-number">1.4.3.</span> <span class="nav-text">暫停下載</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打開下載檔案"><span class="nav-number">1.5.</span> <span class="nav-text">打開下載檔案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打開檔案所在目錄"><span class="nav-number">1.5.1.</span> <span class="nav-text">打開檔案所在目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打開的是檔案管理系統中的默認下載目錄"><span class="nav-number">1.5.2.</span> <span class="nav-text">打開的是檔案管理系統中的默認下載目錄</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#刪除下載"><span class="nav-number">1.6.</span> <span class="nav-text">刪除下載</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#刪除已下載完成的檔案"><span class="nav-number">1.6.1.</span> <span class="nav-text">刪除已下載完成的檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刪除下載中的紀錄"><span class="nav-number">1.6.2.</span> <span class="nav-text">刪除下載中的紀錄</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在各種操作回調中判斷-runtime-lastError的方式"><span class="nav-number">1.7.</span> <span class="nav-text">在各種操作回調中判斷 runtime.lastError的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改建議的下載檔名及預設的儲存動作"><span class="nav-number">1.8.</span> <span class="nav-text">修改建議的下載檔名及預設的儲存動作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他相關事件"><span class="nav-number">1.9.</span> <span class="nav-text">其他相關事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小結："><span class="nav-number">1.10.</span> <span class="nav-text">小結：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">1.11.</span> <span class="nav-text">參考</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2017/01/02/chromeExtension-19/';
+      var disqus_url = 'http://yoursite.com/2017/01/02/chromeExtension-19/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

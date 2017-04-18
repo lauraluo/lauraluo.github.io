@@ -1,0 +1,1153 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="css3,html5,parallax,Skrollr.js,視差滾動," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> 使用Skrollr.js實作視差滾動-(一)入門 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" 使用Skrollr.js實作視差滾動-(一)入門 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="Parallax Scrolling又名視差滾動，在江湖上已經流傳了這麼久，雖然是老梗但用在網頁上的效果一直很不錯，作前端工程師應該總會遇過設計或是需求用閃亮期待的眼神問你作不作得到。我們會在接下來的章節中利用工具實作視差滾動的的效果。
+我們將假設你會以下技術,否則在接下來的介紹裡，你可能會感覺有點吃力。
+
+Css3：動畫實作經驗
+JQuery 或 Javascript
+SASS 或 SCSS
+" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" 使用Skrollr.js實作視差滾動-(一)入門 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="Parallax Scrolling又名視差滾動，在江湖上已經流傳了這麼久，雖然是老梗但用在網頁上的效果一直很不錯，作前端工程師應該總會遇過設計或是需求用閃亮期待的眼神問你作不作得到。我們會在接下來的章節中利用工具實作視差滾動的的效果。
+我們將假設你會以下技術,否則在接下來的介紹裡，你可能會感覺有點吃力。
+
+Css3：動畫實作經驗
+JQuery 或 Javascript
+SASS 或 SCSS
+" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" 使用Skrollr.js實作視差滾動-(一)入門 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+    
+      <meta itemprop="image" content="images/scrollrdemo3.gif"> 
+      <meta property="og:image" content="images/scrollrdemo3.gif" />
+    
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              使用Skrollr.js實作視差滾動-(一)入門
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2014-10-31
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/tools/">tools</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/10/31/使用Skrollr-js實作視差滾動-一-入門/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/10/31/使用Skrollr-js實作視差滾動-一-入門/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+        <div class="post-gallery">
+          
+            <a class="post-gallery-img fancybox" href="/images/scrollrdemo3.gif" rel="gallery_cj1n1gmdq000f76p3gr3oz17p">
+              <img src="/images/scrollrdemo3.gif" />
+            </a>
+          
+        </div>
+      
+
+      
+        <p>Parallax Scrolling又名視差滾動，在江湖上已經流傳了這麼久，雖然是老梗但用在網頁上的效果一直很不錯，作前端工程師應該總會遇過設計或是需求用閃亮期待的眼神問你作不作得到。我們會在接下來的章節中利用工具實作視差滾動的的效果。</p>
+<p>我們將假設你會以下技術,否則在接下來的介紹裡，你可能會感覺有點吃力。</p>
+<ul>
+<li>Css3：動畫實作經驗</li>
+<li>JQuery 或 Javascript</li>
+<li>SASS 或 SCSS</li>
+</ul>
+<a id="more"></a>
+<p><img src="/images/scrollrdemo3.gif" alt=""></p>
+<hr>
+<h2 id="什麼是視差滾動"><a href="#什麼是視差滾動" class="headerlink" title="什麼是視差滾動"></a>什麼是視差滾動</h2><p><a href="http://en.wikipedia.org/wiki/Parallax" title="Parallax" target="_blank" rel="external">Parallax</a> 視差 這個專有名詞在電腦圖學最早出現在1982年一款叫<a href="https://www.youtube.com/watch?v=39EsNumG3Fc" target="_blank" rel="external">Moon Patrol</a>的遊戲裡，簡單來說就是利用多張圖片疊加在一起，在畫面上用不一樣的速度移動：而遠的物件動的較慢，近的物件動的較快，利用這種方式來產生偽3D的錯覺效果。</p>
+<p><img src="/images/111019_0.jpg" alt=""><br><a href="http://www.mrmu.com.tw/2011/10/19/parallax-scrolling/" target="_blank" rel="external">圖片引用來源</a></p>
+<p><img src="/images/111019_1.gif" alt="Demo"><br><a href="http://www.mrmu.com.tw/2011/10/19/parallax-scrolling/" target="_blank" rel="external">圖片引用來源</a></p>
+<p>後來在WEB應用中，讓使用者使用視窗的ScrollorBar產生有趣的使用體驗，愈來愈多類似的作品在網路上出現，搭配HTML5的技術、CSS3的動畫、還有JQuery、SVG 產生各式各樣的延申變化令人眼睛為之一亮。</p>
+<hr>
+<h2 id="Skrollr-js-連結“skrollr”"><a href="#Skrollr-js-連結“skrollr”" class="headerlink" title="Skrollr.js 連結“skrollr”)"></a>Skrollr.js <a href="https://github.com/Prinzhorn/skrollr&quot;视差滚动(Parallax Scrolling" target="_blank" rel="external">連結</a>“skrollr”)</h2><ul>
+<li>使用<strong>Html5</strong>及<strong>CSS3</strong>實作</li>
+<li><strong>純Javascript</strong> library不用依靠Jquery </li>
+<li>Skrollr被設計來支援<strong>mobile</strong>與<strong>desktop</strong></li>
+<li>最小化後只有12k</li>
+<li>提供對設計師友善API(只需要動HTML與CSS)</li>
+</ul>
+<h2 id="Skrollr的相關資源"><a href="#Skrollr的相關資源" class="headerlink" title="Skrollr的相關資源"></a>Skrollr的相關資源</h2><p><strong>官方插件</strong></p>
+<ul>
+<li><a href="https://github.com/Prinzhorn/skrollr-menu" target="_blank" rel="external">skrollr-menu</a>：使用他可以很容易讓頁面上的導航與產生互動</li>
+<li><a href="https://github.com/Prinzhorn/skrollr-ie" target="_blank" rel="external">skrollr-ie</a>：提供IE9以下的CSS Fixes</li>
+<li><a href="https://github.com/Prinzhorn/skrollr-stylesheets" target="_blank" rel="external">skrollr-stylesheets</a>：擴充CSS語法，讓開發人員直接在CSS中對影格進行控制</li>
+</ul>
+<p><strong>第三方插件</strong></p>
+<ul>
+<li><a href="https://github.com/FezVrasta/skrollr-colors" target="_blank" rel="external">skrollr-colors</a> - 支援跨rgb、hex、hsl顏色的轉換</li>
+<li><a href="https://github.com/TrySound/skrollr-decks" target="_blank" rel="external">skrollr-decks</a> - 把你的網頁變成全螢幕的SlideShow</li>
+</ul>
+<p><strong>教程或是相關的Blog文章</strong></p>
+<p>教程或討論文章，不過我覺得中文的好像很少XD，所以我才自己想寫 <strong><a href="https://github.com/Prinzhorn/skrollr/wiki/Resources" title="點此連結" target="_blank" rel="external">點此連結</a></strong></p>
+<p><strong>使用Skrollr的作品集</strong></p>
+<p>真的蠻多的，所以開發者叫你自己去看<a href="https://github.com/Prinzhorn/skrollr/wiki/In-the-wild" title="作品集連結" target="_blank" rel="external">作品集連結</a>，但我覺得作品集品質並沒有都很穩定，看來主要還是看設計功力。</p>
+<p><strong>Skrollr的開發概念</strong></p>
+<p>開發者認為其他的框架會有以下兩項問題：</p>
+<ul>
+<li><strong>動作</strong>及<strong>物件</strong>並不在同一個地方，為了查看一段動畫的意義，你可能要滾動好幾千行的JS程式碼(聽起來很可怕)：  </li>
+<li>要學新的語言(時間有限，而你的專案很趕)</li>
+</ul>
+<p>所以Skrollr的開發者想用下面兩種方式解決這個問題：</p>
+<ul>
+<li>有動畫影格控制的概念，而且可以跟<strong>物件</strong>有關聯</li>
+<li>使用你已經知道的CSS語法</li>
+</ul>
+<p>呈上，開發者表示如果你更傾向使用JS來定義所有的動畫或有充足的學習時間，可以考慮<a href="https://github.com/janpaepke/ScrollMagic" target="_blank" rel="external">ScrollMagic</a>，他是一個使用JQuery，及<a href="https://greensock.com" target="_blank" rel="external">GSAP</a>的框架</p>
+<blockquote>
+<p>筆者補充：GSAP是一個動畫框架，比起純JQUERY他的效能更好，比起CSS3+HTML5他的兼容性又更高。缺點就是要學習(不過對Flash轉過來的人應該比較友善)，另外他不是一個完全免費的服務。</p>
+</blockquote>
+<h2 id="安裝Skrollr"><a href="#安裝Skrollr" class="headerlink" title="安裝Skrollr"></a>安裝Skrollr</h2><p>在<code>&lt;/body&gt;</code>前放入<code>skrollr.min.js</code>，然後使用<code>skrollr.init()</code>初始化</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"skrollr.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">    var s = skrollr.init();//初始化</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="開始Skrollr"><a href="#開始Skrollr" class="headerlink" title="開始Skrollr"></a>開始Skrollr</h2><p>使用下列語法，產出隨著SkrollBar往下拉，DIV一邊變色一邊滾動的效果[DEMO] (<a href="http://prinzhorn.github.io/skrollr/examples/docu/3.html" target="_blank" rel="external">http://prinzhorn.github.io/skrollr/examples/docu/3.html</a>)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-0</span>=<span class="string">"background-color:rgb(0,0,255);transform[bounce]:rotate(0deg);"</span> </span></div><div class="line">	 <span class="attr">data-500</span>=<span class="string">"background-color:rgb(255,0,0);transform[bounce]:rotate(360deg);"</span>&gt;WOOOT<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>解析這段語法函義：</p>
+<ul>
+<li><p><code>data-0</code>：Skrollr使用data來定義影格，0代表SkrollrTop的值：畫面中有兩個影格分別是<code>data-0</code>與<code>data-500</code>，而裡面的值，則分別用CSS來定義他的過渡效果</p>
+</li>
+<li><p><code>ackground-color:rgb(0,0,255)</code>：Skrollr只能使用 hsl 跟 rgba 的色彩編碼(但你可以使用插件<a href="https://github.com/FezVrasta/skrollr-colors" target="_blank" rel="external">skrollr-colors</a>)</p>
+</li>
+<li><p><code>transform[bounce]</code>：</p>
+<ul>
+<li>Skrollr的實作原理是將CSS3的transform從原本的秒數，變成SkrollTop的PX數，應此開發人員另外提供了擴充語法來支援CSS3的非線性函數</li>
+<li>Skrollr會處理CSS3的Prefix問題</li>
+</ul>
+</li>
+</ul>
+<h2 id="Skrollr提供的Keyframe用法"><a href="#Skrollr提供的Keyframe用法" class="headerlink" title="Skrollr提供的Keyframe用法"></a>Skrollr提供的Keyframe用法</h2><p>Skrollr沒有針對動畫作太多擴充功能，因為他儘量依賴CSS3實作動畫，所以Skrollr的實作重點，就在於他提供的Keyframe控制工具，我健議在這裡花時間搞懂，在下一次的實作裡才會相對輕鬆。</p>
+<p>什麼是Keyfame：學Flash的就想像他是關鍵影格，想像影片的播放Bar中的秒數在視差滾動實作中，概念被轉化成了ScrollBAR及物件的offset. </p>
+<p>Skrollr提供下列兩個Keyframe用法。</p>
+<h3 id="absolute-mode-document-mode-：將文本-document-在視窗中的位置，也就是Scroll-Top當作觸發影格的關鍵"><a href="#absolute-mode-document-mode-：將文本-document-在視窗中的位置，也就是Scroll-Top當作觸發影格的關鍵" class="headerlink" title="absolute mode (document mode)：將文本(document)在視窗中的位置，也就是Scroll Top當作觸發影格的關鍵"></a>absolute mode (document mode)：將<strong>文本(document)</strong>在視窗中的位置，也就是Scroll Top當作觸發影格的關鍵</h3><p>定義：</p>
+<h4 id="data-offset-anchor"><a href="#data-offset-anchor" class="headerlink" title="data-[offset]-[anchor]"></a><code>data-[offset]-[anchor]</code></h4><ul>
+<li>offset：定義偏移值，型別為整數值，可以是負值，不指定時為<code>0</code>：這裡的偏移值概念上是以文本為基準，我們可以理解為取得視窗相對於文本的偏移位置(參考下圖)，也就是Skroll top</li>
+<li>anchor：定義參考點(錨點)，有<code>Start</code>或<code>End</code>兩個參數，預設值為Start.：定義了偏移值的參考位罝是文本的開頭還是結尾</li>
+<li>這兩個參數至少要有一個</li>
+</ul>
+<p>讓我們看以下，下列分別定義了哪些關鍵影格</p>
+<ul>
+<li><p><code>data-0</code> = <code>data-start</code> = <code>data-0-start</code>:  scrolltop = 0</p>
+</li>
+<li><p><code>data-100</code> = <code>data-100-start</code>: scrolltop = 100</p>
+</li>
+<li><p><code>data--100</code> = <code>data--100-start</code>: scrolltop = -100</p>
+</li>
+<li><p><code>data-end</code> = <code>data-0-end</code>: 當文本到達結尾的時後</p>
+</li>
+<li><p><code>data-100-end</code>: 當文本到到結尾的前100px</p>
+</li>
+<li><p><code>data--100-end</code>: 當文本到到結尾後，超過100px(開發者說，不管你用不用得到XD)</p>
+</li>
+</ul>
+<p>補充說明：</p>
+<p>如果用jquery來表達的話，你可以想像當下列事件觸發的時後，代表各keyframe的CSS屬性將會作用在Dom物件上<br>(雖然Skrollr用的是純JS XD)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//data-0</span></div><div class="line">$(<span class="built_in">window</span>).scrollTop() = <span class="number">0</span> </div><div class="line"><span class="comment">//data-100</span></div><div class="line">$(<span class="built_in">window</span>).scrollTop() = <span class="number">100</span></div><div class="line"><span class="comment">//data--100</span></div><div class="line">$(<span class="built_in">window</span>).scrollTop() = <span class="number">-100</span></div><div class="line"><span class="comment">//data-100-end</span></div><div class="line">$(<span class="built_in">window</span>).scrollTop() = $(<span class="built_in">document</span>).outerHeight() - $(<span class="built_in">window</span>).Height() + <span class="number">100</span></div><div class="line"><span class="comment">//data--100-end</span></div><div class="line">$(<span class="built_in">window</span>).scrollTop() = $(<span class="built_in">document</span>).outerHeight() - $(<span class="built_in">window</span>).Height() - <span class="number">100</span></div></pre></td></tr></table></figure>
+<p><a href="http://prinzhorn.github.io/skrollr/examples/anchor_target.html" target="_blank" rel="external">DEMO</a></p>
+<p><img src="/images/absolute.jpg" alt=""></p>
+<h3 id="relative-mode-viewport-mode-：將Dom物件-element-在視窗中的位置，當作觸發影格的關鍵"><a href="#relative-mode-viewport-mode-：將Dom物件-element-在視窗中的位置，當作觸發影格的關鍵" class="headerlink" title="relative mode(viewport mode)：將Dom物件(element)在視窗中的位置，當作觸發影格的關鍵"></a>relative mode(viewport mode)：將<strong>Dom物件(element)</strong>在視窗中的位置，當作觸發影格的關鍵</h3><h4 id="data-offset-viewport-anchor-element-anchor"><a href="#data-offset-viewport-anchor-element-anchor" class="headerlink" title="data-[offset]-(viewport-anchor)-[element-anchor]"></a><code>data-[offset]-(viewport-anchor)-[element-anchor]</code></h4><ul>
+<li>offset：定義偏移值，型別為整數值，可以是負值，不指定時為<code>0</code>：用來定義物件與視窗的偏移值(兩個物件的相對位置) </li>
+<li>viewport-anchor： 定義視窗的參考位置，可以是 <code>top</code>(預設值)，<code>center</code>，<code>bottom</code>，指的是視窗的上緣，下緣，以及中間</li>
+<li>element-anchor：定義物件的參考位置 可以是 <code>top</code>(預設值)，<code>center</code>，<code>bottom</code>，指的是物件的上緣，下緣，以及中間</li>
+</ul>
+<p>讓我們看以下，下列分別定義了哪些關鍵影格</p>
+<ul>
+<li><p><code>data-top</code> = <code>data-0-top</code> = <code>data-top-top</code> = <code>data-0-top-top</code>: 當視窗的上緣跟的物件上緣重疊的時後</p>
+</li>
+<li><p><code>data-100-top</code> = <code>data-100-top-top</code>: 當視窗的上緣跟物件的上緣重疊後，又超過了100px</p>
+</li>
+<li><p><code>data--100-top</code> = <code>data--100-top-top</code>: 當視窗的上緣跟物件的上緣重疊後，重疊前的100px</p>
+</li>
+<li><p><code>data-top-bottom</code>= <code>data-0-top-bottom</code>: 當視窗的上緣，跟物件的下緣重疊的時後(這時你是看不到物件的，但可以作為物件從畫面上方進場前的準備)</p>
+</li>
+<li><p><code>data-center-center</code> = <code>data-0-center-center</code>: When the element is at the center of the viewport.：當視窗的中間跟物件的中間重疊的時後(在使用者的眼前，畫面的中間)</p>
+</li>
+<li><p><code>data-bottom-center</code> = <code>data-0-bottom-center</code>: 當視窗的底部，與物件的中間重疊的時後(物件準備退場)</p>
+</li>
+</ul>
+<p>在relative模式中，可以使用<code>data-anchor-target</code>改變物件的參考對像從視窗變成另一個物件。</p>
+<p>範例: <code>&lt;divdata-anchor-target=&quot;#foo&quot;&gt;</code> </p>
+<p><a href="http://prinzhorn.github.io/skrollr/examples/anchors.html" target="_blank" rel="external">DEMO</a><br><img src="/images/relative.jpg" alt=""></p>
+<h3 id="限制及Debug"><a href="#限制及Debug" class="headerlink" title="限制及Debug"></a>限制及Debug</h3><ul>
+<li>使用keyframe指定CSS屬性時，從同一個屬性請使用統一的單位：如果兩個keyframe間使用不同的單位，則不會作用</li>
+<li>如果使用了composed，例如：<code>margin:0 0 0 0;</code>則另一個keyframe也要使用composed否則沒有作用</li>
+<li>如果使用transforms指定多個屬性值順序也要一樣：<code>rotate(0deg) scale(1)</code> → <code>rotate(90deg) scale(2)</code></li>
+<li>色彩只能使用rgb()、rgba()、hsl()、hsla()，而且兩個keyframe只能作用同一色彩函式：rgb(255,255,255) → rgb(255,255,200)</li>
+</ul>
+<hr>
+<h2 id="skrollr-stylesheets-在CSS檔裡定義keyframe"><a href="#skrollr-stylesheets-在CSS檔裡定義keyframe" class="headerlink" title="skrollr-stylesheets 在CSS檔裡定義keyframe"></a>skrollr-stylesheets 在CSS檔裡定義keyframe</h2><p>上面的例子中，我們發現keyframe散亂HTML各處，維護起來非常費時。所以接下來我們介紹在CSS檔裡維護keyframe的方式。<br>使用前面提到的官方Plugin -<a href="https://github.com/Prinzhorn/skrollr-stylesheets" target="_blank" rel="external">skrollr-stylesheets</a>：擴充CSS語法，讓開發人員直接在CSS中對影格進行控制，甚至還可以加<strong>SASS</strong>搭配使用，維護起來應該會方便很多。</p>
+<h3 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h3><ul>
+<li>只有1kb</li>
+<li>支援IE8+</li>
+</ul>
+<p><strong>step1</strong></p>
+<p>在<code>&lt;/body&gt;</code>前加入<code>dist/skrollr.stylesheets.min.js</code>，而且要在Skroll.js之前，他的作用原理就是分析CSS快速將對應的<code>data</code>屬性塞在CSS選擇器對應的物件裡面，所以開發人員可能會擔心效能問題，但這裡先不討論。</p>
+<p><strong>step2</strong></p>
+<p>放一隻CSS，如下 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"style.css"</span> <span class="attr">data-skrollr-stylesheet</span> /&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><strong>HTML</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"foo"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>CSS</strong> </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#foo</span> &#123;</div><div class="line">    <span class="attribute">-skrollr-animation-name</span>:animation1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@-<span class="keyword">skrollr</span>-<span class="keyword">keyframes</span> animation1 &#123;</div><div class="line">    0 &#123;</div><div class="line">        <span class="attribute">left</span>:<span class="number">100%</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    2000 &#123;</div><div class="line">        <span class="attribute">left</span>:<span class="number">0%</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="selector-tag">top</span> &#123;</div><div class="line">        <span class="attribute">color</span>:<span class="built_in">rgb</span>(0,0,0);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="selector-tag">bottom</span> &#123;</div><div class="line">        <span class="attribute">color</span>:<span class="built_in">rgb</span>(255,0,0);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>輸出結果</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"foo"</span> <span class="attr">data-0</span>=<span class="string">"left:100%;"</span> <span class="attr">data-2000</span>=<span class="string">"left:0%;"</span> <span class="attr">data-top</span>=<span class="string">"color:rgb(0,0,0);"</span> <span class="attr">data-bottom</span>=<span class="string">"color:rgb(255,0,0);"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="搭配SASS"><a href="#搭配SASS" class="headerlink" title="搭配SASS"></a>搭配SASS</h3><p>使用SASS可以更好利用變數或是運算來控影keyframe</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$about_section_begin: 0;</div><div class="line">$about_section_duration: 2000;</div><div class="line">$about_section_end: $about_section_begin + $about_section_duration;</div><div class="line"></div><div class="line">@-skrollr-keyframes animation1 &#123;</div><div class="line">    #&#123;$about_section_begin&#125; &#123;</div><div class="line">        left:100%;</div><div class="line">        opacity#&#123;"[swing]"&#125;: 0.0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    #&#123;$about_section_end&#125; &#123;</div><div class="line">        left:0%;</div><div class="line">        opacity: 1.0;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="Javascript的部份"><a href="#Javascript的部份" class="headerlink" title="Javascript的部份"></a>Javascript的部份</h2><p>除了HTML及CSS，開發者也列出Skrollr提供的JS功能，有興趣的人可以去看的文件，我這裡只會列出幾個比較重要的功能。開發者標榜，如果是不懂程式語言的設計師，可以不看JS的功能。</p>
+<h2 id="初始化及參數"><a href="#初始化及參數" class="headerlink" title="初始化及參數"></a>初始化及參數</h2><p>使用下列語法初始化，而<code>init()</code>會回傳instance，所以可以這樣寫</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> scrollObj = skrollr.init(&#123;</div><div class="line">  <span class="comment">//跟smoothScrolling的功能，主要都是讓scroll事件不要這麼敏感，動畫才不會看起來卡卡的。</span></div><div class="line">  smoothScrolling : <span class="literal">true</span>,</div><div class="line">  <span class="attr">smoothScrollingDuration</span>:<span class="number">200</span>,</div><div class="line">  </div><div class="line">  <span class="comment">//可以定義一些常數在影格使用，Example: data-_myconst-200 and skrollr.init(&#123;constants: &#123;myconst: 300&#125;&#125;) result in data-500.</span></div><div class="line">  </div><div class="line">  constants:&#123;</div><div class="line">    <span class="attr">initTop</span>:<span class="number">100</span></div><div class="line">  &#125;,</div><div class="line">  </div><div class="line">  <span class="comment">//可以調整ScrollBar往下拉對應到keyframe的值等倍放大</span></div><div class="line">  scale:<span class="number">1</span>,</div><div class="line">  </div><div class="line">  <span class="comment">//讓文本高度自動達到滿足Keyframe的條件</span></div><div class="line">  forceHeight:<span class="literal">true</span>,</div><div class="line">  </div><div class="line">  <span class="comment">//針對行動裝置的功能</span></div><div class="line">  mobileCheck:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</div><div class="line">  <span class="attr">mobileDeceleration</span>:<span class="number">0.004</span>,</div><div class="line">  </div><div class="line">  <span class="comment">//畫面一開始，元素的初始值set：物件上第一個影格的值，ease：相對畫面開始的Scrolltop值使用兩格影格作參考，reset:使用他原生的CSS值</span></div><div class="line">  edgeStrategy:<span class="string">'set'</span>，</div><div class="line">  </div><div class="line">  <span class="comment">//render事件</span></div><div class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">      <span class="comment">//Log the current scroll position.</span></div><div class="line">      <span class="built_in">console</span>.log(data.curTop);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>render事件可以取得一些物件的資訊</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">curTop</span>: <span class="number">10</span>, <span class="comment">//the current scroll top offset</span></div><div class="line">    lastTop: <span class="number">0</span>, <span class="comment">//the top value of last time</span></div><div class="line">    maxTop: <span class="number">100</span>, <span class="comment">//the max value you can scroll to. curTop/maxTop will give you the current progress.</span></div><div class="line">    direction: <span class="string">'down'</span> <span class="comment">//either up or down</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="keyframe"><a href="#keyframe" class="headerlink" title="keyframe"></a>keyframe</h2><p>為了接收keyframe事件，物件上必需加上<code>data-emit-events</code>屬性。</p>
+<p>HTML </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span></span></div><div class="line">    <span class="attr">data-500</span>=<span class="string">"..."</span></div><div class="line">    <span class="attr">data-top-bottom</span>=<span class="string">"..."</span></div><div class="line">    <span class="attr">data-_offset-center</span>=<span class="string">"..."</span></div><div class="line">    <span class="attr">data-emit-events</span></div><div class="line">&gt;</div><div class="line">    Some content</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>回傳值有三個：</p>
+<ul>
+<li>element 發射事件的物件</li>
+<li>name keyframe名稱</li>
+<li>direction 使用者滾動方向</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">skrollr.init(&#123;</div><div class="line">    <span class="attr">keyframe</span>: <span class="function"><span class="keyword">function</span>(<span class="params">element, name, direction</span>) </span>&#123;</div><div class="line">        <span class="comment">//name will be one of data500, dataTopBottom, data_offsetCenter</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h2><ul>
+<li>skrollr.get() Returns the skrollr instance</li>
+</ul>
+<p>使用下列語法，在初始化Skrollr後，可取他的實例使用以下功能</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> scrollObj = skrollr.init();</div></pre></td></tr></table></figure>
+<ul>
+<li>skrollObj.refresh([elements])</li>
+<li>skrollObj.getScrollTop()</li>
+<li>skrollObj.getMaxScrollTop()</li>
+<li>skrollObj.rsetScrollTop(top[, force = false])</li>
+<li>skrollObj.risMobile()</li>
+<li>skrollObj.ranimateTo(top[, options])</li>
+<li>skrollObj.rduration</li>
+<li>skrollObj.reasing</li>
+<li>skrollObj.done</li>
+<li>skrollObj.stopAnimateTo()</li>
+<li>skrollObj.isAnimatingTo()</li>
+<li>skrollObj.on(name, fn)</li>
+<li>skrollObj.off(name)</li>
+<li>skrollObj.destroy()</li>
+</ul>
+<h2 id="本篇總結"><a href="#本篇總結" class="headerlink" title="本篇總結"></a>本篇總結</h2><h3 id="Skrollr的優點"><a href="#Skrollr的優點" class="headerlink" title="Skrollr的優點"></a>Skrollr的優點</h3><ul>
+<li>入門快，不需要學新的語言</li>
+<li>檔案小 </li>
+<li>對設計師友善</li>
+<li>兼容行動裝置的瀏覽器</li>
+</ul>
+<h3 id="Skrollr的缺點"><a href="#Skrollr的缺點" class="headerlink" title="Skrollr的缺點"></a>Skrollr的缺點</h3><ul>
+<li>以HTML跟CSS3為基礎，所以如果很重視IE兼容度的需求端，不適合使用</li>
+<li>keyframe沒有先後關係，物件的關系也很平，不適合作太複雜的動畫，這應該是面向設計師多過工程師的缺點：不過我自己覺得有時後視覺效果很棒的視差網站，並不需要太複雜的動畫，而是要看設計師的設計功力，就這點而言選擇這個方案也沒什麼不好。</li>
+</ul>
+<p>Skrollr基本上功能沒有很強大(跟<a href="https://greensock.com" target="_blank" rel="external">GSAP</a>比)、完全依懶CSS3、相較於華麗複雜的特效；他更適用於概念簡單的效果、面向設計多師過於工程師、支援手機(如果這讓你說服你的老闆的話XD)。</p>
+<p>以上就是Skrollr的入門教學，在下一篇中我們會開始教大家作組點實例的應用，儘請期待。<br>預告：使用Skrollr.js實作視差滾動-(二)實作基礎篇</p>
+<h2 id="參考及引用"><a href="#參考及引用" class="headerlink" title="參考及引用"></a>參考及引用</h2><ul>
+<li><a href="https://github.com/Prinzhorn/skrollr" target="_blank" rel="external">skrollr</a></li>
+<li><a href="https://github.com/Prinzhorn/skrollr-stylesheets" target="_blank" rel="external">skrollr-stylesheets</a></li>
+<li><a href="http://www.mrmu.com.tw/2011/10/19/parallax-scrolling/" target="_blank" rel="external">網頁設計中的多層視差滾動效果 (Parallax scrolling)</a></li>
+<li>[<a href="http://wedesignpixel.com/best-jquery-parallax-scrolling-tutorials/](http://wedesignpixel.com/best-jquery-parallax-scrolling-tutorials/" target="_blank" rel="external">http://wedesignpixel.com/best-jquery-parallax-scrolling-tutorials/](http://wedesignpixel.com/best-jquery-parallax-scrolling-tutorials/</a></li>
+<li><a href="http://jquer.in/category/jquery-plugins-for-awesome-scrolling-and-scrollbars-on-websites/" target="_blank" rel="external">http://jquer.in/category/jquery-plugins-for-awesome-scrolling-and-scrollbars-on-websites/</a></li>
+<li><a href="http://desiznworld.com/2013/07/free-jquery-parallax-scrolling-plugins.html" target="_blank" rel="external">http://desiznworld.com/2013/07/free-jquery-parallax-scrolling-plugins.html</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css3/"> #css3 </a>
+          
+            <a href="/tags/html5/"> #html5 </a>
+          
+            <a href="/tags/parallax/"> #parallax </a>
+          
+            <a href="/tags/Skrollr-js/"> #Skrollr.js </a>
+          
+            <a href="/tags/視差滾動/"> #視差滾動 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/04/17/curry-day/">印度日-自制咖哩跟烤餅</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/11/11/About-HTML-semantics-and-front-end-architecture/">HTML語意化及前端架構 About HTML semantics and front-end architecture</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什麼是視差滾動"><span class="nav-number">1.</span> <span class="nav-text">什麼是視差滾動</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Skrollr-js-連結“skrollr”"><span class="nav-number">2.</span> <span class="nav-text">Skrollr.js 連結“skrollr”)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Skrollr的相關資源"><span class="nav-number">3.</span> <span class="nav-text">Skrollr的相關資源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝Skrollr"><span class="nav-number">4.</span> <span class="nav-text">安裝Skrollr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#開始Skrollr"><span class="nav-number">5.</span> <span class="nav-text">開始Skrollr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Skrollr提供的Keyframe用法"><span class="nav-number">6.</span> <span class="nav-text">Skrollr提供的Keyframe用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#absolute-mode-document-mode-：將文本-document-在視窗中的位置，也就是Scroll-Top當作觸發影格的關鍵"><span class="nav-number">6.1.</span> <span class="nav-text">absolute mode (document mode)：將文本(document)在視窗中的位置，也就是Scroll Top當作觸發影格的關鍵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#data-offset-anchor"><span class="nav-number">6.1.1.</span> <span class="nav-text">data-[offset]-[anchor]</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#relative-mode-viewport-mode-：將Dom物件-element-在視窗中的位置，當作觸發影格的關鍵"><span class="nav-number">6.2.</span> <span class="nav-text">relative mode(viewport mode)：將Dom物件(element)在視窗中的位置，當作觸發影格的關鍵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#data-offset-viewport-anchor-element-anchor"><span class="nav-number">6.2.1.</span> <span class="nav-text">data-[offset]-(viewport-anchor)-[element-anchor]</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#限制及Debug"><span class="nav-number">6.3.</span> <span class="nav-text">限制及Debug</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skrollr-stylesheets-在CSS檔裡定義keyframe"><span class="nav-number">7.</span> <span class="nav-text">skrollr-stylesheets 在CSS檔裡定義keyframe</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝"><span class="nav-number">7.1.</span> <span class="nav-text">安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">7.2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭配SASS"><span class="nav-number">7.3.</span> <span class="nav-text">搭配SASS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript的部份"><span class="nav-number">8.</span> <span class="nav-text">Javascript的部份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化及參數"><span class="nav-number">9.</span> <span class="nav-text">初始化及參數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keyframe"><span class="nav-number">10.</span> <span class="nav-text">keyframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他功能"><span class="nav-number">11.</span> <span class="nav-text">其他功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本篇總結"><span class="nav-number">12.</span> <span class="nav-text">本篇總結</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Skrollr的優點"><span class="nav-number">12.1.</span> <span class="nav-text">Skrollr的優點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Skrollr的缺點"><span class="nav-number">12.2.</span> <span class="nav-text">Skrollr的缺點</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考及引用"><span class="nav-number">13.</span> <span class="nav-text">參考及引用</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2014/10/31/使用Skrollr-js實作視差滾動-一-入門/';
+      var disqus_url = 'http://yoursite.com/2014/10/31/使用Skrollr-js實作視差滾動-一-入門/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>

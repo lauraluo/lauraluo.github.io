@@ -1,0 +1,1252 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="RWD,專案人生,response web design," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> RWD響應式網頁專案開發心得(一) // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" RWD響應式網頁專案開發心得(一) // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="前言本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得, 此文章適合閱讀的對象
+
+用過Bootstrap3
+用過Less/Scss這類的樣式編譯器 
+用過 Grids System 
+擁有RWD所有所需相關知識 
+被專案逼瘋(？)的人
+" />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" RWD響應式網頁專案開發心得(一) // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="前言本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得, 此文章適合閱讀的對象
+
+用過Bootstrap3
+用過Less/Scss這類的樣式編譯器 
+用過 Grids System 
+擁有RWD所有所需相關知識 
+被專案逼瘋(？)的人
+" />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" RWD響應式網頁專案開發心得(一) // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+    
+      <meta itemprop="image" content="images/2015-04-01_175240.jpg"> 
+      <meta property="og:image" content="images/2015-04-01_175240.jpg" />
+    
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Accueil
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              RWD響應式網頁專案開發心得(一)
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posté le 2015-04-15
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/rwd/">rwd</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/04/15/20150415-RwdPojectStudy/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/04/15/20150415-RwdPojectStudy/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+        <div class="post-gallery">
+          
+            <a class="post-gallery-img fancybox" href="/images/2015-04-01_175240.jpg" rel="gallery_cj1n1gmdv000k76p3qzm7ekrj">
+              <img src="/images/2015-04-01_175240.jpg" />
+            </a>
+          
+        </div>
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本篇非概念文章，分享一些我們在實際專案中遇到的障礙跟心得, 此文章適合閱讀的對象</p>
+<ul>
+<li>用過Bootstrap3</li>
+<li>用過Less/Scss這類的樣式編譯器 </li>
+<li>用過 Grids System </li>
+<li>擁有RWD所有所需相關知識 </li>
+<li>被專案逼瘋(？)的人</li>
+</ul>
+<a id="more"></a> 
+<h2 id="趨勢"><a href="#趨勢" class="headerlink" title="趨勢"></a>趨勢</h2><p>施作RWD技術前，我們作了一些現況的調查，幫助了解現在開發要面臨的環境</p>
+<h3 id="瀏覽器的市佔率"><a href="#瀏覽器的市佔率" class="headerlink" title="瀏覽器的市佔率"></a>瀏覽器的市佔率</h3><p>了解瀏覽器的市佔率，可以幫助我們作技術上的選擇。特別標註IE8，是因為對前端來說，存在RWD的技術斷層，文章結尾會探討到IE8的支援度。</p>
+
+<h4 id="全球-2014-sept-feb-2015"><a href="#全球-2014-sept-feb-2015" class="headerlink" title="全球 2014 sept~ feb 2015"></a>全球 2014 sept~ feb 2015</h4><p><img src="/images/2015-04-01_092216.png" alt="Alt text"></p>
+<h4 id="台灣-2014-sept-feb-2015"><a href="#台灣-2014-sept-feb-2015" class="headerlink" title="台灣 2014 sept~ feb 2015"></a>台灣 2014 sept~ feb 2015</h4><p><img src="/images/2015-04-01_092729.png" alt="Alt text"></p>
+<h4 id="UU-100萬人次-瀏覽器"><a href="#UU-100萬人次-瀏覽器" class="headerlink" title="UU 100萬人次 瀏覽器"></a>UU 100萬人次 瀏覽器</h4><p><img src="/images/2015-04-01_105304.png" alt="Alt text"></p>
+<h4 id="UU-100萬人次-作業系統"><a href="#UU-100萬人次-作業系統" class="headerlink" title="UU 100萬人次 作業系統"></a>UU 100萬人次 作業系統</h4><p><img src="/images/4b3f6649-a883-4f81-b851-4a0275270cc4.png" alt="Alt text"></p>
+<h3 id="2014-台灣使用PC與APP瀏覽臉書的比例很接近"><a href="#2014-台灣使用PC與APP瀏覽臉書的比例很接近" class="headerlink" title="2014 台灣使用PC與APP瀏覽臉書的比例很接近"></a>2014 台灣使用PC與APP瀏覽臉書的比例很接近</h3><p>如果你像我們一樣，經營內容型網站，或是內容擴散的Event型活動，那就要了解有很多使用者是在FB APP中點開你的連結 。(也或許是Line或其他APP)</p>
+<p><img src="/images/2015-03-31_185159.png" alt="Alt text"></p>
+<h3 id="行動裝置大螢幕的普及化"><a href="#行動裝置大螢幕的普及化" class="headerlink" title="行動裝置大螢幕的普及化"></a>行動裝置大螢幕的普及化</h3><h4 id="行動裝置不等於小螢幕"><a href="#行動裝置不等於小螢幕" class="headerlink" title="行動裝置不等於小螢幕"></a>行動裝置不等於小螢幕</h4><p>其中 <a href="https://www.udacity.com/course/cs256?_ga=1.111987012.1546922041.1425352835" target="_blank" rel="external">Mobile Website Development and Design Course</a>中Google的資深工程師有探討到幾個行動vs桌面網站的迷思：</p>
+<ul>
+<li>以產品而言，所有的功能到了手機也應當支援(打破了有些功能手機不需要的迷失)，例如EC網站，到了APP還是需要查帳單 </li>
+<li>有兩個網站，維持同步跟一致性是困難的</li>
+<li>未來已經愈來愈難區分什麼是桌面，什麼是行動網站，因為行動裝置愈來愈大解析度也愈來愈高：當我們在使用設計RWD網站時，你應該思考的是裝置的螢幕大小，而不是思考他是平板還是手機。</li>
+<li>另外關於Native APP 除了較高的成本外， 你要思考你的使用者是否會想離開他的瀏覽器或APP</li>
+</ul>
+<h4 id="2014-Android螢幕市佔率"><a href="#2014-Android螢幕市佔率" class="headerlink" title="2014 Android螢幕市佔率"></a>2014 Android螢幕市佔率</h4><p><img src="/images/0.jpg" alt="Alt text"></p>
+<h4 id="2014-IOS螢幕的市佔率"><a href="#2014-IOS螢幕的市佔率" class="headerlink" title="2014 IOS螢幕的市佔率"></a>2014 IOS螢幕的市佔率</h4><p><img src="/images/2.jpg" alt="Alt text"></p>
+<hr>
+<h2 id="RWD-與-獨立行動版網站的探討"><a href="#RWD-與-獨立行動版網站的探討" class="headerlink" title="RWD 與 獨立行動版網站的探討"></a>RWD 與 獨立行動版網站的探討</h2><p>了解市場趨勢後，讓我們來分別探討不同的解決方案</p>
+<h3 id="RWD"><a href="#RWD" class="headerlink" title="RWD"></a>RWD</h3><p>優點</p>
+<ul>
+<li>維護相對容易</li>
+<li>彈性較大，MediaQuery的劃分可以依照不同的功能或產品特性規畫</li>
+</ul>
+<p>ISSUE</p>
+<ul>
+<li>手機與桌面版網站的流程基本上需要一致；<br> 過於複雜的流程受限於這點，可能無法提供給行動裝置的使用者良好的體驗。<br> (但其實需要APP方能做到更為友善的體驗。)</li>
+<li>降低了載入的速度</li>
+<li>多餘的HTML</li>
+<li>多餘的HTTP requests</li>
+<li>多餘的圖片解析度 </li>
+<li>內外部的教育成本</li>
+</ul>
+<h3 id="獨立行動版網站"><a href="#獨立行動版網站" class="headerlink" title="獨立行動版網站"></a>獨立行動版網站</h3><p>優點</p>
+<ul>
+<li>針對手機前端的專屬優化</li>
+<li>針對手機使用者優化體驗</li>
+</ul>
+<p>ISSUE</p>
+<ul>
+<li>SEO網址分散的問題</li>
+<li>考慮到平板與手機因裝置大小差異，要提供不同的介面，仍須使用RWD</li>
+<li>針對產品不同，需思考是否更適合開發Native App</li>
+<li>護維及一致性的成本</li>
+</ul>
+<h3 id="該如何選擇？"><a href="#該如何選擇？" class="headerlink" title="該如何選擇？"></a>該如何選擇？</h3><ul>
+<li>以流程的差異性來探討<ul>
+<li>RWD： 桌面與行動版的網頁流程基本一致，只是介面跟互動上的不同</li>
+<li>獨立行動網站：桌面與行動版流程差異太大，甚至根本不同</li>
+</ul>
+</li>
+<li>以流程的複雜度而言<ul>
+<li>RWD：適合簡單的流程</li>
+<li>獨立行動網站：沒差</li>
+</ul>
+</li>
+<li>以瀏覽器的支援度探討<ul>
+<li>RWD： 依賴很多新語法，基本只支援 IE9+</li>
+<li>獨立行動網站： 若顧客真的很在意舊版(銀行業)，行動跟桌面可考慮分開作，甚至是單獨作IE8以下的網頁</li>
+</ul>
+</li>
+<li>以活動行銷方式去探討 <ul>
+<li>RWD  ：適合網路及實體都有搭配的行銷活動</li>
+<li>獨立行動網站： 極度依靠手機功能制造話題的活動，例如動態感應裝置 ETC，地理資訊，等手機獨有的功能</li>
+</ul>
+</li>
+<li>以專案總時程考量<ul>
+<li>RWD：雖然RWD的施作技術成本及教育成本較高，但這些是會累積成公司的資產，再來是RWD對後續的修改較容易。</li>
+<li>獨立行網站： 通常要投入多個的前端資源，但同時他可以作更靈活的資源調配動作(手機平版桌面甚至可以分開不同人作)。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>接著探討一些我在實作中遇到的問題</p>
+<hr>
+<h3 id="Viewport-設定"><a href="#Viewport-設定" class="headerlink" title="Viewport 設定"></a>Viewport 設定</h3><h4 id="基本設定"><a href="#基本設定" class="headerlink" title="基本設定"></a>基本設定</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="使用JS控制Viewsport"><a href="#使用JS控制Viewsport" class="headerlink" title="使用JS控制Viewsport"></a>使用JS控制Viewsport</h4><p>我們可能想針對不同的螢幕尺寸給予不同的viewport。下面程式碼示範，當螢幕大於640時，我們希望直接使用PC版的瀏覽器。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">   <span class="keyword">var</span> meta = <span class="built_in">document</span>.createElement(<span class="string">'meta'</span>);</div><div class="line"><span class="keyword">var</span> w = screen.width;</div><div class="line">   <span class="keyword">if</span> (w &gt; <span class="number">640</span>) &#123;</div><div class="line">       meta.setAttribute(<span class="string">"name"</span>, <span class="string">"viewport"</span>);</div><div class="line">       meta.setAttribute(<span class="string">"content"</span>, <span class="string">"width=960"</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">else</span> &#123;</div><div class="line">       meta.setAttribute(<span class="string">"name"</span>, <span class="string">"viewport"</span>);</div><div class="line">       meta.setAttribute(<span class="string">"content"</span>, <span class="string">"width=device-width initial-scale=1"</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].children; s[s.length - <span class="number">1</span>].parentNode.insertBefore(meta, s[s.length - <span class="number">1</span>]);</div></pre></td></tr></table></figure>
+<h4 id="使用css來控制Viewport"><a href="#使用css來控制Viewport" class="headerlink" title="使用css來控制Viewport"></a>使用css來控制Viewport</h4><ul>
+<li>查詢了MDN，原來在CSS中可以定議Viewport，但支援度太低，我們這裡就不考慮，大家可以自已看下面連結</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@viewport" target="_blank" rel="external">MDN @viewport </a></li>
+</ul>
+<h4 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h4><ul>
+<li><code>initial-scale</code>要下，不然在某些狀況下，手機作橫版直版的轉換時，畫面會跑掉</li>
+<li>viewport如果有修改，要另開新視窗，重新整理是沒有用滴</li>
+<li>使用JS控制Vieport，我們依然會擔心JS執行速度的問題，這種作法的穩定度可能需要花時間找到更好的方案</li>
+<li>要注意 window.innerWidth在有設定<code>device-width</code>為特定寬度或是<code>initial-scale</code>不等於一的狀態下，他不會等於screen.width(物理寬度)所以施作的時後最好搞清楚你要的東西到底是什麼。</li>
+</ul>
+<p>下面兩張圖分表展示了上段JS運作之後的狀態<br>iphone的解析度</p>
+<p><img src="/images/11092618_957963364221938_943245149_n.jpg" alt="Alt text"></p>
+<p>ipad 因為我們強制指定width=960，所以我們會看到<code>screen.width</code>取到了物理的相素大小，而<code>window.innerWidth</code>取到的是CSS/虛擬的的相素大小</p>
+<p><img src="/images/11133794_957964304221844_4305008428719112073_n.jpg" alt="Alt text"></p>
+<h3 id="mediaQuery"><a href="#mediaQuery" class="headerlink" title="mediaQuery"></a>mediaQuery</h3><h4 id="如何決定key-breakpoints"><a href="#如何決定key-breakpoints" class="headerlink" title="如何決定key breakpoints"></a>如何決定key breakpoints</h4><p>我們可以參考最多人在使用的前端框架，bootstrap3的作法，bootstrap3將裝備定議成四種大小，斜線右邊是這個大小下，其對應到的隱含設備(寬度跟其設備沒有絕對的關係)。</p>
+<ul>
+<li>Extra small devices / Phone 480</li>
+<li>Small devices Tablets / Tablets 768</li>
+<li>Medium devices / Desktops 992</li>
+<li>Large devices /Desktops 1200</li>
+</ul>
+<p><img src="/images/2015-04-01_145703.jpg" alt="Alt text"><br><a href="[http://mediaqueri.es/](http://mediaqueri.es/">圖片來源</a>)</p>
+<p>這裡學習bootstrap3的方法示範一段使用less來操作Break points的方法</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//變數</span></div><div class="line"><span class="comment">// Media queries breakpoints</span></div><div class="line"><span class="comment">// --------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment">// Extra small screen / phone</span></div><div class="line"><span class="variable">@screen-xs:</span>                  <span class="number">480px</span>;</div><div class="line"><span class="variable">@screen-phone:</span>               <span class="variable">@screen-xs</span>;</div><div class="line"></div><div class="line"><span class="comment">// Small screen / tablet</span></div><div class="line"><span class="variable">@screen-sm:</span>                  <span class="number">768px</span>;</div><div class="line"><span class="variable">@screen-tablet:</span>              <span class="variable">@screen-sm</span>;</div><div class="line"></div><div class="line"><span class="comment">// Medium screen / desktop</span></div><div class="line"><span class="variable">@screen-md:</span>                  <span class="number">992px</span>;</div><div class="line"><span class="variable">@screen-desktop:</span>             <span class="variable">@screen-md</span>;</div><div class="line"></div><div class="line"><span class="comment">// Large screen / wide desktop</span></div><div class="line"><span class="variable">@screen-lg:</span>                  <span class="number">1200px</span>;</div><div class="line"><span class="variable">@screen-lg-desktop:</span>          <span class="variable">@screen-lg</span>;</div><div class="line"></div><div class="line"><span class="comment">// So media queries don't overlap when required, provide a maximum</span></div><div class="line"><span class="variable">@screen-xs-max:</span>              (<span class="variable">@screen-sm</span> - <span class="number">1</span>);</div><div class="line"><span class="variable">@screen-sm-max:</span>              (<span class="variable">@screen-md</span> - <span class="number">1</span>);</div><div class="line"><span class="variable">@screen-md-max:</span>              (<span class="variable">@screen-lg</span> - <span class="number">1</span>);</div><div class="line"></div><div class="line"><span class="variable">@screen-sm-min:</span>              (<span class="variable">@screen-xs</span> +<span class="number">1</span>);</div><div class="line"><span class="variable">@screen-md-min:</span>              (<span class="variable">@screen-sm</span> +<span class="number">1</span>);</div><div class="line"><span class="variable">@screen-lg-min:</span>              (<span class="variable">@screen-md</span> +<span class="number">1</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//===============================</span></div><div class="line"><span class="comment">//layout的斷點，用來打造GridSystem</span></div><div class="line"><span class="comment">//===============================</span></div><div class="line"></div><div class="line"><span class="comment">/* Extra small devices (phones, less than 768px) */</span></div><div class="line"><span class="comment">/* No media query since this is the default in Bootstrap */</span></div><div class="line"></div><div class="line"><span class="comment">/* Small devices (tablets, 768px and up) */</span></div><div class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen-tablet</span>) &#123; ... &#125;</div><div class="line"></div><div class="line"><span class="comment">/* Medium devices (desktops, 992px and up) */</span></div><div class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>:  <span class="variable">@screen-desktop</span>) &#123; ... &#125;</div><div class="line"></div><div class="line"><span class="comment">/* Large devices (large desktops, 1200px and up) */</span></div><div class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen-lg-desktop</span>) &#123; ... &#125;</div><div class="line"></div><div class="line"><span class="comment">//===============================</span></div><div class="line"><span class="comment">//用於較精準的定義</span></div><div class="line"><span class="comment">//===============================</span></div><div class="line"><span class="keyword">@media</span> (<span class="attribute">max-width</span>: <span class="variable">@screen-xs</span>) &#123; ... &#125;</div><div class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen-sm-min</span>) and (<span class="attribute">max-width</span>:<span class="variable">@screen-sm-max</span>) &#123; ... &#125;</div><div class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen-md-min</span>) and (<span class="attribute">max-width</span>:<span class="variable">@screen-md-max</span>) &#123; ... &#125;</div><div class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="variable">@screen-lg-min</span>) &#123; ... &#125;</div></pre></td></tr></table></figure>
+<h4 id="注意事項-1"><a href="#注意事項-1" class="headerlink" title="注意事項"></a>注意事項</h4><ul>
+<li>IE9+ 才支援media querys (後面再探討兼容方法)</li>
+<li>如果對文字排版斷行跟標點符號節尾有所要求的專案，可以使用em來作為mediaQuery的參考<a href="http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/" target="_blank" rel="external">這篇文章</a><ul>
+<li>換算公式 100% = 1 em ~= 16px ~= 14pt</li>
+</ul>
+</li>
+</ul>
+<h4 id="資源"><a href="#資源" class="headerlink" title="資源"></a>資源</h4><p>一些常見的Media Querys 片段，其中還有針對一些常見的設備的特徵作詳細的定義方法，有別於<code>max-width</code>利用<code>max-device-width</code>取得物理尺寸作為更精準的設備參考(但感覺還是追不上市場速度)</p>
+<ul>
+<li>Media Queries for Standard Devices<br>  <a href="https://css-tricks.com/snippets/css/media-queries-for-standard-devices/" target="_blank" rel="external">https://css-tricks.com/snippets/css/media-queries-for-standard-devices/</a></li>
+<li>Media Query Snippets<br>  <a href="http://nmsdvid.com/snippets/" target="_blank" rel="external">http://nmsdvid.com/snippets/</a></li>
+</ul>
+<hr>
+<h3 id="單位"><a href="#單位" class="headerlink" title="單位"></a>單位</h3><p>PX、EM、%、PT 要搞清楚 <a href="http://pxtoem.com/" target="_blank" rel="external">這裡有個速查表</a><br><img src="/images/2015-04-01_172324.jpg" alt="Alt text"></p>
+<hr>
+<h3 id="Font"><a href="#Font" class="headerlink" title="Font"></a>Font</h3><h4 id="Font-Size的單位"><a href="#Font-Size的單位" class="headerlink" title="Font-Size的單位"></a>Font-Size的單位</h4><ul>
+<li>絕對單位 px : 容易控制內容，適合固定尺寸網站</li>
+<li>相對單位 em、rem或是百分比 : 均是以瀏覽器預設字型樣式為基準進行比例配置。<ul>
+<li>會參照使用者瀏覽器字型設定呈現</li>
+<li>rem直接參考html產生value 和em的運算相似，但em為參考其父元素獲得數值</li>
+</ul>
+</li>
+</ul>
+<h4 id="RWD-EM-REM-的管理方法"><a href="#RWD-EM-REM-的管理方法" class="headerlink" title="RWD  EM/REM 的管理方法"></a>RWD  EM/REM 的管理方法</h4><p>使用rem更方便控制，不必擔心em的複合計算行為(將EM跟PX的轉換化為十進制)。<br>rem參造root或html element，因此我們將html壓縮62.5%(default 16px)&gt; 1rem = 10px ;</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123; <span class="attribute">font-size</span>: <span class="number">62.5%</span>; &#125; </div><div class="line"><span class="selector-tag">body</span> &#123; <span class="attribute">font-size</span>: <span class="number">14px</span>; <span class="attribute">font-size</span>: <span class="number">1.4rem</span>; &#125; <span class="comment">/* =14px */</span></div><div class="line"><span class="selector-tag">h1</span>   &#123; <span class="attribute">font-size</span>: <span class="number">24px</span>; <span class="attribute">font-size</span>: <span class="number">2.4rem</span>; &#125; <span class="comment">/* =24px */</span></div></pre></td></tr></table></figure>
+<h4 id="RWD-FIT-Font"><a href="#RWD-FIT-Font" class="headerlink" title="RWD  FIT  Font"></a>RWD  FIT  Font</h4><p>一般來說，我們會針對不同字型調整大小，是為了舒服的閱讀文字體驗，BUT!!<br>當專案的類型圖片吃重，圖文比例有要求，這時後需要借助一下Javascript</p>
+<p><img src="/images/2015-04-01_175240.jpg" alt="Alt text"></p>
+<p>我們從設計那邊拿到的PSD大小是寬度604px的原始檔，我們可以將640px作為參考值，在不同的裝備大小下，去重新定義em的基準值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</div><div class="line">    $.fn.rwdFitText = <span class="function"><span class="keyword">function</span> (<span class="params">opts</span>) </span>&#123;</div><div class="line">        <span class="comment">// default configuration</span></div><div class="line">        <span class="keyword">var</span> config = $.extend(&#123;&#125;, &#123;</div><div class="line">            <span class="attr">opt1</span>: <span class="literal">null</span></div><div class="line">        &#125;, opts);</div><div class="line">        <span class="comment">// main function</span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">restFontSize</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> rwdFont = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">if</span> ($(<span class="built_in">window</span>).width() &lt;= <span class="number">640</span> &amp;&amp; $(<span class="built_in">window</span>).width() &gt; <span class="number">320</span>) &#123;</div><div class="line">                    <span class="keyword">var</span> ration = <span class="number">0</span>;</div><div class="line">                    <span class="keyword">if</span> ($(<span class="built_in">window</span>).width() &gt;= <span class="number">320</span>) &#123;</div><div class="line">                        ration = $(<span class="built_in">window</span>).width() / <span class="number">640</span>;</div><div class="line">                    &#125; <span class="keyword">else</span> &#123;</div><div class="line">                        ration = <span class="number">0.5</span>; <span class="comment">//用來控制最小縮放比率的數值</span></div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">var</span> fontScale = (ration * <span class="number">100</span>) * <span class="number">0.625</span>;</div><div class="line">                    $(<span class="string">'html'</span>).css(<span class="string">'font-size'</span>, fontScale + <span class="string">"%"</span>);</div><div class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> ($(<span class="built_in">window</span>).width() &gt; <span class="number">640</span>) &#123;</div><div class="line">                    $(<span class="string">'html'</span>).css(<span class="string">'font-size'</span>, <span class="string">"62.5"</span> + <span class="string">"%"</span>)</div><div class="line">                &#125;</div><div class="line">            &#125;;</div><div class="line">            $(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                rwdFont();</div><div class="line">            &#125;);</div><div class="line">            rwdFont();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// initialize every element</span></div><div class="line">        <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">            restFontSize($(<span class="keyword">this</span>));</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;;</div><div class="line">    <span class="comment">// start</span></div><div class="line">    $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        $(<span class="string">"html"</span>).rwdFitText();</div><div class="line"></div><div class="line">    &#125;);</div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
+<p><a href="http://codepen.io/ce0812/details/KwbQwG" target="_blank" rel="external">範例</a></p>
+<p>搜尋<code>rwd font</code>的關鍵字，網路上可以找到不少相關的程式碼，有些細到可以定義每個DOM物件的最大值跟最小值，看得出來大家都有這些困擾。</p>
+<hr>
+<h3 id="Layout-Grids"><a href="#Layout-Grids" class="headerlink" title="Layout + Grids"></a>Layout + Grids</h3><h4 id="容器管理"><a href="#容器管理" class="headerlink" title="容器管理"></a>容器管理</h4><p>要施作一個RWD，需要使用容器管理的概念，我在每個區塊中，在每個區塊中放入 <code>container</code>與<code>row</code>來管理我們的佈局</p>
+<p>HTML結構<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"nav"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span>				</div><div class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span>	</div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span>				</div><div class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"clearfix"</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">li</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">li</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">li</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span>	</div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span>				</div><div class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span>	</div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">footer</span> &gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>下列程式碼除了示範如何用container來約束網站內容在不同寬度裡的SIZE，另外我還利用了SCSS的Function快速產生一套Grids System 供查詢Grid寬度使用 </p>
+<p>SCSS<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$break</span>:<span class="number">640px</span>;</div><div class="line"><span class="variable">$grid-width</span>:  <span class="number">7.33333333333333%</span>;<span class="comment">//12grid</span></div><div class="line"><span class="variable">$gutter-width</span>: <span class="number">1%</span>;</div><div class="line"></div><div class="line"><span class="selector-class">.clearfix</span>&#123;zoom:<span class="number">1</span>;&#125;</div><div class="line"><span class="selector-class">.clearfix</span>:after&#123;<span class="attribute">content</span>:<span class="string">'.'</span>;<span class="attribute">display</span>:block;<span class="attribute">clear</span>:both;<span class="attribute">visibility</span>:hidden;<span class="attribute">height</span>:<span class="number">0</span>;<span class="attribute">font-size</span>:<span class="number">0</span>;&#125;</div><div class="line"></div><div class="line">@function grid-width(<span class="variable">$n</span>) &#123;</div><div class="line">	 @return <span class="variable">$n</span> * <span class="variable">$grid-width</span> + (<span class="variable">$n</span> - 1) * <span class="variable">$gutter-width</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> screen and (min-width: <span class="variable">$break</span>+<span class="number">1</span>)&#123;</div><div class="line">	<span class="selector-class">.container</span> &#123;</div><div class="line">		<span class="attribute">width</span>:<span class="number">960px</span>;</div><div class="line">		<span class="attribute">margin</span>:<span class="number">0</span> auto;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">media</span> screen and (min-width: 0) and (max-width: <span class="variable">$break</span>)&#123;</div><div class="line">	<span class="selector-class">.container</span> &#123;</div><div class="line">		<span class="attribute">width</span>:<span class="number">100%</span>;</div><div class="line">		<span class="attribute">margin</span>:<span class="number">0</span> auto;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//將 UL 中的所有 LI 設定為流體佈局中的三格寬</span></div><div class="line"></div><div class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span>&#123;</div><div class="line">	<span class="attribute">width</span>:grid-width(<span class="number">3</span>);</div><div class="line">	<span class="attribute">float</span>:left; </div><div class="line">	box-size:border;</div><div class="line">	<span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#000</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="Sticky-Footer"><a href="#Sticky-Footer" class="headerlink" title="Sticky Footer"></a>Sticky Footer</h4><p>有兩個版本，各有優缺點</p>
+<ul>
+<li><a href="http://compass-style.org/reference/compass/layout/sticky_footer/" target="_blank" rel="external">http://compass-style.org/reference/compass/layout/sticky_footer/</a></li>
+<li><a href="http://www.cssstickyfooter.com/" target="_blank" rel="external">http://www.cssstickyfooter.com/</a></li>
+</ul>
+<hr>
+<h3 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h3><ul>
+<li>手機沒有Scroll Event</li>
+<li>在PC上連續觸發的Event，到手機上觸發頻率都會降低</li>
+<li>FB的Javascript SDK 部份功能不支援手機 (惡夢)</li>
+<li>window.open行為不一致</li>
+<li>待補充</li>
+</ul>
+<hr>
+<h3 id="各種百分比參照對象"><a href="#各種百分比參照對象" class="headerlink" title="各種百分比參照對象"></a>各種百分比參照對象</h3><ul>
+<li><strong>background-size：</strong>父層容器高寬</li>
+<li><strong>width / height：</strong>父層容器高寬</li>
+<li><strong>background-position：</strong>背景大小減掉父層容層後的差集</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">	<span class="attribute">width</span>:<span class="number">1000px</span>;</div><div class="line">	<span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">	<span class="attribute">background</span>:url(w1000Xh100.jpg) no-repeat <span class="number">10%</span> <span class="number">0</span>;</div><div class="line">	<span class="attribute">background-size</span>:<span class="number">90%</span> auto;</div><div class="line">	<span class="comment">// (1000(box) - 1000(item)) * 10% = 10 px</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>padding 跟 margin:</strong>比較特別的地方是，padding-top、padding-bottom、margin-top、margin-bottom 是參考父層<strong>寬度</strong></li>
+</ul>
+<hr>
+<h3 id="A-RWD-CSS-Sprite-Button"><a href="#A-RWD-CSS-Sprite-Button" class="headerlink" title="A RWD CSS Sprite Button"></a>A RWD CSS Sprite Button</h3><p>使用Backgroun-size作使用圖片卻能伸縮的Sprite Button<br>實作方法是另用Padding-Bottom是參考其父層寬度的特性 </p>
+<p><img src="/images/螢幕快照 2015-04-01 下午11.12.59.png" alt="Alt text"><br><img src="/images/螢幕快照 2015-04-01 下午11.12.42.png" alt="Alt text"></p>
+<p><a href="http://codepen.io/ce0812/details/ByvxRQ" target="_blank" rel="external">範例</a></p>
+<hr>
+<h3 id="Facebook"><a href="#Facebook" class="headerlink" title="Facebook"></a>Facebook</h3><p>簡述FB會遇到的狀況，之後我們會在擬一份PC VS 手機的FB功能替代方案給大家參考</p>
+<ul>
+<li>fb.ui() 及 javascript SDK 在 IOS X Chorme 沒辦法正常運行，要依靠轉址，參數的傳遞要花工</li>
+<li>轉址時，winodow.open在一些特別的Broswer(例如line)認知不同，儘量不要使用</li>
+</ul>
+<hr>
+<h3 id="IE8兼容"><a href="#IE8兼容" class="headerlink" title="IE8兼容"></a>IE8兼容</h3><h4 id="HTML5-CSS3"><a href="#HTML5-CSS3" class="headerlink" title="HTML5+CSS3"></a>HTML5+CSS3</h4><ul>
+<li>Modernizr：可以用來偵測各種CSS3或是HTML5功能的兼容性作為JS或CSS的條件參考可以使用這個，預設包含Html5Shiv的功能，所以不要一起使用。</li>
+<li>Html5shiv：一段讓 IE6 IE7 IE8 支援 HTML5 標籤的 JavaScrip</li>
+</ul>
+<h4 id="mediaQuerys"><a href="#mediaQuerys" class="headerlink" title="mediaQuerys"></a>mediaQuerys</h4><p>我們使用的是Respond.js</p>
+<p>實現原理 </p>
+<blockquote>
+<ul>
+<li>把head中所有<code>&lt;link rel=“sheetstyle” href=“xx”/&gt;</code>的css路径取出来放入数组</li>
+<li>然后遍历数组一个个发ajax请求</li>
+<li>ajax回调后仅分析response中的media query的min-width和max-width语法，分析出viewport变化区间对应相应的css块</li>
+<li>页面初始化时和window.resize时，根据当前viewport使用相应的css块。</li>
+</ul>
+</blockquote>
+<h4 id="REM"><a href="#REM" class="headerlink" title="REM"></a>REM</h4><ul>
+<li>使用JS的解決方式 (還沒試過)<ul>
+<li><a href="https://github.com/chuckcarpenter/REM-unit-polyfill" target="_blank" rel="external">https://github.com/chuckcarpenter/REM-unit-polyfill</a></li>
+<li><a href="https://github.com/heygrady/Units" target="_blank" rel="external">https://github.com/heygrady/Units</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>用SCSS解決rem在IE8解決的方式<br>  利用mixin傳回px和rem，在現代瀏覽器會以rem覆寫px，舊瀏覽器則是採用傳統的PX，(這個方法不適用我前面討探的RWD FIT FONT)</li>
+</ul>
+<pre><code class="css">@function calculateRem($size) 
+  $remSize $size / px
+  @return $remSize * 1rem
+
+@mixin font-size($size) 
+  font-size $size
+  font-size ulateRem($size)
+
+//Usage
+div {
+  @include font-size(px)
+}
+//Output
+div {
+  font-size px //Will be overridden if browser supports rem
+  font-size rem 
+}
+</code></pre>
+<h4 id="Background-size"><a href="#Background-size" class="headerlink" title="Background-size"></a>Background-size</h4><ul>
+<li><p><a href="https://github.com/louisremi/background-size-polyfill" target="_blank" rel="external">https://github.com/louisremi/background-size-polyfill</a><br>  作用原理為截入<code>.htc</code>檔並使用<code>-ms-behavior: url(/backgroundsize.min.htc);</code>需要使用Background-size的群組屬性裡。他會使用背景圖片將IMG強制插入你的元素裡</p>
+<ul>
+<li>使用background-size作的css sprites按鈕，無法有hover效果</li>
+<li>在css中使用的路徑需相對於html</li>
+<li>還是有bug，某些狀況下無法正常初始化</li>
+</ul>
+</li>
+</ul>
+<h4 id="其他Polyfills疑難雜証"><a href="#其他Polyfills疑難雜証" class="headerlink" title="其他Polyfills疑難雜証"></a>其他Polyfills疑難雜証</h4><ul>
+<li><p>HTML5 Cross Browser Polyfills<br><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills" target="_blank" rel="external">https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills</a></p>
+</li>
+<li><p>兼容速查</p>
+<ul>
+<li>Can I Use <a href="http://caniuse.com/" target="_blank" rel="external">http://caniuse.com/</a> (點最下方的資源TAB有時後會提供兼容方案Ｓ)</li>
+<li>MDN <a href="https://developer.mozilla.org/zh-TW/" target="_blank" rel="external">https://developer.mozilla.org/zh-TW/</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>RWD的自動化測試是還要再研究，讓我們先了解一下DEBUG的方式</p>
+<h3 id="remote-Debug-遠端Debug模式"><a href="#remote-Debug-遠端Debug模式" class="headerlink" title="remote Debug 遠端Debug模式"></a>remote Debug 遠端Debug模式</h3><p>很多問題，可能要實際在手機的Broswer上才能Debug ，要注意的是IOS的Safari只能搭配OSX來Debug是個吃蘋果的好理由</p>
+<ul>
+<li>A Concise Guide to Remote Debugging on iOS, Android, and Windows Phone<br> <a href="http://developer.telerik.com/featured/a-concise-guide-to-remote-debugging-on-ios-android-and-windows-phone/" target="_blank" rel="external">http://developer.telerik.com/featured/a-concise-guide-to-remote-debugging-on-ios-android-and-windows-phone/</a></li>
+<li>windows7+ android usb driver 裝不上的處理狀況(本人試過有效)<br> <a href="http://izaka.tw/2014-10-04-207/" target="_blank" rel="external">http://izaka.tw/2014-10-04-207/</a></li>
+</ul>
+<h3 id="畫面的Debug工具"><a href="#畫面的Debug工具" class="headerlink" title="畫面的Debug工具"></a>畫面的Debug工具</h3><p> Chorme的WebDeveloper最好用 = =<br> <img src="/images/螢幕快照 2015-04-01 下午11.34.35.png" alt="Alt text"></p>
+<p> 試過幾款Web工具發現在Viewport的模擬上跟真實都會有出入，而且在Windows中還可以摸擬TouchEvent跟3G環境也就沒有再找其他的</p>
+<hr>
+<h2 id="實作方向"><a href="#實作方向" class="headerlink" title="實作方向"></a>實作方向</h2><h3 id="固定寬度"><a href="#固定寬度" class="headerlink" title="固定寬度"></a>固定寬度</h3><ul>
+<li>原理：如果你有三個BreakPoint分別代表手機/平板/PC，這個作法會直接切固定的三個寬度的CSS，定位都可以用PX，然後使用JS改變Viewport</li>
+<li>難度：簡單</li>
+<li>優點：施作容易</li>
+<li>ISSUE：<ul>
+<li>較適合圖案吃重，圖文大小比例要求的專案</li>
+<li>彈性較不足</li>
+<li>BreakPoint切的不夠的狀況下，UI的元素會變的異常大OR異常小(例如一顆屏幕寬度為640的一個44PX的按鈕，在320的手機中只剩22px，以此類推)</li>
+</ul>
+</li>
+</ul>
+<h3 id="以百分比佈局"><a href="#以百分比佈局" class="headerlink" title="以百分比佈局"></a>以百分比佈局</h3><ul>
+<li>原理：使用百分比，所有東西都參照螢幕寬度作相對變化</li>
+<li>難度：複雜</li>
+<li>優點：彈性較高</li>
+<li>ISSUE：<ul>
+<li>較適合內容文字比例多的專案，甚至可針對不同裝置大小設置舒適的閱讀文字</li>
+<li>施作較複雜</li>
+</ul>
+</li>
+</ul>
+<p>以上這兩種作法我們都有使用過，並沒有覺得哪個比較好，只能說看狀況</p>
+<hr>
+<h2 id="更多的議題"><a href="#更多的議題" class="headerlink" title="更多的議題"></a>更多的議題</h2><p>開放討論優先順序</p>
+<ul>
+<li>測試</li>
+<li>最佳化</li>
+<li>設計出圖</li>
+<li>員工與客戶的訓練</li>
+<li>行動裝置特有的屬性研究</li>
+</ul>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li><a href="http://bradfrost.github.io/this-is-responsive/patterns.html" target="_blank" rel="external">Responsive Patterns</a> : A collection of patterns and modules for responsive designs.<br>針對不同的RWD需求(Layout Nav Grids 等)提供原始碼，使用上來說更靈活。Bootstrap有時後對專案來說太龐大了。</li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><h2 id="市場跟趨式"><a href="#市場跟趨式" class="headerlink" title="市場跟趨式"></a>市場跟趨式</h2><ul>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzAwODAzOTU3MQ%3D%3D&amp;mid=205291657&amp;idx=1&amp;sn=e767d9267f29281f8900638e5da87837&amp;scene=2&amp;from=timeline&amp;isappinstalled=0#rd" target="_blank" rel="external">2015年移动设备界面设计趋势</a></li>
+<li><a href="http://2014.report.gridsetapp.com/" target="_blank" rel="external">RESPONSIVE REPORT 2014</a></li>
+<li><a href="http://www.slideshare.net/yuanping/facebook-36279879" target="_blank" rel="external">模範市場「Facebook 台灣消費者線上行為調查」</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/" target="_blank" rel="external">设备像素比devicePixelRatio简单介绍</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio</a></li>
+<li><a href="http://blog.brianjohnsondesign.com/responsive-background-image-sprites-css-tutorial/" target="_blank" rel="external">responsive background image</a></li>
+<li><a href="http://mux.alimama.com/posts/686" target="_blank" rel="external">Media query ie8- 兼容实现总结 - 阿里妈妈MUX</a></li>
+</ul>
+<h2 id="font"><a href="#font" class="headerlink" title="font"></a>font</h2><ul>
+<li><a href="http://www.w3schools.com/css/css_font.asp" target="_blank" rel="external">http://www.w3schools.com/css/css_font.asp</a></li>
+<li><a href="http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/" target="_blank" rel="external">http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/</a></li>
+<li><a href="http://www.kangting.tw/2014/04/rwd.html" target="_blank" rel="external">http://www.kangting.tw/2014/04/rwd.html</a></li>
+<li><a href="http://snook.ca/archives/html_and_css/font-size-with-rem" target="_blank" rel="external">http://snook.ca/archives/html_and_css/font-size-with-rem</a></li>
+<li><a href="http://clagnut.com/blog/348/" target="_blank" rel="external">http://clagnut.com/blog/348/</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RWD/"> #RWD </a>
+          
+            <a href="/tags/專案人生/"> #專案人生 </a>
+          
+            <a href="/tags/response-web-design/"> #response web design </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/11/11/About-HTML-semantics-and-front-end-architecture/">HTML語意化及前端架構 About HTML semantics and front-end architecture</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/22/gsap-learn/">gsap-learn</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#趨勢"><span class="nav-number">2.</span> <span class="nav-text">趨勢</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#瀏覽器的市佔率"><span class="nav-number">2.1.</span> <span class="nav-text">瀏覽器的市佔率</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全球-2014-sept-feb-2015"><span class="nav-number">2.1.1.</span> <span class="nav-text">全球 2014 sept~ feb 2015</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#台灣-2014-sept-feb-2015"><span class="nav-number">2.1.2.</span> <span class="nav-text">台灣 2014 sept~ feb 2015</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UU-100萬人次-瀏覽器"><span class="nav-number">2.1.3.</span> <span class="nav-text">UU 100萬人次 瀏覽器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UU-100萬人次-作業系統"><span class="nav-number">2.1.4.</span> <span class="nav-text">UU 100萬人次 作業系統</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2014-台灣使用PC與APP瀏覽臉書的比例很接近"><span class="nav-number">2.2.</span> <span class="nav-text">2014 台灣使用PC與APP瀏覽臉書的比例很接近</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行動裝置大螢幕的普及化"><span class="nav-number">2.3.</span> <span class="nav-text">行動裝置大螢幕的普及化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#行動裝置不等於小螢幕"><span class="nav-number">2.3.1.</span> <span class="nav-text">行動裝置不等於小螢幕</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2014-Android螢幕市佔率"><span class="nav-number">2.3.2.</span> <span class="nav-text">2014 Android螢幕市佔率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2014-IOS螢幕的市佔率"><span class="nav-number">2.3.3.</span> <span class="nav-text">2014 IOS螢幕的市佔率</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RWD-與-獨立行動版網站的探討"><span class="nav-number">3.</span> <span class="nav-text">RWD 與 獨立行動版網站的探討</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RWD"><span class="nav-number">3.1.</span> <span class="nav-text">RWD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#獨立行動版網站"><span class="nav-number">3.2.</span> <span class="nav-text">獨立行動版網站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#該如何選擇？"><span class="nav-number">3.3.</span> <span class="nav-text">該如何選擇？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#實作"><span class="nav-number">4.</span> <span class="nav-text">實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewport-設定"><span class="nav-number">4.1.</span> <span class="nav-text">Viewport 設定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本設定"><span class="nav-number">4.1.1.</span> <span class="nav-text">基本設定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用JS控制Viewsport"><span class="nav-number">4.1.2.</span> <span class="nav-text">使用JS控制Viewsport</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用css來控制Viewport"><span class="nav-number">4.1.3.</span> <span class="nav-text">使用css來控制Viewport</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事項"><span class="nav-number">4.1.4.</span> <span class="nav-text">注意事項</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mediaQuery"><span class="nav-number">4.2.</span> <span class="nav-text">mediaQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何決定key-breakpoints"><span class="nav-number">4.2.1.</span> <span class="nav-text">如何決定key breakpoints</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事項-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">注意事項</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#資源"><span class="nav-number">4.2.3.</span> <span class="nav-text">資源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#單位"><span class="nav-number">4.3.</span> <span class="nav-text">單位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Font"><span class="nav-number">4.4.</span> <span class="nav-text">Font</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Font-Size的單位"><span class="nav-number">4.4.1.</span> <span class="nav-text">Font-Size的單位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RWD-EM-REM-的管理方法"><span class="nav-number">4.4.2.</span> <span class="nav-text">RWD  EM/REM 的管理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RWD-FIT-Font"><span class="nav-number">4.4.3.</span> <span class="nav-text">RWD  FIT  Font</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layout-Grids"><span class="nav-number">4.5.</span> <span class="nav-text">Layout + Grids</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#容器管理"><span class="nav-number">4.5.1.</span> <span class="nav-text">容器管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sticky-Footer"><span class="nav-number">4.5.2.</span> <span class="nav-text">Sticky Footer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Javascript"><span class="nav-number">4.6.</span> <span class="nav-text">Javascript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各種百分比參照對象"><span class="nav-number">4.7.</span> <span class="nav-text">各種百分比參照對象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-RWD-CSS-Sprite-Button"><span class="nav-number">4.8.</span> <span class="nav-text">A RWD CSS Sprite Button</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Facebook"><span class="nav-number">4.9.</span> <span class="nav-text">Facebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE8兼容"><span class="nav-number">4.10.</span> <span class="nav-text">IE8兼容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5-CSS3"><span class="nav-number">4.10.1.</span> <span class="nav-text">HTML5+CSS3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mediaQuerys"><span class="nav-number">4.10.2.</span> <span class="nav-text">mediaQuerys</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#REM"><span class="nav-number">4.10.3.</span> <span class="nav-text">REM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Background-size"><span class="nav-number">4.10.4.</span> <span class="nav-text">Background-size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他Polyfills疑難雜証"><span class="nav-number">4.10.5.</span> <span class="nav-text">其他Polyfills疑難雜証</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debug"><span class="nav-number">5.</span> <span class="nav-text">Debug</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#remote-Debug-遠端Debug模式"><span class="nav-number">5.1.</span> <span class="nav-text">remote Debug 遠端Debug模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#畫面的Debug工具"><span class="nav-number">5.2.</span> <span class="nav-text">畫面的Debug工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#實作方向"><span class="nav-number">6.</span> <span class="nav-text">實作方向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#固定寬度"><span class="nav-number">6.1.</span> <span class="nav-text">固定寬度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以百分比佈局"><span class="nav-number">6.2.</span> <span class="nav-text">以百分比佈局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多的議題"><span class="nav-number">7.</span> <span class="nav-text">更多的議題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">8.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">9.</span> <span class="nav-text">參考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#市場跟趨式"><span class="nav-number">10.</span> <span class="nav-text">市場跟趨式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font"><span class="nav-number">11.</span> <span class="nav-text">font</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2015/04/15/20150415-RwdPojectStudy/';
+      var disqus_url = 'http://yoursite.com/2015/04/15/20150415-RwdPojectStudy/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>
