@@ -1,0 +1,1078 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+    <meta name="description" content="前端工程師修鍊的路上" />
+
+
+
+  <meta name="keywords" content="React,單元測試,bdd,tdd," />
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="羅拉拉的開發日誌" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> React單元測試 (一) 潛探基礎知識 // 羅拉拉的開發日誌 </title>
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content=" React單元測試 (一) 潛探基礎知識 // 羅拉拉的開發日誌 ">
+<meta property="og:description" content="React單元測試 (一) 潛探基礎知識前言以一個前端開發者的角度來探討測試的基本知識及概念，軟體開發史這麼長，不敢說自己理解絕對正確，歡迎大家糾錯討論。  " />
+
+
+<!-- Open Graph data -->
+<meta property="og:title" content=" React單元測試 (一) 潛探基礎知識 // 羅拉拉的開發日誌 " />
+<meta property="og:description" content="React單元測試 (一) 潛探基礎知識前言以一個前端開發者的角度來探討測試的基本知識及概念，軟體開發史這麼長，不敢說自己理解絕對正確，歡迎大家糾錯討論。  " />
+<meta property="og:url" content="http://http://lauraluo.github.io" />
+<meta property="og:site_name" content=" React單元測試 (一) 潛探基礎知識 // 羅拉拉的開發日誌 ">
+<meta property="og:type" content="article" />
+<meta name="google-site-verification" content="q2qWotdLmcjEpi5o6MJsfOlusPeRI3mqljZj6Esj5aA" />
+
+
+
+  
+
+
+
+</head>
+
+<body>
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">羅拉拉的開發日誌</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首頁
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          分類
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          歸檔
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          標籤
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              React單元測試 (一) 潛探基礎知識
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2017-05-08
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/react/">react</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2017/05/08/React單元測試 (一)初探基礎知識/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/08/React單元測試 (一)初探基礎知識/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="React單元測試-一-潛探基礎知識"><a href="#React單元測試-一-潛探基礎知識" class="headerlink" title="React單元測試 (一) 潛探基礎知識"></a>React單元測試 (一) 潛探基礎知識</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>以一個前端開發者的角度來探討測試的基本知識及概念，軟體開發史這麼長，不敢說自己理解絕對正確，歡迎大家糾錯討論。  </p>
+<a id="more"></a>
+<h2 id="相關概念"><a href="#相關概念" class="headerlink" title="相關概念"></a>相關概念</h2><h3 id="TDD"><a href="#TDD" class="headerlink" title="TDD"></a>TDD</h3><p><strong>測試驅動開發</strong>（英語：Test-driven development，縮寫為TDD)  </p>
+<p>參考<a href="https://www.slideshare.net/dualface/bdd-1068404" target="_blank" rel="external">這篇簡報</a>中的定義：強調在寫代碼之前，先根據需求撰寫測試，然後再撰寫程式來實現測試案例中的需求，最終通過不斷的修正代碼來通過所有的測試案例，交付有品質的代碼。  </p>
+<p>在我過去的開發經驗中這些流程在資深工程師上是自然而然的行為，當一名工程師拿到需求後相關工作流程如下：  </p>
+<ul>
+<li>分析需求要實作的功能  </li>
+<li>依據規畫依續完成功能的實作  </li>
+<li>檢驗程式碼是否準確的完成需求  </li>
+<li>重構程式  </li>
+<li>交付程式碼(祈禱沒有問題)  </li>
+</ul>
+<p>在這些流程中，前端開發人員要不停的重複操作以確定每一塊的功能實作完整，但其實這樣非常花費時間，由其在程式碼的重構階段，想將代碼調整的較優美或增加方法的彈性，卻擔心影響到已完成的功能流程。先撰寫測試案例的好處除了要求工程師有先設計後執行的思維，最大的好處是自動化測試，所以即使開發人員在重構或疊加功能的過程中，也不用擔心意外的破壞已完成的功能。(終於可以脫離不停重新整理瀏覽器的日子)  </p>
+<p>讓我們將原本的工作流程修正加入TDD的概念  </p>
+<ul>
+<li>分析需求要實作的功能  </li>
+<li>針對需求要完成的功能，先寫測試，因為功能還沒實作完成，所以所有的測試結果一定會失敗  </li>
+<li>往始開發每個功能，並且讓測試通過  </li>
+<li>優化你的程式碼，期間必需保持測試通，不必擔心在程構的過程中部份相依單元功能失效  </li>
+<li>交付程式碼  </li>
+</ul>
+<p>下圖引用自<a href="https://www.slideshare.net/dualface/bdd-1068404" target="_blank" rel="external">https://www.slideshare.net/dualface/bdd-1068404</a>  </p>
+<p>![](<a href="https://quip.com/blob/ZYFAAAWZiZi/5lysrlVZ5ct6zkGMsbb93g?a=H5aEKnfK3FTE9n72qe2oYatnzOF8o50RyabTOCk3MoQa" target="_blank" rel="external">https://quip.com/blob/ZYFAAAWZiZi/5lysrlVZ5ct6zkGMsbb93g?a=H5aEKnfK3FTE9n72qe2oYatnzOF8o50RyabTOCk3MoQa</a></p>
+<h3 id="BDD"><a href="#BDD" class="headerlink" title="BDD"></a>BDD</h3><p><strong>行為驅動開發</strong>（英語：Behavior-driven development，縮寫<strong>BDD</strong>  </p>
+<p>參考<a href="https://www.slideshare.net/dualface/bdd-1068404" target="_blank" rel="external">這篇簡報</a>中的定義：行為驅動使用一種「通用語言」，讓需求端與開發端用統一的介面定義系統行為。籍以避免表達不一至帶來的問題(表達不一致是開發過程中常遇見的問題，由此造成最終作出來的系統脫離客戶期望)。使用通用語言，需求端可以與開發端一同定義出系統行為，從而做出符合需求端的設計。然而光有設計沒有驗証是不夠的，所以BDD要跟自動化測試結合在一起，用系統行為的定義來驗証實程式碼功能的實現。  </p>
+<p>在我過去開發經驗中常遇到的開發問題如下，BDD是TDD的進化，他重要想要解決的問題如下：  </p>
+<ul>
+<li>與需求端雞同鴨講：延申的問題有兩個面向，要求需求端用通用語言的方式思考，接著將這些描述當作規格書來驗收程式碼。  </li>
+<li>BDD可以協助工程師聚焦在需求上：開發人員的設計應優先滿足需求，再來考慮彈性(重構單性時有測試保護)，另一個面向是說明某個功能的實作是為了對應哪些需求，讓後續維護的工程師，可以理解你的程式碼。  </li>
+</ul>
+<p>使用「通用語言」來描述需求，則系統其中一方的行為被稱為故事，書寫規格如下：  </p>
+<h3 id="Story：故事，描述故事的單行文字，格式如下"><a href="#Story：故事，描述故事的單行文字，格式如下" class="headerlink" title="Story：故事，描述故事的單行文字，格式如下"></a>Story：故事，描述故事的單行文字，格式如下</h3><p>Story：#標題 身為一個「<em>角色</em>」，我想要「<em>特定的功能</em>」，以便「<em>得到好處</em>」  </p>
+<h3 id="Scenario：情境，對應需求下的系統行為，"><a href="#Scenario：情境，對應需求下的系統行為，" class="headerlink" title="Scenario：情境，對應需求下的系統行為，"></a>Scenario：情境，對應需求下的系統行為，</h3><p>Scenario：描述場景的單行文字  </p>
+<ul>
+<li>Given：描述該情境的先決條件或是環境的準備  </li>
+<li>When：描述當下的動作  </li>
+<li>Then：描述預期的結果  </li>
+<li>And：附加的條件會行為  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Given….When…then… 這樣的語法結構稱為 “Gherkin”</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BDD的測試案例通常以spec為後綴，例如dialog的test，會稱為 dialog.sepc.jsx</div></pre></td></tr></table></figure>
+<p>實例：(引用自 <a href="https://www.slideshare.net/wantingj/tdd-bdd-47559903" target="_blank" rel="external">https://www.slideshare.net/wantingj/tdd-bdd-47559903</a>)  </p>
+<p>需求描述    </p>
+<ul>
+<li><p>User story：[帳戶持有人要領錢]   </p>
+</li>
+<li><p>身為一個 [帳戶持有人]，我想要 [從atm領錢]，以便 [可以在銀行關門後領 到錢]  </p>
+</li>
+</ul>
+<p> 系統行為, 一個需求會有一系列的場景來定義驗證標準  </p>
+<ul>
+<li><p>Scenario [1]：[帳戶裡有足夠的錢，要給錢]  </p>
+</li>
+<li><p>Given [帳戶餘額100] and [有效的領款卡] and [提款機夠錢]  </p>
+</li>
+<li><p>When [帳戶持有人要求提20元]  </p>
+</li>
+<li><p>Then [提款機應該給20] and [帳戶餘額80] and [退提款卡] ○  </p>
+</li>
+<li><p>Scenario [2]：[帳戶裡沒有足夠的錢，要提示餘額不足]  </p>
+</li>
+<li><p>Given [帳戶餘額100] and [有效的領款卡] and [提款機夠錢]  </p>
+</li>
+<li><p>When [帳戶持有人要求提120元]  </p>
+</li>
+<li><p>Then [提示餘額不足] and [退提款卡]  </p>
+</li>
+</ul>
+<p>接著分享一些我在研究測試相關知識的幾個盲點：  </p>
+<h3 id="以為TDD跟BDD是對立的只能擇其一："><a href="#以為TDD跟BDD是對立的只能擇其一：" class="headerlink" title="以為TDD跟BDD是對立的只能擇其一："></a>以為TDD跟BDD是對立的只能擇其一：</h3><p>BDD是TDD的進化，重點著重在著寫測試案例時，群組這些測試的是需求的情境，但驗証這些情境是否正確的，還是TDD，所以TDD的精神並沒有不見(例如：在某個情境中還是要依靠驗証方法的正確性來確認需求是否完成)。  </p>
+<h3 id="以為-BDD-測試介面流程，BDD-整合測試-，TDD-單元測試，而且這是不可動搖的。"><a href="#以為-BDD-測試介面流程，BDD-整合測試-，TDD-單元測試，而且這是不可動搖的。" class="headerlink" title="以為 BDD == 測試介面流程，BDD == 整合測試 ，TDD == 單元測試，而且這是不可動搖的。"></a>以為 BDD == 測試介面流程，BDD == 整合測試 ，TDD == 單元測試，而且這是不可動搖的。</h3><p>大多數人在探討TDD時，多數以單元測試為例，籍由驗証程式最小功能單位的品質來，來提升軟體品質。<br>大多數人在探討BDD時，多數以整合測試為例，很常籍由運行瀏覽器的模擬器來作為BDD的實例。  </p>
+<p>根據以上的呈述，可以理解我為什麼會有 BDD == 測試介面流程，BDD == 整合測試 ，TDD == 單元測試這種認知，但事實上TDD及BDD只是在呈述測試時的角度不同。就算是單純共用的函數，也可以使用BDD的呈述來表達當初設計時程式時想要解決的需求情境。  </p>
+<p>例如：  </p>
+<ul>
+<li><p>scenario 所有的網站在處理代表金錢的數字時，都要加上三位一點  </p>
+</li>
+<li><p>given  如果調用者傳入字串 abc  </p>
+</li>
+<li><p>then 期望函數要報錯  </p>
+</li>
+<li><p>given 如果調用者傳入數字 1000  </p>
+</li>
+<li><p>then 系統會回傳加上3位一點的字串 1,000  </p>
+</li>
+</ul>
+<p>另外一個值得討探的議題是，早期前端缺乏模組化開發的方式，所以前端很難進行單元測試，但至從react流行之後，前端的單元測試變得較能實作，其測試工具跟框架也被一一實作，但現在討探測試的相關文章或書籍或是有名的書籍，其來源都是漫長的軟體開發的經驗的整合，比較不會探討到前端最近的現況。但像react這種以組件為單為來開發介面用的框架，很適合使用BDD來進行介面組件的單元測試及呈述開發者當初設計組件的目的(某個介面需求)。所以我跟同事認為BDD之於單元測試是有討論空間的。  </p>
+<h2 id="測試階段"><a href="#測試階段" class="headerlink" title="測試階段"></a>測試階段</h2><p>下面這張圖簡單的介紹測試在軟體開發中的不同階段與其目的，我個人覺得在整個軟體開發過程中，應該有比較面向開發人員的部份，及面向QA人員的部份。  </p>
+<p>面向開發人員的部份，目的會就重在探討測試協助程式設計及程式碼的交付品質確認，其中的單元整合測試，及單元測試，應該屬於開發人員的範圍，其餘個人認為在責任分野上，比較偏QA(驗收)單位。<strong>所以接下來文章探討的內容，會較偏重單元測試的部份。</strong>  </p>
+<p>![](<a href="https://quip.com/blob/ZYFAAAWZiZi/9Yak6H9nmqWOZr623Nwzcw?a=cM4ROUYU2acYMldwJikjYA85YgcsjR1YfBNxuSx7V8oa" target="_blank" rel="external">https://quip.com/blob/ZYFAAAWZiZi/9Yak6H9nmqWOZr623Nwzcw?a=cM4ROUYU2acYMldwJikjYA85YgcsjR1YfBNxuSx7V8oa</a></p>
+<p>圖片來源：<a href="http://www.mpinfo.com.tw/about_5.php" target="_blank" rel="external">http://www.mpinfo.com.tw/about_5.php</a>  </p>
+<h2 id="前端單元測試框架"><a href="#前端單元測試框架" class="headerlink" title="前端單元測試框架"></a>前端單元測試框架</h2><p>測試框架的定義：一個測試框架應該具備的功能有：運行測試、提供測試資源庫(或設定接口)、產出測試報告、提供測試資料接口、撰寫測試情境。  </p>
+<p>大家可以參考以下兩個文章，下圖截錄文章中的一部份，讓大家理解現在流行的工具的流行狀況。  </p>
+<ul>
+<li><a href="https://risingstars2016.js.org/#test-framework" target="_blank" rel="external">A complete overview of the JavaScript landscape in 2016:about Test Framework</a>  </li>
+<li><a href="http://stateofjs.com/2016/testing/" target="_blank" rel="external">Testing Frameworks2016</a>  </li>
+</ul>
+<p>![](<a href="https://quip.com/blob/ZYFAAAWZiZi/PBcbqPwPWG_a6k9wUuCI6g?a=ialVovJwq506E2oCktiaea6jM6btpJjSvv2e48hnQnga" target="_blank" rel="external">https://quip.com/blob/ZYFAAAWZiZi/PBcbqPwPWG_a6k9wUuCI6g?a=ialVovJwq506E2oCktiaea6jM6btpJjSvv2e48hnQnga</a></p>
+<p>圖片來源：<a href="https://risingstars2016.js.org/#test-framework" target="_blank" rel="external">A complete overview of the JavaScript landscape in 2016:about Test Framework</a>  </p>
+<p>![](<a href="https://quip.com/blob/ZYFAAAWZiZi/X9FKGvBm1ZuLUkN_c_YzAw?a=5Q0SQ7Zg3PVAVu7X2Hi5LKfOhQVwzJN0GgaeING4os8a" target="_blank" rel="external">https://quip.com/blob/ZYFAAAWZiZi/X9FKGvBm1ZuLUkN_c_YzAw?a=5Q0SQ7Zg3PVAVu7X2Hi5LKfOhQVwzJN0GgaeING4os8a</a></p>
+<p>圖片來源：<a href="http://stateofjs.com/2016/testing/" target="_blank" rel="external">Testing Frameworks2016</a>  </p>
+<h3 id="撰寫測試案例"><a href="#撰寫測試案例" class="headerlink" title="撰寫測試案例"></a>撰寫測試案例</h3><p>在撰寫測試案例前，先讓我們了解一個測試案例的組成結構  </p>
+<ul>
+<li>測試情境：分為BDD與TDD通常內建在測試框架裡。  <ul>
+<li>BDD 風格 ：test()  </li>
+<li>BDD風格：describe()  </li>
+</ul>
+</li>
+<li><p>斷言庫(assertion library)：斷言庫的存在目的，是為了讓工程師在撰寫測試案例的情境判別上能更語義化，有關於斷言庫的資源可以參考<a href="https://mochajs.org/#assertions" target="_blank" rel="external">Mocha的介紹</a>。有些框架內建自己的斷言庫，也允許開發人員選擇自己的斷言庫。  </p>
+<ul>
+<li>BDD 風格 ：assert()  </li>
+<li>BDD：expect()、should()  </li>
+</ul>
+</li>
+<li>測試工具(Testing utilities)：  <ul>
+<li>在測試時能模擬React組件安裝實例的Enzyme。  </li>
+<li>為了摸擬使用者操作，我們會需要瀏覽器環境準備  <ul>
+<li>Browser driver 直接驅動瀏覽器模擬使用者操作行為： WEBDRIVERI/O 、Selenium WEBDRIVERI  </li>
+<li>Headless browser 沒有真正驅動瀏覽器，所有結果會在命令字元環境進行： JSDOM、Phantomjs  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>有關於BDD與TDD的語言風格，感覺只是一種共識，必非強制規則，所以各家測試框架似乎都有自己的詮釋。</p>
+<p>雖然前面說到了BDD中情境的撰寫風格 “Gherkin”，但前端單元測試比較流行<code>describe…it</code>這種撰寫風格，跟朋友請益後說這種寫作風格的起源是RoR。</p>
+</blockquote>
+<p>以下方程式碼為例：我們可以看到一個測試案例的撰寫，除了Jest提供的測試框架，還可以整合各式各樣的工具。而斷言庫主要負責的便是判斷程式碼運行的結果如不如預期(回傳階是true  or false)。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>    </div><div class="line"><span class="keyword">import</span> &#123; expect &#125; <span class="keyword">from</span> <span class="string">'chai'</span>; <span class="comment">//引用斷言庫   </span></div><div class="line"><span class="keyword">import</span> &#123;mount, render, shallow&#125; <span class="keyword">from</span> <span class="string">'enzyme'</span>    </div><div class="line"><span class="keyword">import</span> DemoComponent <span class="keyword">from</span> <span class="string">"./DemoComponent"</span>    </div><div class="line"><span class="comment">//describe 與 it 來自 jest提供的方法  </span></div><div class="line">describe(<span class="string">'DemoComponent: '</span>, () =&gt; &#123;  </div><div class="line">    <span class="comment">//使用enzyme取得react安裝後的實例  </span></div><div class="line">    <span class="keyword">const</span> wrapper = mount(<span class="xml"><span class="tag">&lt;<span class="name">DemoComponent</span>/&gt;</span></span>);    </div><div class="line">    it(<span class="string">'應該要顯示文字，"this is demo"'</span>, () =&gt; &#123;   </div><div class="line">        <span class="comment">//expect引用自斷言庫  </span></div><div class="line">        expect(wrapper.text()).to.contain(<span class="string">'this is demo'</span>);    </div><div class="line">    &#125;)    </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>DemoComponent的內容  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>  </div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DemoComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;  </div><div class="line">    <span class="keyword">constructor</span>(props) &#123;  </div><div class="line">        <span class="keyword">super</span>(props);  </div><div class="line">        <span class="keyword">this</span>.state = &#123;&#125;;  </div><div class="line">    &#125;  </div><div class="line">    render() &#123;  </div><div class="line">        <span class="keyword">return</span> (  </div><div class="line">            <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>  </span></div><div class="line">                <span class="tag">&lt;<span class="name">p</span>&gt;</span>this is demo<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </div><div class="line">             </div><div class="line">        );  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">export default DemoComponent;</div></pre></td></tr></table></figure>
+<p>測試的運行指令如下  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jest src/components/demo/DemoComponent.spec.jsx</div></pre></td></tr></table></figure>
+<p>測試結果如下  </p>
+<p>![](<a href="https://quip.com/blob/ZYFAAAWZiZi/stK3hM-Ci7S52Hnl7Mj5tw?a=ae05BPje6RScpg1Qp9cxEtHZugli0Q6mZdnf2OJTagoa" target="_blank" rel="external">https://quip.com/blob/ZYFAAAWZiZi/stK3hM-Ci7S52Hnl7Mj5tw?a=ae05BPje6RScpg1Qp9cxEtHZugli0Q6mZdnf2OJTagoa</a></p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
+<li><p>TDD：測試驅動開發幫助你在程式碼重構的過程中檢查功能的正常，鼓勵先設計再撰寫程式。  </p>
+</li>
+<li><p>BDD：TDD的進化，主要想解決開發過程中，需求端與程式開發端的溝通落差，中心思想是除了功能測試功能正常，更要驗証是否確實滿足需求。  </p>
+</li>
+<li><p>Unit Test：單元測試，中心思想是，如果所有最小單位的功能正常，則我們可以推測由最小單位集合而成的軟體具有一定的品質。  </p>
+</li>
+<li><p>我在嚐試各種測試框架的過程中發現，Jamisne與Mocha皆有複雜性高，學習曲線長的議題，由於想降低單元測試的導入成本，所以跟團隊成員討論過後，暫定使用react官方打造的測試框架Jest搭配與Enzyme為主要方案。(可以參考這篇文章 <a href="http://web.jobbole.com/89946/" target="_blank" rel="external">前端开发自动化单元测试趋势</a>)  </p>
+</li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="http://zhenhua-lee.github.io/tech/test.html" target="_blank" rel="external">http://zhenhua-lee.github.io/tech/test.html</a>  </li>
+<li><a href="https://risingstars2016.js.org/#test-framework" target="_blank" rel="external">https://risingstars2016.js.org/#test-framework</a>  </li>
+<li><a href="http://stateofjs.com/2016/testing/" target="_blank" rel="external">http://stateofjs.com/2016/testing/</a>  </li>
+<li><a href="http://www.mpinfo.com.tw/about_5.php" target="_blank" rel="external">http://www.mpinfo.com.tw/about_5.php</a>  </li>
+<li><a href="http://www.html-js.com/article/Nodejs-testing-automation-E2E-testing--WebDriverJS-Jasmine-and-Protractor" target="_blank" rel="external">http://www.html-js.com/article/Nodejs-testing-automation-E2E-testing–WebDriverJS-Jasmine-and-Protractor</a>  </li>
+<li><a href="https://techblog.commercetools.com/testing-in-react-best-practices-tips-and-tricks-577bb98845cd" target="_blank" rel="external">https://techblog.commercetools.com/testing-in-react-best-practices-tips-and-tricks-577bb98845cd</a>  </li>
+<li><a href="https://www.slideshare.net/dualface/bdd-1068404" target="_blank" rel="external">https://www.slideshare.net/dualface/bdd-1068404</a>  </li>
+<li><a href="https://www.slideshare.net/wantingj/tdd-bdd-47559903" target="_blank" rel="external">https://www.slideshare.net/wantingj/tdd-bdd-47559903</a>  </li>
+<li><a href="https://risingstars2016.js.org/#test-framework" target="_blank" rel="external">https://risingstars2016.js.org/#test-framework</a>  </li>
+<li><a href="http://stateofjs.com/2016/testing/" target="_blank" rel="external">http://stateofjs.com/2016/testing/</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/"> #React </a>
+          
+            <a href="/tags/單元測試/"> #單元測試 </a>
+          
+            <a href="/tags/bdd/"> #bdd </a>
+          
+            <a href="/tags/tdd/"> #tdd </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/18/reactmockjs/">前端靜態開發環境設計</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+          <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="LauraLuo" />
+          <p class="site-author-name">LauraLuo</p>
+        </div>
+        <p class="site-description motion-element">前端工程師修鍊的路上</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">分類</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lauraluo" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.facebook.com/lala.luo0812" target="_blank">facebook</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React單元測試-一-潛探基礎知識"><span class="nav-number">1.</span> <span class="nav-text">React單元測試 (一) 潛探基礎知識</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相關概念"><span class="nav-number">1.2.</span> <span class="nav-text">相關概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TDD"><span class="nav-number">1.2.1.</span> <span class="nav-text">TDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BDD"><span class="nav-number">1.2.2.</span> <span class="nav-text">BDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Story：故事，描述故事的單行文字，格式如下"><span class="nav-number">1.2.3.</span> <span class="nav-text">Story：故事，描述故事的單行文字，格式如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario：情境，對應需求下的系統行為，"><span class="nav-number">1.2.4.</span> <span class="nav-text">Scenario：情境，對應需求下的系統行為，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以為TDD跟BDD是對立的只能擇其一："><span class="nav-number">1.2.5.</span> <span class="nav-text">以為TDD跟BDD是對立的只能擇其一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以為-BDD-測試介面流程，BDD-整合測試-，TDD-單元測試，而且這是不可動搖的。"><span class="nav-number">1.2.6.</span> <span class="nav-text">以為 BDD == 測試介面流程，BDD == 整合測試 ，TDD == 單元測試，而且這是不可動搖的。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#測試階段"><span class="nav-number">1.3.</span> <span class="nav-text">測試階段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端單元測試框架"><span class="nav-number">1.4.</span> <span class="nav-text">前端單元測試框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#撰寫測試案例"><span class="nav-number">1.4.1.</span> <span class="nav-text">撰寫測試案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小結"><span class="nav-number">1.5.</span> <span class="nav-text">小結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">1.6.</span> <span class="nav-text">參考</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2017
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">LauraLuo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'lauraluosblog';
+      var disqus_identifier = '2017/05/08/React單元測試 (一)初探基礎知識/';
+      var disqus_url = 'http://yoursite.com/2017/05/08/React單元測試 (一)初探基礎知識/';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
+
+
+
+
+  
+  <script type="text/javascript">
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-47409321-2');ga('send','pageview');
+  </script>
+
+</body>
+</html>
