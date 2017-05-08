@@ -1,4 +1,4 @@
-title: "React單元測試 (一) 潛探基礎知識"
+title: "React單元測試 (一) 初探基礎知識"
 date: 2017-05-8 17:00:07
 tags: 
 - React
@@ -9,7 +9,7 @@ categories:
 - react
 
 ---
-# React單元測試 (一) 潛探基礎知識
+# React單元測試 (一) 初探基礎知識
 
 ## 前言
 
@@ -48,7 +48,7 @@ categories:
 
 下圖引用自[https://www.slideshare.net/dualface/bdd-1068404](https://www.slideshare.net/dualface/bdd-1068404)  
 
-![](https://quip.com/blob/ZYFAAAWZiZi/5lysrlVZ5ct6zkGMsbb93g?a=H5aEKnfK3FTE9n72qe2oYatnzOF8o50RyabTOCk3MoQa
+![](https://quip.com/blob/ZYFAAAWZiZi/5lysrlVZ5ct6zkGMsbb93g?a=H5aEKnfK3FTE9n72qe2oYatnzOF8o50RyabTOCk3MoQa)
 
 ### BDD
 
@@ -92,30 +92,20 @@ BDD的測試案例通常以spec為後綴，例如dialog的test，會稱為 dial
 
 需求描述    
 
-
-*   User story：[帳戶持有人要領錢]   
-
+*   User story：[帳戶持有人要領錢]
 *   身為一個 [帳戶持有人]，我想要 [從atm領錢]，以便 [可以在銀行關門後領 到錢]  
 
-
- 系統行為, 一個需求會有一系列的場景來定義驗證標準  
-
+系統行為, 一個需求會有一系列的場景來定義驗證標準  
 
 *   Scenario [1]：[帳戶裡有足夠的錢，要給錢]  
-
-*   Given [帳戶餘額100] and [有效的領款卡] and [提款機夠錢]  
-
-*   When [帳戶持有人要求提20元]  
-
-*   Then [提款機應該給20] and [帳戶餘額80] and [退提款卡] ○  
+	*   Given [帳戶餘額100] and [有效的領款卡] and [提款機夠錢]  
+	*   When [帳戶持有人要求提20元]  
+	*   Then [提款機應該給20] and [帳戶餘額80] and [退提款卡] ○  
 
 *   Scenario [2]：[帳戶裡沒有足夠的錢，要提示餘額不足]  
-
-*   Given [帳戶餘額100] and [有效的領款卡] and [提款機夠錢]  
-
-*   When [帳戶持有人要求提120元]  
-
-*   Then [提示餘額不足] and [退提款卡]  
+	*   Given [帳戶餘額100] and [有效的領款卡] and [提款機夠錢]  
+	*   When [帳戶持有人要求提120元]  
+	*   Then [提示餘額不足] and [退提款卡]  
 
 
 接著分享一些我在研究測試相關知識的幾個盲點：  
@@ -124,24 +114,18 @@ BDD的測試案例通常以spec為後綴，例如dialog的test，會稱為 dial
 
 BDD是TDD的進化，重點著重在著寫測試案例時，群組這些測試的是需求的情境，但驗証這些情境是否正確的，還是TDD，所以TDD的精神並沒有不見(例如：在某個情境中還是要依靠驗証方法的正確性來確認需求是否完成)。  
 
-### 以為 BDD == 測試介面流程，BDD == 整合測試 ，TDD == 單元測試，而且這是不可動搖的。
+> 以為 BDD == 測試介面流程，BDD == 整合測試 ，TDD == 單元測試，而且這是不可動搖的。
 
 大多數人在探討TDD時，多數以單元測試為例，籍由驗証程式最小功能單位的品質來，來提升軟體品質。  
 大多數人在探討BDD時，多數以整合測試為例，很常籍由運行瀏覽器的模擬器來作為BDD的實例。  
 
 根據以上的呈述，可以理解我為什麼會有 BDD == 測試介面流程，BDD == 整合測試 ，TDD == 單元測試這種認知，但事實上TDD及BDD只是在呈述測試時的角度不同。就算是單純共用的函數，也可以使用BDD的呈述來表達當初設計時程式時想要解決的需求情境。  
 
-例如：  
-
-
-*   scenario 所有的網站在處理代表金錢的數字時，都要加上三位一點  
-
+例如： 
+scenario 所有的網站在處理代表金錢的數字時，都要加上三位一點  
 *   given  如果調用者傳入字串 abc  
-
 *   then 期望函數要報錯  
-
 *   given 如果調用者傳入數字 1000  
-
 *   then 系統會回傳加上3位一點的字串 1,000  
 
 
@@ -153,7 +137,7 @@ BDD是TDD的進化，重點著重在著寫測試案例時，群組這些測試�
 
 面向開發人員的部份，目的會就重在探討測試協助程式設計及程式碼的交付品質確認，其中的單元整合測試，及單元測試，應該屬於開發人員的範圍，其餘個人認為在責任分野上，比較偏QA(驗收)單位。**所以接下來文章探討的內容，會較偏重單元測試的部份。**  
 
-![](https://quip.com/blob/ZYFAAAWZiZi/9Yak6H9nmqWOZr623Nwzcw?a=cM4ROUYU2acYMldwJikjYA85YgcsjR1YfBNxuSx7V8oa
+![](https://quip.com/blob/ZYFAAAWZiZi/9Yak6H9nmqWOZr623Nwzcw?a=cM4ROUYU2acYMldwJikjYA85YgcsjR1YfBNxuSx7V8oa)
 
 圖片來源：[http://www.mpinfo.com.tw/about_5.php](http://www.mpinfo.com.tw/about_5.php)  
 
@@ -168,11 +152,11 @@ BDD是TDD的進化，重點著重在著寫測試案例時，群組這些測試�
 *   [Testing Frameworks2016](http://stateofjs.com/2016/testing/)  
 
 
-![](https://quip.com/blob/ZYFAAAWZiZi/PBcbqPwPWG_a6k9wUuCI6g?a=ialVovJwq506E2oCktiaea6jM6btpJjSvv2e48hnQnga
+![](https://quip.com/blob/ZYFAAAWZiZi/PBcbqPwPWG_a6k9wUuCI6g?a=ialVovJwq506E2oCktiaea6jM6btpJjSvv2e48hnQnga)
 
 圖片來源：[A complete overview of the JavaScript landscape in 2016:about Test Framework](https://risingstars2016.js.org/#test-framework)  
 
-![](https://quip.com/blob/ZYFAAAWZiZi/X9FKGvBm1ZuLUkN_c_YzAw?a=5Q0SQ7Zg3PVAVu7X2Hi5LKfOhQVwzJN0GgaeING4os8a
+![](https://quip.com/blob/ZYFAAAWZiZi/X9FKGvBm1ZuLUkN_c_YzAw?a=5Q0SQ7Zg3PVAVu7X2Hi5LKfOhQVwzJN0GgaeING4os8a)
 
 圖片來源：[Testing Frameworks2016](http://stateofjs.com/2016/testing/)  
 
@@ -247,18 +231,15 @@ jest src/components/demo/DemoComponent.spec.jsx
 
 測試結果如下  
 
-![](https://quip.com/blob/ZYFAAAWZiZi/stK3hM-Ci7S52Hnl7Mj5tw?a=ae05BPje6RScpg1Qp9cxEtHZugli0Q6mZdnf2OJTagoa
+![](https://quip.com/blob/ZYFAAAWZiZi/stK3hM-Ci7S52Hnl7Mj5tw?a=ae05BPje6RScpg1Qp9cxEtHZugli0Q6mZdnf2OJTagoa)
 
 ## 小結
 
 
 *   TDD：測試驅動開發幫助你在程式碼重構的過程中檢查功能的正常，鼓勵先設計再撰寫程式。  
-
 *   BDD：TDD的進化，主要想解決開發過程中，需求端與程式開發端的溝通落差，中心思想是除了功能測試功能正常，更要驗証是否確實滿足需求。  
-
 *   Unit Test：單元測試，中心思想是，如果所有最小單位的功能正常，則我們可以推測由最小單位集合而成的軟體具有一定的品質。  
-
-*   我在嚐試各種測試框架的過程中發現，Jamisne與Mocha皆有複雜性高，學習曲線長的議題，由於想降低單元測試的導入成本，所以跟團隊成員討論過後，暫定使用react官方打造的測試框架Jest搭配與Enzyme為主要方案。(可以參考這篇文章 [前端开发自动化单元测试趋势](http://web.jobbole.com/89946/))  
+*   嚐試各種測試框架的過程中發現，Jamisne與Mocha皆有複雜性高，學習曲線長的議題，由於想降低單元測試的導入成本，所以跟團隊成員討論過後，暫定使用react官方打造的測試框架Jest搭配與Enzyme為主要方案。(可以參考這篇文章 [前端开发自动化单元测试趋势](http://web.jobbole.com/89946/))  
 
 
 ## 參考
